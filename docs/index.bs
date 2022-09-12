@@ -1,0 +1,35 @@
+<pre class='metadata'>
+Title: OML Tutorial
+Shortname: Index
+Level: 1
+Status: LD
+ED: https://opencaesar.github.io/oml-tutorial/
+Repository: https://opencaesar.github.io/oml-tutorial/
+Editor: Maged Elaasar (JPL)
+!Copyright: Copyright 2010-2020, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology.This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons.
+Boilerplate: copyright no, conformance no
+Local Boilerplate: logo yes
+Markup Shorthands: markdown yes, css yes
+Use Dfn Panels: yes
+Abstract: This tutorial presents the ontological approach to systems modeling and analysis using the [Ontological Modeling Language (OML)](http://www.opencaesar.io/oml/), developed by the Jet Propulsion Laboratory (JPL), and contributed through the openCAESAR project. The tutorial intends to give users some experience with OML and its tools involving developing a semantic vocabulary, using it to describe a system, and analyzing the system description for consistency using a logical reasoner, a set of queries, and a UI viewpoint. Familiarity with using the Eclipse IDE would greatly help. Some background in system modeling with languages like UML or SysML, and some knowledge about semantic web would also help but is not essential.
+</pre>
+<div export=true>
+
+<pre class=include>path: tool-installation.md</pre>
+
+</div>
+<style>
+a[data-link-type=biblio] {
+    white-space: pre-wrap;
+}
+table.def th {
+	white-space: nowrap;
+}
+table.def ul {
+	padding-left: 1em;
+}
+table.def dfn code {
+	font-family: sans-serif;
+	color: #005A9C;
+}
+</style>
