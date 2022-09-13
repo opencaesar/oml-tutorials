@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorial/" rel="canonical">
-  <meta content="8d043b46bd04c9833fa42abe979f6e8fc4d86f41" name="document-revision">
+  <meta content="d51ddd437423ff12ab46f6d6e6ad50b31bf27303" name="document-revision">
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -2047,23 +2047,29 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
     <li>
-     <a href="#installing-oml-workbench"><span class="secno">1</span> <span class="content">Installing OML Workbench</span></a>
+     <a href="#getting-ready"><span class="secno">1</span> <span class="content">Getting Ready</span></a>
      <ol class="toc">
-      <li><a href="#installing-locally"><span class="secno">1.1</span> <span class="content">Installing Locally</span></a>
-      <li><a href="#installing-from-docker-image"><span class="secno">1.2</span> <span class="content">Installing from Docker Image</span></a>
+      <li>
+       <a href="#install-rosetta-workbench"><span class="secno">1.1</span> <span class="content">Install Rosetta Workbench</span></a>
+       <ol class="toc">
+        <li><a href="#install-locally"><span class="secno">1.1.1</span> <span class="content">Install Locally</span></a>
+        <li><a href="#install-from-docker-image"><span class="secno">1.1.2</span> <span class="content">Install from Docker Image</span></a>
+       </ol>
+      <li><a href="#run-rosetta-workbench"><span class="secno">1.2</span> <span class="content">Run Rosetta Workbench</span></a>
      </ol>
-    <li><a href="#running-oml-workbench"><span class="secno">2</span> <span class="content">Running OML Workbench</span></a>
-    <li><a href="#oml-tutorials"><span class="secno">3</span> <span class="content">OML Tutorials</span></a>
+    <li><a href="#tutorial-1"><span class="secno">2</span> <span class="content">Tutorial 1: OML in a Nutshell</span></a>
+    <li><a href="#tutorial-2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
    </ol>
   </nav>
   <main>
    <div>
-    <h2 class="heading settled" data-level="1" id="installing-oml-workbench"><span class="secno">1. </span><span class="content">Installing OML Workbench</span><a class="self-link" href="#installing-oml-workbench"></a></h2>
-    <h3 class="heading settled" data-level="1.1" id="installing-locally"><span class="secno">1.1. </span><span class="content">Installing Locally</span><a class="self-link" href="#installing-locally"></a></h3>
+    <h2 class="heading settled" data-level="1" id="getting-ready"><span class="secno">1. </span><span class="content">Getting Ready</span><a class="self-link" href="#getting-ready"></a></h2>
+    <h3 class="heading settled" data-level="1.1" id="install-rosetta-workbench"><span class="secno">1.1. </span><span class="content">Install Rosetta Workbench</span><a class="self-link" href="#install-rosetta-workbench"></a></h3>
+    <h4 class="heading settled" data-level="1.1.1" id="install-locally"><span class="secno">1.1.1. </span><span class="content">Install Locally</span><a class="self-link" href="#install-locally"></a></h4>
     <ol>
      <li data-md>
       <p>Download the latest release of the Rosetta Workbench archive that matches your OS from <a href="https://github.com/opencaesar/oml-rosetta/releases/latest">oml-rosetta</a>.</p>
-      <p><img src="assets/img/Rosetta-Download.png" style="border:1px groove black;" width="500"></p>
+      <p><img src="assets/img/Rosetta-Download.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Unzip the archive on your local drive to get the Rosetta app.</p>
       <blockquote>
@@ -2072,20 +2078,33 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <pre class="language-javascript highlight">$xttr <c- o>-</c->cr <c- o>&lt;</c->path<c- o>/</c->to<c- o>/</c->Rosetta<c- p>.</c->app<c- o>></c->
 </pre>
     </ol>
-    <h3 class="heading settled" data-level="1.2" id="installing-from-docker-image"><span class="secno">1.2. </span><span class="content">Installing from Docker Image</span><a class="self-link" href="#installing-from-docker-image"></a></h3>
+    <h4 class="heading settled" data-level="1.1.2" id="install-from-docker-image"><span class="secno">1.1.2. </span><span class="content">Install from Docker Image</span><a class="self-link" href="#install-from-docker-image"></a></h4>
     <blockquote>
      <p>TBD</p>
     </blockquote>
-    <h2 class="heading settled" data-level="2" id="running-oml-workbench"><span class="secno">2. </span><span class="content">Running OML Workbench</span><a class="self-link" href="#running-oml-workbench"></a></h2>
+    <h3 class="heading settled" data-level="1.2" id="run-rosetta-workbench"><span class="secno">1.2. </span><span class="content">Run Rosetta Workbench</span><a class="self-link" href="#run-rosetta-workbench"></a></h3>
     <ol>
      <li data-md>
       <p>Navigate to the Rosetta app icon and double click it to open.</p>
-      <p><img src="assets/img/splash.bmp" width="500"></p>
+      <p><img src="assets/img/splash.bmp" width="100%"></p>
      <li data-md>
       <p>When prompted to choose a workspace, create a new one in your local file system.</p>
-      <p><img src="assets/img/Rosetta-Launcher.png" width="500"></p>
+      <p><img src="assets/img/Rosetta-Launcher.png" width="100%"></p>
+     <li data-md>
+      <p>Once the workspace opens, switch to the Modeling Perspective.</p>
+      <p><img src="assets/img/Switch-to-Modeling-Perspective.png" width="100%"></p>
+     <li data-md>
+      <p>Once the Modeling Perspective opens, show the two Gradle views.</p>
+      <p><img src="assets/img/Show-Gradle-Views.png" style="border: groove black;border-width: 0 0 0 1px;" width="100%"> <img src="assets/img/Select-Gradle-Views.png" width="100%"></p>
+     <li data-md>
+      <p>This is how the Modeling Perspective should look like now.</p>
+      <p><img src="assets/img/Final-Modeling-Perspective.png" width="100%"></p>
     </ol>
-    <h2 class="heading settled" data-level="3" id="oml-tutorials"><span class="secno">3. </span><span class="content">OML Tutorials</span><a class="self-link" href="#oml-tutorials"></a></h2>
+    <h2 class="heading settled" data-level="2" id="tutorial-1"><span class="secno">2. </span><span class="content">Tutorial 1: OML in a Nutshell</span><a class="self-link" href="#tutorial-1"></a></h2>
+    <ol>
+     <li data-md>
+    </ol>
+    <h2 class="heading settled" data-level="3" id="tutorial-2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial-2"></a></h2>
     <blockquote>
      <p>TBD</p>
     </blockquote>

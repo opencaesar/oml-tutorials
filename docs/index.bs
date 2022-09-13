@@ -15,7 +15,11 @@ Abstract: This tutorial presents the ontological approach to systems modeling an
 </pre>
 <div export=true>
 
-<pre class=include>path: tool-installation.md</pre>
+<pre class=include>path: tools.md</pre>
+
+<pre class=include>path: tutorial-1.md</pre>
+
+<pre class=include>path: tutorial-2.md</pre>
 
 </div>
 <style>
