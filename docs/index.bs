@@ -1,5 +1,5 @@
 <pre class='metadata'>
-Title: OML Tutorial
+Title: OML Tutorials
 Shortname: Index
 Level: 1
 Status: LD
