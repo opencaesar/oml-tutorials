@@ -8,21 +8,15 @@
 
     <img src="assets/img/Rosetta-Download.png" width="100%" style="border:1px groove black;"/>
 
-1. Unzip the archive on your local drive to get the Rosetta app.
+1. Unzip the archive to some folder on your local drive to get the Rosetta app.
     
-    > On Mac OS, subsequently run the following command in Terminal.
+    Note: If you're on Mac, run this command in terminal to get around the issue that the app is not signed.
 
      ```javascript
       $xttr -cr <path/to/Rosetta.app>
      ```
 
-### Install from Docker Image ### {#install-from-docker-image}
-
-> TBD
-
-## Run Rosetta Workbench ## {#run-rosetta-workbench}
-
-1. Navigate to the Rosetta app icon and double click it to open.
+1. Navigate to the Rosetta app icon and double click to run it.
 
     <img src="assets/img/splash.bmp" width="100%"/>
 
@@ -30,15 +24,35 @@
 
     <img src="assets/img/Rosetta-Launcher.png" width="100%"/>
 
-1. Once the workspace opens, switch to the Modeling Perspective.
+### Install from Docker Image ### {#install-from-docker-image}
 
-    <img src="assets/img/Switch-to-Modeling-Perspective.png" width="100%"/>
+Note: TBD
 
-1. Once the Modeling Perspective opens, show the two Gradle views.
+## Run Rosetta Workbench ## {#run-rosetta-workbench}
 
-    <img src="assets/img/Show-Gradle-Views.png" width="100%" style="border: groove black;border-width: 0 0 0 1px;"/>
-    <img src="assets/img/Select-Gradle-Views.png" width="100%"/>
+1. Once Rosetta opens with the workspace, switch to the Modeling Perspective.
+
+   <video width="100%" style="border:1px groove black;" controls>
+     <source src="assets/mov/Switch-to-Modeling-Perspective.mov"/>
+   </video>
+
+1. Once the Modeling Perspective opens, show some extra views.
+
+   <video width="100%" style="border:1px groove black;" controls>
+     <source src="assets/mov/Show-Views.mov"/>
+   </video>
 
 1. This is how the Modeling Perspective should look like now.
 
-    <img src="assets/img/Final-Modeling-Perspective.png" width="100%"/>
+   <img src="assets/img/Final-Modeling-Perspective.png" width="100%"/>
+
+    Notice the following components of the Modeling Perspective above:
+
+    1. <dfn>**Model Explorer view**</dfn> (top-left): shows your project files hierarchy
+    1. <dfn>**Properties view**</dfn> (bottom-right): shows detailed propery sheet of the selection
+    1. <dfn>**Problems view**</dfn> (bottom-right): shows problems (errors, warnings) with your projects
+    1. <dfn>**Gradle Task view**</dfn> (bottom-right): shows the list of Gradle tasks in your projects
+    1. <dfn>**Gradle Executions view**</dfn> (bottom-right): shows the details of execution of Gradle tasks
+    1. <dfn>**Console view**</dfn> (bottom-right): shows messages printed by gradle tasks
+    1. <dfn>**Editors**</dfn> (top-right): this area shows the open editors (if any)
+    1. <dfn>**Outline view**</dfn>  (bottom-left): shows the outline of content in the active editor

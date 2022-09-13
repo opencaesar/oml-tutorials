@@ -1488,8 +1488,8 @@ Possible extra rowspan handling
 	}
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
-  <link href="https://opencaesar.github.io/oml-tutorial/" rel="canonical">
-  <meta content="ead4c5fbc9552b1a273d00a38ab992cc4825379e" name="document-revision">
+  <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
+  <meta content="58300aebf3295b5239da88b789ac653a29dae6b7" name="document-revision">
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -2028,7 +2028,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
-     <dd><a class="u-url" href="https://opencaesar.github.io/oml-tutorial/">https://opencaesar.github.io/oml-tutorial/</a>
+     <dd><a class="u-url" href="https://opencaesar.github.io/oml-tutorials/">https://opencaesar.github.io/oml-tutorials/</a>
      <dt class="editor">Editor:
      <dd class="editor p-author h-card vcard"><span class="p-name fn">Maged Elaasar (JPL)</span>
      <dt>Copyright:
@@ -2040,7 +2040,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This tutorial presents the ontological approach to systems modeling and analysis using the <a href="http://www.opencaesar.io/oml/">Ontological Modeling Language (OML)</a>, developed by the Jet Propulsion Laboratory (JPL), and contributed through the openCAESAR project. The tutorial intends to give users some experience with OML and its tools involving developing a semantic vocabulary, using it to describe a system, and analyzing the system description for consistency using a logical reasoner, a set of queries, and a UI viewpoint. Familiarity with using the Eclipse IDE would greatly help. Some background in system modeling with languages like UML or SysML, and some knowledge about semantic web would also help but is not essential.</p>
+   <p>This set of tutorials introduces the ontological approach to systems modeling and analysis using the <a href="http://www.opencaesar.io/oml/">Ontological Modeling Language (OML)</a>, developed by the <a href="https://github.com/opencaesar/">Jet Propulsion Laboratory (JPL)</a>, and provided by the <a href="http://www.opencaesar.io/">openCAESAR</a> project. The overarching objective of the tutorials is to teach users about OML, its features, its tools, and its workflows. Each individual tutorial describes its own learning objectives. The kind of users who may find these tutorials interesting include a) methodology/domain architects and b) systems engineers. Previous experience using modeling languages (such as UML), ontology languages (such as RDF or OWL), or formal languages (such as Description Logic) would help but is not required. Also, prior experience using common tools (such as Eclipse, Terminal, Docker, and Gradle) helps but is not required.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
@@ -2060,17 +2060,24 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li>
      <a href="#tutorial-1"><span class="secno">2</span> <span class="content">Tutorial 1: OML in a Nutshell</span></a>
      <ol class="toc">
-      <li><a href="#tutorial1-create-oml-project"><span class="secno">2.1</span> <span class="content">Create OML Project</span></a>
-      <li><a href="#tutorial1-create-oml-vocabulary"><span class="secno">2.2</span> <span class="content">Create OML Vocabulary</span></a>
-      <li><a href="#tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.3</span> <span class="content">Create OML Vocabulary Bundle</span></a>
-      <li><a href="#tutorial1-create-oml-description"><span class="secno">2.4</span> <span class="content">Create OML Description</span></a>
-      <li><a href="#tutorial1-edit-oml-description-bundle"><span class="secno">2.5</span> <span class="content">Edit OML Description Bundle</span></a>
-      <li><a href="#tutorial1-run-build-task"><span class="secno">2.6</span> <span class="content">Run Build Task</span></a>
-      <li><a href="#tutorial1-fix-logical-inconsistency"><span class="secno">2.7</span> <span class="content">Fix Logical Inconsistency</span></a>
-      <li><a href="#tutorial1-create-sparql-query"><span class="secno">2.8</span> <span class="content">Create SPARQL Query</span></a>
-      <li><a href="#tutorial1-run-query-task"><span class="secno">2.9</span> <span class="content">Run Query Task</span></a>
+      <li><a href="#tutorial1-learning-objectives"><span class="secno">2.1</span> <span class="content">Learning Objectives</span></a>
+      <li><a href="#tutorial1-create-oml-project"><span class="secno">2.2</span> <span class="content">Create OML Project</span></a>
+      <li><a href="#tutorial1-create-oml-vocabulary"><span class="secno">2.3</span> <span class="content">Create OML Vocabulary</span></a>
+      <li><a href="#tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4</span> <span class="content">Create OML Vocabulary Bundle</span></a>
+      <li><a href="#tutorial1-create-oml-description"><span class="secno">2.5</span> <span class="content">Create OML Description</span></a>
+      <li><a href="#tutorial1-edit-oml-description-bundle"><span class="secno">2.6</span> <span class="content">Edit OML Description Bundle</span></a>
+      <li><a href="#tutorial1-run-build-task"><span class="secno">2.7</span> <span class="content">Run Build Task</span></a>
+      <li><a href="#tutorial1-fix-logical-inconsistency"><span class="secno">2.8</span> <span class="content">Fix Logical Inconsistency</span></a>
+      <li><a href="#tutorial1-create-sparql-query"><span class="secno">2.9</span> <span class="content">Create SPARQL Query</span></a>
+      <li><a href="#tutorial1-run-query-task"><span class="secno">2.10</span> <span class="content">Run Query Task</span></a>
+      <li><a href="#tutorial1-summary"><span class="secno">2.11</span> <span class="content">Summary</span></a>
      </ol>
     <li><a href="#tutorial-2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
    </ol>
   </nav>
   <main>
@@ -2083,49 +2090,75 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Download the latest release of the Rosetta Workbench archive that matches your OS from <a href="https://github.com/opencaesar/oml-rosetta/releases/latest">oml-rosetta</a>.</p>
       <p><img src="assets/img/Rosetta-Download.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
-      <p>Unzip the archive on your local drive to get the Rosetta app.</p>
-      <blockquote>
-       <p>On Mac OS, subsequently run the following command in Terminal.</p>
-      </blockquote>
+      <p>Unzip the archive to some folder on your local drive to get the Rosetta app.</p>
+      <p class="note" role="note"><span>Note:</span> If you’re on Mac, run this command in terminal to get around the issue that the app is not signed.</p>
 <pre class="language-javascript highlight">$xttr <c- o>-</c->cr <c- o>&lt;</c->path<c- o>/</c->to<c- o>/</c->Rosetta<c- p>.</c->app<c- o>></c->
 </pre>
-    </ol>
-    <h4 class="heading settled" data-level="1.1.2" id="install-from-docker-image"><span class="secno">1.1.2. </span><span class="content">Install from Docker Image</span><a class="self-link" href="#install-from-docker-image"></a></h4>
-    <blockquote>
-     <p>TBD</p>
-    </blockquote>
-    <h3 class="heading settled" data-level="1.2" id="run-rosetta-workbench"><span class="secno">1.2. </span><span class="content">Run Rosetta Workbench</span><a class="self-link" href="#run-rosetta-workbench"></a></h3>
-    <ol>
      <li data-md>
-      <p>Navigate to the Rosetta app icon and double click it to open.</p>
+      <p>Navigate to the Rosetta app icon and double click to run it.</p>
       <p><img src="assets/img/splash.bmp" width="100%"></p>
      <li data-md>
       <p>When prompted to choose a workspace, create a new one in your local file system.</p>
       <p><img src="assets/img/Rosetta-Launcher.png" width="100%"></p>
+    </ol>
+    <h4 class="heading settled" data-level="1.1.2" id="install-from-docker-image"><span class="secno">1.1.2. </span><span class="content">Install from Docker Image</span><a class="self-link" href="#install-from-docker-image"></a></h4>
+    <p class="note" role="note"><span>Note:</span> TBD</p>
+    <h3 class="heading settled" data-level="1.2" id="run-rosetta-workbench"><span class="secno">1.2. </span><span class="content">Run Rosetta Workbench</span><a class="self-link" href="#run-rosetta-workbench"></a></h3>
+    <ol>
      <li data-md>
-      <p>Once the workspace opens, switch to the Modeling Perspective.</p>
-      <p><img src="assets/img/Switch-to-Modeling-Perspective.png" width="100%"></p>
+      <p>Once Rosetta opens with the workspace, switch to the Modeling Perspective.</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Switch-to-Modeling-Perspective.mov">
+    </video>
+    <ol>
      <li data-md>
-      <p>Once the Modeling Perspective opens, show the two Gradle views.</p>
-      <p><img src="assets/img/Show-Gradle-Views.png" style="border: groove black;border-width: 0 0 0 1px;" width="100%"> <img src="assets/img/Select-Gradle-Views.png" width="100%"></p>
+      <p>Once the Modeling Perspective opens, show some extra views.</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Show-Views.mov">
+    </video>
+    <ol>
      <li data-md>
       <p>This is how the Modeling Perspective should look like now.</p>
-      <p><img src="assets/img/Final-Modeling-Perspective.png" width="100%"></p>
+    </ol>
+    <p><img src="assets/img/Final-Modeling-Perspective.png" width="100%"></p>
+    <p>Notice the following components of the Modeling Perspective above:</p>
+    <ol>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="model-explorer-view"><strong>Model Explorer view</strong><a class="self-link" href="#model-explorer-view"></a></dfn> (top-left): shows your project files hierarchy</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="properties-view"><strong>Properties view</strong><a class="self-link" href="#properties-view"></a></dfn> (bottom-right): shows detailed propery sheet of the selection</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="problems-view"><strong>Problems view</strong><a class="self-link" href="#problems-view"></a></dfn> (bottom-right): shows problems (errors, warnings) with your projects</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="gradle-task-view"><strong>Gradle Task view</strong><a class="self-link" href="#gradle-task-view"></a></dfn> (bottom-right): shows the list of Gradle tasks in your projects</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="gradle-executions-view"><strong>Gradle Executions view</strong><a class="self-link" href="#gradle-executions-view"></a></dfn> (bottom-right): shows the details of execution of Gradle tasks</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="console-view"><strong>Console view</strong><a class="self-link" href="#console-view"></a></dfn> (bottom-right): shows messages printed by gradle tasks</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="editors"><strong>Editors</strong><a class="self-link" href="#editors"></a></dfn> (top-right): this area shows the open editors (if any)</p>
+     <li data-md>
+      <p><dfn data-dfn-type="dfn" data-export id="outline-view"><strong>Outline view</strong><a class="self-link" href="#outline-view"></a></dfn> (bottom-left): shows the outline of content in the active editor</p>
     </ol>
     <h2 class="heading settled" data-level="2" id="tutorial-1"><span class="secno">2. </span><span class="content">Tutorial 1: OML in a Nutshell</span><a class="self-link" href="#tutorial-1"></a></h2>
-    <h3 class="heading settled" data-level="2.1" id="tutorial1-create-oml-project"><span class="secno">2.1. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial1-create-oml-project"></a></h3>
-    <h3 class="heading settled" data-level="2.2" id="tutorial1-create-oml-vocabulary"><span class="secno">2.2. </span><span class="content">Create OML Vocabulary</span><a class="self-link" href="#tutorial1-create-oml-vocabulary"></a></h3>
-    <h3 class="heading settled" data-level="2.3" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.3. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
-    <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-description"><span class="secno">2.4. </span><span class="content">Create OML Description</span><a class="self-link" href="#tutorial1-create-oml-description"></a></h3>
-    <h3 class="heading settled" data-level="2.5" id="tutorial1-edit-oml-description-bundle"><span class="secno">2.5. </span><span class="content">Edit OML Description Bundle</span><a class="self-link" href="#tutorial1-edit-oml-description-bundle"></a></h3>
-    <h3 class="heading settled" data-level="2.6" id="tutorial1-run-build-task"><span class="secno">2.6. </span><span class="content">Run Build Task</span><a class="self-link" href="#tutorial1-run-build-task"></a></h3>
-    <h3 class="heading settled" data-level="2.7" id="tutorial1-fix-logical-inconsistency"><span class="secno">2.7. </span><span class="content">Fix Logical Inconsistency</span><a class="self-link" href="#tutorial1-fix-logical-inconsistency"></a></h3>
-    <h3 class="heading settled" data-level="2.8" id="tutorial1-create-sparql-query"><span class="secno">2.8. </span><span class="content">Create SPARQL Query</span><a class="self-link" href="#tutorial1-create-sparql-query"></a></h3>
-    <h3 class="heading settled" data-level="2.9" id="tutorial1-run-query-task"><span class="secno">2.9. </span><span class="content">Run Query Task</span><a class="self-link" href="#tutorial1-run-query-task"></a></h3>
+    <h3 class="heading settled" data-level="2.1" id="tutorial1-learning-objectives"><span class="secno">2.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial1-learning-objectives"></a></h3>
+     This tutorial provides a quick overview of the main workflow with OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain, then use it to create a simple system description. After that, users will learn how to build the project to check its logical consistency and run a query to answer an analytical question about the described system. 
+    <p class="note" role="note"><span>Note:</span> If you have not already done so, please follow the <a href="#getting-ready">getting ready</a> steps first before proceeding.</p>
+    <h3 class="heading settled" data-level="2.2" id="tutorial1-create-oml-project"><span class="secno">2.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial1-create-oml-project"></a></h3>
+     Right click in the Model Explorer view and select 
+    <h3 class="heading settled" data-level="2.3" id="tutorial1-create-oml-vocabulary"><span class="secno">2.3. </span><span class="content">Create OML Vocabulary</span><a class="self-link" href="#tutorial1-create-oml-vocabulary"></a></h3>
+    <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
+    <h3 class="heading settled" data-level="2.5" id="tutorial1-create-oml-description"><span class="secno">2.5. </span><span class="content">Create OML Description</span><a class="self-link" href="#tutorial1-create-oml-description"></a></h3>
+    <h3 class="heading settled" data-level="2.6" id="tutorial1-edit-oml-description-bundle"><span class="secno">2.6. </span><span class="content">Edit OML Description Bundle</span><a class="self-link" href="#tutorial1-edit-oml-description-bundle"></a></h3>
+    <h3 class="heading settled" data-level="2.7" id="tutorial1-run-build-task"><span class="secno">2.7. </span><span class="content">Run Build Task</span><a class="self-link" href="#tutorial1-run-build-task"></a></h3>
+    <h3 class="heading settled" data-level="2.8" id="tutorial1-fix-logical-inconsistency"><span class="secno">2.8. </span><span class="content">Fix Logical Inconsistency</span><a class="self-link" href="#tutorial1-fix-logical-inconsistency"></a></h3>
+    <h3 class="heading settled" data-level="2.9" id="tutorial1-create-sparql-query"><span class="secno">2.9. </span><span class="content">Create SPARQL Query</span><a class="self-link" href="#tutorial1-create-sparql-query"></a></h3>
+    <h3 class="heading settled" data-level="2.10" id="tutorial1-run-query-task"><span class="secno">2.10. </span><span class="content">Run Query Task</span><a class="self-link" href="#tutorial1-run-query-task"></a></h3>
+    <h3 class="heading settled" data-level="2.11" id="tutorial1-summary"><span class="secno">2.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
     <h2 class="heading settled" data-level="3" id="tutorial-2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial-2"></a></h2>
-    <blockquote>
-     <p>TBD</p>
-    </blockquote>
+    <p class="note" role="note"><span>Note:</span> TBD</p>
    </div>
   </main>
 <script>
@@ -2257,3 +2290,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#console-view">Console view</a><span>, in § 1.2</span>
+   <li><a href="#editors">Editors</a><span>, in § 1.2</span>
+   <li><a href="#gradle-executions-view">Gradle Executions view</a><span>, in § 1.2</span>
+   <li><a href="#gradle-task-view">Gradle Task view</a><span>, in § 1.2</span>
+   <li><a href="#model-explorer-view">Model Explorer view</a><span>, in § 1.2</span>
+   <li><a href="#outline-view">Outline view</a><span>, in § 1.2</span>
+   <li><a href="#problems-view">Problems view</a><span>, in § 1.2</span>
+   <li><a href="#properties-view">Properties view</a><span>, in § 1.2</span>
+  </ul>
