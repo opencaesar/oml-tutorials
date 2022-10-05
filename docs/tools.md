@@ -56,3 +56,9 @@ Note: TBD
     1. <dfn>**Console view**</dfn> (bottom-right): shows messages printed by gradle tasks
     1. <dfn>**Editors**</dfn> (top-right): this area shows the open editors (if any)
     1. <dfn>**Outline view**</dfn>  (bottom-left): shows the outline of content in the active editor
+
+    1. Turn on the Show line number preference by navigating to the Preferences dialog in the main menu bar (on a Mac, you will find it under the `Rosetta` menu; on Windows, you will find it under the `Windows` menu).
+
+       <video width="100%" style="border:1px groove black;" controls>
+         <source src="assets/mov/Enable-Line-Numbers.mov"/>
+        </video>

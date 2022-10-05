@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="58300aebf3295b5239da88b789ac653a29dae6b7" name="document-revision">
+  <meta content="555d34c0632c0750248bfe981456e6b5a9fffc5e" name="document-revision">
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -1705,6 +1705,47 @@ figcaption {
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }</style>
+<style>/* style-dfn-panel */
+
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled { cursor: pointer; }
+</style>
 <style>/* style-issues */
 
 a[href].issue-return {
@@ -2068,9 +2109,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial1-edit-oml-description-bundle"><span class="secno">2.6</span> <span class="content">Edit OML Description Bundle</span></a>
       <li><a href="#tutorial1-run-build-task"><span class="secno">2.7</span> <span class="content">Run Build Task</span></a>
       <li><a href="#tutorial1-fix-logical-inconsistency"><span class="secno">2.8</span> <span class="content">Fix Logical Inconsistency</span></a>
-      <li><a href="#tutorial1-create-sparql-query"><span class="secno">2.9</span> <span class="content">Create SPARQL Query</span></a>
-      <li><a href="#tutorial1-run-query-task"><span class="secno">2.10</span> <span class="content">Run Query Task</span></a>
-      <li><a href="#tutorial1-summary"><span class="secno">2.11</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial1-run-query-task"><span class="secno">2.9</span> <span class="content">Run Query Task</span></a>
+      <li><a href="#tutorial1-summary"><span class="secno">2.10</span> <span class="content">Summary</span></a>
      </ol>
     <li><a href="#tutorial-2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
     <li>
@@ -2126,37 +2166,611 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p>Notice the following components of the Modeling Perspective above:</p>
     <ol>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="model-explorer-view"><strong>Model Explorer view</strong><a class="self-link" href="#model-explorer-view"></a></dfn> (top-left): shows your project files hierarchy</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="model-explorer-view"><strong>Model Explorer view</strong></dfn> (top-left): shows your project files hierarchy</p>
      <li data-md>
       <p><dfn data-dfn-type="dfn" data-export id="properties-view"><strong>Properties view</strong><a class="self-link" href="#properties-view"></a></dfn> (bottom-right): shows detailed propery sheet of the selection</p>
      <li data-md>
       <p><dfn data-dfn-type="dfn" data-export id="problems-view"><strong>Problems view</strong><a class="self-link" href="#problems-view"></a></dfn> (bottom-right): shows problems (errors, warnings) with your projects</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="gradle-task-view"><strong>Gradle Task view</strong><a class="self-link" href="#gradle-task-view"></a></dfn> (bottom-right): shows the list of Gradle tasks in your projects</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="gradle-task-view"><strong>Gradle Task view</strong></dfn> (bottom-right): shows the list of Gradle tasks in your projects</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="gradle-executions-view"><strong>Gradle Executions view</strong><a class="self-link" href="#gradle-executions-view"></a></dfn> (bottom-right): shows the details of execution of Gradle tasks</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="gradle-executions-view"><strong>Gradle Executions view</strong></dfn> (bottom-right): shows the details of execution of Gradle tasks</p>
      <li data-md>
       <p><dfn data-dfn-type="dfn" data-export id="console-view"><strong>Console view</strong><a class="self-link" href="#console-view"></a></dfn> (bottom-right): shows messages printed by gradle tasks</p>
      <li data-md>
       <p><dfn data-dfn-type="dfn" data-export id="editors"><strong>Editors</strong><a class="self-link" href="#editors"></a></dfn> (top-right): this area shows the open editors (if any)</p>
      <li data-md>
       <p><dfn data-dfn-type="dfn" data-export id="outline-view"><strong>Outline view</strong><a class="self-link" href="#outline-view"></a></dfn> (bottom-left): shows the outline of content in the active editor</p>
+     <li data-md>
+      <p>Turn on the Show line number preference by navigating to the Preferences dialog in the main menu bar (on a Mac, you will find it under the <code>Rosetta</code> menu; on Windows, you will find it under the <code>Windows</code> menu).</p>
     </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Enable-Line-Numbers.mov">
+    </video>
     <h2 class="heading settled" data-level="2" id="tutorial-1"><span class="secno">2. </span><span class="content">Tutorial 1: OML in a Nutshell</span><a class="self-link" href="#tutorial-1"></a></h2>
     <h3 class="heading settled" data-level="2.1" id="tutorial1-learning-objectives"><span class="secno">2.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial1-learning-objectives"></a></h3>
      This tutorial provides a quick overview of the main workflow with OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain, then use it to create a simple system description. After that, users will learn how to build the project to check its logical consistency and run a query to answer an analytical question about the described system. 
     <p class="note" role="note"><span>Note:</span> If you have not already done so, please follow the <a href="#getting-ready">getting ready</a> steps first before proceeding.</p>
     <h3 class="heading settled" data-level="2.2" id="tutorial1-create-oml-project"><span class="secno">2.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial1-create-oml-project"></a></h3>
-     Right click in the Model Explorer view and select 
+    <ol>
+     <li data-md>
+      <p>Right click in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view">Model Explorer view</a> and select New -> OML Project.</p>
+     <li data-md>
+      <p>Enter the project name as <code>tutorial1</code>. Press Next.</p>
+     <li data-md>
+      <p>Enter the project details as shown below. Press Finish.</p>
+      <p><img src="assets/img/Tutorial1-Create-OML-Project.png" width="100%"></p>
+     <li data-md>
+      <p>The <code>tutorial</code> project should now be visible in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①">Model Explorer view</a>.</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> The project creation process may take a few seconds. Rosetta will show the progress of project creation in the status bar (bottom-right). Wait until this process finishes.</p>
+    <ol start="5">
+     <li data-md>
+      <p>Expand the <code>tutorial1</code> project node in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②">Model Explorer view</a> as shown in the image below.</p>
+      <p><img src="assets/img/Tutorial1-Expanded-Project.png" width="100%"></p>
+    </ol>
     <h3 class="heading settled" data-level="2.3" id="tutorial1-create-oml-vocabulary"><span class="secno">2.3. </span><span class="content">Create OML Vocabulary</span><a class="self-link" href="#tutorial1-create-oml-vocabulary"></a></h3>
+    <p>Now, you will create a simple vocabulary for describing pizzas along with their bases and toppings. Different kinds of  pizzas, bases, and toppings are modeled, along with their properties, interrelations, and restrictions.</p>
+    <ol>
+     <li data-md>
+      <p>Right click on the <code>tutorial1</code> subfolder (highlighted in the picture above) in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view③">Model Explorer view</a> and select New -> OML Model.</p>
+     <li data-md>
+      <p>Enter the details of the <code>pizza</code> vocabulary as shown below. Press Finish.</p>
+      <p><img src="assets/img/Tutorial1-Create-Pizza-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>The <code>pizza</code> vocabulary will be created and its OML editor opens as shown below.</p>
+      <p><img src="assets/img/Tutorial1-Pizza-Vocabulary-Editor.png" width="100%"></p>
+     <li data-md>
+      <p>Copy the following OML code and paste it as the new content of vocabulary <code>pizza</code>.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A vocabulary about pizzas"</c->
+<c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#> as pizza {</c->
+	
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+
+	<c- c1>// Top Level</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of things that are uniquely identified by id"</c->
+	<c- n>aspect</c-> <c- nc>IdentifiedThing</c-> <c- p>[</c->
+		<c- n>key</c-> <c- n>hasId</c->
+	<c- p>]</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The id property of an identified thing"</c->
+	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasId</c-> <c- p>[</c->
+		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
+		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+		<c- n>functional</c->
+	<c- p>]</c->	
+
+	<c- c1>// Identified Things</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of food items"</c->
+	<c- n>concept</c-> <c- nc>Food</c-> <c- o>:></c-> <c- nc>IdentifiedThing</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a food to another used as an ingredient"</c->
+	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+		<c- n>from</c-> <c- nc>Food</c->
+		<c- n>to</c-> <c- nc>Food</c->
+		<c- n>forward</c-> <c- n>hasIngredient</c->
+		<c- n>reverse</c-> <c- n>isIngredientOf</c->
+		<c- n>transitive</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An enumeration of spiciness levels"</c->
+	<c- n>enumerated</c-> <c- n>scalar</c-> <c- nc>Spiciness</c-> <c- p>[</c->
+		<c- s>"Hot"</c-><c- p>,</c->
+		<c- s>"Medium"</c-><c- p>,</c->
+		<c- s>"Mild"</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The spiciness property of a food item"</c->
+	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- p>[</c->
+		<c- n>domain</c-> <c- nc>Food</c->
+		<c- n>range</c-> <c- nc>Spiciness</c->
+		<c- n>functional</c->
+	<c- p>]</c->
+	
+	<c- c1>// Foods</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas"</c->
+	<c- n>concept</c-> <c- nc>Pizza</c-> <c- o>:></c-> <c- nc>Food</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasBase</c-> <c- n>to</c-> <c- nc>PizzaBase</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza bases"</c->
+	<c- n>concept</c-> <c- nc>PizzaBase</c-> <c- o>:></c-> <c- nc>Food</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza toppings"</c->
+	<c- n>concept</c-> <c- nc>PizzaTopping</c-> <c- o>:></c-> <c- nc>Food</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c->
+	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+		<c- n>from</c-> <c- nc>Pizza</c->
+		<c- n>to</c-> <c- nc>PizzaBase</c->
+		<c- n>forward</c-> <c- n>hasBase</c->
+		<c- n>reverse</c-> <c- n>isBaseOf</c->
+		<c- n>functional</c->
+		<c- n>inverse</c-> <c- n>functional</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a topping"</c->
+	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasTopping</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+		<c- n>from</c-> <c- nc>Pizza</c->
+		<c- n>to</c-> <c- nc>PizzaTopping</c->
+		<c- n>forward</c-> <c- n>hasTopping</c->
+		<c- n>reverse</c-> <c- n>isToppingOf</c->
+		<c- n>inverse</c-> <c- n>functional</c->
+	<c- p>]</c->
+
+	<c- c1>// Pizzas</c->
+		
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some cheese toppings"</c->
+	<c- n>concept</c-> <c- nc>CheesyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>CheeseTopping</c->
+	<c- p>]</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some meat toppings"</c->
+	<c- n>concept</c-> <c- nc>MeatyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MeatTopping</c->
+	<c- p>]</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with all vegetarian toppings"</c->
+	<c- n>concept</c-> <c- nc>VegetarianPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>VegetarianTopping</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of American pizzas"</c->
+	<c- n>concept</c-> <c- nc>American</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SausageTopping</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Veneziana pizzas"</c->
+	<c- n>concept</c-> <c- nc>Veneziana</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SultanaTopping</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Margherita pizzas"</c->
+	<c- n>concept</c-> <c- nc>Margherita</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>VegetarianPizza</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+	<c- p>]</c->
+
+	<c- c1>// Pizza Bases</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of deep pan bases"</c->
+	<c- n>concept</c-> <c- nc>DeepPanBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of thin and crispy bases"</c->
+	<c- n>concept</c-> <c- nc>ThinAndCrispyBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
+
+	<c- c1>// Pizza Toppings</c->
+		
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of meat toppings"</c->
+	<c- n>concept</c-> <c- nc>MeatTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
+	
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of vegetarian toppings"</c->
+	<c- n>concept</c-> <c- nc>VegetarianTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of hot spiciness toppings"</c->
+	<c- n>concept</c-> <c- nc>HotTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Hot"</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of medium spiciness toppings"</c->
+	<c- n>concept</c-> <c- nc>MediumTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Medium"</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mild spiciness toppings"</c->
+	<c- n>concept</c-> <c- nc>MildTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Mild"</c->
+	<c- p>]</c->
+
+	<c- c1>// Meat Topping</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sausage toppings"</c->
+	<c- n>concept</c-> <c- nc>SausageTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class spiced beef toppings"</c->
+	<c- n>concept</c-> <c- nc>SpicedBeefTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+	
+	<c- c1>// Vegetarion Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sauce toppings"</c->
+	<c- n>concept</c-> <c- nc>SauceTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class cheese toppings"</c->
+	<c- n>concept</c-> <c- nc>CheeseTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class fruit toppings"</c->
+	<c- n>concept</c-> <c- nc>FruitTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class vegetable toppings"</c->
+	<c- n>concept</c-> <c- nc>VegetableTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+
+	<c- c1>// Sauce Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tabasco toppings"</c->
+	<c- n>concept</c-> <c- nc>TobascoTopping</c-> <c- o>:></c-> <c- nc>SauceTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+
+	<c- c1>// Cheese Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of parmesan toppings"</c->
+	<c- n>concept</c-> <c- nc>ParmesanTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mozzarella toppings"</c->
+	<c- n>concept</c-> <c- nc>MozzarellaTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+
+	<c- c1>// Fruit Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sultana toppings"</c->
+	<c- n>concept</c-> <c- nc>SultanaTopping</c-> <c- o>:></c-> <c- nc>FruitTopping</c-><c- p>,</c-> <c- nc>MediumTopping</c->
+	
+	<c- c1>// Vegetable Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pepper toppings"</c->
+	<c- n>concept</c-> <c- nc>PepperTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tomatoe toppings"</c->
+	<c- n>concept</c-> <c- nc>TomatoTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+
+	<c- c1>// Pepper Toppings</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of jalapeno pepper toppings"</c->
+	<c- n>concept</c-> <c- nc>JalapenoPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sweet pepper toppings"</c->
+	<c- n>concept</c-> <c- nc>SweetPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+<c- p>}</c->
+</pre>
     <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
+    <p>Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjopint, which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumptions of vocabularies.</p>
+    <ol>
+     <li data-md>
+      <p>Right click on the <code>vocabulary</code> subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view④">Model Explorer view</a> and select New -> OML Model.</p>
+     <li data-md>
+      <p>Enter the details of the <code>pizza-bundle</code> vocabulary bundle as shown below. Press Finish.</p>
+      <p><img src="assets/img/Tutorial1-Create-Pizza-Vocabulary-Bundle.png" width="100%"></p>
+     <li data-md>
+      <p>The <code>pizza-bundle</code> vocabulary bundle will be created and its OML editor opens as shown below.</p>
+      <p><img src="assets/img/Tutorial1-Pizza-Vocabulary-Bundle-Editor.png" width="100%"></p>
+     <li data-md>
+      <p>Copy the following OML code and paste it as the new content of the vocabulary bundle.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A vocabulary bundle for closed-world reasoning about pizzas"</c->
+<c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza-bundle#> as pizza-bundle {</c->
+	
+	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+
+	<c- c1>// The pizza vocabulary bundle "includes" the pizza vocabulary</c->
+	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
+
+<c- p>}</c->
+</pre>
     <h3 class="heading settled" data-level="2.5" id="tutorial1-create-oml-description"><span class="secno">2.5. </span><span class="content">Create OML Description</span><a class="self-link" href="#tutorial1-create-oml-description"></a></h3>
+    <p>Now, you will create a description of the pizza instances baked by a particular pizza restaurant. The description will be done using terms from the pizza vocabulary above.</p>
+    <ol>
+     <li data-md>
+      <p>Right click on the <code>description</code> subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑤">Model Explorer view</a> and select New -> OML Model.</p>
+     <li data-md>
+      <p>Enter the details of the <code>restaurant</code> description as shown below. Press Finish.</p>
+      <p><img src="assets/img/Tutorial1-Create-Restaurant-Description.png" width="100%"></p>
+     <li data-md>
+      <p>The <code>restaurant</code> description will be created and its OML editor opens as shown below.</p>
+      <p><img src="assets/img/Tutorial1-Restaurant-Description-Editor.png" width="100%"></p>
+     <li data-md>
+      <p>Copy the following OML code and paste it as the new content of the description.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A description of the sales of a specific pizza restaurant"</c->
+<c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/restaurant#> as restaurant {</c->
+	
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+
+	<c- c1>// The restaurant description "uses" the pizza vocabulary terms in assertions </c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#> as pizza</c->
+
+	<c- c1>// Pizza 1</c->
+
+	<c- n>ci</c-> <c- n>base1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
+	<c- n>ci</c-> <c- n>pizza1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c->
+	<c- p>]</c->
+	
+	<c- c1>// Pizza 2</c->
+
+	<c- n>ci</c-> <c- n>base2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
+	<c- n>ci</c-> <c- n>pizza2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"2"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c->
+	<c- p>]</c->
+		
+	<c- c1>// Pizza 3</c->
+
+	<c- n>ci</c-> <c- n>base3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+	<c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+	<c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+	<c- n>ci</c-> <c- n>pizza3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Margherita</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"3"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base3</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c->
+	<c- p>]</c->
+
+	<c- c1>// Pizza 4</c->
+
+	<c- n>ci</c-> <c- n>base4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SultanaTopping</c->
+	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SpicedBeefTopping</c->
+	<c- n>ci</c-> <c- n>pizza4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Veneziana</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"4"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base4</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c->
+	<c- p>]</c->
+
+	<c- c1>// Pizza 5</c->
+
+	<c- n>ci</c-> <c- n>base5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TobascoTopping</c->
+	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ParmesanTopping</c->
+	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
+	<c- n>ci</c-> <c- n>pizza5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"5"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base5</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c->
+	<c- p>]</c->
+
+	<c- c1>// Pizza 6</c->
+
+	<c- n>ci</c-> <c- n>base6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+	<c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+	<c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
+	<c- n>ci</c-> <c- n>pizza6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"6"</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base6</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
+		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
+	<c- p>]</c->
+
+<c- p>}</c->
+</pre>
     <h3 class="heading settled" data-level="2.6" id="tutorial1-edit-oml-description-bundle"><span class="secno">2.6. </span><span class="content">Edit OML Description Bundle</span><a class="self-link" href="#tutorial1-edit-oml-description-bundle"></a></h3>
+    <p>Now, you will include the restaurant description in a description bundle that will be analyzed as a dataset with closed-world assumptions. This requires the description bundle to use the pizza vocabulary bundle above in order to reuse its closed world assumptions.  Additionally, it automatically asserts that instances in the bundled descriptions are the only ones available in the world.</p>
+    <ol>
+     <li data-md>
+      <p>Double-click on the <code>description/bundle.oml</code> file in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑥">Model Explorer view</a> to open the editor (if not already open).</p>
+     <li data-md>
+      <p>Copy the following OML code and paste it as the new content of description bundle.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A description bundle for closed-world reasoning about a restaurant"</c->
+<c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/bundle#> as ^bundle {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+	
+	<c- c1>// The description bundle "uses" the vocabulary bundle world closure axioms</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza-bundle#></c->
+
+	<c- c1>// The description bundle "includes" the restaurant description	</c->
+	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/restaurant#></c->
+	
+<c- p>}</c->
+</pre>
     <h3 class="heading settled" data-level="2.7" id="tutorial1-run-build-task"><span class="secno">2.7. </span><span class="content">Run Build Task</span><a class="self-link" href="#tutorial1-run-build-task"></a></h3>
+    <p>Now, it is time to run the Gradle build task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.</p>
+    <ol>
+     <li data-md>
+      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view">Gradle Task view</a> and wait until the <code>Tutorial1</code> project shows up there.</p>
+     <li data-md>
+      <p>Expand the <code>Tutorial1</code> node followed by expanding the <code>oml</code> node.</p>
+     <li data-md>
+      <p>Double-click on the <code>build</code> task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view">Gradle Executions view</a>.</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Tutorial1-Run-Build-Task.mov">
+    </video>
+    <ol>
+     <li data-md>
+      <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①">Gradle Executions view</a> and notice that it is all green icons.</p>
+      <p><img src="assets/img/Tutorial1-Successful-Build.png" width="100%"></p>
+    </ol>
     <h3 class="heading settled" data-level="2.8" id="tutorial1-fix-logical-inconsistency"><span class="secno">2.8. </span><span class="content">Fix Logical Inconsistency</span><a class="self-link" href="#tutorial1-fix-logical-inconsistency"></a></h3>
-    <h3 class="heading settled" data-level="2.9" id="tutorial1-create-sparql-query"><span class="secno">2.9. </span><span class="content">Create SPARQL Query</span><a class="self-link" href="#tutorial1-create-sparql-query"></a></h3>
-    <h3 class="heading settled" data-level="2.10" id="tutorial1-run-query-task"><span class="secno">2.10. </span><span class="content">Run Query Task</span><a class="self-link" href="#tutorial1-run-query-task"></a></h3>
-    <h3 class="heading settled" data-level="2.11" id="tutorial1-summary"><span class="secno">2.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
+    <p>Now, we will introduce a logical problem in the OML code above and see how the reasoner helps us detect it and explain it.</p>
+    <p><strong>Introducing a problem</strong></p>
+    <ol>
+     <li data-md>
+      <p>Click on the <code>restaurant.oml</code> editor to bring it in focus.</p>
+     <li data-md>
+      <p>In line 30, change the id of instance <code>pizza2</code> to "1" (from "2"), to become similar to the id of instance <code>pizza1</code> (in line 16), as seen below, and save the editor.</p>
+      <p><img src="assets/img/Tutorial1-Change-Pizza2-Id.png" width="100%"></p>
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①">Gradle Task view</a> double-click to rerun task <code>Tutorial1/oml/build</code> again, and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②">Gradle Executions view</a>.</p>
+     <li data-md>
+      <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view③">Gradle Executions view</a> and notice that it now shows a failure (red icons) on task <code>owlReason</code>.</p>
+      <p><img src="assets/img/Tutorial1-Build-Failure.png" width="100%"></p>
+     <li data-md>
+      <p>Right click on a red icon and select <code>Show Failures</code> from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.</p>
+      <p><img src="assets/img/Tutorial1-Failure-Dialog.png" width="100%"></p>
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑦">Model Explorer view</a>, navigate to file <code>orial1/build/reports/reasoning.xml</code> and double click on it. The file opens in the <code>Junit</code> view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Tutorial1-Inspect-Inconsistency.mov">
+    </video>
+    <p><strong>Explaining the problem</strong></p>
+    <p>This problem demonstrates why it is useful to use a logical reasoner to detect inconsistencies that may otherwise be non-obvious or unexpected. When this occurs, the reasoner provides a brief description and a minimal ontology that demonstrates the problem.</p>
+    <p>In this case, the brief description is <em>"an invidual belongs to a type and its complement"</em>. This means there exists an individual (called an instance in OML) in the model that can be inferred, using the logical semantics of the used vocabulary, to be classified by two classes that are disjoiint (i.e., do not have an intersection, or in other words are a complement of each other, hence cannot be types of the same instance).</p>
+    <p><img src="assets/img/Tutorial1-Logical-Explanation.png" width="100%"></p>
+    <p>Looking at the minimal ontology presented, we can figure out the cause of the problem. It says that relation <code>hasBase</code> is <em>functional</em>, meaning that it can have maximum one value for a given instance. Looking at the relevant snippet of the pizza vocabulary confirms that.</p>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Pizza</c->
+	<c- n>to</c-> <c- nc>PizzaBase</c->
+	<c- n>forward</c-> <c- n>hasBase</c->
+	<c- n>reverse</c-> <c- n>isBaseOf</c->
+	<c- n>functional</c->
+	<c- n>inverse</c-> <c- n>functional</c->
+<c- p>]</c->
+</pre>
+    <p>Moreover, it says that instance <code>base1</code> is a value of property <code>hasBase</code> on instance <code>pizza1</code>, and instance <code>base2</code> is a value of property <code>hasBase</code> on instance <code>pizza2</code>. Looking at the relevant snippet of the restaurant description confirms that.</p>
+<pre class="language-scala highlight"><c- n>ci</c-> <c- n>base1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+<c- n>ci</c-> <c- n>pizza1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+	<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+	<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
+<c- p>]</c->
+<c- n>ci</c-> <c- n>base2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+<c- n>ci</c-> <c- n>pizza2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+	<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+	<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
+<c- p>]</c->
+</pre>
+    <p>So far so good, where is the issue then?</p>
+    <p>The explanation highlights that <code>pizza1</code> and <code>pizza2</code> have the same value ("1") of property <code>hasId</code>, which is defined by the <code>pizza</code> vocabulary to be <em>functional</em> (can have a maximum one value per instance). It infers from this that <code>pizza1</code> and <code>pizza2</code> are two names of a single pizza instance.</p>
+<pre class="language-scala highlight"><c- n>scalar</c-> <c- n>property</c-> <c- n>hasId</c-> <c- p>[</c->
+	<c- n>domain</c-> <c- nc>IdentifiedThing</c->
+	<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+	<c- n>functional</c->
+<c- p>]</c->	
+</pre>
+    <p>In light of the above, and having established previously that property <code>hasBase</code> is <em>functional</em>, it follows logically that <code>base1</code> and <code>base2</code> must be two names of the same base individual. But, wait, we asserted in the restaurant description that those instances are typed by concepts <code>DeepPanBase</code> and <code>ThinAndCrispyBase</code>, respectively. This means now that the same base instance is typed by both these types.</p>
+    <p>However, the explanation also says that these two types are in fact disjoint. Where did it get this from? It turns out to be a generated assertion in the <code>pizza-bundle</code> vocabulary bundle. Such assertion is generated since the two types do not have a common subtype in the <code>pizza</code> vocabulary (included in the vocabulary bundle). Such closed-world semantics is a benefit of using a vocabulary bundle.</p>
+    <p>Now, let us put all those inferences together to understand the reported problem <em>"an individual belongs to a type and its complement"</em>. It turns out that the individual here is known by the two names <code>base1</code> and <code>base2</code> and it is inferred to belong to type <code>DeepPanBase</code> and its complement type <code>ThinAndCrispyBase</code>, which is a logical inconsistency.</p>
+    <p><strong>Fixing the problem</strong></p>
+    <ol>
+     <li data-md>
+      <p>Let’s now fix the problem by reverting the change we just did. Click on the <code>restaurant</code> editor again and navigate to line 30 and restore the original hasId value of "2". Save the editor.</p>
+     <li data-md>
+      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②">Gradle Task view</a> and double-click to rerun the <code>Tutorial1/oml/build</code> task again and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view④">Gradle Executions view</a>.</p>
+     <li data-md>
+      <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑤">Gradle Executions view</a> and notice that it is back to showing green icons.</p>
+    </ol>
+    <h3 class="heading settled" data-level="2.9" id="tutorial1-run-query-task"><span class="secno">2.9. </span><span class="content">Run Query Task</span><a class="self-link" href="#tutorial1-run-query-task"></a></h3>
+    <p>Now that the model is consistent, it is time to get some value out of it by using it to answer business questions. To do that, we will run some queries in SPARQL on the model and inspect their results.</p>
+    <ol>
+     <li data-md>
+      <p>Navigate in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑧">Model Explorer view</a> to the <code>src</code> folder, and right click on it and choose New -> Folder.</p>
+      <p><img src="assets/img/Tutorial1-Create-SPARQL-Folder.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Enter the name of the folder as <code>sparql</code> and press Finish. This creates a new folder <code>src/sparql</code> in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑨">Model Explorer view</a>.</p>
+      <p><img src="assets/img/Tutorial1-SPARQL-Folder.png" width="100%"></p>
+     <li data-md>
+      <p>Right click on the <code>src/sparql</code> folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⓪">Model Explorer view</a> and select New -> File.</p>
+      <p><img src="assets/img/Tutorial1-Create-SPARQL-Query.png" width="100%"></p>
+     <li data-md>
+      <p>Enter the name of the file as <code>NumberOfToppings.sparql</code> and press Finish. This creates a new file under the <code>sparql</code> folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①①">Model Explorer view</a>.</p>
+     <li data-md>
+      <p>Paste the following SPARQL code as the content of the file editor and save it.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+
+<c- nc>SELECT</c-> <c- o>?</c-><c- n>toppingKind</c-> <c- p>(</c-><c- nc>COUNT</c-><c- p>(</c-><c- o>?</c-><c- n>topping</c-><c- p>)</c-> <c- n>as</c-> <c- o>?</c-><c- n>toppingCount</c-><c- p>)</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+    <c- o>?</c-><c- n>r</c-> <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- o>?</c-><c- n>topping</c-> <c- p>.</c->
+    <c- o>?</c-><c- n>topping</c-> <c- n>a</c-> <c- o>?</c-><c- n>toppingKind</c-> <c- p>.</c->
+    <c- o>?</c-><c- n>toppingKind</c-> <c- n>rdfs</c-><c- p>:</c-><c- n>subClassOf</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>PizzaTopping</c-> <c- p>.</c->
+<c- p>}</c->
+<c- nc>GROUP</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>toppingKind</c->
+</pre>
+    <ol start="6">
+     <li data-md>
+      <p>Repeat the previous steps to create a second query file called <code>WhichPizzaIsSpicy.sparql</code> and this time use the following SPARQL code.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>pizza</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+    <c- o>?</c-><c- n>pizza</c-> <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- p>[</c-><c- n>pizza</c-><c- p>:</c-><c- n>hasSpiceness</c-> <c- s>"Hot"</c-><c- p>]</c->
+    
+<c- p>}</c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>Repeat the previous steps to create a third query file called <code>WhichPizzaIsVegan.sparql</code> and this time use the following SPARQL code.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>pizza</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+    <c- o>?</c-><c- n>pizza</c-> <c- n>a</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Pizza</c-> <c- p>.</c->
+    <c- nc>FILTER</c-> <c- nc>NOT</c-> <c- nc>EXISTS</c-> <c- p>{</c->
+       <c- o>?</c-><c- n>pizza</c-> <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- o>?</c-><c- n>nvt</c-> <c- p>.</c-> 
+       <c- nc>FILTER</c-> <c- nc>NOT</c-> <c- nc>EXISTS</c-> <c- p>{</c-> 
+       	   <c- o>?</c-><c- n>nvt</c-> <c- n>a</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetableTopping</c-> 
+       <c- p>}</c->
+    <c- p>}</c-> 
+<c- p>}</c->
+</pre>
+    <ol start="8">
+     <li data-md>
+      <p>By now, you should see the following in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①②">Model Explorer view</a>.</p>
+      <p><img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"></p>
+     <li data-md>
+      <p>Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigat to the task <code>Tutorial1/oml/startFuseki</code>. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
+    </ol>
+    <blockquote>
+     <p>A <em>Fuseki</em> server should now be running locally on your machine.</p>
+    </blockquote>
+    <ol start="10">
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view④">Gradle Task view</a>, navigate to the task <code>Tutorial1/oml/owlQuery</code> and double click to run it and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑦">Gradle Executions view</a>. This task first loads the description bundle to the Fuseki server, then runs all the queries from the <code>sparql</code> folder on it.</p>
+     <li data-md>
+      <p>The results of running the queries are stored in JSON files in the <code>build/results</code> folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①③">Model Explorer view</a>. To see them, first right-click on the <code>tutorial1</code> project and choose the Refresh action. This will make the <code>build/results</code> folder show up.</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Tutorial1-Show-Query-Results.mov">
+    </video>
+    <ol start="12">
+     <li data-md>
+      <p>Double click on file <code>NumberOfToppings.json</code> in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①④">Model Explorer view</a> to open its editor.</p>
+      <p><img src="assets/img/Tutorial1-Show-Query-Results-1.png" width="100%"></p>
+    </ol>
+    <blockquote>
+     <p>This query returned a table of two columns. The first column named <code>toppingKind</code> represents the unique topping kinds (identified by their IRIs) that were used by the restaurant in makking pizzas. The second column named <code>toppingCount</code> represents the total count of each topping kind that were used to make those pizzas.</p>
+    </blockquote>
+    <ol start="13">
+     <li data-md>
+      <p>Double click on file <code>WhichPizzaIsSpicy.json</code> in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑤">Model Explorer view</a> to open its editor.</p>
+      <p><img src="assets/img/Tutorial1-Show-Query-Results-2.png" width="100%"></p>
+    </ol>
+    <blockquote>
+     <p>This query returned a table of one column named <code>pizza</code> which represents the pizzas (identified by their IRIs) that were considered spicy because the spiciness of one of their toppings was <em>Hot</em>.</p>
+    </blockquote>
+    <ol start="14">
+     <li data-md>
+      <p>Double click on file <code>WhichPizzaIsVegan.json</code> in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑥">Model Explorer view</a> to open its editor.</p>
+      <p><img src="assets/img/Tutorial1-Show-Query-Results-3.png" width="100%"></p>
+    </ol>
+    <blockquote>
+     <p>This query returned a table of one column named <code>pizza</code> which represents the pizzas (identified by their IRIs) that were considered <em>vegan</em> because none their toppings were non-vegetable.</p>
+    </blockquote>
+    <ol start="15">
+     <li data-md>
+      <p>Now that we are done running queries, we can stop the <em>Fuseki</em> server by navigating to task <code>tutorial1/oml/stopFuseki</code> in the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑤">Gradle Task view</a>. Double click to run the task and  wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑧">Gradle Executions view</a>.</p>
+    </ol>
+    <h3 class="heading settled" data-level="2.10" id="tutorial1-summary"><span class="secno">2.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
+    <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case), that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop a triple store server, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
     <h2 class="heading settled" data-level="3" id="tutorial-2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial-2"></a></h2>
     <p class="note" role="note"><span>Note:</span> TBD</p>
    </div>
@@ -2302,3 +2916,87 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#problems-view">Problems view</a><span>, in § 1.2</span>
    <li><a href="#properties-view">Properties view</a><span>, in § 1.2</span>
   </ul>
+  <aside class="dfn-panel" data-for="model-explorer-view">
+   <b><a href="#model-explorer-view">#model-explorer-view</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-model-explorer-view">2.2. Create OML Project</a> <a href="#ref-for-model-explorer-view①">(2)</a> <a href="#ref-for-model-explorer-view②">(3)</a>
+    <li><a href="#ref-for-model-explorer-view③">2.3. Create OML Vocabulary</a>
+    <li><a href="#ref-for-model-explorer-view④">2.4. Create OML Vocabulary Bundle</a>
+    <li><a href="#ref-for-model-explorer-view⑤">2.5. Create OML Description</a>
+    <li><a href="#ref-for-model-explorer-view⑥">2.6. Edit OML Description Bundle</a>
+    <li><a href="#ref-for-model-explorer-view⑦">2.8. Fix Logical Inconsistency</a>
+    <li><a href="#ref-for-model-explorer-view⑧">2.9. Run Query Task</a> <a href="#ref-for-model-explorer-view⑨">(2)</a> <a href="#ref-for-model-explorer-view①⓪">(3)</a> <a href="#ref-for-model-explorer-view①①">(4)</a> <a href="#ref-for-model-explorer-view①②">(5)</a> <a href="#ref-for-model-explorer-view①③">(6)</a> <a href="#ref-for-model-explorer-view①④">(7)</a> <a href="#ref-for-model-explorer-view①⑤">(8)</a> <a href="#ref-for-model-explorer-view①⑥">(9)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="gradle-task-view">
+   <b><a href="#gradle-task-view">#gradle-task-view</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-gradle-task-view">2.7. Run Build Task</a>
+    <li><a href="#ref-for-gradle-task-view①">2.8. Fix Logical Inconsistency</a> <a href="#ref-for-gradle-task-view②">(2)</a>
+    <li><a href="#ref-for-gradle-task-view③">2.9. Run Query Task</a> <a href="#ref-for-gradle-task-view④">(2)</a> <a href="#ref-for-gradle-task-view⑤">(3)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="gradle-executions-view">
+   <b><a href="#gradle-executions-view">#gradle-executions-view</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-gradle-executions-view">2.7. Run Build Task</a> <a href="#ref-for-gradle-executions-view①">(2)</a>
+    <li><a href="#ref-for-gradle-executions-view②">2.8. Fix Logical Inconsistency</a> <a href="#ref-for-gradle-executions-view③">(2)</a> <a href="#ref-for-gradle-executions-view④">(3)</a> <a href="#ref-for-gradle-executions-view⑤">(4)</a>
+    <li><a href="#ref-for-gradle-executions-view⑥">2.9. Run Query Task</a> <a href="#ref-for-gradle-executions-view⑦">(2)</a> <a href="#ref-for-gradle-executions-view⑧">(3)</a>
+   </ul>
+  </aside>
+<script>/* script-dfn-panel */
+
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
+        });
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+</script>
