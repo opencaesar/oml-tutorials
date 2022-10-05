@@ -1,4 +1,4 @@
-# Tutorial 1: OML in a Nutshell # {#tutorial-1}
+# Tutorial 1: OML Basics # {#tutorial-1}
 
 ## Learning Objectives ## {#tutorial1-learning-objectives}
 This tutorial provides a quick overview of the main workflow with OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain, then use it to create a simple system description. After that, users will learn how to build the project to check its logical consistency and run a query to answer an analytical question about the described system.
