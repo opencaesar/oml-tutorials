@@ -1,0 +1,91 @@
+@dc:description "A description of the sales of a specific pizza restaurant"
+description <http://example.com/tutorial1/description/restaurant#> as restaurant {
+	
+	uses <http://purl.org/dc/elements/1.1/> as dc
+
+	// The restaurant description "uses" the pizza vocabulary terms in assertions 
+	uses <http://example.com/tutorial1/vocabulary/pizza#> as pizza
+
+	// Pizza 1
+
+	ci base1 : pizza:DeepPanBase
+	ci topping1-1 : pizza:TomatoTopping
+	ci topping1-2 : pizza:MozzarellaTopping
+	ci topping1-3 : pizza:SausageTopping
+	ci pizza1 : pizza:American [
+		pizza:hasId "1"
+		pizza:hasBase base1
+		pizza:hasTopping topping1-1
+		pizza:hasTopping topping1-2
+		pizza:hasTopping topping1-3
+	]
+	
+	// Pizza 2
+
+	ci base2 : pizza:ThinAndCrispyBase
+	ci topping2-1 : pizza:TomatoTopping
+	ci topping2-2 : pizza:MozzarellaTopping
+	ci topping2-3 : pizza:SausageTopping
+	ci pizza2 : pizza:American [
+		pizza:hasId "2"
+		pizza:hasBase base2
+		pizza:hasTopping topping2-1
+		pizza:hasTopping topping2-2
+		pizza:hasTopping topping2-3
+	]
+		
+	// Pizza 3
+
+	ci base3 : pizza:ThinAndCrispyBase
+	ci topping3-1 : pizza:TomatoTopping
+	ci topping3-2 : pizza:MozzarellaTopping
+	ci pizza3 : pizza:Margherita [
+		pizza:hasId "3"
+		pizza:hasBase base3
+		pizza:hasTopping topping3-1
+		pizza:hasTopping topping3-2
+	]
+
+	// Pizza 4
+
+	ci base4 : pizza:ThinAndCrispyBase
+	ci topping4-1 : pizza:TomatoTopping
+	ci topping4-2 : pizza:MozzarellaTopping
+	ci topping4-3 : pizza:SultanaTopping
+	ci topping4-4 : pizza:SpicedBeefTopping
+	ci pizza4 : pizza:Veneziana [
+		pizza:hasId "4"
+		pizza:hasBase base4
+		pizza:hasTopping topping4-1
+		pizza:hasTopping topping4-2
+		pizza:hasTopping topping4-3
+		pizza:hasTopping topping4-4
+	]
+
+	// Pizza 5
+
+	ci base5 : pizza:DeepPanBase
+	ci topping5-1 : pizza:TobascoTopping
+	ci topping5-2 : pizza:ParmesanTopping
+	ci topping5-3 : pizza:JalapenoPepperTopping
+	ci pizza5 : pizza:VegetarianPizza [
+		pizza:hasId "5"
+		pizza:hasBase base5
+		pizza:hasTopping topping5-1
+		pizza:hasTopping topping5-2
+		pizza:hasTopping topping5-3
+	]
+
+	// Pizza 6
+
+	ci base6 : pizza:DeepPanBase
+	ci topping6-1 : pizza:TomatoTopping
+	ci topping6-2 : pizza:JalapenoPepperTopping
+	ci pizza6 : pizza:VegetarianPizza [
+		pizza:hasId "6"
+		pizza:hasBase base6
+		pizza:hasTopping topping6-1
+		pizza:hasTopping topping6-1
+	]
+
+}

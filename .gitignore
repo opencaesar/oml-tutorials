@@ -1,7 +1,7 @@
-.idea
-.DS_Store
-bin
-xtend-gen
-build
 .gradle
-.launch
+build
+.DS_Store
+.idea
+
+# Fuseki output directory
+.fuseki

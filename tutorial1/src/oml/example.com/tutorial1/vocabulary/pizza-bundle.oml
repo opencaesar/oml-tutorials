@@ -1,0 +1,9 @@
+@dc:description "A vocabulary bundle for closed-world reasoning about pizzas"
+vocabulary bundle <http://example.com/tutorial1/vocabulary/pizza-bundle#> as pizza-bundle {
+	
+	includes <http://purl.org/dc/elements/1.1/> as dc
+
+	// The pizza vocabulary bundle "includes" the pizza vocabulary
+	includes <http://example.com/tutorial1/vocabulary/pizza#>
+
+}

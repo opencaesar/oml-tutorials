@@ -1,0 +1,12 @@
+@dc:description "A description bundle for closed-world reasoning about a restaurant"
+description bundle <http://example.com/tutorial1/description/bundle#> as ^bundle {
+
+	uses <http://purl.org/dc/elements/1.1/> as dc
+	
+	// The description bundle "uses" the vocabulary bundle world closure axioms
+	uses <http://example.com/tutorial1/vocabulary/pizza-bundle#>
+
+	// The description bundle "includes" the restaurant description	
+	includes <http://example.com/tutorial1/description/restaurant#>
+	
+}
