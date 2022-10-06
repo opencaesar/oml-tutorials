@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="463ccc4f7f8cf5a55f90dcb7ca76f8f68586f36e" name="document-revision">
+  <meta content="e4a635841a0e713424f9395bcda6dd4e06b13575" name="document-revision">
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -2116,16 +2116,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
      <ol class="toc">
       <li><a href="#tutorial2-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial2-p1"><span class="secno">3.2</span> <span class="content">P1: Objective aggregates Objective</span></a>
-      <li><a href="#tutorial2-p2"><span class="secno">3.3</span> <span class="content">P2: Mission pursues Objective</span></a>
-      <li><a href="#tutorial2-p3"><span class="secno">3.4</span> <span class="content">P3: Mission deploys Component</span></a>
-      <li><a href="#tutorial2-p4"><span class="secno">3.5</span> <span class="content">P4: Component contains Component</span></a>
-      <li><a href="#tutorial2-p5"><span class="secno">3.6</span> <span class="content">P5: Component presents Interface</span></a>
-      <li><a href="#tutorial2-p6"><span class="secno">3.7</span> <span class="content">P6: Junction joins Interface</span></a>
-      <li><a href="#tutorial2-p7"><span class="secno">3.8</span> <span class="content">P7: Requirement specifies (Component presents Interface)</span></a>
-      <li><a href="#tutorial2-p8"><span class="secno">3.9</span> <span class="content">P8: Requirement refines Requirement</span></a>
-      <li><a href="#tutorial2-p9"><span class="secno">3.10</span> <span class="content">P9: Interface transfers (Flow or Item)</span></a>
-      <li><a href="#tutorial2-summary"><span class="secno">3.11</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial2-oml-project"><span class="secno">3.2</span> <span class="content">OML Project</span></a>
+      <li><a href="#tutorial2-p1"><span class="secno">3.3</span> <span class="content">P1: Objective aggregates Objective</span></a>
+      <li><a href="#tutorial2-p2"><span class="secno">3.4</span> <span class="content">P2: Mission pursues Objective</span></a>
+      <li><a href="#tutorial2-p3"><span class="secno">3.5</span> <span class="content">P3: Mission deploys Component</span></a>
+      <li><a href="#tutorial2-p4"><span class="secno">3.6</span> <span class="content">P4: Component contains Component</span></a>
+      <li><a href="#tutorial2-p5"><span class="secno">3.7</span> <span class="content">P5: Component presents Interface</span></a>
+      <li><a href="#tutorial2-p6"><span class="secno">3.8</span> <span class="content">P6: Junction joins Interface</span></a>
+      <li><a href="#tutorial2-p7"><span class="secno">3.9</span> <span class="content">P7: Requirement specifies (Component presents Interface)</span></a>
+      <li><a href="#tutorial2-p8"><span class="secno">3.10</span> <span class="content">P8: Requirement refines Requirement</span></a>
+      <li><a href="#tutorial2-p9"><span class="secno">3.11</span> <span class="content">P9: Interface transfers (Flow or Item)</span></a>
+      <li><a href="#tutorial2-summary"><span class="secno">3.12</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -2146,7 +2147,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Unzip the archive to some folder on your local drive to get the Rosetta app.</p>
       <p class="note" role="note"><span>Note:</span> If you’re on Mac, run this command in terminal to get around the issue that the app is not signed.</p>
-<pre class="language-javascript highlight">$xttr <c- o>-</c->cr <c- o>&lt;</c->path<c- o>/</c->to<c- o>/</c->Rosetta<c- p>.</c->app<c- o>></c->
+<pre class="language-javascript highlight">$xattr <c- o>-</c->cr <c- o>&lt;</c->path<c- o>/</c->to<c- o>/</c->Rosetta<c- p>.</c->app<c- o>></c->
 </pre>
      <li data-md>
       <p>Navigate to the Rosetta app icon and double click to run it.</p>
@@ -2216,7 +2217,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Enter the project details as shown below. Press Finish.</p>
       <p><img src="assets/img/Tutorial1-Create-OML-Project.png" width="100%"></p>
      <li data-md>
-      <p>The <code>tutorial</code> project should now be visible in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①">Model Explorer view</a>.</p>
+      <p>The <code>tutorial1</code> project should now be visible in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①">Model Explorer view</a>.</p>
     </ol>
     <p class="note" role="note"><span>Note:</span> The project creation process may take a few seconds. Rosetta will show the progress of project creation in the status bar (bottom-right). Wait until this process finishes.</p>
     <ol start="5">
@@ -2440,7 +2441,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
     <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
-    <p>Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjopint, which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumptions of vocabularies.</p>
+    <p>Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (what you do not assert to be false is assumed to be true) of semantic vocabularies.</p>
     <ol>
      <li data-md>
       <p>Right click on the <code>vocabulary</code> subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view④">Model Explorer view</a> and select New -> OML Model.</p>
@@ -2574,6 +2575,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li data-md>
       <p>Double-click on the <code>description/bundle.oml</code> file in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑥">Model Explorer view</a> to open the editor (if not already open).</p>
+      <p><img src="assets/img/Tutorial1-Edit-Description-Bundle.png" width="100%"></p>
      <li data-md>
       <p>Copy the following OML code and paste it as the new content of description bundle.</p>
     </ol>
@@ -2591,12 +2593,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
     <h3 class="heading settled" data-level="2.7" id="tutorial1-run-build-task"><span class="secno">2.7. </span><span class="content">Run Build Task</span><a class="self-link" href="#tutorial1-run-build-task"></a></h3>
-    <p>Now, it is time to run the Gradle build task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.</p>
+    <p>Now, it is time to run the Gradle <code>build</code> task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.</p>
     <ol>
      <li data-md>
-      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view">Gradle Task view</a> and wait until the <code>Tutorial1</code> project shows up there.</p>
+      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view">Gradle Task view</a> and wait until the <code>tutorial1</code> project shows up there (keep an eye on the loading message in the status bar bottom-right).</p>
+      <p><img src="assets/img/Tutorial1-Show-Gradle-Tasks.png" width="100%"></p>
      <li data-md>
-      <p>Expand the <code>Tutorial1</code> node followed by expanding the <code>oml</code> node.</p>
+      <p>Expand the <code>tutorial1</code> node followed by expanding the <code>oml</code> node.</p>
      <li data-md>
       <p>Double-click on the <code>build</code> task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view">Gradle Executions view</a>.</p>
     </ol>
@@ -2615,18 +2618,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Click on the <code>restaurant.oml</code> editor to bring it in focus.</p>
      <li data-md>
-      <p>In line 30, change the id of instance <code>pizza2</code> to "1" (from "2"), to become similar to the id of instance <code>pizza1</code> (in line 16), as seen below, and save the editor.</p>
+      <p>In line 30, change the <code>hasId</code> property value of instance <code>pizza2</code> to "1" (from "2"), to become similar to the value of <code>hasId</code> of instance <code>pizza1</code> (in line 16). Save the editor.</p>
       <p><img src="assets/img/Tutorial1-Change-Pizza2-Id.png" width="100%"></p>
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①">Gradle Task view</a> double-click to rerun task <code>Tutorial1/oml/build</code> again, and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②">Gradle Executions view</a>.</p>
+      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①">Gradle Task view</a> double-click to rerun task <code>tutorial1/oml/build</code> again, and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②">Gradle Executions view</a>.</p>
      <li data-md>
       <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view③">Gradle Executions view</a> and notice that it now shows a failure (red icons) on task <code>owlReason</code>.</p>
       <p><img src="assets/img/Tutorial1-Build-Failure.png" width="100%"></p>
      <li data-md>
-      <p>Right click on a red icon and select <code>Show Failures</code> from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.</p>
+      <p>Right click on the <code>Execute run for :owlReason</code> red icon and select <code>Show Failures</code> from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.</p>
       <p><img src="assets/img/Tutorial1-Failure-Dialog.png" width="100%"></p>
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑦">Model Explorer view</a>, navigate to file <code>orial1/build/reports/reasoning.xml</code> and double click on it. The file opens in the <code>Junit</code> view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).</p>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑦">Model Explorer view</a>, right click on the <code>tutorial1</code> project and choose <em>Refresh</em>. Then, navigate to file <code>orial1/build/reports/reasoning.xml</code> and double click on it. The file opens in the <code>Junit</code> view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
      <source src="assets/mov/Tutorial1-Inspect-Inconsistency.mov">
@@ -2672,9 +2675,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p><strong>Fixing the problem</strong></p>
     <ol>
      <li data-md>
-      <p>Let’s now fix the problem by reverting the change we just did. Click on the <code>restaurant</code> editor again and navigate to line 30 and restore the original hasId value of "2". Save the editor.</p>
+      <p>Let’s now fix the problem by reverting the change we just did. Click on the <code>restaurant</code> editor again and navigate to line 30 and restore the original <code>hasId</code> property value of <code>pizza2</code> to "2". Save the editor.</p>
      <li data-md>
-      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②">Gradle Task view</a> and double-click to rerun the <code>Tutorial1/oml/build</code> task again and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view④">Gradle Executions view</a>.</p>
+      <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②">Gradle Task view</a> and double-click to rerun the <code>tutorial1/oml/build</code> task again and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view④">Gradle Executions view</a>.</p>
      <li data-md>
       <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑤">Gradle Executions view</a> and notice that it is back to showing green icons.</p>
     </ol>
@@ -2742,16 +2745,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>By now, you should see the following in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①②">Model Explorer view</a>.</p>
       <p><img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"></p>
      <li data-md>
-      <p>Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigat to the task <code>Tutorial1/oml/startFuseki</code>. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
+      <p>Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigate to the task <code>tutorial1/oml/startFuseki</code>. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
     </ol>
-    <blockquote>
-     <p>A <em>Fuseki</em> server should now be running locally on your machine.</p>
-    </blockquote>
+    <p class="note" role="note"><span>Note:</span> A <em>Fuseki</em> server should now be running locally on your machine.</p>
     <ol start="10">
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view④">Gradle Task view</a>, navigate to the task <code>Tutorial1/oml/owlQuery</code> and double click to run it and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑦">Gradle Executions view</a>. This task first loads the description bundle to the Fuseki server, then runs all the queries from the <code>sparql</code> folder on it.</p>
+      <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view④">Gradle Task view</a>, navigate to the task <code>tutorial1/oml/owlQuery</code> and double click to run it and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑦">Gradle Executions view</a>. This task first loads the description bundle to the Fuseki server, then runs on it all the queries from the <code>sparql</code> folder.</p>
      <li data-md>
-      <p>The results of running the queries are stored in JSON files in the <code>build/results</code> folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①③">Model Explorer view</a>. To see them, first right-click on the <code>tutorial1</code> project and choose the Refresh action. This will make the <code>build/results</code> folder show up.</p>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①③">Model Explorer view</a>, right click on the <code>tutorial1</code> project and choose <em>Refresh</em>. Then, navigate to folder <code>build/results</code> to see the JSON files resulting from running the queries. Each one is named after one query.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
      <source src="assets/mov/Tutorial1-Show-Query-Results.mov">
@@ -2784,26 +2785,35 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Now that we are done running queries, we can stop the <em>Fuseki</em> server by navigating to task <code>tutorial1/oml/stopFuseki</code> in the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑤">Gradle Task view</a>. Double click to run the task and  wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑧">Gradle Executions view</a>.</p>
     </ol>
+    <p class="note" role="note"><span>Note:</span> This kills the <em>Fuseki</em> server process running on your machine.</p>
     <h3 class="heading settled" data-level="2.10" id="tutorial1-summary"><span class="secno">2.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
-    <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case), that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop a triple store server, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
+    <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case) that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop the <em>Fuseki</em> triple store, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
     <h2 class="heading settled" data-level="3" id="tutorial2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial2"></a></h2>
     <p class="note" role="note"><span>Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one since we assume your familiarity with the basics of OML.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial2-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial2-learning-objectives"></a></h3>
      This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. 
     <p>The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.</p>
     <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="3.2" id="tutorial2-p1"><span class="secno">3.2. </span><span class="content">P1: Objective aggregates Objective</span><a class="self-link" href="#tutorial2-p1"></a></h3>
-    <p><strong>Pattern Synopsis</strong></p>
-    <p>A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship aggregation, which may be important for planning a campaign of pursuit.</p>
-    <h3 class="heading settled" data-level="3.3" id="tutorial2-p2"><span class="secno">3.3. </span><span class="content">P2: Mission pursues Objective</span><a class="self-link" href="#tutorial2-p2"></a></h3>
-    <h3 class="heading settled" data-level="3.4" id="tutorial2-p3"><span class="secno">3.4. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
-    <h3 class="heading settled" data-level="3.5" id="tutorial2-p4"><span class="secno">3.5. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
-    <h3 class="heading settled" data-level="3.6" id="tutorial2-p5"><span class="secno">3.6. </span><span class="content">P5: Component presents Interface</span><a class="self-link" href="#tutorial2-p5"></a></h3>
-    <h3 class="heading settled" data-level="3.7" id="tutorial2-p6"><span class="secno">3.7. </span><span class="content">P6: Junction joins Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
-    <h3 class="heading settled" data-level="3.8" id="tutorial2-p7"><span class="secno">3.8. </span><span class="content">P7: Requirement specifies (Component presents Interface)</span><a class="self-link" href="#tutorial2-p7"></a></h3>
-    <h3 class="heading settled" data-level="3.9" id="tutorial2-p8"><span class="secno">3.9. </span><span class="content">P8: Requirement refines Requirement</span><a class="self-link" href="#tutorial2-p8"></a></h3>
-    <h3 class="heading settled" data-level="3.10" id="tutorial2-p9"><span class="secno">3.10. </span><span class="content">P9: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p9"></a></h3>
-    <h3 class="heading settled" data-level="3.11" id="tutorial2-summary"><span class="secno">3.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
+    <h3 class="heading settled" data-level="3.2" id="tutorial2-oml-project"><span class="secno">3.2. </span><span class="content">OML Project</span><a class="self-link" href="#tutorial2-oml-project"></a></h3>
+    <ol>
+     <li data-md>
+      <p>In the [=Model Explorer view], right click and choose New -> OML Project.</p>
+     <li data-md>
+      <p>Name the project <code>tutorial2</code>. Click Next.</p>
+     <li data-md>
+    </ol>
+    <h3 class="heading settled" data-level="3.3" id="tutorial2-p1"><span class="secno">3.3. </span><span class="content">P1: Objective aggregates Objective</span><a class="self-link" href="#tutorial2-p1"></a></h3>
+    <p><strong>Pattern P1 Synopsis</strong></p>
+    <p>A systems engineering endeavor begins with <em>objectives</em> to be achieved. <em>Objectives</em> are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship <em>aggregates</em>, which may be important for planning a campaign of pursuit. <em>Aggregates</em> is a general relationship, broader than <em>objectives</em>, but is homeomeric, meaning that parts and whole are of the same type. We say an <em>Objective</em> is an <em>AggregatedThing</em>, meaning it can aggregate or be aggregated in. We further say an <em>Objective</em> aggregates only <em>Objectives</em> and is aggregated in only <em>Objectives</em> (this is called a restriction in in ontologies).</p>
+    <h3 class="heading settled" data-level="3.4" id="tutorial2-p2"><span class="secno">3.4. </span><span class="content">P2: Mission pursues Objective</span><a class="self-link" href="#tutorial2-p2"></a></h3>
+    <h3 class="heading settled" data-level="3.5" id="tutorial2-p3"><span class="secno">3.5. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
+    <h3 class="heading settled" data-level="3.6" id="tutorial2-p4"><span class="secno">3.6. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
+    <h3 class="heading settled" data-level="3.7" id="tutorial2-p5"><span class="secno">3.7. </span><span class="content">P5: Component presents Interface</span><a class="self-link" href="#tutorial2-p5"></a></h3>
+    <h3 class="heading settled" data-level="3.8" id="tutorial2-p6"><span class="secno">3.8. </span><span class="content">P6: Junction joins Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
+    <h3 class="heading settled" data-level="3.9" id="tutorial2-p7"><span class="secno">3.9. </span><span class="content">P7: Requirement specifies (Component presents Interface)</span><a class="self-link" href="#tutorial2-p7"></a></h3>
+    <h3 class="heading settled" data-level="3.10" id="tutorial2-p8"><span class="secno">3.10. </span><span class="content">P8: Requirement refines Requirement</span><a class="self-link" href="#tutorial2-p8"></a></h3>
+    <h3 class="heading settled" data-level="3.11" id="tutorial2-p9"><span class="secno">3.11. </span><span class="content">P9: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p9"></a></h3>
+    <h3 class="heading settled" data-level="3.12" id="tutorial2-summary"><span class="secno">3.12. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
    </div>
   </main>
 <script>
