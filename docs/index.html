@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="214acb3c2a72c2bcc7f35d9ef6cc9ae22bdd2326" name="document-revision">
+  <meta content="74b0b08b9ec307b597889454903bf5888469dd53" name="document-revision">
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -2116,7 +2116,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
      <ol class="toc">
       <li><a href="#tutorial2-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial2-summary"><span class="secno">3.2</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial2-p1"><span class="secno">3.2</span> <span class="content">P1: Objective aggregates Objective</span></a>
+      <li><a href="#tutorial2-p2"><span class="secno">3.3</span> <span class="content">P2: Mission pursues Objective</span></a>
+      <li><a href="#tutorial2-p3"><span class="secno">3.4</span> <span class="content">P3: Mission deploys Component</span></a>
+      <li><a href="#tutorial2-p4"><span class="secno">3.5</span> <span class="content">P4: Component contains Component</span></a>
+      <li><a href="#tutorial2-p5"><span class="secno">3.6</span> <span class="content">P5: Component presents Interface</span></a>
+      <li><a href="#tutorial2-p6"><span class="secno">3.7</span> <span class="content">P6: Junction joins Interface</span></a>
+      <li><a href="#tutorial2-p7"><span class="secno">3.8</span> <span class="content">P7: Requirement specifies (Component presents Interface)</span></a>
+      <li><a href="#tutorial2-p8"><span class="secno">3.9</span> <span class="content">P8: Requirement refines Requirement</span></a>
+      <li><a href="#tutorial2-p9"><span class="secno">3.10</span> <span class="content">P9: Interface transfers (Flow or Item)</span></a>
+      <li><a href="#tutorial2-summary"><span class="secno">3.11</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -2778,11 +2787,21 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <h3 class="heading settled" data-level="2.10" id="tutorial1-summary"><span class="secno">2.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
     <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case), that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop a triple store server, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
     <h2 class="heading settled" data-level="3" id="tutorial2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial2"></a></h2>
-    <p class="note" role="note"><span>Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one.</p>
+    <p class="note" role="note"><span>Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one since we assume your familiarity with the basics of OML.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial2-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial2-learning-objectives"></a></h3>
-     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. It covers developing a set of patterns for describing knowledge and encoding them as vocabularies. It also involves organizing the description of knowledge in separate modules based on those patterns. As an example, we will develop a simple systems engineering vocabulary, and use it to describe the architecture of simple (hypothetical) space mission called Kepler16b. 
+     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. 
+    <p>The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.</p>
     <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="3.2" id="tutorial2-summary"><span class="secno">3.2. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
+    <h3 class="heading settled" data-level="3.2" id="tutorial2-p1"><span class="secno">3.2. </span><span class="content">P1: Objective aggregates Objective</span><a class="self-link" href="#tutorial2-p1"></a></h3>
+    <h3 class="heading settled" data-level="3.3" id="tutorial2-p2"><span class="secno">3.3. </span><span class="content">P2: Mission pursues Objective</span><a class="self-link" href="#tutorial2-p2"></a></h3>
+    <h3 class="heading settled" data-level="3.4" id="tutorial2-p3"><span class="secno">3.4. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
+    <h3 class="heading settled" data-level="3.5" id="tutorial2-p4"><span class="secno">3.5. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
+    <h3 class="heading settled" data-level="3.6" id="tutorial2-p5"><span class="secno">3.6. </span><span class="content">P5: Component presents Interface</span><a class="self-link" href="#tutorial2-p5"></a></h3>
+    <h3 class="heading settled" data-level="3.7" id="tutorial2-p6"><span class="secno">3.7. </span><span class="content">P6: Junction joins Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
+    <h3 class="heading settled" data-level="3.8" id="tutorial2-p7"><span class="secno">3.8. </span><span class="content">P7: Requirement specifies (Component presents Interface)</span><a class="self-link" href="#tutorial2-p7"></a></h3>
+    <h3 class="heading settled" data-level="3.9" id="tutorial2-p8"><span class="secno">3.9. </span><span class="content">P8: Requirement refines Requirement</span><a class="self-link" href="#tutorial2-p8"></a></h3>
+    <h3 class="heading settled" data-level="3.10" id="tutorial2-p9"><span class="secno">3.10. </span><span class="content">P9: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p9"></a></h3>
+    <h3 class="heading settled" data-level="3.11" id="tutorial2-summary"><span class="secno">3.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
    </div>
   </main>
 <script>
