@@ -13,7 +13,7 @@
     Note: If you're on Mac, run this command in terminal to get around the issue that the app is not signed.
 
      ```javascript
-      $xttr -cr <path/to/Rosetta.app>
+      $xattr -cr <path/to/Rosetta.app>
      ```
 
 1. Navigate to the Rosetta app icon and double click to run it.

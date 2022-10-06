@@ -9,7 +9,19 @@ The tutorial also demonstrates describing knowledge using instances of those pat
 
 Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1), but we encourage the reader to recreate them by following the instructions below.
 
+## OML Project ##  {#tutorial2-oml-project}
+
+1. In the [=Model Explorer view], right click and choose New -> OML Project.
+1. Name the project `tutorial2`. Click Next.
+1. 
+
 ## P1: Objective aggregates Objective ## {#tutorial2-p1}
+
+**Pattern P1 Synopsis**
+
+A systems engineering endeavor begins with *objectives* to be achieved. *Objectives* are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship *aggregates*, which may be important for planning a campaign of pursuit. *Aggregates* is a general relationship, broader than *objectives*, but is homeomeric, meaning that parts and whole are of the same type. We say an *Objective* is an *AggregatedThing*, meaning it can aggregate or be aggregated in. We further say an *Objective* aggregates only *Objectives* and is aggregated in only *Objectives* (this is called a restriction in in ontologies).
+
+
 
 ## P2: Mission pursues Objective ## {#tutorial2-p2}
 

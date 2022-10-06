@@ -15,7 +15,7 @@ Note: the source files created in this tutorial are available for reference in t
 
     <img src="assets/img/Tutorial1-Create-OML-Project.png" width="100%"/>
 
-1. The `tutorial` project should now be visible in the [=Model Explorer view=].
+1. The `tutorial1` project should now be visible in the [=Model Explorer view=].
 
 Note: The project creation process may take a few seconds. Rosetta will show the progress of project creation in the status bar (bottom-right). Wait until this process finishes.
 
@@ -244,7 +244,7 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 
 ## Create OML Vocabulary Bundle ## {#tutorial1-create-oml-vocabulary-bundle}
 
-Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjopint, which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumptions of vocabularies.
+Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (what you do not assert to be false is assumed to be true) of semantic vocabularies.
 
 1. Right click on the `vocabulary` subfolder in the [=Model Explorer view=] and select New -> OML Model.
 
@@ -385,6 +385,8 @@ Now, you will include the restaurant description in a description bundle that wi
 
 1. Double-click on the `description/bundle.oml` file in the [=Model Explorer view=] to open the editor (if not already open).
 
+    <img src="assets/img/Tutorial1-Edit-Description-Bundle.png" width="100%"/>
+
 1. Copy the following OML code and paste it as the new content of description bundle.
 
 ```scala
@@ -404,11 +406,13 @@ description bundle <http://example.com/tutorial1/description/bundle#> as ^bundle
 
 ## Run Build Task ## {#tutorial1-run-build-task}
 
-Now, it is time to run the Gradle build task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.
+Now, it is time to run the Gradle `build` task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.
 
-1. Click on the [=Gradle Task view=] and wait until the `Tutorial1` project shows up there.
+1. Click on the [=Gradle Task view=] and wait until the `tutorial1` project shows up there (keep an eye on the loading message in the status bar bottom-right).
 
-1. Expand the `Tutorial1` node followed by expanding the `oml` node.
+    <img src="assets/img/Tutorial1-Show-Gradle-Tasks.png" width="100%"/>
+
+1. Expand the `tutorial1` node followed by expanding the `oml` node.
 
 1. Double-click on the `build` task and wait for it to finish running in the [=Gradle Executions view=].
 
@@ -428,21 +432,21 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
 1. Click on the `restaurant.oml` editor to bring it in focus.
 
-1. In line 30, change the id of instance `pizza2` to "1" (from "2"), to become similar to the id of instance `pizza1` (in line 16), as seen below, and save the editor.
+1. In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become similar to the value of `hasId` of instance `pizza1` (in line 16). Save the editor.
 
     <img src="assets/img/Tutorial1-Change-Pizza2-Id.png" width="100%"/>
 
-1. In the [=Gradle Task view=] double-click to rerun task `Tutorial1/oml/build` again, and wait for it to finish running in the [=Gradle Executions view=].
+1. In the [=Gradle Task view=] double-click to rerun task `tutorial1/oml/build` again, and wait for it to finish running in the [=Gradle Executions view=].
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it now shows a failure (red icons) on task `owlReason`.
 
     <img src="assets/img/Tutorial1-Build-Failure.png" width="100%"/>
 
-1. Right click on a red icon and select `Show Failures` from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.
+1. Right click on the `Execute run for :owlReason` red icon and select `Show Failures` from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.
 
     <img src="assets/img/Tutorial1-Failure-Dialog.png" width="100%"/>
 
-1. In the [=Model Explorer view=], navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).
+1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).
 
    <video width="100%" style="border:1px groove black;" controls>
      <source src="assets/mov/Tutorial1-Inspect-Inconsistency.mov"/>
@@ -505,9 +509,9 @@ Now, let us put all those inferences together to understand the reported problem
 
 **Fixing the problem**
 
-1. Let's now fix the problem by reverting the change we just did. Click on the `restaurant` editor again and navigate to line 30 and restore the original hasId value of "2". Save the editor.
+1. Let's now fix the problem by reverting the change we just did. Click on the `restaurant` editor again and navigate to line 30 and restore the original `hasId` property value of `pizza2` to "2". Save the editor.
 
-1. Click on the [=Gradle Task view=] and double-click to rerun the `Tutorial1/oml/build` task again and wait for it to finish running in the [=Gradle Executions view=].
+1. Click on the [=Gradle Task view=] and double-click to rerun the `tutorial1/oml/build` task again and wait for it to finish running in the [=Gradle Executions view=].
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it is back to showing green icons.
 
@@ -579,13 +583,13 @@ WHERE {
 
     <img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"/>
 
-1. Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the [=Gradle Task view=] and navigat to the task `Tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
+1. Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the [=Gradle Task view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
 
->A *Fuseki* server should now be running locally on your machine.
+Note: A *Fuseki* server should now be running locally on your machine.
 
-10. In the [=Gradle Task view=], navigate to the task `Tutorial1/oml/owlQuery` and double click to run it and wait for it to finish running in the [=Gradle Executions view=]. This task first loads the description bundle to the Fuseki server, then runs all the queries from the `sparql` folder on it.
+10. In the [=Gradle Task view=], navigate to the task `tutorial1/oml/owlQuery` and double click to run it and wait for it to finish running in the [=Gradle Executions view=]. This task first loads the description bundle to the Fuseki server, then runs on it all the queries from the `sparql` folder.
 
-1. The results of running the queries are stored in JSON files in the `build/results` folder in the [=Model Explorer view=]. To see them, first right-click on the `tutorial1` project and choose the Refresh action. This will make the `build/results` folder show up.
+1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to folder `build/results` to see the JSON files resulting from running the queries. Each one is named after one query.
 
    <video width="100%" style="border:1px groove black;" controls>
      <source src="assets/mov/Tutorial1-Show-Query-Results.mov"/>
@@ -612,6 +616,8 @@ WHERE {
 
 15. Now that we are done running queries, we can stop the *Fuseki* server by navigating to task `tutorial1/oml/stopFuseki` in the [=Gradle Task view=]. Double click to run the task and  wait for it to finish running in the [=Gradle Executions view=]. 
 
+Note: This kills the *Fuseki* server process running on your machine.
+
 ## Summary ## {#tutorial1-summary}
 
-This tutorial introduced the OML language, its *Rosetta* workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (`pizza` in this case), that can be used to describe knowledge (the pizzas made by a `restaurant` in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the *Rosetta* workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the *build* task that invokes a logical reasoner, the *startFusei* and *stopFuseki* tasks to start/stop a triple store server, and the *owlQuery* task that runs SPARQL queries on the model.
+This tutorial introduced the OML language, its *Rosetta* workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (`pizza` in this case) that can be used to describe knowledge (the pizzas made by a `restaurant` in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the *Rosetta* workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the *build* task that invokes a logical reasoner, the *startFusei* and *stopFuseki* tasks to start/stop the *Fuseki* triple store, and the *owlQuery* task that runs SPARQL queries on the model.
