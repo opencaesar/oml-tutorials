@@ -244,7 +244,7 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 
 ## Create OML Vocabulary Bundle ## {#tutorial1-create-oml-vocabulary-bundle}
 
-Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (what you do not assert to be false is assumed to be true) of semantic vocabularies.
+Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (whatever is not asserted may be true or false).
 
 1. Right click on the `vocabulary` subfolder in the [=Model Explorer view=] and select New -> OML Model.
 

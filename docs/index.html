@@ -1489,7 +1489,34 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="e4a635841a0e713424f9395bcda6dd4e06b13575" name="document-revision">
+  <meta content="e89989b6252e4a1e40e78a0afdcc36469977bb87" name="document-revision">
+<style>
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  padding: 8px;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 <style>
 a[data-link-type=biblio] {
     white-space: pre-wrap;
@@ -2116,7 +2143,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial2"><span class="secno">3</span> <span class="content">Tutorial 2: OML Patterns</span></a>
      <ol class="toc">
       <li><a href="#tutorial2-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial2-oml-project"><span class="secno">3.2</span> <span class="content">OML Project</span></a>
+      <li><a href="#tutorial2-oml-project"><span class="secno">3.2</span> <span class="content">Create OML Project</span></a>
       <li><a href="#tutorial2-p1"><span class="secno">3.3</span> <span class="content">P1: Objective aggregates Objective</span></a>
       <li><a href="#tutorial2-p2"><span class="secno">3.4</span> <span class="content">P2: Mission pursues Objective</span></a>
       <li><a href="#tutorial2-p3"><span class="secno">3.5</span> <span class="content">P3: Mission deploys Component</span></a>
@@ -2441,7 +2468,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
     <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
-    <p>Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (what you do not assert to be false is assumed to be true) of semantic vocabularies.</p>
+    <p>Now, you will create a vocabulary bundle to enable logical closed-world reasoning on pizzas described using the pizza vocabulary. This automatically asserts that classes in the bundled vocabularies that do not have common subtypes are disjoint (have no intersection), which helps detect a wide class of errors that would otherwise not get detected due to the open-world assumption (whatever is not asserted may be true or false).</p>
     <ol>
      <li data-md>
       <p>Right click on the <code>vocabulary</code> subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view④">Model Explorer view</a> and select New -> OML Model.</p>
@@ -2791,20 +2818,257 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <h2 class="heading settled" data-level="3" id="tutorial2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial2"></a></h2>
     <p class="note" role="note"><span>Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one since we assume your familiarity with the basics of OML.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial2-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial2-learning-objectives"></a></h3>
-     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. 
-    <p>The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.</p>
-    <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="3.2" id="tutorial2-oml-project"><span class="secno">3.2. </span><span class="content">OML Project</span><a class="self-link" href="#tutorial2-oml-project"></a></h3>
+     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth. 
+    <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial2">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
+    <h3 class="heading settled" data-level="3.2" id="tutorial2-oml-project"><span class="secno">3.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial2-oml-project"></a></h3>
+    <p>We will start by creating an OML project that has a vocablary bundle and a description bundle that uses it.</p>
     <ol>
      <li data-md>
       <p>In the [=Model Explorer view], right click and choose New -> OML Project.</p>
      <li data-md>
       <p>Name the project <code>tutorial2</code>. Click Next.</p>
      <li data-md>
+      <p>Fill the OML project details as seen below. Click Finish.</p>
+      <p><img src="assets/img/Tutorial2-Create-OML-Project.png" width="100%"></p>
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑦">Model Explorer view</a>, expand the <code>tutorial2</code> project, right-click on the <code>src/oml/example.com/tutorial2</code> folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.</p>
+      <p><img src="assets/img/Tutorial2-Create-Vocabulary-Bundle.png" width="100%"></p>
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑧">Model Explorer view</a>, double click on the file <code>src/oml/example.com/tutorial2/description/bundle.oml</code> to open its editor. Paste the following OML code as the contents of the file.</p>
     </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/bundle#> as ^bundle {</c->
+	
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#></c->
+<c- p>}</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> since we be running queries for every pattern, let us run the Fuseki server once now, and keep it running till the end, then we will stop it.</p>
+    <ol start="6">
+     <li data-md>
+      <p>From the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑥">Gradle Task view</a>, run the task <code>tutorial2/oml/startFuseki</code> and wait until it finishes execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑨">Gradle Executions view</a>. It should run successfuly with no errors.</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> you should now be ready to create the patterns below. For each pattern, we give its synopsis, the new vocabulary required to support it, the new descriptions to use it, and finally the queries that we can analyze it.</p>
     <h3 class="heading settled" data-level="3.3" id="tutorial2-p1"><span class="secno">3.3. </span><span class="content">P1: Objective aggregates Objective</span><a class="self-link" href="#tutorial2-p1"></a></h3>
-    <p><strong>Pattern P1 Synopsis</strong></p>
-    <p>A systems engineering endeavor begins with <em>objectives</em> to be achieved. <em>Objectives</em> are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship <em>aggregates</em>, which may be important for planning a campaign of pursuit. <em>Aggregates</em> is a general relationship, broader than <em>objectives</em>, but is homeomeric, meaning that parts and whole are of the same type. We say an <em>Objective</em> is an <em>AggregatedThing</em>, meaning it can aggregate or be aggregated in. We further say an <em>Objective</em> aggregates only <em>Objectives</em> and is aggregated in only <em>Objectives</em> (this is called a restriction in in ontologies).</p>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship <em>aggregates</em>, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homeomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only <em>Objectives</em> (this is called a restriction in OML).</p>
+    <p><strong>New Vocabulary</strong></p>
+    <p>We will create two vocabularies and add them to the vocabulay bundle. The first vocabulary is called <code>base</code>, which we will use to define basic patterns, and the second is called <code>mission</code>, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.</p>
+    <ol>
+     <li data-md>
+      <p>Create a vocabulary with the IRI <code>&lt;http://example.com/tutorial2/vocabulary/base#></code> and prefix <code>base</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base {</c->
+
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+<c- p>}</c->
+</pre>
+    <ol start="2">
+     <li data-md>
+      <p>Create a vocabulary with the IRI <code>&lt;http://example.com/tutorial2/vocabulary/mission#></code> and prefix <code>mission</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission {</c->
+	
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+<c- p>}</c->
+</pre>
+    <ol start="3">
+     <li data-md>
+      <p>Open the <code>vocabulary/bundle</code> editor, Copy the follow OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#> as ^bundle {</c->
+	
+	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+<c- p>}</c->
+</pre>
+    <ol start="4">
+     <li data-md>
+      <p>if you did all the previous steps correctly, the following should be the contents of all files so far.</p>
+      <p><img src="assets/img/Tutorial2-P1-Link-Vocabularies.png" width="100%"></p>
+     <li data-md>
+      <p>In the <code>base</code> vocabulary, append the following OML code to its body:</p>
+    </ol>
+<pre class="language-scala highlight">	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The class of things having an id and a canonical name"</c->
+	<c- n>aspect</c-> <c- nc>IdentifiedThing</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has canonical name property"</c->
+	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasCanonicalName</c-> <c- p>[</c->
+		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
+		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has identifier property"</c->
+	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasIdentifier</c-> <c- p>[</c->
+		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
+		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+	<c- p>]</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has description property"</c->
+	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasDescription</c-> <c- p>[</c->
+		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
+		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+	<c- p>]</c->
+
+ 	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The class of things that can be aggregated"</c->
+	<c- n>aspect</c-> <c- nc>AggregatedThing</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The aggregates relation between aggregated things"</c->
+	<c- n>relation</c-> <c- n>entity</c-> <c- nc>Aggregates</c-> <c- p>[</c->
+		<c- n>from</c-> <c- nc>AggregatedThing</c->
+		<c- n>to</c-> <c- nc>AggregatedThing</c->
+		<c- n>forward</c-> <c- n>aggregates</c->
+		<c- n>reverse</c-> <c- n>isAggregatedIn</c->
+		<c- n>asymmetric</c->
+		<c- n>irreflexive</c->
+	<c- p>]</c->
+</pre>
+    <ol start="6">
+     <li data-md>
+      <p>In the <code>mission</code> vocabulary, append the following OML code to its body:</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Objective=] represents a specific interest </c->
+<c- s>that one or more stakeholders have in the successful execution of a mission."</c->
+<c- n>concept</c-> <c- nc>Objective</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c-><c- p>,</c-> <c- n>base</c-><c- p>:</c-><c- nc>AggregatedThing</c-> <c- p>[</c->
+	<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>to</c-> <c- nc>Objective</c->
+	<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>base</c-><c- p>:</c-><c- n>isAggregatedIn</c-> <c- n>to</c-> <c- nc>Objective</c->
+<c- p>]</c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>This is a visualization of the vocabularies you created so far.</p>
+      <table>
+       <tbody>
+        <tr>
+         <td><img src="assets/img/Tutorial2-P1-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/img/Tutorial2-P1-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
+        <tr>
+         <td>Base Vocabulary
+         <td>Mission Vocabulary
+      </table>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⓪">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Description</strong></p>
+    <p>We will now create a new description model for the objectives of the Kepler16 mission, then add it to the description bundle. Each description is identified with an id and a canonical name and may specify which other objective it aggregates.</p>
+    <ol start="9">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/objectives#></code> and prefix <code>objectives</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#> as objectives {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the atmosphere of Kepler 16b"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the liquid ocean of Kepler 16b"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.03"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the gravitational field of Kepler 16b"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.04"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the rocky core of Kepler 16b"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.05"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core density of Kepler 16b"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.06"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core shape of Kepler 16b"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>characterize</c-><c- o>-</c-><c- n>environment</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.07"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the energetic particule environment of the Kepler 16b binary star system"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <ol start="10">
+     <li data-md>
+      <p>Open the <code>description/bundle</code> editor, Append the follow OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#></c->
+</pre>
+    <ol start="11">
+     <li data-md>
+      <p>This is a visualization of the descriptions you created so far.</p>
+      <table>
+       <tbody>
+        <tr>
+         <td><img src="assets/img/Tutorial2-P1-Objectives-Description.png" style="border:1px groove black;" width="100%">
+        <tr>
+         <td>Objectives Desrciption
+      </table>
+     <li data-md>
+      <p>Let us check that our ontologies are stil good, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p>Now that we have defined the vocabulary of the first pattern, and used it in the mission description, we will create a SPARQL query to extract the pattern instances from the description.</p>
+    <ol start="13">
+     <li data-md>
+      <p>Creat the file <code>src/sparql/objectives.sparql</code> and copy the following SPARQL code as its content. It looks for objectives in the model and selects their ids and names.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
+<c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>o_id</c-> <c- o>?</c-><c- n>o_name</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+	<c- o>?</c-><c- n>obj</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o_id</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o_name</c-> <c- p>.</c->
+<c- p>}</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>o_id</c->
+</pre>
+    <ol start="14">
+     <li data-md>
+      <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑨">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①②">Gradle Executions view</a>. It should run with no errors.</p>
+     <li data-md>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑨">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/objectives.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p><img src="assets/img/Tutorial2-P1-Query-Results.png" width="100%"></p>
+     <li data-md>
+      <p>With this JSON results, one could develop a visualization like the following:</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> the visualization code is not part of this tutorial</p>
+    <table id="table">
+     <thead>
+      <tr>
+       <th>o_id
+       <th>o_name
+     <tbody>
+      <tr>
+       <td>O.01
+       <td>Characterize the atmosphere of Kepler 16b
+      <tr>
+       <td>O.02
+       <td>Characterize the liquid ocean of Kepler 16b
+      <tr>
+       <td>O.03
+       <td>Characterize the gravitational field of Kepler 16b
+      <tr>
+       <td>O.04
+       <td>Characterize the rocky core of Kepler 16b
+      <tr>
+       <td>O.05
+       <td>Characterize the core density of Kepler 16b
+      <tr>
+       <td>O.06
+       <td>Characterize the core shape of Kepler 16b
+      <tr>
+       <td>O.07
+       <td>Characterize the energetic particule environment of the Kepler 16b binary star system
+    </table>
     <h3 class="heading settled" data-level="3.4" id="tutorial2-p2"><span class="secno">3.4. </span><span class="content">P2: Mission pursues Objective</span><a class="self-link" href="#tutorial2-p2"></a></h3>
     <h3 class="heading settled" data-level="3.5" id="tutorial2-p3"><span class="secno">3.5. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
     <h3 class="heading settled" data-level="3.6" id="tutorial2-p4"><span class="secno">3.6. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
@@ -2967,6 +3231,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-model-explorer-view⑥">2.6. Edit OML Description Bundle</a>
     <li><a href="#ref-for-model-explorer-view⑦">2.8. Fix Logical Inconsistency</a>
     <li><a href="#ref-for-model-explorer-view⑧">2.9. Run Query Task</a> <a href="#ref-for-model-explorer-view⑨">(2)</a> <a href="#ref-for-model-explorer-view①⓪">(3)</a> <a href="#ref-for-model-explorer-view①①">(4)</a> <a href="#ref-for-model-explorer-view①②">(5)</a> <a href="#ref-for-model-explorer-view①③">(6)</a> <a href="#ref-for-model-explorer-view①④">(7)</a> <a href="#ref-for-model-explorer-view①⑤">(8)</a> <a href="#ref-for-model-explorer-view①⑥">(9)</a>
+    <li><a href="#ref-for-model-explorer-view①⑦">3.2. Create OML Project</a> <a href="#ref-for-model-explorer-view①⑧">(2)</a>
+    <li><a href="#ref-for-model-explorer-view①⑨">3.3. P1: Objective aggregates Objective</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-task-view">
@@ -2975,6 +3241,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-task-view">2.7. Run Build Task</a>
     <li><a href="#ref-for-gradle-task-view①">2.8. Fix Logical Inconsistency</a> <a href="#ref-for-gradle-task-view②">(2)</a>
     <li><a href="#ref-for-gradle-task-view③">2.9. Run Query Task</a> <a href="#ref-for-gradle-task-view④">(2)</a> <a href="#ref-for-gradle-task-view⑤">(3)</a>
+    <li><a href="#ref-for-gradle-task-view⑥">3.2. Create OML Project</a>
+    <li><a href="#ref-for-gradle-task-view⑦">3.3. P1: Objective aggregates Objective</a> <a href="#ref-for-gradle-task-view⑧">(2)</a> <a href="#ref-for-gradle-task-view⑨">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-executions-view">
@@ -2983,6 +3251,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-executions-view">2.7. Run Build Task</a> <a href="#ref-for-gradle-executions-view①">(2)</a>
     <li><a href="#ref-for-gradle-executions-view②">2.8. Fix Logical Inconsistency</a> <a href="#ref-for-gradle-executions-view③">(2)</a> <a href="#ref-for-gradle-executions-view④">(3)</a> <a href="#ref-for-gradle-executions-view⑤">(4)</a>
     <li><a href="#ref-for-gradle-executions-view⑥">2.9. Run Query Task</a> <a href="#ref-for-gradle-executions-view⑦">(2)</a> <a href="#ref-for-gradle-executions-view⑧">(3)</a>
+    <li><a href="#ref-for-gradle-executions-view⑨">3.2. Create OML Project</a>
+    <li><a href="#ref-for-gradle-executions-view①⓪">3.3. P1: Objective aggregates Objective</a> <a href="#ref-for-gradle-executions-view①①">(2)</a> <a href="#ref-for-gradle-executions-view①②">(3)</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
