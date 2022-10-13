@@ -1489,9 +1489,9 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="e89989b6252e4a1e40e78a0afdcc36469977bb87" name="document-revision">
+  <meta content="5b49afe9fce700f9e1dfa9b2d1272219ae3f70b6" name="document-revision">
 <style>
-#table {
+#table1 {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   border: 1px solid;
@@ -1499,16 +1499,110 @@ Possible extra rowspan handling
   box-shadow: 5px 10px 18px #888888;
 }
 
-#table td, #table th {
+#table1 td, #table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#table tr:nth-child(even){background-color: #f2f2f2;}
+#table1 tr:nth-child(even){background-color: #f2f2f2;}
 
-#table tr:hover {background-color: #ddd;}
+#table1 tr:hover {background-color: #ddd;}
 
-#table th {
+#table1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  padding: 8px;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<style>
+.node {
+		cursor: pointer;
+	}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+#table2 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+#table2 td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table2 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table2 tr:hover {background-color: #ddd;}
+
+#table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  padding: 8px;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<style>
+.node {
+		cursor: pointer;
+	}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+#table3 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+#table3 td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table3 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table3 tr:hover {background-color: #ddd;}
+
+#table3 th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -2148,12 +2242,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial2-p2"><span class="secno">3.4</span> <span class="content">P2: Mission pursues Objective</span></a>
       <li><a href="#tutorial2-p3"><span class="secno">3.5</span> <span class="content">P3: Mission deploys Component</span></a>
       <li><a href="#tutorial2-p4"><span class="secno">3.6</span> <span class="content">P4: Component contains Component</span></a>
-      <li><a href="#tutorial2-p5"><span class="secno">3.7</span> <span class="content">P5: Component presents Interface</span></a>
-      <li><a href="#tutorial2-p6"><span class="secno">3.8</span> <span class="content">P6: Junction joins Interface</span></a>
-      <li><a href="#tutorial2-p7"><span class="secno">3.9</span> <span class="content">P7: Requirement specifies (Component presents Interface)</span></a>
-      <li><a href="#tutorial2-p8"><span class="secno">3.10</span> <span class="content">P8: Requirement refines Requirement</span></a>
-      <li><a href="#tutorial2-p9"><span class="secno">3.11</span> <span class="content">P9: Interface transfers (Flow or Item)</span></a>
-      <li><a href="#tutorial2-summary"><span class="secno">3.12</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial2-p5"><span class="secno">3.7</span> <span class="content">P5: Mass characterizes Component</span></a>
+      <li><a href="#tutorial2-p6"><span class="secno">3.8</span> <span class="content">P6: Component presents Interface</span></a>
+      <li><a href="#tutorial2-p7"><span class="secno">3.9</span> <span class="content">P7: Junction joins Interface</span></a>
+      <li><a href="#tutorial2-p8"><span class="secno">3.10</span> <span class="content">P8: Interface transfers (Flow or Item)</span></a>
+      <li><a href="#tutorial2-summary"><span class="secno">3.11</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -2831,10 +2924,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Fill the OML project details as seen below. Click Finish.</p>
       <p><img src="assets/img/Tutorial2-Create-OML-Project.png" width="100%"></p>
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑦">Model Explorer view</a>, expand the <code>tutorial2</code> project, right-click on the <code>src/oml/example.com/tutorial2</code> folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.</p>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑦">Model Explorer view</a>, double click on the build.gradle file, and modify the declared dependency on <code>core-vocabulary</code> to <code>metrology-vocabulary</code> instead. Save the editor.</p>
+    </ol>
+    <video controls style="border:1px groove black;" width="100%">
+     <source src="assets/mov/Tutorial2-Modify-Gradle-Build.mov">
+    </video>
+    <ol>
+     <li data-md>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑧">Model Explorer view</a>, expand the <code>tutorial2</code> project, right-click on the <code>src/oml/example.com/tutorial2</code> folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.</p>
       <p><img src="assets/img/Tutorial2-Create-Vocabulary-Bundle.png" width="100%"></p>
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑧">Model Explorer view</a>, double click on the file <code>src/oml/example.com/tutorial2/description/bundle.oml</code> to open its editor. Paste the following OML code as the contents of the file.</p>
+      <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑨">Model Explorer view</a>, double click on the file <code>src/oml/example.com/tutorial2/description/bundle.oml</code> to open its editor. Paste the following OML code as the contents of the file.</p>
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/bundle#> as ^bundle {</c->
 	
@@ -2881,38 +2981,39 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
 <c- p>}</c->
 </pre>
+    <p class="note" role="note"><span>Note:</span> how we only added the <code>mission</code> vocabulary, not the <code>base</code> vocabulary, to the bundle. This is because in OML, import statements (like <code>includes</code>, <code>extends</code>, and <code>uses</code>) are transitive. Since <code>mission</code> already imports (extends) <code>base</code>, the bundle would transitively include <code>base</code> as well. But, It would not be wrong to explicitly include <code>base</code> in the bundle too.</p>
     <ol start="4">
      <li data-md>
       <p>if you did all the previous steps correctly, the following should be the contents of all files so far.</p>
       <p><img src="assets/img/Tutorial2-P1-Link-Vocabularies.png" width="100%"></p>
      <li data-md>
-      <p>In the <code>base</code> vocabulary, append the following OML code to its body:</p>
+      <p>In the <code>vocabulary/base</code> ontology, append the following OML code to its body:</p>
     </ol>
-<pre class="language-scala highlight">	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The class of things having an id and a canonical name"</c->
+<pre class="language-scala highlight">	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of things having an id and a canonical name"</c->
 	<c- n>aspect</c-> <c- nc>IdentifiedThing</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has canonical name property"</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The has canonical name property"</c->
 	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasCanonicalName</c-> <c- p>[</c->
 		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
 		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
 	<c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has identifier property"</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The has identifier property"</c->
 	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasIdentifier</c-> <c- p>[</c->
 		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
 		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
 	<c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The has description property"</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The has description property"</c->
 	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasDescription</c-> <c- p>[</c->
 		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
 		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
 	<c- p>]</c->
 
- 	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The class of things that can be aggregated"</c->
+ 	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of things that can be aggregated"</c->
 	<c- n>aspect</c-> <c- nc>AggregatedThing</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>label</c-> <c- s>"The aggregates relation between aggregated things"</c->
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The aggregates relation between aggregated things"</c->
 	<c- n>relation</c-> <c- n>entity</c-> <c- nc>Aggregates</c-> <c- p>[</c->
 		<c- n>from</c-> <c- nc>AggregatedThing</c->
 		<c- n>to</c-> <c- nc>AggregatedThing</c->
@@ -2924,7 +3025,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="6">
      <li data-md>
-      <p>In the <code>mission</code> vocabulary, append the following OML code to its body:</p>
+      <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to its body:</p>
     </ol>
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Objective=] represents a specific interest </c->
 <c- s>that one or more stakeholders have in the successful execution of a mission."</c->
@@ -2995,13 +3096,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- p>]</c->
 <c- p>}</c->
 </pre>
+    <p class="note" role="note"><span>Note:</span> the keyword <code>ci</code> in the OML code above is short for <code>concept instance</code>.</p>
     <ol start="10">
-     <li data-md>
-      <p>Open the <code>description/bundle</code> editor, Append the follow OML code to the body. Save the editor.</p>
-    </ol>
-<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#></c->
-</pre>
-    <ol start="11">
      <li data-md>
       <p>This is a visualization of the descriptions you created so far.</p>
       <table>
@@ -3011,6 +3107,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <tr>
          <td>Objectives Desrciption
       </table>
+     <li data-md>
+      <p>Open the <code>description/bundle</code> editor, Append the follow OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#></c->
+</pre>
+    <ol start="12">
      <li data-md>
       <p>Let us check that our ontologies are stil good, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3023,61 +3125,893 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
 
-<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>o_id</c-> <c- o>?</c-><c- n>o_name</c->
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o1_name</c-> <c- o>?</c-><c- n>o2_id</c-> <c- o>?</c-><c- n>o2_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
-	<c- o>?</c-><c- n>obj</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o_id</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o_name</c-> <c- p>.</c->
+    <c- o>?</c-><c- n>o1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o1_id</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o1_name</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- p>[</c->
+			<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o2_id</c-> <c- p>;</c->
+			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o2_name</c->
+		<c- p>]</c->
 <c- p>}</c->
-<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>o_id</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c->
 </pre>
     <ol start="14">
      <li data-md>
       <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑨">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①②">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
-      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑨">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/objectives.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②⓪">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/objectives.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
       <p><img src="assets/img/Tutorial2-P1-Query-Results.png" width="100%"></p>
      <li data-md>
       <p>With this JSON results, one could develop a visualization like the following:</p>
     </ol>
     <p class="note" role="note"><span>Note:</span> the visualization code is not part of this tutorial</p>
-    <table id="table">
+    <table id="table1">
      <thead>
       <tr>
-       <th>o_id
-       <th>o_name
+       <th>o1_id
+       <th>o1_name
+       <th>o2_id
+       <th>o2_name
      <tbody>
       <tr>
        <td>O.01
        <td>Characterize the atmosphere of Kepler 16b
-      <tr>
        <td>O.02
        <td>Characterize the liquid ocean of Kepler 16b
       <tr>
        <td>O.03
        <td>Characterize the gravitational field of Kepler 16b
+       <td>O.02
+       <td>Characterize the liquid ocean of Kepler 16b
       <tr>
+       <td>O.03
+       <td>Characterize the gravitational field of Kepler 16b
        <td>O.04
        <td>Characterize the rocky core of Kepler 16b
       <tr>
+       <td>O.04
+       <td>Characterize the rocky core of Kepler 16b
        <td>O.05
        <td>Characterize the core density of Kepler 16b
       <tr>
+       <td>O.04
+       <td>Characterize the rocky core of Kepler 16b
        <td>O.06
        <td>Characterize the core shape of Kepler 16b
       <tr>
        <td>O.07
        <td>Characterize the energetic particule environment of the Kepler 16b binary star system
+       <td>O.02
+       <td>Characterize the liquid ocean of Kepler 16b
     </table>
     <h3 class="heading settled" data-level="3.4" id="tutorial2-p2"><span class="secno">3.4. </span><span class="content">P2: Mission pursues Objective</span><a class="self-link" href="#tutorial2-p2"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>We undertake missions to pursue objectives. Again, objectives are not requirements. Part of the job of a mission is to negotiate an achievable set of objectives. Every mission pursues zero or more objectives. The lower bound is zero in the vocabulary because one-or-more is really a life-cycle completeness constraint. The notion of mission makes sense even if we don’t know what its objectives are. Every objective may be pursued by zero or more missions</p>
+    <p><strong>New Vocabulary</strong></p>
+    <ol>
+     <li data-md>
+      <p>Append the following OML code, which adds the concept of a <code>Mission</code> with the relation <code>Purses</code> to the existing concept of <code>Objective</code>, to the body of the <code>vocabulary/mission</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission pursues Objectives."</c->
+<c- n>concept</c-> <c- nc>Mission</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission pursues zero or more Objectives."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Pursues</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Mission</c->
+	<c- n>to</c-> <c- nc>Objective</c->
+	<c- n>forward</c-> <c- n>pursues</c->
+	<c- n>reverse</c-> <c- n>isPursuedBy</c->
+	<c- n>asymmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> that relation entity <code>Purses</code> is a reified relation (i.e., a class of relation instances), where its forward <code>purses</code> and its reverse <code>isPursedBy</code> are unreified relations (i.e., simple references). In a description model, either a reified or an unreified version of the relation can be used. The former is useful when it is desired to give the link a name and other characterizations.</p>
+    <p class="note" role="note"><span>Note:</span> the semantic (logical) flags specified on the relation entity <code>Pursues</code>. The first flag <code>reverse functional</code> means that an <code>Ojective</code> (the target of the relation) can be pursued by a max of <code>Mission</code> (the source of the relation). The second flag <code>asymmetric</code> means that if a mission pursues an objective, then it would be illogical to infer that the objective pursues the mission (remember with open world assumptions, any thing can be inferred unless you state otherwise). The third flag <code>irreflexive</code> means that an instance cannot be related to itself by this relation.</p>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
+      <p><img src="assets/img/Tutorial2-P2-Mission-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①③">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Description</strong></p>
+    <p>Let us now use the pattern in describing a couple of missions in kepler6b.</p>
+    <ol start="4">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/missions#></code> and prefix <code>missions</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/missions#> as missions {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#> as objectives</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mission"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>lander</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Mission"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <ol start="5">
+     <li data-md>
+      <p>The following is a visualization of the <code>missions</code> description we just created.</p>
+      <p><img src="assets/img/Tutorial2-P2-Missions-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>missions</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/missions#></c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①①">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①④">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><em>New Queries</em></p>
+    <p>Now we will create a SPARQL query to extract the pattern instances from the description.</p>
+    <ol start="8">
+     <li data-md>
+      <p>Creat the file <code>src/sparql/missions.sparql</code> and copy the following SPARQL code as its content. It looks for missions that purses objectives (and their aggregated objectives).</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
+<c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>m_name</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+	<c- o>?</c-><c- n>m</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>m_id</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>m_name</c-><c- p>;</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- p>[</c->
+        	<c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
+        	<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o1_id</c-> <c- p>;</c->
+        	<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- p>[</c->
+          		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o2_id</c-> <c- p>;</c->
+        	<c- p>]</c->
+      <c- p>]</c->
+<c- p>}</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c->
+</pre>
+    <ol start="9">
+     <li data-md>
+      <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①②">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑤">Gradle Executions view</a>. It should run with no errors.</p>
+     <li data-md>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②①">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/missions.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p><img src="assets/img/Tutorial2-P2-Query-Results.png" width="100%"></p>
+     <li data-md>
+      <p>With this JSON results, one could develop visualizations like the following:</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> the visualization code is not part of this tutorial</p>
+    <table id="table2">
+     <thead>
+      <tr>
+       <th>m_id
+       <th>m_name
+       <th>o1_id
+       <th>o2_id
+     <tbody>
+      <tr>
+       <td>M.01
+       <td>Orbiter Mission
+       <td>O.01
+       <td>O.02
+      <tr>
+       <td>
+       <td>
+       <td>O.03
+       <td>O.02
+      <tr>
+       <td>
+       <td>
+       <td>
+       <td>O.04
+      <tr>
+       <td>
+       <td>
+       <td>O.07
+       <td>O.02
+      <tr>
+       <td>M.02
+       <td>Lander Mission
+       <td>O.01
+       <td>O.02
+      <tr>
+       <td>
+       <td>
+       <td>O.07
+       <td>O.02
+    </table>
+    <p></p>
+    <svg height="500" width="960">
+     <g transform="translate(120,20)">
+      <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
+       <path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,146.36363636363637,180,146.36363636363637"></path>
+       <path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,376.3636363636364,180,376.3636363636364"></path>
+       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,41.81818181818182,360,41.81818181818182"></path>
+       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,146.36363636363637,360,146.36363636363637"></path>
+       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,250.90909090909093,360,250.90909090909093"></path>
+       <path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,334.54545454545456,360,334.54545454545456"></path>
+       <path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,418.1818181818182,360,418.1818181818182"></path>
+       <path class="link" d="M360,41.81818181818182C450,41.81818181818182,450,41.81818181818182,540,41.81818181818182"></path>
+       <path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,125.45454545454547,540,125.45454545454547"></path>
+       <path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,167.27272727272728,540,167.27272727272728"></path>
+       <path class="link" d="M360,250.90909090909093C450,250.90909090909093,450,250.90909090909093,540,250.90909090909093"></path>
+       <path class="link" d="M360,334.54545454545456C450,334.54545454545456,450,334.54545454545456,540,334.54545454545456"></path>
+       <path class="link" d="M360,418.1818181818182C450,418.1818181818182,450,418.1818181818182,540,418.1818181818182"></path>
+      </g>
+      <g class="node" transform="translate(540, 418.18182373046875)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
+      </g>
+      <g class="node" transform="translate(540, 334.5454406738281)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
+      </g>
+      <g class="node" transform="translate(540, 250.90908813476562)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
+      </g>
+      <g class="node" transform="translate(540, 167.27272033691406)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.04</text>
+      </g>
+      <g class="node" transform="translate(540, 125.45454406738281)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
+      </g>
+      <g class="node" transform="translate(540, 41.818180084228516)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
+      </g>
+      <g class="node" transform="translate(360, 418.18182373046875)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">O.07</text>
+      </g>
+      <g class="node" transform="translate(360, 334.5454406738281)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">O.01</text>
+      </g>
+      <g class="node" transform="translate(360, 250.90908813476562)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">O.07</text>
+      </g>
+      <g class="node" transform="translate(360, 146.36363220214844)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">O.03</text>
+      </g>
+      <g class="node" transform="translate(360, 41.818180084228516)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">O.01</text>
+      </g>
+      <g class="node" transform="translate(180, 376.3636474609375)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">Lander Mission</text>
+      </g>
+      <g class="node" transform="translate(180, 146.36363220214844)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">Orbiter Mission</text>
+      </g>
+      <g class="node" transform="translate(0, 261.3636474609375)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">Missions</text>
+      </g>
+     </g>
+    </svg>
     <h3 class="heading settled" data-level="3.5" id="tutorial2-p3"><span class="secno">3.5. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc..  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.</p>
+    <p><strong>New Vocabularies</strong></p>
+    <ol>
+     <li data-md>
+      <p>Append the following OML code, which adds the concept of a <code>Mission</code> with the relation <code>Purses</code> to the existing concept of <code>Objective</code>, to the body of the <code>mission</code> vocabulary. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component is something that can be deployed in a mission."</c->
+<c- n>concept</c-> <c- nc>Component</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission deploys zero or more Components."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Deploys</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Mission</c->
+	<c- n>to</c-> <c- nc>Component</c->
+	<c- n>forward</c-> <c- n>deploys</c->
+	<c- n>reverse</c-> <c- n>isDeployedBy</c->
+	<c- n>asymmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
+</pre>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
+      <p><img src="assets/img/Tutorial2-P3-Mission-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑥">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Descriptions</strong></p>
+    <p>We will now add more details to the missions description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).</p>
+    <ol start="4">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/components#></code> and prefix <code>components</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Launch System"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Spacecraft"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Power Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Harness"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.03"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Thermal Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.04"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter C&amp;DH Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.05"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telecom Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.06"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter GN&amp;C Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.07"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mechanical Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.08"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Flight Software"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.09"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Propulsion Subsystem"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.03"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Ground Data System"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.04"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Mission Operations System"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.05"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Launch System"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.06"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Spacecraft"</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.07"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Ground Data System"</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <ol start="5">
+     <li data-md>
+      <p>In <code>description/missions</code>, append the following OML code to the body of the description.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>ref</c-> <c- n>ci</c-> <c- n>orbiter</c-> <c- p>[</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
+<c- p>]</c->
+<c- n>ref</c-> <c- n>ci</c-> <c- n>lander</c-> <c- p>[</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
+<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> The usage of the OML keyword <code>ref</code> before the <code>ci</code> keyword in the OML code above. It is used to reference an instance defined else where (in this case in the same description). Alternatively, we could have added the <code>mission:deploays</code> statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.</p>
+    <p class="note" role="note"><span>Note:</span> The OML code above will show error markers because the <code>components</code> ontology is not imported yet. The next step has the fix.</p>
+    <ol start="6">
+     <li data-md>
+      <p>In <code>description/missions</code>, add the following OML statement right after the existing <code>extends</code> statement (at the top). Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> This should clear the errors from the previous step.</p>
+    <ol start="7">
+     <li data-md>
+      <p>The following is a visualization of the <code>components</code> and <code>missions</code> descriptions so far:</p>
+      <p><img src="assets/img/Tutorial2-P3-Components-Description.png" width="100%"></p>
+      <p>Components</p>
+      <p><img src="assets/img/Tutorial2-P3-Missions-Description.png" width="100%"></p>
+      <p>Missions</p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>components</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#></c->
+</pre>
+    <ol start="9">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①④">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑦">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
     <h3 class="heading settled" data-level="3.6" id="tutorial2-p4"><span class="secno">3.6. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
-    <h3 class="heading settled" data-level="3.7" id="tutorial2-p5"><span class="secno">3.7. </span><span class="content">P5: Component presents Interface</span><a class="self-link" href="#tutorial2-p5"></a></h3>
-    <h3 class="heading settled" data-level="3.8" id="tutorial2-p6"><span class="secno">3.8. </span><span class="content">P6: Junction joins Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
-    <h3 class="heading settled" data-level="3.9" id="tutorial2-p7"><span class="secno">3.9. </span><span class="content">P7: Requirement specifies (Component presents Interface)</span><a class="self-link" href="#tutorial2-p7"></a></h3>
-    <h3 class="heading settled" data-level="3.10" id="tutorial2-p8"><span class="secno">3.10. </span><span class="content">P8: Requirement refines Requirement</span><a class="self-link" href="#tutorial2-p8"></a></h3>
-    <h3 class="heading settled" data-level="3.11" id="tutorial2-p9"><span class="secno">3.11. </span><span class="content">P9: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p9"></a></h3>
-    <h3 class="heading settled" data-level="3.12" id="tutorial2-summary"><span class="secno">3.12. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homeomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.</p>
+    <p><strong>New Vocabularies</strong></p>
+    <ol>
+     <li data-md>
+      <p>Since <code>Contains</code> is a fundamental relation, like <code>Aggregstes</code>, let us add it to the <code>vocabulary/base</code> ontology. Append the following OML code to the <code>vocabulary/base</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight">	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A ContainedElement is a thing that can participate in homeomeric containment relationships."</c->
+	<c- n>aspect</c-> <c- nc>ContainedElement</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"Contains is a many-to-many relation used to represent homeomeric relations that form directed rooted trees."</c->
+	<c- n>relation</c-> <c- n>entity</c-> <c- nc>Contains</c-> <c- p>[</c->
+		<c- n>from</c-> <c- nc>ContainedElement</c->
+    	<c- n>to</c-> <c- nc>ContainedElement</c->
+		<c- n>forward</c-> <c- n>contains</c->
+		<c- n>reverse</c-> <c- n>isContainedIn</c->
+		<c- n>inverse</c-> <c- n>functional</c->
+		<c- n>asymmetric</c->
+		<c- n>irreflexive</c->
+	<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> You have seen so far that some entities are modeled as <code>concept</code> while others are modeled as <code>aspect</code> in OML vocabularies. While the former is used to define a concrete entity, the latter is used to define an abstract one meant for specialization.</p>
+    <ol start="2">
+     <li data-md>
+      <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component can be organized hierarchically by containing other Components. "</c->
+<c- n>ref</c-> <c- n>concept</c-> <c- nc>Component</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>ContainedElement</c-> <c- p>[</c->
+	<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- nc>Component</c->
+	<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- n>to</c-> <c- nc>Component</c->
+<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> that we used the <code>ref</code> keyword here to add more statemetns to the concept <code>Component</code> defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.</p>
+    <ol start="3">
+     <li data-md>
+      <p>The following is a visualization of the (modified) <code>base</code> and <code>mission</code> vocabularies so far:</p>
+      <table>
+       <colgroup>
+        <col style="width:40%">
+        <col style="width:60%">
+       <tbody>
+        <tr>
+         <td><img src="assets/img/Tutorial2-P4-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/img/Tutorial2-P4-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
+        <tr>
+         <td>Base Vocabulary
+         <td>Mission Vocabulary
+      </table>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑧">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Descriptions</strong></p>
+    <p>Now, we will use the pattern to describe the physical composition (containment) of the components in kepler16b.</p>
+    <ol start="5">
+     <li data-md>
+      <p>Append the following OML code to the <code>description/components</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>ref</c-> <c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>[</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
+	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
+<c- p>]</c->
+</pre>
+    <ol start="6">
+     <li data-md>
+      <p>The following is a visualization of the <code>components</code> description so far:</p>
+      <p><img src="assets/img/Tutorial2-P4-Components-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑥">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑨">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
+    <h3 class="heading settled" data-level="3.7" id="tutorial2-p5"><span class="secno">3.7. </span><span class="content">P5: Mass characterizes Component</span><a class="self-link" href="#tutorial2-p5"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>This pattern adds a mass quantity to a mechanical component and a magnitude for that quantity for leaf components. The metrology vocabulary used is based on the <a href="https://www.bipm.org/documents/20126/54295284/VIM4_CD_210111c.pdf/a57419b7-790f-2cca-f7c9-25d54d049bf6">VIM4 Draft 11 January 2021</a>. The quantity library used is based on the <a href="https://www.iso.org/standard/30669.html">ISO/IEC 80000</a>.</p>
+    <p><strong>New Vocabularies</strong></p>
+    <ol>
+     <li data-md>
+      <p>Create a vocabulary with the IRI <code>&lt;http://example.com/tutorial2/vocabulary/mechanical#></code> and prefix <code>mechanical</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#> as mechanical {</c->
+
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//iso.org/iso-80000-4.1#> as iso-80000-4.1</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mechanical components as physical objects"</c->
+	<c- n>concept</c-> <c- nc>MechanicalComponent</c-> <c- o>:></c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-><c- p>,</c-> <c- n>vim4</c-><c- p>:</c-><c- nc>Object</c->
+
+	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of magnitudes in kilograms for mass quantities on mechanical components"</c->
+	<c- n>concept</c-> <c- nc>MassMagnitude</c-> <c- o>:></c-> <c- n>vim4</c-><c- p>:</c-><c- nc>InherentUnitaryQuantityValue</c-> <c- p>[</c->
+		<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>to</c-> <c- nc>MechanicalComponent</c->
+		<c- n>restricts</c-> <c- n>relation</c-> <c- n>vim4</c-><c- p>:</c-><c- n>instantiates</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>mass</c->
+		<c- n>restricts</c-> <c- n>relation</c-> <c- n>vim4</c-><c- p>:</c-><c- n>unit</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>kilogram</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> how concept <code>MechanicalComponent</code> specializes both <code>mission:Component</code> and <code>vim4:Object</code> (multiple-inheritance).</p>
+    <p class="note" role="note"><span>Note:</span> how concept <code>MassMagnitude</code> specializes <code>vim4:InherentUnitaryQuantityValue</code> and restricts some of its properties like saying that it characterizes <code>MechanicalComponent</code>, instantiates the <code>iso-80000-4.1:mass</code> quantity, and has a unit of <code>iso-80000-4.1:kilogram</code>. This makes all instances of <code>MassMagnitude</code> have those restrictions.</p>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mechanical</code> vocabulary:</p>
+      <p><img src="assets/img/Tutorial2-P5-Mechanical-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>vocabulary/bundle</code> to include the new <code>mechanical</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#></c->
+</pre>
+    <ol start="4">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⓪">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Descriptions</strong></p>
+    <p>Now we can use this pattern to define the mechanical components and add their mass characterizations.</p>
+    <ol start="5">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/masses#></code> and prefix <code>masses</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/masses#> as masses {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#> as mechanical</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"2000"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"3500"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"1200"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"297"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"138"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"307"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"147"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"316"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"156"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"325"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"165"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
+	<c- p>]</c->
+
+	<c- n>ref</c-> <c- n>ci</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"6"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> how in OML code above, instances already typed by <code>mission:Components</code> in P3 are referenced (with <code>ref</code>) in this description and declared with another tyype <code>mechanical:MechanicalComponent</code>. This ability to add multiple types (whether related to each other by specialization or not) to an instacne is a string feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from <code>mission:Component</code> to <code>mechanical:MechanicalComponent</code>).</p>
+    <p class="note" role="note"><span>Note:</span> how the magnitude of each component is specified with a double literal. The literal type here specifies the precision of the value. Recall how the unit of the value has been restricted to <code>iso-80000-4.1:kilogram</code> in type <code>mechanical:MassMagnitude</code>. This means all those magnitudes values above have this unit. If the restriction was omitted, each instance could have specified its own unit. But, restrictiing units makes it easier to unify them in the same system, and manage this in one place, without loosing precision (by ignoring to specify a unit) or inviting inconsistencies (by specifying them with every value).</p>
+    <ol start="6">
+     <li data-md>
+      <p>The following is a visualization of the <code>masses</code> description:</p>
+      <p><img src="assets/img/Tutorial2-P5-Masses-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>masses</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/masses#></c->
+</pre>
+    <ol start="8">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②①">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p>Let us now create a query that extracts component, their compositions (if any), and their mass characterizations (if any).</p>
+    <ol start="9">
+     <li data-md>
+      <p>Creat the file <code>src/sparql/components.sparql</code> and copy the following SPARQL code as its content.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
+<c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+<c- nc>PREFIX</c-> <c- n>vim4</c-><c- p>:</c->		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- o>?</c-><c- n>c2</c-> <c- o>?</c-><c- n>c2_id</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+	<c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c1_id</c-> <c- p>.</c->
+	<c- nc>OPTIONAL</c-> <c- p>{</c->
+		<c- o>?</c-><c- n>c1</c->	<c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- o>?</c-><c- n>c2</c-> <c- p>.</c->
+		<c- o>?</c-><c- n>c2</c-> <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c2_id</c-> <c- p>.</c->
+	<c- p>}</c->
+	<c- nc>OPTIONAL</c-> <c- p>{</c->
+		<c- o>?</c-><c- n>c1_mass_mag</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- o>?</c-><c- n>c1</c-> <c- p>;</c->
+			<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- p>.</c->
+	<c- p>}</c->
+<c- p>}</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c2_id</c->
+</pre>
+    <ol start="10">
+     <li data-md>
+      <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑨">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②②">Gradle Executions view</a>. It should run with no errors.</p>
+     <li data-md>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②②">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/components.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p><img src="assets/img/Tutorial2-P5-Query-Results.png" width="100%"></p>
+     <li data-md>
+      <p>With this JSON results, one could develop visualizations like the following:</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> the visualization code is not part of this tutorial</p>
+    <table id="table3">
+     <thead>
+      <tr>
+       <th>c1
+       <th>c1_id
+       <th>c1_mass
+       <th>c2
+       <th>c2_id
+     <tbody>
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-launch-system
+       <td>C.01
+       <td>2000.0
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+       <td>
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-power-subsystem
+       <td>C.02.01
+       <td>297.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-harness
+       <td>C.02.02
+       <td>138.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-thermal-subsystem
+       <td>C.02.03
+       <td>307.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-command-and-data-handling-subsystem
+       <td>C.02.04
+       <td>147.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-telecom-subsystem
+       <td>C.02.05
+       <td>316.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-guidance-navigation-control-subsystem
+       <td>C.02.06
+       <td>156.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-mechanical-subsystem
+       <td>C.02.07
+       <td>325.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-spacraft-flight-software
+       <td>C.02.08
+       <td>165.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-propulsion-subsystem
+       <td>C.02.09
+       <td>6.0
+       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>C.02
+      <tr>
+       <td>http://example.com/kepler16b/components#orbiter-ground-data-system
+       <td>C.03
+       <td>
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#mission-operations-system
+       <td>C.04
+       <td>
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#lander-launch-system
+       <td>C.05
+       <td>3500.0
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#lander-spacecraft
+       <td>C.06
+       <td>1200.0
+       <td>
+       <td>
+      <tr>
+       <td>http://example.com/kepler16b/components#lander-ground-data-system
+       <td>C.07
+       <td>
+       <td>
+       <td>
+    </table>
+    <p></p>
+    <svg height="500" width="960">
+     <g transform="translate(120,20)">
+      <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,127.77777777777779,180,127.77777777777779"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,178.8888888888889,180,178.8888888888889"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,230,180,230"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,281.11111111111114,180,281.11111111111114"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,332.22222222222223,180,332.22222222222223"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,383.33333333333337,180,383.33333333333337"></path>
+       <path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,434.44444444444446,180,434.44444444444446"></path>
+       <path class="link" d="M180,230C270,230,270,25.555555555555557,360,25.555555555555557"></path>
+       <path class="link" d="M180,230C270,230,270,76.66666666666667,360,76.66666666666667"></path>
+       <path class="link" d="M180,230C270,230,270,127.77777777777779,360,127.77777777777779"></path>
+       <path class="link" d="M180,230C270,230,270,178.8888888888889,360,178.8888888888889"></path>
+       <path class="link" d="M180,230C270,230,270,230,360,230"></path>
+       <path class="link" d="M180,230C270,230,270,281.11111111111114,360,281.11111111111114"></path>
+       <path class="link" d="M180,230C270,230,270,332.22222222222223,360,332.22222222222223"></path>
+       <path class="link" d="M180,230C270,230,270,383.33333333333337,360,383.33333333333337"></path>
+       <path class="link" d="M180,230C270,230,270,434.44444444444446,360,434.44444444444446"></path>
+      </g>
+      <g class="node" transform="translate(360, 434.4444580078125)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-propulsion-subsystem(6)</text>
+      </g>
+      <g class="node" transform="translate(360, 383.3333435058594)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-harness(138)</text>
+      </g>
+      <g class="node" transform="translate(360, 332.22222900390625)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-command-and-data-handling-subsystem(147)</text>
+      </g>
+      <g class="node" transform="translate(360, 281.1111145019531)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-guidance-navigation-control-subsystem(156)</text>
+      </g>
+      <g class="node" transform="translate(360, 230)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-spacraft-flight-software(165)</text>
+      </g>
+      <g class="node" transform="translate(360, 178.88888549804688)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-power-subsystem(297)</text>
+      </g>
+      <g class="node" transform="translate(360, 127.77777862548828)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-thermal-subsystem(307)</text>
+      </g>
+      <g class="node" transform="translate(360, 76.66666412353516)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-telecom-subsystem(316)</text>
+      </g>
+      <g class="node" transform="translate(360, 25.55555534362793)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-mechanical-subsystem(325)</text>
+      </g>
+      <g class="node" transform="translate(180, 434.4444580078125)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">lander-ground-data-system(0)</text>
+      </g>
+      <g class="node" transform="translate(180, 383.3333435058594)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">mission-operations-system(0)</text>
+      </g>
+      <g class="node" transform="translate(180, 332.22222900390625)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-ground-data-system(0)</text>
+      </g>
+      <g class="node" transform="translate(180, 281.1111145019531)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">lander-spacecraft(1200)</text>
+      </g>
+      <g class="node" transform="translate(180, 230)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">orbiter-spacecraft(1857)</text>
+      </g>
+      <g class="node" transform="translate(180, 178.88888549804688)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">orbiter-launch-system(2000)</text>
+      </g>
+      <g class="node" transform="translate(180, 127.77777862548828)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="start" x="13">lander-launch-system(3500)</text>
+      </g>
+      <g class="node" transform="translate(0, 281.1111145019531)">
+       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
+       <text dy="0.35em" text-anchor="end" x="-13">Root</text>
+      </g>
+     </g>
+    </svg>
+    <p class="note" role="note"><span>Note:</span> that in the second visualization above, each node in the tree rolls up the mass from the levels below (if any). Such computation would be part of an analysis that runs on the query results before producing the visualization.</p>
+    <h3 class="heading settled" data-level="3.8" id="tutorial2-p6"><span class="secno">3.8. </span><span class="content">P6: Component presents Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
+    <h3 class="heading settled" data-level="3.9" id="tutorial2-p7"><span class="secno">3.9. </span><span class="content">P7: Junction joins Interface</span><a class="self-link" href="#tutorial2-p7"></a></h3>
+    <h3 class="heading settled" data-level="3.10" id="tutorial2-p8"><span class="secno">3.10. </span><span class="content">P8: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p8"></a></h3>
+    <h3 class="heading settled" data-level="3.11" id="tutorial2-summary"><span class="secno">3.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
    </div>
   </main>
 <script>
@@ -3231,8 +4165,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-model-explorer-view⑥">2.6. Edit OML Description Bundle</a>
     <li><a href="#ref-for-model-explorer-view⑦">2.8. Fix Logical Inconsistency</a>
     <li><a href="#ref-for-model-explorer-view⑧">2.9. Run Query Task</a> <a href="#ref-for-model-explorer-view⑨">(2)</a> <a href="#ref-for-model-explorer-view①⓪">(3)</a> <a href="#ref-for-model-explorer-view①①">(4)</a> <a href="#ref-for-model-explorer-view①②">(5)</a> <a href="#ref-for-model-explorer-view①③">(6)</a> <a href="#ref-for-model-explorer-view①④">(7)</a> <a href="#ref-for-model-explorer-view①⑤">(8)</a> <a href="#ref-for-model-explorer-view①⑥">(9)</a>
-    <li><a href="#ref-for-model-explorer-view①⑦">3.2. Create OML Project</a> <a href="#ref-for-model-explorer-view①⑧">(2)</a>
-    <li><a href="#ref-for-model-explorer-view①⑨">3.3. P1: Objective aggregates Objective</a>
+    <li><a href="#ref-for-model-explorer-view①⑦">3.2. Create OML Project</a> <a href="#ref-for-model-explorer-view①⑧">(2)</a> <a href="#ref-for-model-explorer-view①⑨">(3)</a>
+    <li><a href="#ref-for-model-explorer-view②⓪">3.3. P1: Objective aggregates Objective</a>
+    <li><a href="#ref-for-model-explorer-view②①">3.4. P2: Mission pursues Objective</a>
+    <li><a href="#ref-for-model-explorer-view②②">3.7. P5: Mass characterizes Component</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-task-view">
@@ -3243,6 +4179,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-task-view③">2.9. Run Query Task</a> <a href="#ref-for-gradle-task-view④">(2)</a> <a href="#ref-for-gradle-task-view⑤">(3)</a>
     <li><a href="#ref-for-gradle-task-view⑥">3.2. Create OML Project</a>
     <li><a href="#ref-for-gradle-task-view⑦">3.3. P1: Objective aggregates Objective</a> <a href="#ref-for-gradle-task-view⑧">(2)</a> <a href="#ref-for-gradle-task-view⑨">(3)</a>
+    <li><a href="#ref-for-gradle-task-view①⓪">3.4. P2: Mission pursues Objective</a> <a href="#ref-for-gradle-task-view①①">(2)</a> <a href="#ref-for-gradle-task-view①②">(3)</a>
+    <li><a href="#ref-for-gradle-task-view①③">3.5. P3: Mission deploys Component</a> <a href="#ref-for-gradle-task-view①④">(2)</a>
+    <li><a href="#ref-for-gradle-task-view①⑤">3.6. P4: Component contains Component</a> <a href="#ref-for-gradle-task-view①⑥">(2)</a>
+    <li><a href="#ref-for-gradle-task-view①⑦">3.7. P5: Mass characterizes Component</a> <a href="#ref-for-gradle-task-view①⑧">(2)</a> <a href="#ref-for-gradle-task-view①⑨">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-executions-view">
@@ -3253,6 +4193,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-executions-view⑥">2.9. Run Query Task</a> <a href="#ref-for-gradle-executions-view⑦">(2)</a> <a href="#ref-for-gradle-executions-view⑧">(3)</a>
     <li><a href="#ref-for-gradle-executions-view⑨">3.2. Create OML Project</a>
     <li><a href="#ref-for-gradle-executions-view①⓪">3.3. P1: Objective aggregates Objective</a> <a href="#ref-for-gradle-executions-view①①">(2)</a> <a href="#ref-for-gradle-executions-view①②">(3)</a>
+    <li><a href="#ref-for-gradle-executions-view①③">3.4. P2: Mission pursues Objective</a> <a href="#ref-for-gradle-executions-view①④">(2)</a> <a href="#ref-for-gradle-executions-view①⑤">(3)</a>
+    <li><a href="#ref-for-gradle-executions-view①⑥">3.5. P3: Mission deploys Component</a> <a href="#ref-for-gradle-executions-view①⑦">(2)</a>
+    <li><a href="#ref-for-gradle-executions-view①⑧">3.6. P4: Component contains Component</a> <a href="#ref-for-gradle-executions-view①⑨">(2)</a>
+    <li><a href="#ref-for-gradle-executions-view②⓪">3.7. P5: Mass characterizes Component</a> <a href="#ref-for-gradle-executions-view②①">(2)</a> <a href="#ref-for-gradle-executions-view②②">(3)</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
