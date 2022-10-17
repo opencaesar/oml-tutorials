@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="5eaf8c59eb23418b43cd7ad974b1f13838e426dc" name="document-revision">
+  <meta content="72a1b038fad8c5689790d135ef412ec49adee0ae" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2980,7 +2980,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="4">
      <li data-md>
       <p>if you did all the previous steps correctly, the following should be the contents of all files so far.</p>
-      <p><img src="assets/img/Tutorial2-P1-Link-Vocabularies.png" width="100%"></p>
+      <p><img src="assets/img/Tutorial2-P1-Initial-Ontologies.png" width="100%"></p>
      <li data-md>
       <p>In the <code>vocabulary/base</code> ontology, append the following OML code to its body:</p>
     </ol>
@@ -3188,7 +3188,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p><strong>New Vocabulary</strong></p>
     <ol>
      <li data-md>
-      <p>Append the following OML code, which adds the concept of a <code>Mission</code> with the relation <code>Purses</code> to the existing concept of <code>Objective</code>, to the body of the <code>vocabulary/mission</code> ontology. Save the editor.</p>
+      <p>In the body of ontology <code>vocabulary/mission</code>, append the following OML code, which adds the concept of a <code>Mission</code> with relation entity <code>Purses</code>, after the existing concept of <code>Objective</code>. Save the editor.</p>
     </ol>
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission pursues Objectives."</c->
 <c- n>concept</c-> <c- nc>Mission</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->

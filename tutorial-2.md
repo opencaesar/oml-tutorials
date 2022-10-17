@@ -85,7 +85,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
 4. if you did all the previous steps correctly, the following should be the contents of all files so far.
 
-    <img src="assets/img/Tutorial2-P1-Link-Vocabularies.png" width="100%"/>
+    <img src="assets/img/Tutorial2-P1-Initial-Ontologies.png" width="100%"/>
 
 1. In the `vocabulary/base` ontology, append the following OML code to its body:
 
@@ -299,7 +299,7 @@ We undertake missions to pursue objectives. Again, objectives are not requiremen
 
 **New Vocabulary**
 
-1. Append the following OML code, which adds the concept of a `Mission` with the relation `Purses` to the existing concept of `Objective`, to the body of the `vocabulary/mission` ontology. Save the editor.
+1. In the body of ontology `vocabulary/mission`, append the following OML code, which adds the concept of a `Mission` with relation entity `Purses`, after the existing concept of `Objective`. Save the editor.
 
 ```scala
 	@rdfs:comment "A Mission pursues Objectives."
