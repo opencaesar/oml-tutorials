@@ -1,8 +1,12 @@
 # Getting Ready # {#getting-ready}
 
-## Install Rosetta Workbench ## {#install-rosetta-workbench}
+OML has a user-friendly [textual grammar](http://www.opencaesar.io/oml/#Language-Reference) that can be edited using a simple text editor. However, for extra support like wizards, syntax highlighting, live validation, and content-assist, a user can use one of the OML editors provided by openCAESAR project. One such editor, called [OML Rosetta](https://github.com/opencaesar/oml-rosetta), is a plugin to the Eclipse IDE. Another editor, called [OML Luxor](https://github.com/opencaesar/oml-luxor), is an extension to the VSCode IDE that can be used in a VSCode desktop client or brower-based client (like [Gitpod](https://www.gitpod.io/)). In this tutorial, we will demonstrate using the OML Rosetta editor, but the reader can follow using any other editor. 
 
-### Install Locally ### {#install-locally}
+Note: that OML also has a UML-like [graphical notation](http://www.opencaesar.io/oml/#Graphical-BNF). Although we will not demonstrate how to create them, we will sometimes show OML diagrams to help communicate the ideas. 
+
+Furthermore, OML projects created by openCAESAR are Gradle projects that have OML analysis tools configured as Gradle tasks (in a build.gradle script). A user can choose to invoke such tools from a console/terminal session using the Gradle Wrapper CLI (e.g., `./gradlew <task>`). Alternatively, the supported OML editors mentioned above allow invoking those Gradle tasks using a UI. We will demonstrate invoking Gradle tasks from the UI in Eclipse, but the reader can choose to invoke them using the CLi (or another UI) instead.
+
+## Install OML Rosetta ## {#install-oml-rosetta}
 
 1. Download the latest release of the Rosetta Workbench archive that matches your OS from [oml-rosetta](https://github.com/opencaesar/oml-rosetta/releases/latest).
 
@@ -24,11 +28,7 @@
 
     <img src="assets/img/Rosetta-Launcher.png" width="100%"/>
 
-### Install from Docker Image ### {#install-from-docker-image}
-
-Note: TBD
-
-## Run Rosetta Workbench ## {#run-rosetta-workbench}
+## Run OML Rosetta ## {#run-oml-rosetta}
 
 1. Once Rosetta opens with the workspace, switch to the Modeling Perspective.
 
