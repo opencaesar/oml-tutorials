@@ -1,6 +1,6 @@
 # OML Tutorials
 
-A set of tutorials on the Ontological Modeling Language (OML) that can be accessed by following this link [![Tutorials](https://img.shields.io/badge/OML-Tutorials-blue)](http://www.opencaesar.io/oml-tutorials/) 
+A set of tutorials on the Ontological Modeling Language (OML) that can be accessed by clicking [![Tutorials](https://img.shields.io/badge/OML-Tutorials-blue)](http://www.opencaesar.io/oml-tutorials/) 
 
 ## Sources
 
