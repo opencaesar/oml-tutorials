@@ -8,13 +8,13 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
 
 ## Install OML Rosetta ## {#install-oml-rosetta}
 
-1. Download the latest release of the Rosetta Workbench archive that matches your OS from [oml-rosetta](https://github.com/opencaesar/oml-rosetta/releases/latest).
+1. Download the latest release of OML Rosetta archive that matches your OS from [oml-rosetta](https://github.com/opencaesar/oml-rosetta/releases/latest).
 
     <img src="assets/img/Rosetta-Download.png" width="100%" style="border:1px groove black;"/>
 
 1. Unzip the archive to some folder on your local drive to get the Rosetta app.
     
-    Note: If you're on Mac, run this command in terminal to get around the issue that the app is not signed.
+    Note: If you're on a Mac, run this command in the terminal to get around the issue that the app is not yet signed (a temporary issue).
 
      ```javascript
       $xattr -cr <path/to/Rosetta.app>
@@ -36,7 +36,7 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
      <source src="assets/mov/Switch-to-Modeling-Perspective.mov"/>
    </video>
 
-1. Once the Modeling Perspective opens, show some extra views.
+1. Once the Modeling Perspective opens, make some extra views visible.
 
    <video width="100%" style="border:1px groove black;" controls>
      <source src="assets/mov/Show-Views.mov"/>
