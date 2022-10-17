@@ -87,7 +87,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
     <img src="assets/img/Tutorial2-P1-Initial-Ontologies.png" width="100%"/>
 
-1. In the `vocabulary/base` ontology, append the following OML code to its body:
+1. In the `vocabulary/base` ontology, append the following OML code to its body (i.e., insert it before the closing `}` bracket):
 
 ```scala
 	@rdfs:comment "The class of things having an id and a canonical name"
