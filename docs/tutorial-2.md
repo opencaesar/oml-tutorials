@@ -36,7 +36,7 @@ description bundle <http://example.com/tutorial2/description/bundle#> as ^bundle
 }
 ```
 
-Note: since we be running queries for every pattern, let us run the Fuseki server once now, and keep it running till the end, then we will stop it.
+Note: since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.
 
 6. From the [=Gradle Task view=], run the task `tutorial2/oml/startFuseki` and wait until it finishes execution in the [=Gradle Executions view=]. It should run successfuly with no errors.
 
@@ -125,6 +125,8 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 	]
 ```
 
+Note: the syntax used for annotations on ontology members above (e.g., `@rdfs:comment "value"` used to put a comment on a vocabulary member). What comes after the `@` is the IRI of an annotation property (declared in some vocabulary) followed by a (literal or IRI) value.
+
 6. In the `vocabulary/mission` ontology, append the following OML code to its body:
 
 ```scala
@@ -149,7 +151,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 		</tr>
 	</table>
 
-8. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -219,7 +221,7 @@ Note: the keyword `ci` in the OML code above is short for `concept instance`.
 	includes <http://example.com/tutorial2/description/objectives#>
 ```
 
-12. Let us check that our ontologies are stil good, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+12. Let us check that our ontologies are stil good, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -322,7 +324,7 @@ Note: the semantic (logical) flags specified on the relation entity `Pursues`. T
 
     <img src="assets/img/Tutorial2-P2-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -363,7 +365,7 @@ description <http://example.com/tutorial2/description/missions#> as missions {
 	includes <http://example.com/tutorial2/description/missions#>
 ```
 
-7. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 *New Queries*
 
@@ -487,7 +489,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
     <img src="assets/img/Tutorial2-P3-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -613,7 +615,7 @@ Note: This should clear the errors from the previous step.
 	includes <http://example.com/tutorial2/description/components#>
 ```
 
-9. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+9. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -674,7 +676,7 @@ Note: that we used the `ref` keyword here to add more statemetns to the concept 
 		</tr>
 	</table>
 
-4. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -700,7 +702,7 @@ Now, we will use the pattern to describe the physical composition (containment) 
 
     <img src="assets/img/Tutorial2-P4-Components-Description.png" width="100%"/>
 	
-7. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -750,7 +752,7 @@ Note: how concept `MassMagnitude` specializes `vim4:InherentUnitaryQuantityValue
 	includes <http://example.com/tutorial2/vocabulary/mechanical#>
 ```
 
-4. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -854,7 +856,7 @@ Note: how the magnitude of each component is specified with a double literal. Th
 	includes <http://example.com/tutorial2/description/masses#>
 ```
 
-8. Let us check that our ontologies are good so far, by running the task called `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -867,13 +869,15 @@ PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
 PREFIX mission:     <http://example.com/tutorial2/vocabulary/mission#>
 PREFIX vim4:		<http://bipm.org/jcgm/vim4#>
 
-SELECT DISTINCT ?c1 ?c1_id ?c1_mass ?c2 ?c2_id
+SELECT DISTINCT ?c1_id ?c1_name ?c1_mass ?c2_id ?c2_name
 WHERE {
 	?c1 a mission:Component ;
-		base:hasIdentifier ?c1_id .
+		base:hasIdentifier ?c1_id ;
+		base:hasCanonicalName ?c1_name .
 	OPTIONAL {
-		?c1	base:isContainedIn ?c2 .
-		?c2 base:hasIdentifier ?c2_id .
+		?c1 base:isContainedIn ?c2 .
+		?c2 base:hasIdentifier ?c2_id ;
+			base:hasCanonicalName ?c2_name .
 	}
 	OPTIONAL {
 		?c1_mass_mag vim4:characterizes ?c1 ;
@@ -944,9 +948,9 @@ Note: the visualization code is not part of this tutorial
 </style>
 </head>
 <body>
-<table id="table3"><thead><tr><th>c1</th><th>c1_id</th><th>c1_mass</th><th>c2</th><th>c2_id</th></tr></thead><tbody><tr><td>http://example.com/kepler16b/components#orbiter-launch-system</td><td>C.01</td><td>2000.0</td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td><td></td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#orbiter-power-subsystem</td><td>C.02.01</td><td>297.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-harness</td><td>C.02.02</td><td>138.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-thermal-subsystem</td><td>C.02.03</td><td>307.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-command-and-data-handling-subsystem</td><td>C.02.04</td><td>147.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-telecom-subsystem</td><td>C.02.05</td><td>316.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-guidance-navigation-control-subsystem</td><td>C.02.06</td><td>156.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-mechanical-subsystem</td><td>C.02.07</td><td>325.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-spacraft-flight-software</td><td>C.02.08</td><td>165.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-propulsion-subsystem</td><td>C.02.09</td><td>6.0</td><td>http://example.com/kepler16b/components#orbiter-spacecraft</td><td>C.02</td></tr><tr><td>http://example.com/kepler16b/components#orbiter-ground-data-system</td><td>C.03</td><td></td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#mission-operations-system</td><td>C.04</td><td></td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#lander-launch-system</td><td>C.05</td><td>3500.0</td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#lander-spacecraft</td><td>C.06</td><td>1200.0</td><td></td><td></td></tr><tr><td>http://example.com/kepler16b/components#lander-ground-data-system</td><td>C.07</td><td></td><td></td><td></td></tr></tbody></table>
+<table id="table3"><thead><tr><th>c1_name</th><th>c1_id</th><th>c1_mass</th><th>c2_name</th><th>c2_id</th></tr></thead><tbody><tr><td>Orbiter Launch System</td><td>C.01</td><td>2000.0</td><td></td><td></td></tr><tr><td>Orbiter Spacecraft</td><td>C.02</td><td></td><td></td><td></td></tr><tr><td>Orbiter Power Subsystem</td><td>C.02.01</td><td>297.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Harness</td><td>C.02.02</td><td>138.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Thermal Subsystem</td><td>C.02.03</td><td>307.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter C&DH subsystem</td><td>C.02.04</td><td>147.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Telecom Subsystem</td><td>C.02.05</td><td>316.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter GN&C subsystem</td><td>C.02.06</td><td>156.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Mechanical Subsystem</td><td>C.02.07</td><td>325.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Spacraft Flight Software</td><td>C.02.08</td><td>165.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Propulsion Subsystem</td><td>C.02.09</td><td>6.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Ground Data System</td><td>C.03</td><td></td><td></td><td></td></tr><tr><td>Mission Operations System</td><td>C.04</td><td></td><td></td><td></td></tr><tr><td>Lander Launch System</td><td>C.05</td><td>3500.0</td><td></td><td></td></tr><tr><td>Lander Spacecraft</td><td>C.06</td><td>1200.0</td><td></td><td></td></tr><tr><td>Lander Ground Data System</td><td>C.07</td><td></td><td></td><td></td></tr></tbody></table>
 <p></p>
-<svg width="960" height="500"><g transform="translate(120,20)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,127.77777777777779,180,127.77777777777779"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,178.8888888888889,180,178.8888888888889"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,230,180,230"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,281.11111111111114,180,281.11111111111114"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,332.22222222222223,180,332.22222222222223"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,383.33333333333337,180,383.33333333333337"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,434.44444444444446,180,434.44444444444446"></path><path class="link" d="M180,230C270,230,270,25.555555555555557,360,25.555555555555557"></path><path class="link" d="M180,230C270,230,270,76.66666666666667,360,76.66666666666667"></path><path class="link" d="M180,230C270,230,270,127.77777777777779,360,127.77777777777779"></path><path class="link" d="M180,230C270,230,270,178.8888888888889,360,178.8888888888889"></path><path class="link" d="M180,230C270,230,270,230,360,230"></path><path class="link" d="M180,230C270,230,270,281.11111111111114,360,281.11111111111114"></path><path class="link" d="M180,230C270,230,270,332.22222222222223,360,332.22222222222223"></path><path class="link" d="M180,230C270,230,270,383.33333333333337,360,383.33333333333337"></path><path class="link" d="M180,230C270,230,270,434.44444444444446,360,434.44444444444446"></path></g><g transform="translate(360, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-propulsion-subsystem(6)</text></g><g transform="translate(360, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-harness(138)</text></g><g transform="translate(360, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-command-and-data-handling-subsystem(147)</text></g><g transform="translate(360, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-guidance-navigation-control-subsystem(156)</text></g><g transform="translate(360, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-spacraft-flight-software(165)</text></g><g transform="translate(360, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-power-subsystem(297)</text></g><g transform="translate(360, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-thermal-subsystem(307)</text></g><g transform="translate(360, 76.66666412353516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-telecom-subsystem(316)</text></g><g transform="translate(360, 25.55555534362793)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-mechanical-subsystem(325)</text></g><g transform="translate(180, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">lander-ground-data-system(0)</text></g><g transform="translate(180, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">mission-operations-system(0)</text></g><g transform="translate(180, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-ground-data-system(0)</text></g><g transform="translate(180, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">lander-spacecraft(1200)</text></g><g transform="translate(180, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">orbiter-spacecraft(1857)</text></g><g transform="translate(180, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-launch-system(2000)</text></g><g transform="translate(180, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">lander-launch-system(3500)</text></g><g transform="translate(0, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Root</text></g></g></svg>
+<svg width="960" height="500"><g transform="translate(120,20)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,127.77777777777779,180,127.77777777777779"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,178.8888888888889,180,178.8888888888889"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,230,180,230"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,281.11111111111114,180,281.11111111111114"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,332.22222222222223,180,332.22222222222223"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,383.33333333333337,180,383.33333333333337"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,434.44444444444446,180,434.44444444444446"></path><path class="link" d="M180,230C270,230,270,25.555555555555557,360,25.555555555555557"></path><path class="link" d="M180,230C270,230,270,76.66666666666667,360,76.66666666666667"></path><path class="link" d="M180,230C270,230,270,127.77777777777779,360,127.77777777777779"></path><path class="link" d="M180,230C270,230,270,178.8888888888889,360,178.8888888888889"></path><path class="link" d="M180,230C270,230,270,230,360,230"></path><path class="link" d="M180,230C270,230,270,281.11111111111114,360,281.11111111111114"></path><path class="link" d="M180,230C270,230,270,332.22222222222223,360,332.22222222222223"></path><path class="link" d="M180,230C270,230,270,383.33333333333337,360,383.33333333333337"></path><path class="link" d="M180,230C270,230,270,434.44444444444446,360,434.44444444444446"></path></g><g transform="translate(360, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Propulsion Subsystem(6)</text></g><g transform="translate(360, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Harness(138)</text></g><g transform="translate(360, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter C&DH Subsystem(147)</text></g><g transform="translate(360, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter GN&C Subsystem(156)</text></g><g transform="translate(360, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Spacraft Flight Software(165)</text></g><g transform="translate(360, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Power Subsystem(297)</text></g><g transform="translate(360, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Thermal Subsystem(307)</text></g><g transform="translate(360, 76.66666412353516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Telecom Subsystem(316)</text></g><g transform="translate(360, 25.55555534362793)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-mechanical-subsystem(325)</text></g><g transform="translate(180, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Ground Data System(0)</text></g><g transform="translate(180, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Mission Operations System(0)</text></g><g transform="translate(180, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Ground Data System(0)</text></g><g transform="translate(180, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Spacecraft(1200)</text></g><g transform="translate(180, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Orbiter Spacecraft(1857)</text></g><g transform="translate(180, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Launch System(2000)</text></g><g transform="translate(180, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Launch System(3500)</text></g><g transform="translate(0, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Root</text></g></g></svg>
 </body>
 </html>
 
@@ -954,8 +958,349 @@ Note: that in the second visualization above, each node in the tree rolls up the
 
 ## P6: Component presents Interface ## {#tutorial2-p6}
 
-## P7: Junction joins Interface ## {#tutorial2-p7}
+**Pattern Synopsis**
 
-## P8: Interface transfers (Flow or Item) ## {#tutorial2-p8}
+Components contain other components. These subcomponents interact in ways that lead to emergent behavior. The interactions are sometimes the result of purposeful interconnection. Components may be designed with specific features to allow or enact interconnection. These features we call Interfaces. We say Components present Interfaces. Note that an interface is on one side or the other; it’s not the connection itself.
+
+**New Vocabularies**
+
+1. In the `vocabulary/mission` ontology, append the following OML code to the body. Save the editor.
+
+```scala
+	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."
+	concept Interface :> base:IdentifiedThing
+
+	@rdfs:comment "A Component presents zero or more Interfaces."
+	relation entity Presents [
+		from Component
+		to Interface
+		forward presents
+		reverse isPresentedBy
+		inverse functional
+		asymmetric
+		irreflexive
+	]
+```
+
+2. The following is a visualization of the `mission` vocabulary so far:
+
+	<img src="assets/img/Tutorial2-P6-Mission-Vocabulary.png" width="100%"/>
+
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Description**
+
+With this pattern, we can model the interfaces of some of the components in kepler16b.
+
+4. Create a description with the IRI `<http://example.com/tutorial2/description/interfaces#>` and prefix `interfaces`. Copy the following OML code as its contents. Save the editor.
+
+```scala
+description <http://example.com/tutorial2/description/interfaces#> as interfaces {
+
+	uses <http://example.com/tutorial2/vocabulary/base#> as base
+	uses <http://example.com/tutorial2/vocabulary/mission#> as mission
+	extends <http://example.com/tutorial2/description/components#> as components
+
+	ci orbiter-ground-data-system.telemetryIn : mission:Interface [
+		base:hasIdentifier "I.04"
+		base:hasCanonicalName "Telemetry In"
+	]
+	ri orbiter-ground-data-system.presents.telemetryIn : mission:Presents [
+		from components:orbiter-ground-data-system
+		to orbiter-ground-data-system.telemetryIn
+	]
+	ci orbiter-ground-data-system.commandOut : mission:Interface [
+		base:hasIdentifier "I.03"
+		base:hasCanonicalName "Command Out"
+	]
+	ri orbiter-ground-data-system.presents.commandOut : mission:Presents [
+		from components:orbiter-ground-data-system
+		to orbiter-ground-data-system.commandOut
+	]
+
+	ci orbiter-spacecraft.commandIn : mission:Interface [
+		base:hasIdentifier "I.01"
+		base:hasCanonicalName "Command In"
+	]
+	ri orbiter-spacecraft.presents.commandIn : mission:Presents [
+		from components:orbiter-spacecraft
+		to orbiter-spacecraft.commandIn
+	]
+	ci orbiter-spacecraft.telemetryOut : mission:Interface [
+		base:hasIdentifier "I.02"
+		base:hasCanonicalName "Telemetry Out"
+	]
+	ri orbiter-spacecraft.presents.telemetryOut : mission:Presents [
+		from components:orbiter-spacecraft
+		to orbiter-spacecraft.telemetryOut
+	]
+}
+```
+
+Note: in the OML code above a new element defined with the keyword `ri`, which is short for a relation instance. This is a a named instane that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  naamed `orbiter-ground-data-system.presents.telemetryIn` is typed by the `mission:Presents` relation entity and is `from` concept instance `components:orbiter-ground-data-system` (a component) to concept instance `orbiter-ground-data-system.telemetryIn` (an interface). 
+
+Note: Creating a relation instance is an alternative to creating an unreified (simple) link as we have doing so far. It is done when the link needs to be referenced by other statements (as we will see in P7), or when it needs to be characterized by values to its properties (defined in the domain of relation entity types).
+
+5. The following is a visualization of the `interfaces` description:
+
+    <img src="assets/img/Tutorial2-P6-Interfaces-Description.png" width="100%"/>
+
+6. Append the following OML code to the body of `description/bundle` to include the new `interfaces` ontology. Save the editor.
+
+```scala
+	includes <http://example.com/tutorial2/description/interfaces#>
+```
+
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Queries**
+
+Note: No new queries for this pattern. We will incorporate it with another pattern below.
+
+## P7: Requirement specifies Presents ## {#tutorial2-p7}
+
+**Pattern Synopsis**
+
+Requirements specify conditions that must be true of the system. One thing a requirement may specify is that some component presents an interface of a certain type or with certain properties. We say this with the reification pattern: (Requirement specifies (Component presents Interface)), in which (Component presents Interface) is reified with a member of class Presents (as seen above in P6).
+
+**New Vocabulary**
+
+1. In the `vocabulary/mission` ontology, append the following OML code to the body. Save the editor.
+
+```scala
+	@rdfs:comment "SpecifiedThing is something that isSpecifiedBy a Requirement"
+	aspect SpecifiedThing
+
+	@rdfs:comment "Presents is a relation that can be specified by a requirement."
+	ref relation entity Presents :> SpecifiedThing
+
+	@rdfs:comment "A Requirement specifies that something must be true about something."
+	concept Requirement :> base:IdentifiedThing
+
+	@rdfs:comment "A Requirement specifies zero or more SpecifiedThings."
+	relation entity Specifies [
+		from Requirement
+		to SpecifiedThing
+		forward specifies
+		reverse isSpecifiedBy
+		functional
+		asymmetric
+		irreflexive
+	]
+```
+
+Note: how we added aspect `SpecifiedThing` as another supertype to relation entity `Presents`, which was previous defined. This says that its relation instances can be ranges of `Specifies` links.
+
+2. The following is a visualization of the `mission` vocabulary so far:
+
+	<img src="assets/img/Tutorial2-P7-Mission-Vocabulary.png" width="100%"/>
+
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Desriptions**
+
+With this pattern in the vocabulary, and with (Component `Presents` Interface) relation instances specified in P6 before, we can now create requirements that specify those instances.
+
+4. Create a description with the IRI `<http://example.com/tutorial2/description/requirements#>` and prefix `requirements`. Copy the following OML code as its contents. Save the editor.
+
+```scala
+description <http://example.com/tutorial2/description/requirements#> as requirements {
+
+	uses <http://example.com/tutorial2/vocabulary/base#> as base
+	uses <http://example.com/tutorial2/vocabulary/mission#> as mission
+	extends <http://example.com/tutorial2/description/interfaces#> as interfaces
+
+	ci orbiter-ground-data-system-command-to-spacecraft : mission:Requirement [
+		base:hasIdentifier "R.04"
+		mission:specifies interfaces:orbiter-ground-data-system.presents.commandOut
+	]
+
+	ci orbiter-spacecraft-command-from-ground-data-system : mission:Requirement [
+		base:hasIdentifier "R.05"
+		mission:specifies interfaces:orbiter-spacecraft.presents.commandIn
+	]
+
+	ci orbiter-ground-data-system-telemetry-from-spacecraft : mission:Requirement [
+		base:hasIdentifier "R.06"
+		mission:specifies interfaces:orbiter-ground-data-system.presents.telemetryIn
+	]
+
+	ci orbiter-spacecraft-telemetry-to-ground-data-system : mission:Requirement [
+		base:hasIdentifier "R.07"
+		mission:specifies interfaces:orbiter-spacecraft.presents.telemetryOut
+	]
+}
+```
+
+5. The following is a visualization of the `requirements` description:
+
+    <img src="assets/img/Tutorial2-P7-Requirements-Description.png" width="100%"/>
+
+6. Append the following OML code to the body of `description/bundle` to include the new `requirements` ontology. Save the editor.
+
+```scala
+	includes <http://example.com/tutorial2/description/requirements#>
+```
+
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Queries**
+
+Let us now develop a query that extracts the requirements on components presenting interfaces.
+
+9. Creat the file `src/sparql/requirements.sparql` and copy the following SPARQL code as its content.
+
+```scala
+PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
+PREFIX mission:     <http://example.com/tutorial2/vocabulary/mission#>
+PREFIX oml:     	<http://opencaesar.io/oml#>
+
+SELECT DISTINCT ?r_id ?c_id ?i_id
+WHERE {
+	?r a mission:Requirement ;
+		base:hasIdentifier ?r_id ;
+		mission:specifies [
+			a mission:Presents ;
+			oml:hasSource [
+				base:hasIdentifier ?c_id
+			] ;
+			oml:hasTarget [
+				base:hasIdentifier ?i_id
+			]
+		]
+}
+ORDER BY ?r_id ?c_id ?i_id
+```
+
+10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+
+11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/requirements.json` and double click it to open its editor. You should see the following results in JSON.
+
+	<img src="assets/img/Tutorial2-P7-Query-Results.png" width="100%"/>
+
+12. With this JSON results, one could develop a requirement doc generator that would generate the following:
+
+Note: the doc generator code is not part of the tutorial.
+
+```
+Requirement 'R.04' specifies that component 'Orbiter Ground Data System' shall present interface 'Command Out'.
+Requirement 'R.05' specifies that component 'Orbiter Spacecraft' shall present interface 'Command In'.
+Requirement 'R.06' specifies that component 'Orbiter Ground Data System' shall present interface 'Telemetry In'.
+Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present interface 'Telemetry Out'.
+```
+
+## P8: Interface joins Interface ## {#tutorial2-p8}
+
+**Pattern Synopsis**
+
+Junctions represent actual connections between Interfaces presented by Components. When a component has an interface that joins an interface of another component, we infer that there is a Connection between these components.
+
+**New Vocabulary**
+
+1. In the `vocabulary/mission` ontology, append the following OML code to the body. Save the editor.
+
+```scala
+	@rdfs:comment "A Junction joins two or more Interfaces."
+	relation entity Junction [
+		from Interface
+		to Interface
+		forward joins
+		symmetric
+		irreflexive
+	]
+
+	@rdfs:comment "A Component connects to zero or more components."
+	relation entity Connection [
+		from Component
+		to Component
+		forward connectsTo
+		symmetric
+	]
+
+	@rdfs:comment "When interfaces presented by components are joined, we infer that the components are connected."
+	rule Junction-infers-Connection [
+		presents(c1, i1) ^ joins(i1, i2) ^ isPresentedBy(i2, c2) -> connectsTo(c1, c2)
+	]
+```
+
+Note: how the rule `Junction-infers-Connection` says that when a component presents an interface that joins another interface, which is presented by another component, then the former component is said to connect to the latter component. Since both relation entities `Junction` and `Connection` are flagged as symmetric, a single assertion that a junction joins one interface to another is sufficient to make a DL reasoner infer that both their components connect to one another.
+
+2. The following is a visualization of the `mission` vocabulary so far:
+
+	<img src="assets/img/Tutorial2-P8-Mission-Vocabulary.png" width="100%"/>
+
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Desriptions**
+
+With this pattern in the vocabulary, we can specify `Junction` relation instances between some interfaces.
+
+4. Create a description with the IRI `<http://example.com/tutorial2/description/junctions#>` and prefix `junctions`. Copy the following OML code as its contents. Save the editor.
+
+```scala
+description <http://example.com/tutorial2/description/junctions#> as junctions {
+
+	uses <http://example.com/tutorial2/vocabulary/base#> as base
+	uses <http://example.com/tutorial2/vocabulary/mission#> as mission
+	extends <http://example.com/tutorial2/description/interfaces#> as interfaces
+
+	ri orbiter-ground-data-system.orbiter-spacecraft.command.uplink : mission:Junction [
+		from interfaces:orbiter-ground-data-system.commandOut
+		to interfaces:orbiter-spacecraft.commandIn
+		base:hasIdentifier "J.01"
+		base:hasCanonicalName "Orbiter Command Uplink"
+	]
+
+	ri orbiter-ground-data-system.orbiter-spacecraft.telemetry.downlink : mission:Junction [
+		from interfaces:orbiter-spacecraft.telemetryOut
+		to interfaces:orbiter-ground-data-system.telemetryIn
+		base:hasIdentifier "J.02"
+		base:hasCanonicalName "Orbiter Telemetry Downlink"
+	]
+}
+```
+
+5. The following is a visualization of the `junctions` description:
+
+    <img src="assets/img/Tutorial2-P8-Junctions-Description.png" width="100%"/>
+
+6. Append the following OML code to the body of `description/bundle` to include the new `junctions` ontology. Save the editor.
+
+```scala
+	includes <http://example.com/tutorial2/description/junctions#>
+```
+
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+
+**New Queries**
+
+Let us now develop a query that extracts the requirements on components presenting interfaces.
+
+8. Creat the file `src/sparql/connections.sparql` and copy the following SPARQL code as its content.
+
+```scala
+PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
+PREFIX mission:     <http://example.com/tutorial2/vocabulary/mission#>
+
+SELECT DISTINCT ?c1_name ?c2_name
+WHERE {
+	?c1 a mission:Component ;
+		base:hasCanonicalName ?c1_name ;
+		mission:connectsTo [
+			base:hasCanonicalName ?c2_name
+		]
+}
+ORDER BY ?c1_name ?c2_name
+```
+
+10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+
+11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/connections.json` and double click it to open its editor. You should see the following results in JSON.
+
+	<img src="assets/img/Tutorial2-P8-Query-Results.png" width="100%"/>
+
+Note: how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.
 
 ## Summary ## {#tutorial2-summary}
+
+This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mixin types to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.

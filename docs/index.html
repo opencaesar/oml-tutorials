@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="2940a48a2043e166541f452c776907e0a3a34af0" name="document-revision">
+  <meta content="c23a6062f0f48c1d0a9169c6a90348c87ccbe888" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2244,8 +2244,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial2-p4"><span class="secno">3.6</span> <span class="content">P4: Component contains Component</span></a>
       <li><a href="#tutorial2-p5"><span class="secno">3.7</span> <span class="content">P5: Mass characterizes Component</span></a>
       <li><a href="#tutorial2-p6"><span class="secno">3.8</span> <span class="content">P6: Component presents Interface</span></a>
-      <li><a href="#tutorial2-p7"><span class="secno">3.9</span> <span class="content">P7: Junction joins Interface</span></a>
-      <li><a href="#tutorial2-p8"><span class="secno">3.10</span> <span class="content">P8: Interface transfers (Flow or Item)</span></a>
+      <li><a href="#tutorial2-p7"><span class="secno">3.9</span> <span class="content">P7: Requirement specifies Presents</span></a>
+      <li><a href="#tutorial2-p8"><span class="secno">3.10</span> <span class="content">P8: Interface joins Interface</span></a>
       <li><a href="#tutorial2-summary"><span class="secno">3.11</span> <span class="content">Summary</span></a>
      </ol>
     <li>
@@ -2865,7 +2865,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>By now, you should see the following in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①②">Model Explorer view</a>.</p>
       <p><img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"></p>
      <li data-md>
-      <p>Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigate to the task <code>tutorial1/oml/startFuseki</code>. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
+      <p>Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigate to the task <code>tutorial1/oml/startFuseki</code>. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
     </ol>
     <p class="note" role="note"><span>Note:</span> A <em>Fuseki</em> server should now be running locally on your machine.</p>
     <ol start="10">
@@ -2941,7 +2941,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#></c->
 <c- p>}</c->
 </pre>
-    <p class="note" role="note"><span>Note:</span> since we be running queries for every pattern, let us run the Fuseki server once now, and keep it running till the end, then we will stop it.</p>
+    <p class="note" role="note"><span>Note:</span> since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.</p>
     <ol start="6">
      <li data-md>
       <p>From the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑥">Gradle Task view</a>, run the task <code>tutorial2/oml/startFuseki</code> and wait until it finishes execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑨">Gradle Executions view</a>. It should run successfuly with no errors.</p>
@@ -3023,6 +3023,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 		<c- n>irreflexive</c->
 	<c- p>]</c->
 </pre>
+    <p class="note" role="note"><span>Note:</span> the syntax used for annotations on ontology members above (e.g., <code>@rdfs:comment "value"</code> used to put a comment on a vocabulary member). What comes after the <code>@</code> is the IRI of an annotation property (declared in some vocabulary) followed by a (literal or IRI) value.</p>
     <ol start="6">
      <li data-md>
       <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to its body:</p>
@@ -3047,7 +3048,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          <td>Mission Vocabulary
       </table>
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⓪">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⓪">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Description</strong></p>
     <p>We will now create a new description model for the objectives of the Kepler16 mission, then add it to the description bundle. Each description is identified with an id and a canonical name and may specify which other objective it aggregates.</p>
@@ -3114,7 +3115,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="12">
      <li data-md>
-      <p>Let us check that our ontologies are stil good, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are stil good, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Queries</strong></p>
     <p>Now that we have defined the vocabulary of the first pattern, and used it in the mission description, we will create a SPARQL query to extract the pattern instances from the description.</p>
@@ -3214,7 +3215,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
       <p><img src="assets/img/Tutorial2-P2-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①③">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①③">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Description</strong></p>
     <p>Let us now use the pattern in describing a couple of missions in kepler6b.</p>
@@ -3254,7 +3255,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="7">
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①①">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①④">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①①">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①④">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><em>New Queries</em></p>
     <p>Now we will create a SPARQL query to extract the pattern instances from the description.</p>
@@ -3431,7 +3432,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
       <p><img src="assets/img/Tutorial2-P3-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑥">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑥">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Descriptions</strong></p>
     <p>We will now add more details to the missions description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).</p>
@@ -3550,7 +3551,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="9">
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①④">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑦">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①④">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑦">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Queries</strong></p>
     <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
@@ -3604,7 +3605,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          <td>Mission Vocabulary
       </table>
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑧">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑧">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Descriptions</strong></p>
     <p>Now, we will use the pattern to describe the physical composition (containment) of the components in kepler16b.</p>
@@ -3629,7 +3630,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>The following is a visualization of the <code>components</code> description so far:</p>
       <p><img src="assets/img/Tutorial2-P4-Components-Description.png" width="100%"></p>
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑥">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑨">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑥">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑨">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Queries</strong></p>
     <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
@@ -3672,7 +3673,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="4">
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⓪">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑦">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⓪">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Descriptions</strong></p>
     <p>Now we can use this pattern to define the mechanical components and add their mass characterizations.</p>
@@ -3773,7 +3774,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="8">
      <li data-md>
-      <p>Let us check that our ontologies are good so far, by running the task called <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②①">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②①">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Queries</strong></p>
     <p>Let us now create a query that extracts component, their compositions (if any), and their mass characterizations (if any).</p>
@@ -3785,13 +3786,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
 <c- nc>PREFIX</c-> <c- n>vim4</c-><c- p>:</c->		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#></c->
 
-<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- o>?</c-><c- n>c2</c-> <c- o>?</c-><c- n>c2_id</c->
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- o>?</c-><c- n>c2_id</c-> <c- o>?</c-><c- n>c2_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
 	<c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c1_id</c-> <c- p>.</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c1_id</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>.</c->
 	<c- nc>OPTIONAL</c-> <c- p>{</c->
-		<c- o>?</c-><c- n>c1</c->	<c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- o>?</c-><c- n>c2</c-> <c- p>.</c->
-		<c- o>?</c-><c- n>c2</c-> <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c2_id</c-> <c- p>.</c->
+		<c- o>?</c-><c- n>c1</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- o>?</c-><c- n>c2</c-> <c- p>.</c->
+		<c- o>?</c-><c- n>c2</c-> <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c2_id</c-> <c- p>;</c->
+			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c-> <c- p>.</c->
 	<c- p>}</c->
 	<c- nc>OPTIONAL</c-> <c- p>{</c->
 		<c- o>?</c-><c- n>c1_mass_mag</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- o>?</c-><c- n>c1</c-> <c- p>;</c->
@@ -3813,104 +3816,104 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <table id="table3">
      <thead>
       <tr>
-       <th>c1
+       <th>c1_name
        <th>c1_id
        <th>c1_mass
-       <th>c2
+       <th>c2_name
        <th>c2_id
      <tbody>
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-launch-system
+       <td>Orbiter Launch System
        <td>C.01
        <td>2000.0
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
        <td>
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-power-subsystem
+       <td>Orbiter Power Subsystem
        <td>C.02.01
        <td>297.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-harness
+       <td>Orbiter Harness
        <td>C.02.02
        <td>138.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-thermal-subsystem
+       <td>Orbiter Thermal Subsystem
        <td>C.02.03
        <td>307.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-command-and-data-handling-subsystem
+       <td>Orbiter C&amp;DH subsystem
        <td>C.02.04
        <td>147.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-telecom-subsystem
+       <td>Orbiter Telecom Subsystem
        <td>C.02.05
        <td>316.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-guidance-navigation-control-subsystem
+       <td>Orbiter GN&amp;C subsystem
        <td>C.02.06
        <td>156.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-mechanical-subsystem
+       <td>Orbiter Mechanical Subsystem
        <td>C.02.07
        <td>325.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-spacraft-flight-software
+       <td>Orbiter Spacraft Flight Software
        <td>C.02.08
        <td>165.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-propulsion-subsystem
+       <td>Orbiter Propulsion Subsystem
        <td>C.02.09
        <td>6.0
-       <td>http://example.com/kepler16b/components#orbiter-spacecraft
+       <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>http://example.com/kepler16b/components#orbiter-ground-data-system
+       <td>Orbiter Ground Data System
        <td>C.03
        <td>
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#mission-operations-system
+       <td>Mission Operations System
        <td>C.04
        <td>
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#lander-launch-system
+       <td>Lander Launch System
        <td>C.05
        <td>3500.0
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#lander-spacecraft
+       <td>Lander Spacecraft
        <td>C.06
        <td>1200.0
        <td>
        <td>
       <tr>
-       <td>http://example.com/kepler16b/components#lander-ground-data-system
+       <td>Lander Ground Data System
        <td>C.07
        <td>
        <td>
@@ -3939,35 +3942,35 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </g>
       <g class="node" transform="translate(360, 434.4444580078125)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-propulsion-subsystem(6)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Propulsion Subsystem(6)</text>
       </g>
       <g class="node" transform="translate(360, 383.3333435058594)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-harness(138)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Harness(138)</text>
       </g>
       <g class="node" transform="translate(360, 332.22222900390625)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-command-and-data-handling-subsystem(147)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter C&amp;DH Subsystem(147)</text>
       </g>
       <g class="node" transform="translate(360, 281.1111145019531)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-guidance-navigation-control-subsystem(156)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter GN&amp;C Subsystem(156)</text>
       </g>
       <g class="node" transform="translate(360, 230)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-spacraft-flight-software(165)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Spacraft Flight Software(165)</text>
       </g>
       <g class="node" transform="translate(360, 178.88888549804688)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-power-subsystem(297)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Power Subsystem(297)</text>
       </g>
       <g class="node" transform="translate(360, 127.77777862548828)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-thermal-subsystem(307)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Thermal Subsystem(307)</text>
       </g>
       <g class="node" transform="translate(360, 76.66666412353516)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-telecom-subsystem(316)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Telecom Subsystem(316)</text>
       </g>
       <g class="node" transform="translate(360, 25.55555534362793)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
@@ -3975,31 +3978,31 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </g>
       <g class="node" transform="translate(180, 434.4444580078125)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">lander-ground-data-system(0)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Lander Ground Data System(0)</text>
       </g>
       <g class="node" transform="translate(180, 383.3333435058594)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">mission-operations-system(0)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Mission Operations System(0)</text>
       </g>
       <g class="node" transform="translate(180, 332.22222900390625)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-ground-data-system(0)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Ground Data System(0)</text>
       </g>
       <g class="node" transform="translate(180, 281.1111145019531)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">lander-spacecraft(1200)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Lander Spacecraft(1200)</text>
       </g>
       <g class="node" transform="translate(180, 230)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">orbiter-spacecraft(1857)</text>
+       <text dy="0.35em" text-anchor="end" x="-13">Orbiter Spacecraft(1857)</text>
       </g>
       <g class="node" transform="translate(180, 178.88888549804688)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">orbiter-launch-system(2000)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter Launch System(2000)</text>
       </g>
       <g class="node" transform="translate(180, 127.77777862548828)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">lander-launch-system(3500)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Lander Launch System(3500)</text>
       </g>
       <g class="node" transform="translate(0, 281.1111145019531)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
@@ -4009,9 +4012,328 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </svg>
     <p class="note" role="note"><span>Note:</span> that in the second visualization above, each node in the tree rolls up the mass from the levels below (if any). Such computation would be part of an analysis that runs on the query results before producing the visualization.</p>
     <h3 class="heading settled" data-level="3.8" id="tutorial2-p6"><span class="secno">3.8. </span><span class="content">P6: Component presents Interface</span><a class="self-link" href="#tutorial2-p6"></a></h3>
-    <h3 class="heading settled" data-level="3.9" id="tutorial2-p7"><span class="secno">3.9. </span><span class="content">P7: Junction joins Interface</span><a class="self-link" href="#tutorial2-p7"></a></h3>
-    <h3 class="heading settled" data-level="3.10" id="tutorial2-p8"><span class="secno">3.10. </span><span class="content">P8: Interface transfers (Flow or Item)</span><a class="self-link" href="#tutorial2-p8"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>Components contain other components. These subcomponents interact in ways that lead to emergent behavior. The interactions are sometimes the result of purposeful interconnection. Components may be designed with specific features to allow or enact interconnection. These features we call Interfaces. We say Components present Interfaces. Note that an interface is on one side or the other; it’s not the connection itself.</p>
+    <p><strong>New Vocabularies</strong></p>
+    <ol>
+     <li data-md>
+      <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Interface represents a set of features that describe some Component’s interaction with another Component."</c->
+<c- n>concept</c-> <c- nc>Interface</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component presents zero or more Interfaces."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Presents</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Component</c->
+	<c- n>to</c-> <c- nc>Interface</c->
+	<c- n>forward</c-> <c- n>presents</c->
+	<c- n>reverse</c-> <c- n>isPresentedBy</c->
+	<c- n>inverse</c-> <c- n>functional</c->
+	<c- n>asymmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
+</pre>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
+      <p><img src="assets/img/Tutorial2-P6-Mission-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②③">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Description</strong></p>
+    <p>With this pattern, we can model the interfaces of some of the components in kepler16b.</p>
+    <ol start="4">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/interfaces#></code> and prefix <code>interfaces</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.04"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry In"</c->
+	<c- p>]</c->
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.03"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command Out"</c->
+	<c- p>]</c->
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
+	<c- p>]</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command In"</c->
+	<c- p>]</c->
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
+	<c- p>]</c->
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry Out"</c->
+	<c- p>]</c->
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> in the OML code above a new element defined with the keyword <code>ri</code>, which is short for a relation instance. This is a a named instane that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  naamed <code>orbiter-ground-data-system.presents.telemetryIn</code> is typed by the <code>mission:Presents</code> relation entity and is <code>from</code> concept instance <code>components:orbiter-ground-data-system</code> (a component) to concept instance <code>orbiter-ground-data-system.telemetryIn</code> (an interface).</p>
+    <p class="note" role="note"><span>Note:</span> Creating a relation instance is an alternative to creating an unreified (simple) link as we have doing so far. It is done when the link needs to be referenced by other statements (as we will see in P7), or when it needs to be characterized by values to its properties (defined in the domain of relation entity types).</p>
+    <ol start="5">
+     <li data-md>
+      <p>The following is a visualization of the <code>interfaces</code> description:</p>
+      <p><img src="assets/img/Tutorial2-P6-Interfaces-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>interfaces</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#></c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②①">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②④">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
+    <h3 class="heading settled" data-level="3.9" id="tutorial2-p7"><span class="secno">3.9. </span><span class="content">P7: Requirement specifies Presents</span><a class="self-link" href="#tutorial2-p7"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>Requirements specify conditions that must be true of the system. One thing a requirement may specify is that some component presents an interface of a certain type or with certain properties. We say this with the reification pattern: (Requirement specifies (Component presents Interface)), in which (Component presents Interface) is reified with a member of class Presents (as seen above in P6).</p>
+    <p><strong>New Vocabulary</strong></p>
+    <ol>
+     <li data-md>
+      <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"SpecifiedThing is something that isSpecifiedBy a Requirement"</c->
+<c- n>aspect</c-> <c- nc>SpecifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"Presents is a relation that can be specified by a requirement."</c->
+<c- n>ref</c-> <c- n>relation</c-> <c- n>entity</c-> <c- nc>Presents</c-> <c- o>:></c-> <c- nc>SpecifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Requirement specifies that something must be true about something."</c->
+<c- n>concept</c-> <c- nc>Requirement</c-> <c- o>:></c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Requirement specifies zero or more SpecifiedThings."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Specifies</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Requirement</c->
+	<c- n>to</c-> <c- nc>SpecifiedThing</c->
+	<c- n>forward</c-> <c- n>specifies</c->
+	<c- n>reverse</c-> <c- n>isSpecifiedBy</c->
+	<c- n>functional</c->
+	<c- n>asymmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> how we added aspect <code>SpecifiedThing</code> as another supertype to relation entity <code>Presents</code>, which was previous defined. This says that its relation instances can be ranges of <code>Specifies</code> links.</p>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
+      <p><img src="assets/img/Tutorial2-P7-Mission-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②②">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑤">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Desriptions</strong></p>
+    <p>With this pattern in the vocabulary, and with (Component <code>Presents</code> Interface) relation instances specified in P6 before, we can now create requirements that specify those instances.</p>
+    <ol start="4">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/requirements#></code> and prefix <code>requirements</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/requirements#> as requirements {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.04"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c->
+	<c- p>]</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.05"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c->
+	<c- p>]</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.06"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c->
+	<c- p>]</c->
+
+	<c- n>ci</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.07"</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <ol start="5">
+     <li data-md>
+      <p>The following is a visualization of the <code>requirements</code> description:</p>
+      <p><img src="assets/img/Tutorial2-P7-Requirements-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>requirements</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/requirements#></c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑥">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p>Let us now develop a query that extracts the requirements on components presenting interfaces.</p>
+    <ol start="9">
+     <li data-md>
+      <p>Creat the file <code>src/sparql/requirements.sparql</code> and copy the following SPARQL code as its content.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
+<c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+<c- nc>PREFIX</c-> <c- n>oml</c-><c- p>:</c->     	<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//opencaesar.io/oml#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>r_id</c-> <c- o>?</c-><c- n>c_id</c-> <c- o>?</c-><c- n>i_id</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+	<c- o>?</c-><c- n>r</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>r_id</c-> <c- p>;</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- p>[</c->
+			<c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>;</c->
+			<c- n>oml</c-><c- p>:</c-><c- n>hasSource</c-> <c- p>[</c->
+				<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c_id</c->
+			<c- p>]</c-> <c- p>;</c->
+			<c- n>oml</c-><c- p>:</c-><c- n>hasTarget</c-> <c- p>[</c->
+				<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>i_id</c->
+			<c- p>]</c->
+		<c- p>]</c->
+<c- p>}</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>r_id</c-> <c- o>?</c-><c- n>c_id</c-> <c- o>?</c-><c- n>i_id</c->
+</pre>
+    <ol start="10">
+     <li data-md>
+      <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②④">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑦">Gradle Executions view</a>. It should run with no errors.</p>
+     <li data-md>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②③">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/requirements.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p><img src="assets/img/Tutorial2-P7-Query-Results.png" width="100%"></p>
+     <li data-md>
+      <p>With this JSON results, one could develop a requirement doc generator that would generate the following:</p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> the doc generator code is not part of the tutorial.</p>
+<pre>Requirement 'R.04' specifies that component 'Orbiter Ground Data System' shall present interface 'Command Out'.
+Requirement 'R.05' specifies that component 'Orbiter Spacecraft' shall present interface 'Command In'.
+Requirement 'R.06' specifies that component 'Orbiter Ground Data System' shall present interface 'Telemetry In'.
+Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present interface 'Telemetry Out'.
+</pre>
+    <h3 class="heading settled" data-level="3.10" id="tutorial2-p8"><span class="secno">3.10. </span><span class="content">P8: Interface joins Interface</span><a class="self-link" href="#tutorial2-p8"></a></h3>
+    <p><strong>Pattern Synopsis</strong></p>
+    <p>Junctions represent actual connections between Interfaces presented by Components. When a component has an interface that joins an interface of another component, we infer that there is a Connection between these components.</p>
+    <p><strong>New Vocabulary</strong></p>
+    <ol>
+     <li data-md>
+      <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to the body. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Junction joins two or more Interfaces."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Junction</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Interface</c->
+	<c- n>to</c-> <c- nc>Interface</c->
+	<c- n>forward</c-> <c- n>joins</c->
+	<c- n>symmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component connects to zero or more components."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Connection</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>Component</c->
+	<c- n>to</c-> <c- nc>Component</c->
+	<c- n>forward</c-> <c- n>connectsTo</c->
+	<c- n>symmetric</c->
+<c- p>]</c->
+
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"When interfaces presented by components are joined, we infer that the components are connected."</c->
+<c- n>rule</c-> <c- nc>Junction</c-><c- o>-</c-><c- n>infers</c-><c- o>-</c-><c- nc>Connection</c-> <c- p>[</c->
+	<c- n>presents</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>i1</c-><c- p>)</c-> <c- n>^</c-> <c- n>joins</c-><c- p>(</c-><c- n>i1</c-><c- p>,</c-> <c- n>i2</c-><c- p>)</c-> <c- n>^</c-> <c- n>isPresentedBy</c-><c- p>(</c-><c- n>i2</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c-> <c- o>-></c-> <c- n>connectsTo</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c->
+<c- p>]</c->
+</pre>
+    <p class="note" role="note"><span>Note:</span> how the rule <code>Junction-infers-Connection</code> says that when a component presents an interface that joins another interface, which is presented by another component, then the former component is said to connect to the latter component. Since both relation entities <code>Junction</code> and <code>Connection</code> are flagged as symmetric, a single assertion that a junction joins one interface to another is sufficient to make a DL reasoner infer that both their components connect to one another.</p>
+    <ol start="2">
+     <li data-md>
+      <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
+      <p><img src="assets/img/Tutorial2-P8-Mission-Vocabulary.png" width="100%"></p>
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑧">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Desriptions</strong></p>
+    <p>With this pattern in the vocabulary, we can specify <code>Junction</code> relation instances between some interfaces.</p>
+    <ol start="4">
+     <li data-md>
+      <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/junctions#></code> and prefix <code>junctions</code>. Copy the following OML code as its contents. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/junctions#> as junctions {</c->
+
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
+
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>command</c-><c- p>.</c-><c- n>uplink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
+		<c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.01"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Command Uplink"</c->
+	<c- p>]</c->
+
+	<c- n>ri</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetry</c-><c- p>.</c-><c- n>downlink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
+		<c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
+		<c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.02"</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telemetry Downlink"</c->
+	<c- p>]</c->
+<c- p>}</c->
+</pre>
+    <ol start="5">
+     <li data-md>
+      <p>The following is a visualization of the <code>junctions</code> description:</p>
+      <p><img src="assets/img/Tutorial2-P8-Junctions-Description.png" width="100%"></p>
+     <li data-md>
+      <p>Append the following OML code to the body of <code>description/bundle</code> to include the new <code>junctions</code> ontology. Save the editor.</p>
+    </ol>
+<pre class="language-scala highlight"><c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/junctions#></c->
+</pre>
+    <ol start="7">
+     <li data-md>
+      <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑥">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑨">Gradle Executions view</a>. This should run with no errors.</p>
+    </ol>
+    <p><strong>New Queries</strong></p>
+    <p>Let us now develop a query that extracts the requirements on components presenting interfaces.</p>
+    <ol start="8">
+     <li data-md>
+      <p>Creat the file <code>src/sparql/connections.sparql</code> and copy the following SPARQL code as its content.</p>
+    </ol>
+<pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
+<c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+
+<c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c2_name</c->
+<c- nc>WHERE</c-> <c- p>{</c->
+	<c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
+		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>;</c->
+		<c- n>mission</c-><c- p>:</c-><c- n>connectsTo</c-> <c- p>[</c->
+			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c->
+		<c- p>]</c->
+<c- p>}</c->
+<c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c2_name</c->
+</pre>
+    <ol start="10">
+     <li data-md>
+      <p>Let’s now run this query by running the task <code>tutorial2/oml/owlQuery</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑦">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view③⓪">Gradle Executions view</a>. It should run with no errors.</p>
+     <li data-md>
+      <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②④">Model Explorer view</a> and select <code>Refresh</code>. Navigate to the file <code>build/results/connections.json</code> and double click it to open its editor. You should see the following results in JSON.</p>
+      <p><img src="assets/img/Tutorial2-P8-Query-Results.png" width="100%"></p>
+    </ol>
+    <p class="note" role="note"><span>Note:</span> how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.</p>
     <h3 class="heading settled" data-level="3.11" id="tutorial2-summary"><span class="secno">3.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
+    <p>This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mixin types to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.</p>
    </div>
   </main>
 <script>
@@ -4169,6 +4491,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-model-explorer-view②⓪">3.3. P1: Objective aggregates Objective</a>
     <li><a href="#ref-for-model-explorer-view②①">3.4. P2: Mission pursues Objective</a>
     <li><a href="#ref-for-model-explorer-view②②">3.7. P5: Mass characterizes Component</a>
+    <li><a href="#ref-for-model-explorer-view②③">3.9. P7: Requirement specifies Presents</a>
+    <li><a href="#ref-for-model-explorer-view②④">3.10. P8: Interface joins Interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-task-view">
@@ -4183,6 +4507,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-task-view①③">3.5. P3: Mission deploys Component</a> <a href="#ref-for-gradle-task-view①④">(2)</a>
     <li><a href="#ref-for-gradle-task-view①⑤">3.6. P4: Component contains Component</a> <a href="#ref-for-gradle-task-view①⑥">(2)</a>
     <li><a href="#ref-for-gradle-task-view①⑦">3.7. P5: Mass characterizes Component</a> <a href="#ref-for-gradle-task-view①⑧">(2)</a> <a href="#ref-for-gradle-task-view①⑨">(3)</a>
+    <li><a href="#ref-for-gradle-task-view②⓪">3.8. P6: Component presents Interface</a> <a href="#ref-for-gradle-task-view②①">(2)</a>
+    <li><a href="#ref-for-gradle-task-view②②">3.9. P7: Requirement specifies Presents</a> <a href="#ref-for-gradle-task-view②③">(2)</a> <a href="#ref-for-gradle-task-view②④">(3)</a>
+    <li><a href="#ref-for-gradle-task-view②⑤">3.10. P8: Interface joins Interface</a> <a href="#ref-for-gradle-task-view②⑥">(2)</a> <a href="#ref-for-gradle-task-view②⑦">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gradle-executions-view">
@@ -4197,6 +4524,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-gradle-executions-view①⑥">3.5. P3: Mission deploys Component</a> <a href="#ref-for-gradle-executions-view①⑦">(2)</a>
     <li><a href="#ref-for-gradle-executions-view①⑧">3.6. P4: Component contains Component</a> <a href="#ref-for-gradle-executions-view①⑨">(2)</a>
     <li><a href="#ref-for-gradle-executions-view②⓪">3.7. P5: Mass characterizes Component</a> <a href="#ref-for-gradle-executions-view②①">(2)</a> <a href="#ref-for-gradle-executions-view②②">(3)</a>
+    <li><a href="#ref-for-gradle-executions-view②③">3.8. P6: Component presents Interface</a> <a href="#ref-for-gradle-executions-view②④">(2)</a>
+    <li><a href="#ref-for-gradle-executions-view②⑤">3.9. P7: Requirement specifies Presents</a> <a href="#ref-for-gradle-executions-view②⑥">(2)</a> <a href="#ref-for-gradle-executions-view②⑦">(3)</a>
+    <li><a href="#ref-for-gradle-executions-view②⑧">3.10. P8: Interface joins Interface</a> <a href="#ref-for-gradle-executions-view②⑨">(2)</a> <a href="#ref-for-gradle-executions-view③⓪">(3)</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */

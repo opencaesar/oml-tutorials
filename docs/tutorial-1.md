@@ -583,7 +583,7 @@ WHERE {
 
     <img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"/>
 
-1. Before we can run the queries, we need to have a triple store (database) server running. To do that, click on the [=Gradle Task view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
+9. Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the [=Gradle Task view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
 
 Note: A *Fuseki* server should now be running locally on your machine.
 
