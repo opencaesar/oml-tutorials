@@ -3,13 +3,13 @@
 Note: If you have not already done so, please do [Tutorial 1](#tutorial1) first before doing this one since we assume your familiarity with the basics of OML.
 
 ## Learning Objectives ## {#tutorial2-learning-objectives}
-This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.
+This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.
 
 Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/oml-tutorials/tree/master/tutorial2), but we encourage the reader to recreate them by following the instructions below.
 
 ## Create OML Project ##  {#tutorial2-oml-project}
 
-We will start by creating an OML project that has a vocablary bundle and a description bundle that uses it.
+We will start by creating an OML project that has a vocabulary bundle and a description bundle that uses it.
 
 1. In the [=Model Explorer view], right click and choose New -> OML Project.
 1. Name the project `tutorial2`. Click Next.
@@ -38,7 +38,7 @@ description bundle <http://example.com/tutorial2/description/bundle#> as ^bundle
 
 Note: since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.
 
-6. From the [=Gradle Task view=], run the task `tutorial2/oml/startFuseki` and wait until it finishes execution in the [=Gradle Executions view=]. It should run successfuly with no errors.
+6. From the [=Gradle Task view=], run the task `tutorial2/oml/startFuseki` and wait until it finishes execution in the [=Gradle Executions view=]. It should run successfully with no errors.
 
 Note: you should now be ready to create the patterns below. For each pattern, we give its synopsis, the new vocabulary required to support it, the new descriptions to use it, and finally the queries that we can analyze it.
 
@@ -46,11 +46,11 @@ Note: you should now be ready to create the patterns below. For each pattern, we
 
 **Pattern Synopsis**
 
-A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship *aggregates*, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homeomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only *Objectives* (this is called a restriction in OML).
+A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship *aggregates*, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only *Objectives* (this is called a restriction in OML).
 
 **New Vocabulary**
 
-We will create two vocabularies and add them to the vocabulay bundle. The first vocabulary is called `base`, which we will use to define basic patterns, and the second is called `mission`, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.
+We will create two vocabularies and add them to the vocabulary bundle. The first vocabulary is called `base`, which we will use to define basic patterns, and the second is called `mission`, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.
 
 1. Create a vocabulary with the IRI `<http://example.com/tutorial2/vocabulary/base#>` and prefix `base`. Copy the following OML code as its contents. Save the editor.
 
@@ -221,13 +221,13 @@ Note: the keyword `ci` in the OML code above is short for `concept instance`.
 	includes <http://example.com/tutorial2/description/objectives#>
 ```
 
-12. Let us check that our ontologies are stil good, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+12. Let us check that our ontologies are still good, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
 Now that we have defined the vocabulary of the first pattern, and used it in the mission description, we will create a SPARQL query to extract the pattern instances from the description.
 
-13. Creat the file `src/sparql/objectives.sparql` and copy the following SPARQL code as its content. It looks for objectives in the model and selects their ids and names.
+13. Create the file `src/sparql/objectives.sparql` and copy the following SPARQL code as its content. It looks for objectives in the model and selects their ids and names.
 
 ```scala
 PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
@@ -318,7 +318,7 @@ We undertake missions to pursue objectives. Again, objectives are not requiremen
 
 Note: that relation entity `Purses` is a reified relation (i.e., a class of relation instances), where its forward `purses` and its reverse `isPursedBy` are unreified relations (i.e., simple references). In a description model, either a reified or an unreified version of the relation can be used. The former is useful when it is desired to give the link a name and other characterizations.
 
-Note: the semantic (logical) flags specified on the relation entity `Pursues`. The first flag `reverse functional` means that an `Ojective` (the target of the relation) can be pursued by a max of `Mission` (the source of the relation). The second flag `asymmetric` means that if a mission pursues an objective, then it would be illogical to infer that the objective pursues the mission (remember with open world assumptions, any thing can be inferred unless you state otherwise). The third flag `irreflexive` means that an instance cannot be related to itself by this relation.
+Note: the semantic (logical) flags specified on the relation entity `Pursues`. The first flag `reverse functional` means that an `Objective` (the target of the relation) can be pursued by a max of `Mission` (the source of the relation). The second flag `asymmetric` means that if a mission pursues an objective, then it would be illogical to infer that the objective pursues the mission (remember with open world assumptions, anything can be inferred unless you state otherwise). The third flag `irreflexive` means that an instance cannot be related to itself by this relation.
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
@@ -464,7 +464,7 @@ Note: the visualization code is not part of this tutorial
 
 **Pattern Synopsis**
 
-We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc..  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.
+We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc.  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.
 
 **New Vocabularies**
 
@@ -493,7 +493,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
 **New Descriptions**
 
-We will now add more details to the missions description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).
+We will now add more details to the `missions` description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).
 
 4. Create a description with the IRI `<http://example.com/tutorial2/description/components#>` and prefix `components`. Copy the following OML code as its contents. Save the editor.
 
@@ -587,7 +587,7 @@ description <http://example.com/tutorial2/description/components#> as components
 	]
 ```
 
-Note: The usage of the OML keyword `ref` before the `ci` keyword in the OML code above. It is used to reference an instance defined else where (in this case in the same description). Alternatively, we could have added the `mission:deploays` statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.
+Note: The usage of the OML keyword `ref` before the `ci` keyword in the OML code above. It is used to reference an instance defined elsewhere (in this case in the same description). Alternatively, we could have added the `mission:deploys` statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.
 
 Note: The OML code above will show error markers because the `components` ontology is not imported yet. The next step has the fix.
 
@@ -625,20 +625,20 @@ Note: No new queries for this pattern. We will incorporate it with another patte
 
 **Pattern Synopsis**
 
-Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homeomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.
+Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.
 
 **New Vocabularies**
 
-1. Since `Contains` is a fundamental relation, like `Aggregstes`, let us add it to the `vocabulary/base` ontology. Append the following OML code to the `vocabulary/base` ontology. Save the editor.
+1. Since `Contains` is a fundamental relation, like `Aggregates`, let us add it to the `vocabulary/base` ontology. Append the following OML code to the `vocabulary/base` ontology. Save the editor.
 
 ```scala
-	@rdfs:comment "A ContainedElement is a thing that can participate in homeomeric containment relationships."
+	@rdfs:comment "A ContainedElement is a thing that can participate in homomeric containment relationships."
 	aspect ContainedElement
 
-	@rdfs:comment "Contains is a many-to-many relation used to represent homeomeric relations that form directed rooted trees."
+	@rdfs:comment "Contains is a many-to-many relation used to represent homomeric relations that form directed rooted trees."
 	relation entity Contains [
 		from ContainedElement
-    	to ContainedElement
+		to ContainedElement
 		forward contains
 		reverse isContainedIn
 		inverse functional
@@ -659,7 +659,7 @@ Note: You have seen so far that some entities are modeled as `concept` while oth
 	]
 ```
 
-Note: that we used the `ref` keyword here to add more statemetns to the concept `Component` defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.
+Note: that we used the `ref` keyword here to add more statements to the concept `Component` defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.
 
 3. The following is a visualization of the (modified) `base` and `mission` vocabularies so far:
 
@@ -842,9 +842,9 @@ description <http://example.com/tutorial2/description/masses#> as masses {
 }
 ```
 
-Note: how in OML code above, instances already typed by `mission:Components` in P3 are referenced (with `ref`) in this description and declared with another tyype `mechanical:MechanicalComponent`. This ability to add multiple types (whether related to each other by specialization or not) to an instacne is a string feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from `mission:Component` to `mechanical:MechanicalComponent`).
+Note: how in OML code above, instances already typed by `mission:Components` in P3 are referenced (with `ref`) in this description and declared with another type `mechanical:MechanicalComponent`. This ability to add multiple types (whether related to each other by specialization or not) to an instance is a string feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from `mission:Component` to `mechanical:MechanicalComponent`).
 
-Note: how the magnitude of each component is specified with a double literal. The literal type here specifies the precision of the value. Recall how the unit of the value has been restricted to `iso-80000-4.1:kilogram` in type `mechanical:MassMagnitude`. This means all those magnitudes values above have this unit. If the restriction was omitted, each instance could have specified its own unit. But, restrictiing units makes it easier to unify them in the same system, and manage this in one place, without loosing precision (by ignoring to specify a unit) or inviting inconsistencies (by specifying them with every value).
+Note: how the magnitude of each component is specified with a double literal. The literal type here specifies the precision of the value. Recall how the `unit` of the value has been restricted to `iso-80000-4.1:kilogram` in type `mechanical:MassMagnitude`. This means all those magnitudes values above have this unit. If the restriction was omitted, each instance could have specified its own unit. But, restricting units makes it easier to unify them in the same system, and manage this in one place, without losing precision (by ignoring to specify a unit) or inviting inconsistencies (by specifying them with every value).
 
 6. The following is a visualization of the `masses` description:
 
@@ -862,7 +862,7 @@ Note: how the magnitude of each component is specified with a double literal. Th
 
 Let us now create a query that extracts component, their compositions (if any), and their mass characterizations (if any).
 
-9. Creat the file `src/sparql/components.sparql` and copy the following SPARQL code as its content.
+9. Create the file `src/sparql/components.sparql` and copy the following SPARQL code as its content.
 
 ```scala
 PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
@@ -1037,7 +1037,7 @@ description <http://example.com/tutorial2/description/interfaces#> as interfaces
 }
 ```
 
-Note: in the OML code above a new element defined with the keyword `ri`, which is short for a relation instance. This is a a named instane that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  naamed `orbiter-ground-data-system.presents.telemetryIn` is typed by the `mission:Presents` relation entity and is `from` concept instance `components:orbiter-ground-data-system` (a component) to concept instance `orbiter-ground-data-system.telemetryIn` (an interface). 
+Note: in the OML code above a new element defined with the keyword `ri`, which is short for a relation instance. This is a named instance that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  named `orbiter-ground-data-system.presents.telemetryIn` is typed by the `mission:Presents` relation entity and is `from` concept instance `components:orbiter-ground-data-system` (a component) to concept instance `orbiter-ground-data-system.telemetryIn` (an interface). 
 
 Note: Creating a relation instance is an alternative to creating an unreified (simple) link as we have doing so far. It is done when the link needs to be referenced by other statements (as we will see in P7), or when it needs to be characterized by values to its properties (defined in the domain of relation entity types).
 
@@ -1097,7 +1097,7 @@ Note: how we added aspect `SpecifiedThing` as another supertype to relation enti
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
-**New Desriptions**
+**New Description**
 
 With this pattern in the vocabulary, and with (Component `Presents` Interface) relation instances specified in P6 before, we can now create requirements that specify those instances.
 
@@ -1148,7 +1148,7 @@ description <http://example.com/tutorial2/description/requirements#> as requirem
 
 Let us now develop a query that extracts the requirements on components presenting interfaces.
 
-9. Creat the file `src/sparql/requirements.sparql` and copy the following SPARQL code as its content.
+9. Create the file `src/sparql/requirements.sparql` and copy the following SPARQL code as its content.
 
 ```scala
 PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
@@ -1231,7 +1231,7 @@ Note: how the rule `Junction-infers-Connection` says that when a component prese
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
-**New Desriptions**
+**New Description**
 
 With this pattern in the vocabulary, we can specify `Junction` relation instances between some interfaces.
 
@@ -1303,4 +1303,4 @@ Note: how the entailments generated by the DL reasoner allowed us to write conci
 
 ## Summary ## {#tutorial2-summary}
 
-This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mixin types to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.
+This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mix-in types to add capabilities to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.

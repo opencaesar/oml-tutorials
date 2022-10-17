@@ -1489,7 +1489,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://opencaesar.github.io/oml-tutorials/" rel="canonical">
-  <meta content="c11e1ba03d74efa0b378d718bcd59b4ee251cccb" name="document-revision">
+  <meta content="5eaf8c59eb23418b43cd7ad974b1f13838e426dc" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2253,9 +2253,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <main>
    <div>
     <h2 class="heading settled" data-level="1" id="getting-ready"><span class="secno">1. </span><span class="content">Getting Ready</span><a class="self-link" href="#getting-ready"></a></h2>
-    <p>OML has a user-friendly <a href="http://www.opencaesar.io/oml/#Language-Reference">textual grammar</a> that can be edited using a simple text editor. However, for extra support like wizards, syntax highlighting, live validation, and content-assist, a user can use one of the OML editors provided by openCAESAR project. One such editor, called <a href="https://github.com/opencaesar/oml-rosetta">OML Rosetta</a>, is a plugin to the Eclipse IDE. Another editor, called <a href="https://github.com/opencaesar/oml-luxor">OML Luxor</a>, is an extension to the VSCode IDE that can be used in a VSCode desktop client or brower-based client (like <a href="https://www.gitpod.io/">Gitpod</a>). In this tutorial, we will demonstrate using the OML Rosetta editor, but the reader can follow using any other editor.</p>
+    <p>OML has a user-friendly <a href="http://www.opencaesar.io/oml/#Language-Reference">textual grammar</a> that can be edited using a simple text editor. However, for extra support like wizards, syntax highlighting, live validation, and content-assist, a user can use one of the OML editors provided by openCAESAR project. One such editor, called <a href="https://github.com/opencaesar/oml-rosetta">OML Rosetta</a>, is a plugin to the Eclipse IDE. Another editor, called <a href="https://github.com/opencaesar/oml-luxor">OML Luxor</a>, is an extension to the VSCode IDE that can be used in a VSCode desktop client or browser-based client (like <a href="https://www.gitpod.io/">Gitpod</a>). In this tutorial, we will demonstrate using the OML Rosetta editor, but the reader can follow using any other editor.</p>
     <p class="note" role="note"><span>Note:</span> that OML also has a UML-like <a href="http://www.opencaesar.io/oml/#Graphical-BNF">graphical notation</a>. Although we will not demonstrate how to create them, we will sometimes show OML diagrams to help visualize the models.</p>
-    <p>Furthermore, OML projects created by openCAESAR are Gradle projects that have OML analysis tools configured as Gradle tasks (in a build.gradle script). A user can choose to invoke such tools from a console/terminal session using the Gradle Wrapper CLI (e.g., <code>./gradlew &lt;task></code>). Alternatively, the supported OML editors mentioned above allow invoking those Gradle tasks using a UI. We will demonstrate invoking Gradle tasks from the UI in Eclipse, but the reader can choose to invoke them using the CLi (or another UI) instead.</p>
+    <p>Furthermore, OML projects created by openCAESAR are Gradle projects that have OML analysis tools configured as Gradle tasks (in a build.gradle script). A user can choose to invoke such tools from a console/terminal session using the Gradle Wrapper CLI (e.g., <code>./gradlew &lt;task></code>). Alternatively, the supported OML editors mentioned above allow invoking those Gradle tasks using a UI. We will demonstrate invoking Gradle tasks from the UI in Eclipse, but the reader can choose to invoke them using the CLI (or another UI) instead.</p>
     <h3 class="heading settled" data-level="1.1" id="install-oml-rosetta"><span class="secno">1.1. </span><span class="content">Install OML Rosetta</span><a class="self-link" href="#install-oml-rosetta"></a></h3>
     <ol>
      <li data-md>
@@ -2320,7 +2320,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <h2 class="heading settled" data-level="2" id="tutorial1"><span class="secno">2. </span><span class="content">Tutorial 1: OML Basics</span><a class="self-link" href="#tutorial1"></a></h2>
     <p class="note" role="note"><span>Note:</span> If you have not already done so, please follow the <a href="#getting-ready">Getting Ready</a> instructions first before proceeding.</p>
     <h3 class="heading settled" data-level="2.1" id="tutorial1-learning-objectives"><span class="secno">2.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial1-learning-objectives"></a></h3>
-     This tutorial provides a quick overview of the basic workflows of OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain (we use a Pizza domain since everyone is familiar with it), then use such vocabulary to describe knowledge (the pizzas sold by some pizza restaurant). Furthermore, users will learn how to build the project to check its logical consistency (e.g., vegetarian pizzas have no meat ingredients), and how to run queries on the described knowledge to answer business questions (e.g., how mauch ingredients were used?, and how many vegan pizzas were sold?). 
+     This tutorial provides a quick overview of the basic workflows of OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain (we use a Pizza domain since everyone is familiar with it), then use such vocabulary to describe knowledge (the pizzas sold by some pizza restaurant). Furthermore, users will learn how to build the project to check its logical consistency (e.g., vegetarian pizzas have no meat ingredients), and how to run queries on the described knowledge to answer business questions (e.g., how much ingredients were used? and how many vegan pizzas were sold?). 
     <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
     <h3 class="heading settled" data-level="2.2" id="tutorial1-create-oml-project"><span class="secno">2.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial1-create-oml-project"></a></h3>
     <ol>
@@ -2356,203 +2356,203 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A vocabulary about pizzas"</c->
 <c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#> as pizza {</c->
-	
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+    
+    <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
 
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+    <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
 
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+    <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
 
-	<c- c1>// Top Level</c->
+    <c- c1>// Top Level</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of things that are uniquely identified by id"</c->
-	<c- n>aspect</c-> <c- nc>IdentifiedThing</c-> <c- p>[</c->
-		<c- n>key</c-> <c- n>hasId</c->
-	<c- p>]</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The id property of an identified thing"</c->
-	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasId</c-> <c- p>[</c->
-		<c- n>domain</c-> <c- nc>IdentifiedThing</c->
-		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
-		<c- n>functional</c->
-	<c- p>]</c->	
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of things that are uniquely identified by id"</c->
+    <c- n>aspect</c-> <c- nc>IdentifiedThing</c-> <c- p>[</c->
+        <c- n>key</c-> <c- n>hasId</c->
+    <c- p>]</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The id property of an identified thing"</c->
+    <c- n>scalar</c-> <c- n>property</c-> <c- n>hasId</c-> <c- p>[</c->
+        <c- n>domain</c-> <c- nc>IdentifiedThing</c->
+        <c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+        <c- n>functional</c->
+    <c- p>]</c->   
 
-	<c- c1>// Identified Things</c->
+    <c- c1>// Identified Things</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of food items"</c->
-	<c- n>concept</c-> <c- nc>Food</c-> <c- o>:></c-> <c- nc>IdentifiedThing</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of food items"</c->
+    <c- n>concept</c-> <c- nc>Food</c-> <c- o>:></c-> <c- nc>IdentifiedThing</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a food to another used as an ingredient"</c->
-	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasIngredient</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Food</c->
-		<c- n>to</c-> <c- nc>Food</c->
-		<c- n>forward</c-> <c- n>hasIngredient</c->
-		<c- n>reverse</c-> <c- n>isIngredientOf</c->
-		<c- n>transitive</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a food to another used as an ingredient"</c->
+    <c- n>relation</c-> <c- n>entity</c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+        <c- n>from</c-> <c- nc>Food</c->
+        <c- n>to</c-> <c- nc>Food</c->
+        <c- n>forward</c-> <c- n>hasIngredient</c->
+        <c- n>reverse</c-> <c- n>isIngredientOf</c->
+        <c- n>transitive</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An enumeration of spiciness levels"</c->
-	<c- n>enumerated</c-> <c- n>scalar</c-> <c- nc>Spiciness</c-> <c- p>[</c->
-		<c- s>"Hot"</c-><c- p>,</c->
-		<c- s>"Medium"</c-><c- p>,</c->
-		<c- s>"Mild"</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An enumeration of spiciness levels"</c->
+    <c- n>enumerated</c-> <c- n>scalar</c-> <c- nc>Spiciness</c-> <c- p>[</c->
+        <c- s>"Hot"</c-><c- p>,</c->
+        <c- s>"Medium"</c-><c- p>,</c->
+        <c- s>"Mild"</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The spiciness property of a food item"</c->
-	<c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- p>[</c->
-		<c- n>domain</c-> <c- nc>Food</c->
-		<c- n>range</c-> <c- nc>Spiciness</c->
-		<c- n>functional</c->
-	<c- p>]</c->
-	
-	<c- c1>// Foods</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas"</c->
-	<c- n>concept</c-> <c- nc>Pizza</c-> <c- o>:></c-> <c- nc>Food</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasBase</c-> <c- n>to</c-> <c- nc>PizzaBase</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The spiciness property of a food item"</c->
+    <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- p>[</c->
+        <c- n>domain</c-> <c- nc>Food</c->
+        <c- n>range</c-> <c- nc>Spiciness</c->
+        <c- n>functional</c->
+    <c- p>]</c->
+    
+    <c- c1>// Foods</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas"</c->
+    <c- n>concept</c-> <c- nc>Pizza</c-> <c- o>:></c-> <c- nc>Food</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasBase</c-> <c- n>to</c-> <c- nc>PizzaBase</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza bases"</c->
-	<c- n>concept</c-> <c- nc>PizzaBase</c-> <c- o>:></c-> <c- nc>Food</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza bases"</c->
+    <c- n>concept</c-> <c- nc>PizzaBase</c-> <c- o>:></c-> <c- nc>Food</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza toppings"</c->
-	<c- n>concept</c-> <c- nc>PizzaTopping</c-> <c- o>:></c-> <c- nc>Food</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizza toppings"</c->
+    <c- n>concept</c-> <c- nc>PizzaTopping</c-> <c- o>:></c-> <c- nc>Food</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c->
-	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Pizza</c->
-		<c- n>to</c-> <c- nc>PizzaBase</c->
-		<c- n>forward</c-> <c- n>hasBase</c->
-		<c- n>reverse</c-> <c- n>isBaseOf</c->
-		<c- n>functional</c->
-		<c- n>inverse</c-> <c- n>functional</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c->
+    <c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+        <c- n>from</c-> <c- nc>Pizza</c->
+        <c- n>to</c-> <c- nc>PizzaBase</c->
+        <c- n>forward</c-> <c- n>hasBase</c->
+        <c- n>reverse</c-> <c- n>isBaseOf</c->
+        <c- n>functional</c->
+        <c- n>inverse</c-> <c- n>functional</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a topping"</c->
-	<c- n>relation</c-> <c- n>entity</c-> <c- nc>HasTopping</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Pizza</c->
-		<c- n>to</c-> <c- nc>PizzaTopping</c->
-		<c- n>forward</c-> <c- n>hasTopping</c->
-		<c- n>reverse</c-> <c- n>isToppingOf</c->
-		<c- n>inverse</c-> <c- n>functional</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a topping"</c->
+    <c- n>relation</c-> <c- n>entity</c-> <c- nc>HasTopping</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
+        <c- n>from</c-> <c- nc>Pizza</c->
+        <c- n>to</c-> <c- nc>PizzaTopping</c->
+        <c- n>forward</c-> <c- n>hasTopping</c->
+        <c- n>reverse</c-> <c- n>isToppingOf</c->
+        <c- n>inverse</c-> <c- n>functional</c->
+    <c- p>]</c->
 
-	<c- c1>// Pizzas</c->
-		
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some cheese toppings"</c->
-	<c- n>concept</c-> <c- nc>CheesyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>CheeseTopping</c->
-	<c- p>]</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some meat toppings"</c->
-	<c- n>concept</c-> <c- nc>MeatyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MeatTopping</c->
-	<c- p>]</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with all vegetarian toppings"</c->
-	<c- n>concept</c-> <c- nc>VegetarianPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>VegetarianTopping</c->
-	<c- p>]</c->
+    <c- c1>// Pizzas</c->
+        
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some cheese toppings"</c->
+    <c- n>concept</c-> <c- nc>CheesyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>CheeseTopping</c->
+    <c- p>]</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with some meat toppings"</c->
+    <c- n>concept</c-> <c- nc>MeatyPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MeatTopping</c->
+    <c- p>]</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pizzas with all vegetarian toppings"</c->
+    <c- n>concept</c-> <c- nc>VegetarianPizza</c-> <c- o>:></c-> <c- nc>Pizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>VegetarianTopping</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of American pizzas"</c->
-	<c- n>concept</c-> <c- nc>American</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SausageTopping</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of American pizzas"</c->
+    <c- n>concept</c-> <c- nc>American</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SausageTopping</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Veneziana pizzas"</c->
-	<c- n>concept</c-> <c- nc>Veneziana</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SultanaTopping</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Veneziana pizzas"</c->
+    <c- n>concept</c-> <c- nc>Veneziana</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>MeatyPizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>SultanaTopping</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Margherita pizzas"</c->
-	<c- n>concept</c-> <c- nc>Margherita</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>VegetarianPizza</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
-		<c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of Margherita pizzas"</c->
+    <c- n>concept</c-> <c- nc>Margherita</c-> <c- o>:></c-> <c- nc>CheesyPizza</c-><c- p>,</c-> <c- nc>VegetarianPizza</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>MozzarellaTopping</c->
+        <c- n>restricts</c-> <c- n>some</c-> <c- n>relation</c-> <c- n>hasTopping</c-> <c- n>to</c-> <c- nc>TomatoTopping</c->
+    <c- p>]</c->
 
-	<c- c1>// Pizza Bases</c->
+    <c- c1>// Pizza Bases</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of deep pan bases"</c->
-	<c- n>concept</c-> <c- nc>DeepPanBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of thin and crispy bases"</c->
-	<c- n>concept</c-> <c- nc>ThinAndCrispyBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of deep pan bases"</c->
+    <c- n>concept</c-> <c- nc>DeepPanBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of thin and crispy bases"</c->
+    <c- n>concept</c-> <c- nc>ThinAndCrispyBase</c-> <c- o>:></c-> <c- nc>PizzaBase</c->
 
-	<c- c1>// Pizza Toppings</c->
-		
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of meat toppings"</c->
-	<c- n>concept</c-> <c- nc>MeatTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
-	
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of vegetarian toppings"</c->
-	<c- n>concept</c-> <c- nc>VegetarianTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
+    <c- c1>// Pizza Toppings</c->
+        
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of meat toppings"</c->
+    <c- n>concept</c-> <c- nc>MeatTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
+    
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of vegetarian toppings"</c->
+    <c- n>concept</c-> <c- nc>VegetarianTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of hot spiciness toppings"</c->
-	<c- n>concept</c-> <c- nc>HotTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Hot"</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of hot spiciness toppings"</c->
+    <c- n>concept</c-> <c- nc>HotTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Hot"</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of medium spiciness toppings"</c->
-	<c- n>concept</c-> <c- nc>MediumTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Medium"</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of medium spiciness toppings"</c->
+    <c- n>concept</c-> <c- nc>MediumTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Medium"</c->
+    <c- p>]</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mild spiciness toppings"</c->
-	<c- n>concept</c-> <c- nc>MildTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Mild"</c->
-	<c- p>]</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mild spiciness toppings"</c->
+    <c- n>concept</c-> <c- nc>MildTopping</c-> <c- o>:></c-> <c- nc>PizzaTopping</c-> <c- p>[</c->
+        <c- n>restricts</c-> <c- n>scalar</c-> <c- n>property</c-> <c- n>hasSpiceness</c-> <c- n>to</c-> <c- s>"Mild"</c->
+    <c- p>]</c->
 
-	<c- c1>// Meat Topping</c->
+    <c- c1>// Meat Topping</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sausage toppings"</c->
-	<c- n>concept</c-> <c- nc>SausageTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class spiced beef toppings"</c->
-	<c- n>concept</c-> <c- nc>SpicedBeefTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
-	
-	<c- c1>// Vegetarion Toppings</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sausage toppings"</c->
+    <c- n>concept</c-> <c- nc>SausageTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class spiced beef toppings"</c->
+    <c- n>concept</c-> <c- nc>SpicedBeefTopping</c-> <c- o>:></c-> <c- nc>MeatTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+    
+    <c- c1>// Vegetarion Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sauce toppings"</c->
-	<c- n>concept</c-> <c- nc>SauceTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class cheese toppings"</c->
-	<c- n>concept</c-> <c- nc>CheeseTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class fruit toppings"</c->
-	<c- n>concept</c-> <c- nc>FruitTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class vegetable toppings"</c->
-	<c- n>concept</c-> <c- nc>VegetableTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class sauce toppings"</c->
+    <c- n>concept</c-> <c- nc>SauceTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class cheese toppings"</c->
+    <c- n>concept</c-> <c- nc>CheeseTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class fruit toppings"</c->
+    <c- n>concept</c-> <c- nc>FruitTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class vegetable toppings"</c->
+    <c- n>concept</c-> <c- nc>VegetableTopping</c-> <c- o>:></c-> <c- nc>VegetarianTopping</c->
 
-	<c- c1>// Sauce Toppings</c->
+    <c- c1>// Sauce Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tabasco toppings"</c->
-	<c- n>concept</c-> <c- nc>TobascoTopping</c-> <c- o>:></c-> <c- nc>SauceTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tabasco toppings"</c->
+    <c- n>concept</c-> <c- nc>TobascoTopping</c-> <c- o>:></c-> <c- nc>SauceTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
 
-	<c- c1>// Cheese Toppings</c->
+    <c- c1>// Cheese Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of parmesan toppings"</c->
-	<c- n>concept</c-> <c- nc>ParmesanTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mozzarella toppings"</c->
-	<c- n>concept</c-> <c- nc>MozzarellaTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of parmesan toppings"</c->
+    <c- n>concept</c-> <c- nc>ParmesanTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mozzarella toppings"</c->
+    <c- n>concept</c-> <c- nc>MozzarellaTopping</c-> <c- o>:></c-> <c- nc>CheeseTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
 
-	<c- c1>// Fruit Toppings</c->
+    <c- c1>// Fruit Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sultana toppings"</c->
-	<c- n>concept</c-> <c- nc>SultanaTopping</c-> <c- o>:></c-> <c- nc>FruitTopping</c-><c- p>,</c-> <c- nc>MediumTopping</c->
-	
-	<c- c1>// Vegetable Toppings</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sultana toppings"</c->
+    <c- n>concept</c-> <c- nc>SultanaTopping</c-> <c- o>:></c-> <c- nc>FruitTopping</c-><c- p>,</c-> <c- nc>MediumTopping</c->
+    
+    <c- c1>// Vegetable Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pepper toppings"</c->
-	<c- n>concept</c-> <c- nc>PepperTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tomatoe toppings"</c->
-	<c- n>concept</c-> <c- nc>TomatoTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of pepper toppings"</c->
+    <c- n>concept</c-> <c- nc>PepperTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of tomatoe toppings"</c->
+    <c- n>concept</c-> <c- nc>TomatoTopping</c-> <c- o>:></c-> <c- nc>VegetableTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
 
-	<c- c1>// Pepper Toppings</c->
+    <c- c1>// Pepper Toppings</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of jalapeno pepper toppings"</c->
-	<c- n>concept</c-> <c- nc>JalapenoPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sweet pepper toppings"</c->
-	<c- n>concept</c-> <c- nc>SweetPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of jalapeno pepper toppings"</c->
+    <c- n>concept</c-> <c- nc>JalapenoPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>HotTopping</c->
+    <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of sweet pepper toppings"</c->
+    <c- n>concept</c-> <c- nc>SweetPepperTopping</c-> <c- o>:></c-> <c- nc>PepperTopping</c-><c- p>,</c-> <c- nc>MildTopping</c->
 <c- p>}</c->
 </pre>
     <h3 class="heading settled" data-level="2.4" id="tutorial1-create-oml-vocabulary-bundle"><span class="secno">2.4. </span><span class="content">Create OML Vocabulary Bundle</span><a class="self-link" href="#tutorial1-create-oml-vocabulary-bundle"></a></h3>
@@ -2571,11 +2571,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A vocabulary bundle for closed-world reasoning about pizzas"</c->
 <c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza-bundle#> as pizza-bundle {</c->
-	
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+    
+    <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
 
-	<c- c1>// The pizza vocabulary bundle "includes" the pizza vocabulary</c->
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
+    <c- c1>// The pizza vocabulary bundle "includes" the pizza vocabulary</c->
+    <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
 
 <c- p>}</c->
 </pre>
@@ -2595,93 +2595,93 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A description of the sales of a specific pizza restaurant"</c->
 <c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/restaurant#> as restaurant {</c->
-	
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+    
+    <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
 
-	<c- c1>// The restaurant description "uses" the pizza vocabulary terms in assertions </c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#> as pizza</c->
+    <c- c1>// The restaurant description "uses" the pizza vocabulary terms in assertions </c->
+    <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#> as pizza</c->
 
-	<c- c1>// Pizza 1</c->
+    <c- c1>// Pizza 1</c->
 
-	<c- n>ci</c-> <c- n>base1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
-	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
-	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
-	<c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
-	<c- n>ci</c-> <c- n>pizza1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c->
-	<c- p>]</c->
-	
-	<c- c1>// Pizza 2</c->
+    <c- n>ci</c-> <c- n>base1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+    <c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+    <c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+    <c- n>ci</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
+    <c- n>ci</c-> <c- n>pizza1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>2</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping1</c-><c- o>-</c-><c- mi>3</c->
+    <c- p>]</c->
+    
+    <c- c1>// Pizza 2</c->
 
-	<c- n>ci</c-> <c- n>base2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
-	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
-	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
-	<c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
-	<c- n>ci</c-> <c- n>pizza2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"2"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c->
-	<c- p>]</c->
-		
-	<c- c1>// Pizza 3</c->
+    <c- n>ci</c-> <c- n>base2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+    <c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+    <c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+    <c- n>ci</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SausageTopping</c->
+    <c- n>ci</c-> <c- n>pizza2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"2"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>2</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping2</c-><c- o>-</c-><c- mi>3</c->
+    <c- p>]</c->
+        
+    <c- c1>// Pizza 3</c->
 
-	<c- n>ci</c-> <c- n>base3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
-	<c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
-	<c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
-	<c- n>ci</c-> <c- n>pizza3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Margherita</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"3"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base3</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c->
-	<c- p>]</c->
+    <c- n>ci</c-> <c- n>base3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+    <c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+    <c- n>ci</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+    <c- n>ci</c-> <c- n>pizza3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Margherita</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"3"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base3</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping3</c-><c- o>-</c-><c- mi>2</c->
+    <c- p>]</c->
 
-	<c- c1>// Pizza 4</c->
+    <c- c1>// Pizza 4</c->
 
-	<c- n>ci</c-> <c- n>base4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
-	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
-	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
-	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SultanaTopping</c->
-	<c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SpicedBeefTopping</c->
-	<c- n>ci</c-> <c- n>pizza4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Veneziana</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"4"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base4</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c->
-	<c- p>]</c->
+    <c- n>ci</c-> <c- n>base4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
+    <c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+    <c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>MozzarellaTopping</c->
+    <c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SultanaTopping</c->
+    <c- n>ci</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>SpicedBeefTopping</c->
+    <c- n>ci</c-> <c- n>pizza4</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>Veneziana</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"4"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base4</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>2</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>3</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping4</c-><c- o>-</c-><c- mi>4</c->
+    <c- p>]</c->
 
-	<c- c1>// Pizza 5</c->
+    <c- c1>// Pizza 5</c->
 
-	<c- n>ci</c-> <c- n>base5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
-	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TobascoTopping</c->
-	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ParmesanTopping</c->
-	<c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
-	<c- n>ci</c-> <c- n>pizza5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"5"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base5</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c->
-	<c- p>]</c->
+    <c- n>ci</c-> <c- n>base5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+    <c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TobascoTopping</c->
+    <c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ParmesanTopping</c->
+    <c- n>ci</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
+    <c- n>ci</c-> <c- n>pizza5</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"5"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base5</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>2</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping5</c-><c- o>-</c-><c- mi>3</c->
+    <c- p>]</c->
 
-	<c- c1>// Pizza 6</c->
+    <c- c1>// Pizza 6</c->
 
-	<c- n>ci</c-> <c- n>base6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
-	<c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
-	<c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
-	<c- n>ci</c-> <c- n>pizza6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"6"</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base6</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
-		<c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
-	<c- p>]</c->
+    <c- n>ci</c-> <c- n>base6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
+    <c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>TomatoTopping</c->
+    <c- n>ci</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>JalapenoPepperTopping</c->
+    <c- n>ci</c-> <c- n>pizza6</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetarianPizza</c-> <c- p>[</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"6"</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base6</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
+        <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- n>topping6</c-><c- o>-</c-><c- mi>1</c->
+    <c- p>]</c->
 
 <c- p>}</c->
 </pre>
@@ -2697,14 +2697,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <pre class="language-scala highlight"><c- nd>@dc</c-><c- p>:</c-><c- n>description</c-> <c- s>"A description bundle for closed-world reasoning about a restaurant"</c->
 <c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/bundle#> as ^bundle {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
-	
-	<c- c1>// The description bundle "uses" the vocabulary bundle world closure axioms</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza-bundle#></c->
+    <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//purl.org/dc/elements/1.1/> as dc</c->
+    
+    <c- c1>// The description bundle "uses" the vocabulary bundle world closure axioms</c->
+    <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza-bundle#></c->
 
-	<c- c1>// The description bundle "includes" the restaurant description	</c->
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/restaurant#></c->
-	
+    <c- c1>// The description bundle "includes" the restaurant description </c->
+    <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/description/restaurant#></c->
+    
 <c- p>}</c->
 </pre>
     <h3 class="heading settled" data-level="2.7" id="tutorial1-run-build-task"><span class="secno">2.7. </span><span class="content">Run Build Task</span><a class="self-link" href="#tutorial1-run-build-task"></a></h3>
@@ -2751,38 +2751,38 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </video>
     <p><strong>Explaining the problem</strong></p>
     <p>This problem demonstrates why it is useful to use a logical reasoner to detect inconsistencies that may otherwise be non-obvious or unexpected. When this occurs, the reasoner provides a brief description and a minimal ontology that demonstrates the problem.</p>
-    <p>In this case, the brief description is <em>"an invidual belongs to a type and its complement"</em>. This means there exists an individual (called an instance in OML) in the model that can be inferred, using the logical semantics of the used vocabulary, to be classified by two classes that are disjoiint (i.e., do not have an intersection, or in other words are a complement of each other, hence cannot be types of the same instance).</p>
+    <p>In this case, the brief description is <em>"an individual belongs to a type and its complement"</em>. This means there exists an individual (called an instance in OML) in the model that can be inferred, using the logical semantics of the used vocabulary, to be classified by two classes that are disjoint (i.e., do not have an intersection, or in other words are a complement of each other, hence cannot be types of the same instance).</p>
     <p><img src="assets/img/Tutorial1-Logical-Explanation.png" width="100%"></p>
     <p>Looking at the minimal ontology presented, we can figure out the cause of the problem. It says that relation <code>hasBase</code> is <em>functional</em>, meaning that it can have maximum one value for a given instance. Looking at the relevant snippet of the pizza vocabulary confirms that.</p>
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- o>:></c-> <c- nc>HasIngredient</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Pizza</c->
-	<c- n>to</c-> <c- nc>PizzaBase</c->
-	<c- n>forward</c-> <c- n>hasBase</c->
-	<c- n>reverse</c-> <c- n>isBaseOf</c->
-	<c- n>functional</c->
-	<c- n>inverse</c-> <c- n>functional</c->
+    <c- n>from</c-> <c- nc>Pizza</c->
+    <c- n>to</c-> <c- nc>PizzaBase</c->
+    <c- n>forward</c-> <c- n>hasBase</c->
+    <c- n>reverse</c-> <c- n>isBaseOf</c->
+    <c- n>functional</c->
+    <c- n>inverse</c-> <c- n>functional</c->
 <c- p>]</c->
 </pre>
     <p>Moreover, it says that instance <code>base1</code> is a value of property <code>hasBase</code> on instance <code>pizza1</code>, and instance <code>base2</code> is a value of property <code>hasBase</code> on instance <code>pizza2</code>. Looking at the relevant snippet of the restaurant description confirms that.</p>
 <pre class="language-scala highlight"><c- n>ci</c-> <c- n>base1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>DeepPanBase</c->
 <c- n>ci</c-> <c- n>pizza1</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
-	<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
-	<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
+    <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+    <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base1</c->
 <c- p>]</c->
 <c- n>ci</c-> <c- n>base2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>ThinAndCrispyBase</c->
 <c- n>ci</c-> <c- n>pizza2</c-> <c- p>:</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>American</c-> <c- p>[</c->
-	<c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
-	<c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
+    <c- n>pizza</c-><c- p>:</c-><c- n>hasId</c-> <c- s>"1"</c->
+    <c- n>pizza</c-><c- p>:</c-><c- n>hasBase</c-> <c- n>base2</c->
 <c- p>]</c->
 </pre>
     <p>So far so good, where is the issue then?</p>
     <p>The explanation highlights that <code>pizza1</code> and <code>pizza2</code> have the same value ("1") of property <code>hasId</code>, which is defined by the <code>pizza</code> vocabulary to be <em>functional</em> (can have a maximum one value per instance). It infers from this that <code>pizza1</code> and <code>pizza2</code> are two names of a single pizza instance.</p>
 <pre class="language-scala highlight"><c- n>scalar</c-> <c- n>property</c-> <c- n>hasId</c-> <c- p>[</c->
-	<c- n>domain</c-> <c- nc>IdentifiedThing</c->
-	<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
-	<c- n>functional</c->
-<c- p>]</c->	
+    <c- n>domain</c-> <c- nc>IdentifiedThing</c->
+    <c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+    <c- n>functional</c->
+<c- p>]</c->   
 </pre>
     <p>In light of the above, and having established previously that property <code>hasBase</code> is <em>functional</em>, it follows logically that <code>base1</code> and <code>base2</code> must be two names of the same base individual. But, wait, we asserted in the restaurant description that those instances are typed by concepts <code>DeepPanBase</code> and <code>ThinAndCrispyBase</code>, respectively. This means now that the same base instance is typed by both these types.</p>
     <p>However, the explanation also says that these two types are in fact disjoint. Where did it get this from? It turns out to be a generated assertion in the <code>pizza-bundle</code> vocabulary bundle. Such assertion is generated since the two types do not have a common subtype in the <code>pizza</code> vocabulary (included in the vocabulary bundle). Such closed-world semantics is a benefit of using a vocabulary bundle.</p>
@@ -2814,7 +2814,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Paste the following SPARQL code as the content of the file editor and save it.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
-<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
 
 <c- nc>SELECT</c-> <c- o>?</c-><c- n>toppingKind</c-> <c- p>(</c-><c- nc>COUNT</c-><c- p>(</c-><c- o>?</c-><c- n>topping</c-><c- p>)</c-> <c- n>as</c-> <c- o>?</c-><c- n>toppingCount</c-><c- p>)</c->
 <c- nc>WHERE</c-> <c- p>{</c->
@@ -2829,7 +2829,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Repeat the previous steps to create a second query file called <code>WhichPizzaIsSpicy.sparql</code> and this time use the following SPARQL code.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
-<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>pizza</c->
 <c- nc>WHERE</c-> <c- p>{</c->
@@ -2842,7 +2842,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Repeat the previous steps to create a third query file called <code>WhichPizzaIsVegan.sparql</code> and this time use the following SPARQL code.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>pizza</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial1/vocabulary/pizza#></c->
-<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c-> 		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>pizza</c->
 <c- nc>WHERE</c-> <c- p>{</c->
@@ -2850,7 +2850,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <c- nc>FILTER</c-> <c- nc>NOT</c-> <c- nc>EXISTS</c-> <c- p>{</c->
        <c- o>?</c-><c- n>pizza</c-> <c- n>pizza</c-><c- p>:</c-><c- n>hasTopping</c-> <c- o>?</c-><c- n>nvt</c-> <c- p>.</c-> 
        <c- nc>FILTER</c-> <c- nc>NOT</c-> <c- nc>EXISTS</c-> <c- p>{</c-> 
-       	   <c- o>?</c-><c- n>nvt</c-> <c- n>a</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetableTopping</c-> 
+           <c- o>?</c-><c- n>nvt</c-> <c- n>a</c-> <c- n>pizza</c-><c- p>:</c-><c- nc>VegetableTopping</c-> 
        <c- p>}</c->
     <c- p>}</c-> 
 <c- p>}</c->
@@ -2878,7 +2878,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p><img src="assets/img/Tutorial1-Show-Query-Results-1.png" width="100%"></p>
     </ol>
     <blockquote>
-     <p>This query returned a table of two columns. The first column named <code>toppingKind</code> represents the unique topping kinds (identified by their IRIs) that were used by the restaurant in makking pizzas. The second column named <code>toppingCount</code> represents the total count of each topping kind that were used to make those pizzas.</p>
+     <p>This query returned a table of two columns. The first column named <code>toppingKind</code> represents the unique topping kinds (identified by their IRIs) that were used by the restaurant in making pizzas. The second column named <code>toppingCount</code> represents the total count of each topping kind that were used to make those pizzas.</p>
     </blockquote>
     <ol start="13">
      <li data-md>
@@ -2902,14 +2902,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
     <p class="note" role="note"><span>Note:</span> This kills the <em>Fuseki</em> server process running on your machine.</p>
     <h3 class="heading settled" data-level="2.10" id="tutorial1-summary"><span class="secno">2.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
-    <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case) that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop the <em>Fuseki</em> triple store, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
+    <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (<code>pizza</code> in this case) that can be used to describe knowledge (the pizzas made by a <code>restaurant</code> in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstrated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop the <em>Fuseki</em> server, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
     <h2 class="heading settled" data-level="3" id="tutorial2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial2"></a></h2>
     <p class="note" role="note"><span>Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one since we assume your familiarity with the basics of OML.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial2-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial2-learning-objectives"></a></h3>
-     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which repersents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth. 
+     This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth. 
     <p class="note" role="note"><span>Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial2">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
     <h3 class="heading settled" data-level="3.2" id="tutorial2-oml-project"><span class="secno">3.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial2-oml-project"></a></h3>
-    <p>We will start by creating an OML project that has a vocablary bundle and a description bundle that uses it.</p>
+    <p>We will start by creating an OML project that has a vocabulary bundle and a description bundle that uses it.</p>
     <ol>
      <li data-md>
       <p>In the [=Model Explorer view], right click and choose New -> OML Project.</p>
@@ -2939,14 +2939,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p class="note" role="note"><span>Note:</span> since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.</p>
     <ol start="6">
      <li data-md>
-      <p>From the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑥">Gradle Task view</a>, run the task <code>tutorial2/oml/startFuseki</code> and wait until it finishes execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑨">Gradle Executions view</a>. It should run successfuly with no errors.</p>
+      <p>From the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑥">Gradle Task view</a>, run the task <code>tutorial2/oml/startFuseki</code> and wait until it finishes execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑨">Gradle Executions view</a>. It should run successfully with no errors.</p>
     </ol>
     <p class="note" role="note"><span>Note:</span> you should now be ready to create the patterns below. For each pattern, we give its synopsis, the new vocabulary required to support it, the new descriptions to use it, and finally the queries that we can analyze it.</p>
     <h3 class="heading settled" data-level="3.3" id="tutorial2-p1"><span class="secno">3.3. </span><span class="content">P1: Objective aggregates Objective</span><a class="self-link" href="#tutorial2-p1"></a></h3>
     <p><strong>Pattern Synopsis</strong></p>
-    <p>A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship <em>aggregates</em>, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homeomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only <em>Objectives</em> (this is called a restriction in OML).</p>
+    <p>A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship <em>aggregates</em>, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only <em>Objectives</em> (this is called a restriction in OML).</p>
     <p><strong>New Vocabulary</strong></p>
-    <p>We will create two vocabularies and add them to the vocabulay bundle. The first vocabulary is called <code>base</code>, which we will use to define basic patterns, and the second is called <code>mission</code>, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.</p>
+    <p>We will create two vocabularies and add them to the vocabulary bundle. The first vocabulary is called <code>base</code>, which we will use to define basic patterns, and the second is called <code>mission</code>, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.</p>
     <ol>
      <li data-md>
       <p>Create a vocabulary with the IRI <code>&lt;http://example.com/tutorial2/vocabulary/base#></code> and prefix <code>base</code>. Copy the following OML code as its contents. Save the editor.</p>
@@ -3110,13 +3110,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <ol start="12">
      <li data-md>
-      <p>Let us check that our ontologies are stil good, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
+      <p>Let us check that our ontologies are still good, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑧">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①①">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Queries</strong></p>
     <p>Now that we have defined the vocabulary of the first pattern, and used it in the mission description, we will create a SPARQL query to extract the pattern instances from the description.</p>
     <ol start="13">
      <li data-md>
-      <p>Creat the file <code>src/sparql/objectives.sparql</code> and copy the following SPARQL code as its content. It looks for objectives in the model and selects their ids and names.</p>
+      <p>Create the file <code>src/sparql/objectives.sparql</code> and copy the following SPARQL code as its content. It looks for objectives in the model and selects their ids and names.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
@@ -3204,7 +3204,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span>Note:</span> that relation entity <code>Purses</code> is a reified relation (i.e., a class of relation instances), where its forward <code>purses</code> and its reverse <code>isPursedBy</code> are unreified relations (i.e., simple references). In a description model, either a reified or an unreified version of the relation can be used. The former is useful when it is desired to give the link a name and other characterizations.</p>
-    <p class="note" role="note"><span>Note:</span> the semantic (logical) flags specified on the relation entity <code>Pursues</code>. The first flag <code>reverse functional</code> means that an <code>Ojective</code> (the target of the relation) can be pursued by a max of <code>Mission</code> (the source of the relation). The second flag <code>asymmetric</code> means that if a mission pursues an objective, then it would be illogical to infer that the objective pursues the mission (remember with open world assumptions, any thing can be inferred unless you state otherwise). The third flag <code>irreflexive</code> means that an instance cannot be related to itself by this relation.</p>
+    <p class="note" role="note"><span>Note:</span> the semantic (logical) flags specified on the relation entity <code>Pursues</code>. The first flag <code>reverse functional</code> means that an <code>Objective</code> (the target of the relation) can be pursued by a max of <code>Mission</code> (the source of the relation). The second flag <code>asymmetric</code> means that if a mission pursues an objective, then it would be illogical to infer that the objective pursues the mission (remember with open world assumptions, anything can be inferred unless you state otherwise). The third flag <code>irreflexive</code> means that an instance cannot be related to itself by this relation.</p>
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the <code>mission</code> vocabulary so far:</p>
@@ -3403,7 +3403,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </svg>
     <h3 class="heading settled" data-level="3.5" id="tutorial2-p3"><span class="secno">3.5. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
     <p><strong>Pattern Synopsis</strong></p>
-    <p>We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc..  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.</p>
+    <p>We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc.  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.</p>
     <p><strong>New Vocabularies</strong></p>
     <ol>
      <li data-md>
@@ -3430,7 +3430,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑥">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
     <p><strong>New Descriptions</strong></p>
-    <p>We will now add more details to the missions description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).</p>
+    <p>We will now add more details to the <code>missions</code> description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).</p>
     <ol start="4">
      <li data-md>
       <p>Create a description with the IRI <code>&lt;http://example.com/tutorial2/description/components#></code> and prefix <code>components</code>. Copy the following OML code as its contents. Save the editor.</p>
@@ -3523,7 +3523,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
 <c- p>]</c->
 </pre>
-    <p class="note" role="note"><span>Note:</span> The usage of the OML keyword <code>ref</code> before the <code>ci</code> keyword in the OML code above. It is used to reference an instance defined else where (in this case in the same description). Alternatively, we could have added the <code>mission:deploays</code> statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.</p>
+    <p class="note" role="note"><span>Note:</span> The usage of the OML keyword <code>ref</code> before the <code>ci</code> keyword in the OML code above. It is used to reference an instance defined elsewhere (in this case in the same description). Alternatively, we could have added the <code>mission:deploys</code> statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.</p>
     <p class="note" role="note"><span>Note:</span> The OML code above will show error markers because the <code>components</code> ontology is not imported yet. The next step has the fix.</p>
     <ol start="6">
      <li data-md>
@@ -3552,25 +3552,25 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p class="note" role="note"><span>Note:</span> No new queries for this pattern. We will incorporate it with another pattern below.</p>
     <h3 class="heading settled" data-level="3.6" id="tutorial2-p4"><span class="secno">3.6. </span><span class="content">P4: Component contains Component</span><a class="self-link" href="#tutorial2-p4"></a></h3>
     <p><strong>Pattern Synopsis</strong></p>
-    <p>Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homeomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.</p>
+    <p>Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.</p>
     <p><strong>New Vocabularies</strong></p>
     <ol>
      <li data-md>
-      <p>Since <code>Contains</code> is a fundamental relation, like <code>Aggregstes</code>, let us add it to the <code>vocabulary/base</code> ontology. Append the following OML code to the <code>vocabulary/base</code> ontology. Save the editor.</p>
+      <p>Since <code>Contains</code> is a fundamental relation, like <code>Aggregates</code>, let us add it to the <code>vocabulary/base</code> ontology. Append the following OML code to the <code>vocabulary/base</code> ontology. Save the editor.</p>
     </ol>
-<pre class="language-scala highlight">	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A ContainedElement is a thing that can participate in homeomeric containment relationships."</c->
-	<c- n>aspect</c-> <c- nc>ContainedElement</c->
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A ContainedElement is a thing that can participate in homomeric containment relationships."</c->
+<c- n>aspect</c-> <c- nc>ContainedElement</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"Contains is a many-to-many relation used to represent homeomeric relations that form directed rooted trees."</c->
-	<c- n>relation</c-> <c- n>entity</c-> <c- nc>Contains</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>ContainedElement</c->
-    	<c- n>to</c-> <c- nc>ContainedElement</c->
-		<c- n>forward</c-> <c- n>contains</c->
-		<c- n>reverse</c-> <c- n>isContainedIn</c->
-		<c- n>inverse</c-> <c- n>functional</c->
-		<c- n>asymmetric</c->
-		<c- n>irreflexive</c->
-	<c- p>]</c->
+<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"Contains is a many-to-many relation used to represent homomeric relations that form directed rooted trees."</c->
+<c- n>relation</c-> <c- n>entity</c-> <c- nc>Contains</c-> <c- p>[</c->
+	<c- n>from</c-> <c- nc>ContainedElement</c->
+	<c- n>to</c-> <c- nc>ContainedElement</c->
+	<c- n>forward</c-> <c- n>contains</c->
+	<c- n>reverse</c-> <c- n>isContainedIn</c->
+	<c- n>inverse</c-> <c- n>functional</c->
+	<c- n>asymmetric</c->
+	<c- n>irreflexive</c->
+<c- p>]</c->
 </pre>
     <p class="note" role="note"><span>Note:</span> You have seen so far that some entities are modeled as <code>concept</code> while others are modeled as <code>aspect</code> in OML vocabularies. While the former is used to define a concrete entity, the latter is used to define an abstract one meant for specialization.</p>
     <ol start="2">
@@ -3583,7 +3583,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- n>restricts</c-> <c- n>all</c-> <c- n>relation</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- n>to</c-> <c- nc>Component</c->
 <c- p>]</c->
 </pre>
-    <p class="note" role="note"><span>Note:</span> that we used the <code>ref</code> keyword here to add more statemetns to the concept <code>Component</code> defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.</p>
+    <p class="note" role="note"><span>Note:</span> that we used the <code>ref</code> keyword here to add more statements to the concept <code>Component</code> defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.</p>
     <ol start="3">
      <li data-md>
       <p>The following is a visualization of the (modified) <code>base</code> and <code>mission</code> vocabularies so far:</p>
@@ -3756,8 +3756,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- p>]</c->
 <c- p>}</c->
 </pre>
-    <p class="note" role="note"><span>Note:</span> how in OML code above, instances already typed by <code>mission:Components</code> in P3 are referenced (with <code>ref</code>) in this description and declared with another tyype <code>mechanical:MechanicalComponent</code>. This ability to add multiple types (whether related to each other by specialization or not) to an instacne is a string feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from <code>mission:Component</code> to <code>mechanical:MechanicalComponent</code>).</p>
-    <p class="note" role="note"><span>Note:</span> how the magnitude of each component is specified with a double literal. The literal type here specifies the precision of the value. Recall how the unit of the value has been restricted to <code>iso-80000-4.1:kilogram</code> in type <code>mechanical:MassMagnitude</code>. This means all those magnitudes values above have this unit. If the restriction was omitted, each instance could have specified its own unit. But, restrictiing units makes it easier to unify them in the same system, and manage this in one place, without loosing precision (by ignoring to specify a unit) or inviting inconsistencies (by specifying them with every value).</p>
+    <p class="note" role="note"><span>Note:</span> how in OML code above, instances already typed by <code>mission:Components</code> in P3 are referenced (with <code>ref</code>) in this description and declared with another type <code>mechanical:MechanicalComponent</code>. This ability to add multiple types (whether related to each other by specialization or not) to an instance is a string feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from <code>mission:Component</code> to <code>mechanical:MechanicalComponent</code>).</p>
+    <p class="note" role="note"><span>Note:</span> how the magnitude of each component is specified with a double literal. The literal type here specifies the precision of the value. Recall how the <code>unit</code> of the value has been restricted to <code>iso-80000-4.1:kilogram</code> in type <code>mechanical:MassMagnitude</code>. This means all those magnitudes values above have this unit. If the restriction was omitted, each instance could have specified its own unit. But, restricting units makes it easier to unify them in the same system, and manage this in one place, without losing precision (by ignoring to specify a unit) or inviting inconsistencies (by specifying them with every value).</p>
     <ol start="6">
      <li data-md>
       <p>The following is a visualization of the <code>masses</code> description:</p>
@@ -3775,7 +3775,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p>Let us now create a query that extracts component, their compositions (if any), and their mass characterizations (if any).</p>
     <ol start="9">
      <li data-md>
-      <p>Creat the file <code>src/sparql/components.sparql</code> and copy the following SPARQL code as its content.</p>
+      <p>Create the file <code>src/sparql/components.sparql</code> and copy the following SPARQL code as its content.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
@@ -4082,7 +4082,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	<c- p>]</c->
 <c- p>}</c->
 </pre>
-    <p class="note" role="note"><span>Note:</span> in the OML code above a new element defined with the keyword <code>ri</code>, which is short for a relation instance. This is a a named instane that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  naamed <code>orbiter-ground-data-system.presents.telemetryIn</code> is typed by the <code>mission:Presents</code> relation entity and is <code>from</code> concept instance <code>components:orbiter-ground-data-system</code> (a component) to concept instance <code>orbiter-ground-data-system.telemetryIn</code> (an interface).</p>
+    <p class="note" role="note"><span>Note:</span> in the OML code above a new element defined with the keyword <code>ri</code>, which is short for a relation instance. This is a named instance that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  named <code>orbiter-ground-data-system.presents.telemetryIn</code> is typed by the <code>mission:Presents</code> relation entity and is <code>from</code> concept instance <code>components:orbiter-ground-data-system</code> (a component) to concept instance <code>orbiter-ground-data-system.telemetryIn</code> (an interface).</p>
     <p class="note" role="note"><span>Note:</span> Creating a relation instance is an alternative to creating an unreified (simple) link as we have doing so far. It is done when the link needs to be referenced by other statements (as we will see in P7), or when it needs to be characterized by values to its properties (defined in the domain of relation entity types).</p>
     <ol start="5">
      <li data-md>
@@ -4135,7 +4135,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②②">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑤">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
-    <p><strong>New Desriptions</strong></p>
+    <p><strong>New Description</strong></p>
     <p>With this pattern in the vocabulary, and with (Component <code>Presents</code> Interface) relation instances specified in P6 before, we can now create requirements that specify those instances.</p>
     <ol start="4">
      <li data-md>
@@ -4185,7 +4185,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p>Let us now develop a query that extracts the requirements on components presenting interfaces.</p>
     <ol start="9">
      <li data-md>
-      <p>Creat the file <code>src/sparql/requirements.sparql</code> and copy the following SPARQL code as its content.</p>
+      <p>Create the file <code>src/sparql/requirements.sparql</code> and copy the following SPARQL code as its content.</p>
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
@@ -4260,7 +4260,7 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task <code>tutorial2/oml/build</code> from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑧">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
-    <p><strong>New Desriptions</strong></p>
+    <p><strong>New Description</strong></p>
     <p>With this pattern in the vocabulary, we can specify <code>Junction</code> relation instances between some interfaces.</p>
     <ol start="4">
      <li data-md>
@@ -4328,7 +4328,7 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
     </ol>
     <p class="note" role="note"><span>Note:</span> how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.</p>
     <h3 class="heading settled" data-level="3.11" id="tutorial2-summary"><span class="secno">3.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
-    <p>This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mixin types to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.</p>
+    <p>This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mix-in types to add capabilities to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.</p>
    </div>
   </main>
 <script>
