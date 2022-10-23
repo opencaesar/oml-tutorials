@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://iso.org/iso-80000-3.14#"
+     xml:base="http://iso.org/iso-80000-3.14"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:oml="http://opencaesar.io/oml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vim4="http://bipm.org/jcgm/vim4#"
+     xmlns:viewpoint="http://opencaesar.io/viewpoint#"
+     xmlns:iso-1087-1="http://iso.org/iso-1087-1#">
+    <owl:Ontology rdf:about="http://iso.org/iso-80000-3.14">
+        <owl:imports rdf:resource="http://bipm.org/jcgm/vim4"/>
+        <owl:imports rdf:resource="http://iso.org/iso-80000-1"/>
+        <owl:imports rdf:resource="http://iso.org/iso-80000-3.5"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:creator>Jet Propulsion Laboratory</dc:creator>
+        <dc:description>The ISO-80000-3 library.</dc:description>
+        <dc:rights>Copyright 2021, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology. This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons.</dc:rights>
+        <dc:title>ISO-80000-3.14 rotation</dc:title>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Description"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ7-rotation -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ7-rotation">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.14#rotation"/>
+        <vim4:isDimensionless rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isDimensionless>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ7-rotation.per.2pi-plane-angle -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ7-rotation.per.2pi-plane-angle">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#ISQ7-rotation"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#ISQ7-2pi-plane-angle"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ7-rotation.plane-angle -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ7-rotation.plane-angle">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#ISQ7-rotation"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#ISQ7-plane-angle"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ8-rotation -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ8-rotation">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.14#rotation"/>
+        <vim4:isDimensionless rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isDimensionless>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ8-rotation.per.2pi-plane-angle -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ8-rotation.per.2pi-plane-angle">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#ISQ8-rotation"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#ISQ8-2pi-plane-angle"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#ISQ8-rotation.plane-angle -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#ISQ8-rotation.plane-angle">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#ISQ8-rotation"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#ISQ8-plane-angle"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI7-revolution -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI7-revolution">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.14#revolution"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI7-revolution.per.radian -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI7-revolution.per.radian">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#SI7-revolution"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#SI7-radian"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI7-revolution.radian -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI7-revolution.radian">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#SI7-revolution"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#SI7-radian"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI8-revolution -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI8-revolution">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.14#revolution"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI8-revolution.per.radian -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI8-revolution.per.radian">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#SI8-revolution"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#SI8-radian"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#SI8-revolution.radian -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#SI8-revolution.radian">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.14#SI8-revolution"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.5#SI8-radian"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#revolution -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#revolution">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#UnprefixedMeasurementUnit"/>
+        <vim4:instantiates rdf:resource="http://iso.org/iso-80000-3.14#rotation"/>
+        <vim4:id>revolution</vim4:id>
+        <dc:source>3-14.a</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.14#rotation -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.14#rotation">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>rotation</vim4:id>
+        <dc:source>3-14</dc:source>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

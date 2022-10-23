@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/tutorial1/vocabulary/pizza-bundle#"
+     xml:base="http://example.com/tutorial1/vocabulary/pizza-bundle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://example.com/tutorial1/vocabulary/pizza-bundle">
+        <owl:imports rdf:resource="http://example.com/tutorial1/vocabulary/pizza"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:description>A vocabulary bundle for closed-world reasoning about pizzas</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#VocabularyBundle"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/tutorial1/vocabulary/pizza#DeepPanBase -->
+
+
+    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#DeepPanBase">
+        <owl:disjointWith rdf:resource="http://example.com/tutorial1/vocabulary/pizza#ThinAndCrispyBase"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/tutorial1/vocabulary/pizza#Food -->
+
+
+    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Food">
+        <owl:disjointWith rdf:resource="http://example.com/tutorial1/vocabulary/pizza#HasIngredient"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/tutorial1/vocabulary/pizza#HasBase -->
+
+
+    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#HasBase">
+        <owl:disjointWith rdf:resource="http://example.com/tutorial1/vocabulary/pizza#HasTopping"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#American"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Margherita"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Veneziana"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#CheesyPizza"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#American"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Margherita"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Veneziana"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MeatyPizza"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#American"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Veneziana"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#VegetarianPizza"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://example.com/tutorial1/vocabulary/pizza#Margherita"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#JalapenoPepperTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SweetPepperTopping"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#PepperTopping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#JalapenoPepperTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SweetPepperTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MozzarellaTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#ParmesanTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SultanaTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#TobascoTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#TomatoTopping"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#CheeseTopping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MozzarellaTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#ParmesanTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#FruitTopping"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://example.com/tutorial1/vocabulary/pizza#SultanaTopping"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SauceTopping"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://example.com/tutorial1/vocabulary/pizza#TobascoTopping"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#VegetableTopping"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://example.com/tutorial1/vocabulary/pizza#TomatoTopping"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#Pizza"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#PizzaBase"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#PizzaTopping"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SausageTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SpicedBeefTopping"/>
+            <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#VegetarianTopping"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#HotTopping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#JalapenoPepperTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SpicedBeefTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#TobascoTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MeatTopping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SausageTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SpicedBeefTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MediumTopping"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://example.com/tutorial1/vocabulary/pizza#SultanaTopping"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MildTopping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#MozzarellaTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#ParmesanTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SausageTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#SweetPepperTopping"/>
+                                    <rdf:Description rdf:about="http://example.com/tutorial1/vocabulary/pizza#TomatoTopping"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

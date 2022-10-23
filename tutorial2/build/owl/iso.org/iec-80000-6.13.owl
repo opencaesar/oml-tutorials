@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://iso.org/iec-80000-6.13#"
+     xml:base="http://iso.org/iec-80000-6.13"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:oml="http://opencaesar.io/oml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vim4="http://bipm.org/jcgm/vim4#"
+     xmlns:viewpoint="http://opencaesar.io/viewpoint#"
+     xmlns:iso-1087-1="http://iso.org/iso-1087-1#">
+    <owl:Ontology rdf:about="http://iso.org/iec-80000-6.13">
+        <owl:imports rdf:resource="http://bipm.org/jcgm/vim4"/>
+        <owl:imports rdf:resource="http://iso.org/iec-80000-6.11"/>
+        <owl:imports rdf:resource="http://iso.org/iec-80000-6.2"/>
+        <owl:imports rdf:resource="http://iso.org/iso-80000-1"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:creator>Jet Propulsion Laboratory</dc:creator>
+        <dc:description>The IEC-80000-6 library.</dc:description>
+        <dc:rights>Copyright 2021, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology. This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons.</dc:rights>
+        <dc:title>IEC-80000-6.13 capacitance, farad</dc:title>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Description"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ7-capacitance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ7-capacitance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.13#capacitance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ7-electric-field-strength.electric-charge -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ7-electric-field-strength.electric-charge">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#ISQ7-capacitance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.2#ISQ7-electric-charge"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ7-electric-field-strength.per.electric-potential -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ7-electric-field-strength.per.electric-potential">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#ISQ7-capacitance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.11#ISQ7-electric-potential"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ8-capacitance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ8-capacitance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.13#capacitance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ8-electric-field-strength.electric-charge -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ8-electric-field-strength.electric-charge">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#ISQ8-capacitance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.2#ISQ8-electric-charge"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#ISQ8-electric-field-strength.per.electric-potential -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#ISQ8-electric-field-strength.per.electric-potential">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#ISQ8-capacitance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.11#ISQ8-electric-potential"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI7-farad -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI7-farad">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.13#farad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI7-farad.coulomb -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI7-farad.coulomb">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#SI7-farad"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.2#SI7-coulomb"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI7-farad.per.volt -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI7-farad.per.volt">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#SI7-farad"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.11#SI7-volt"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI8-farad -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI8-farad">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.13#farad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI8-farad.coulomb -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI8-farad.coulomb">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#SI8-farad"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.2#SI8-coulomb"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#SI8-farad.per.volt -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#SI8-farad.per.volt">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iec-80000-6.13#SI8-farad"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iec-80000-6.11#SI8-volt"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">-1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#capacitance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#capacitance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>capacitance</vim4:id>
+        <dc:source>6-13</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iec-80000-6.13#farad -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iec-80000-6.13#farad">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#UnprefixedMeasurementUnit"/>
+        <vim4:instantiates rdf:resource="http://iso.org/iec-80000-6.13#capacitance"/>
+        <vim4:id>farad</vim4:id>
+        <dc:source>6-13.a</dc:source>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

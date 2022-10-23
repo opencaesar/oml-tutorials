@@ -1,0 +1,47 @@
+@dc:creator "Jet Propulsion Laboratory"
+@dc:rights """Copyright 2010-2020, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology. 
+This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons."""
+@dc:description "This is the ISO-80000 vocabulary bundle."
+@dc:title "ISO/IEC-80000 Bundle of quantities and units"
+description bundle <http://iso.org/iso-80000-bundle#> as iso-80000-bundle {
+  
+  uses <http://purl.org/dc/elements/1.1/> as dc
+  
+  uses <http://bipm.org/jcgm/jcgm-bundle#>
+  
+  includes <http://iso.org/iso-80000-1#>
+  
+	includes <http://iso.org/iso-80000-3.1#>
+  includes <http://iso.org/iso-80000-3.2#>
+  includes <http://iso.org/iso-80000-3.3#>
+  includes <http://iso.org/iso-80000-3.4#>
+  includes <http://iso.org/iso-80000-3.5#>
+  includes <http://iso.org/iso-80000-3.6#>
+  includes <http://iso.org/iso-80000-3.7#>
+  includes <http://iso.org/iso-80000-3.8#>
+  includes <http://iso.org/iso-80000-3.9#>
+  includes <http://iso.org/iso-80000-3.10#>
+  includes <http://iso.org/iso-80000-3.11#>
+  includes <http://iso.org/iso-80000-3.14#>
+  includes <http://iso.org/iso-80000-3.15#>
+  
+  includes <http://iso.org/iso-80000-4.1#>
+  includes <http://iso.org/iso-80000-4.2#>
+  includes <http://iso.org/iso-80000-4.3#>
+  includes <http://iso.org/iso-80000-4.8#>
+  includes <http://iso.org/iso-80000-4.9#>
+  includes <http://iso.org/iso-80000-4.11#>
+  includes <http://iso.org/iso-80000-4.13#>
+  includes <http://iso.org/iso-80000-4.14#>
+  includes <http://iso.org/iso-80000-4.15#>
+  includes <http://iso.org/iso-80000-4.26#>
+  
+  includes <http://iso.org/iso-80000-5.1#>
+  
+  includes <http://iso.org/iec-80000-6.1#>
+  includes <http://iso.org/iec-80000-6.2#>
+  includes <http://iso.org/iec-80000-6.21#>
+  includes <http://iso.org/iec-80000-6.45#>
+  includes <http://iso.org/iec-80000-6.46#>
+
+}

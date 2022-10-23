@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://iso.org/iso-80000-3.1#"
+     xml:base="http://iso.org/iso-80000-3.1"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:oml="http://opencaesar.io/oml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vim4="http://bipm.org/jcgm/vim4#"
+     xmlns:viewpoint="http://opencaesar.io/viewpoint#"
+     xmlns:iso-1087-1="http://iso.org/iso-1087-1#">
+    <owl:Ontology rdf:about="http://iso.org/iso-80000-3.1">
+        <owl:imports rdf:resource="http://bipm.org/jcgm/vim4"/>
+        <owl:imports rdf:resource="http://iso.org/iso-80000-1"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:creator>Jet Propulsion Laboratory</dc:creator>
+        <dc:description>The ISO-80000-3 library.</dc:description>
+        <dc:rights>Copyright 2021, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology. This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons.</dc:rights>
+        <dc:title>ISO-80000-3.1 length, metre</dc:title>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Description"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-breadth -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-breadth">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#breadth"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-breadth.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-breadth.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-breadth"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-cartesian-coordinate -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-cartesian-coordinate">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#cartesian-coordinate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-cartesian-coordinate.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-cartesian-coordinate.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-cartesian-coordinate"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-diameter -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-diameter">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#diameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-diameter.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-diameter.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-diameter"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-displacement -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-displacement">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#displacement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-displacement.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-displacement.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-displacement"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#distance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-distance.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-distance.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-distance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-height -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-height">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#height"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-height.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-height.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-height"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#length"/>
+        <vim4:dimensionSymbol>L</vim4:dimensionSymbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-length-of-path -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-length-of-path">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#length-of-path"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-length-of-path.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-length-of-path.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length-of-path"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-position-vector -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-position-vector">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#position-vector"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-position-vector.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-position-vector.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-position-vector"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radial-distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radial-distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radial-distance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radial-distance.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radial-distance.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-radial-distance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radius -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radius">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radius"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radius-of-curvature -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radius-of-curvature">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radius-of-curvature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radius-of-curvature.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radius-of-curvature.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-radius-of-curvature"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-radius.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-radius.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-radius"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-thickness -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-thickness">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#thickness"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ7-thickness.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ7-thickness.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-thickness"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ7-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-breadth -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-breadth">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#breadth"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-breadth.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-breadth.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-breadth"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-cartesian-coordinate -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-cartesian-coordinate">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#cartesian-coordinate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-cartesian-coordinate.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-cartesian-coordinate.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-cartesian-coordinate"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-diameter -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-diameter">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#diameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-diameter.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-diameter.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-diameter"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-displacement -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-displacement">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#displacement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-displacement.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-displacement.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-displacement"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#distance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-distance.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-distance.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-distance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-height -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-height">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#height"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-height.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-height.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-height"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#length"/>
+        <vim4:dimensionSymbol>L</vim4:dimensionSymbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-length-of-path -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-length-of-path">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#length-of-path"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-length-of-path.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-length-of-path.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length-of-path"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-position-vector -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-position-vector">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#position-vector"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-position-vector.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-position-vector.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-position-vector"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radial-distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radial-distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radial-distance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radial-distance.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radial-distance.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-radial-distance"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radius -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radius">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radius"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radius-of-curvature -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radius-of-curvature">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#radius-of-curvature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radius-of-curvature.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radius-of-curvature.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-radius-of-curvature"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-radius.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-radius.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-radius"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-thickness -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-thickness">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#ISQ8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#thickness"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#ISQ8-thickness.length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#ISQ8-thickness.length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-thickness"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#ISQ8-length"/>
+        <vim4:exponent rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/1</vim4:exponent>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI7-decimetre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI7-decimetre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#decimetre"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI7-kilometre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI7-kilometre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#kilometre"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI7-metre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI7-metre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI7"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#metre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI8-decimetre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI8-decimetre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#decimetre"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI8-kilometre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI8-kilometre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#kilometre"/>
+        <vim4:isOffSystemUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</vim4:isOffSystemUnit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#SI8-metre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#SI8-metre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnit"/>
+        <oml:hasSource rdf:resource="http://iso.org/iso-80000-1#SI8"/>
+        <oml:hasTarget rdf:resource="http://iso.org/iso-80000-3.1#metre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#breadth -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#breadth">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>breadth</vim4:id>
+        <dc:source>3-1.2</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#cartesian-coordinate -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#cartesian-coordinate">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>cartesian-coordinate</vim4:id>
+        <dc:source>3-1.10</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#decimetre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#decimetre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#PrefixedMeasurementUnit"/>
+        <vim4:hasMultiple rdf:resource="http://iso.org/iso-80000-1#deci"/>
+        <vim4:isMultipleOf rdf:resource="http://iso.org/iso-80000-3.1#metre"/>
+        <vim4:id>decimetre</vim4:id>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#diameter -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#diameter">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>diameter</vim4:id>
+        <dc:source>3-1.7</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#displacement -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#displacement">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>displacement</vim4:id>
+        <dc:source>3-1.12</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>distance</vim4:id>
+        <dc:source>3-1.9</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#height -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#height">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>height</vim4:id>
+        <dc:source>3-1.3</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#kilometre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#kilometre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#PrefixedMeasurementUnit"/>
+        <vim4:hasMultiple rdf:resource="http://iso.org/iso-80000-1#kilo"/>
+        <vim4:isMultipleOf rdf:resource="http://iso.org/iso-80000-3.1#metre"/>
+        <vim4:id>kilometre</vim4:id>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#length -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#length">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>length</vim4:id>
+        <dc:source>3-1.1</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#length-of-path -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#length-of-path">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>length-of-path</vim4:id>
+        <dc:source>3-1.8</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#metre -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#metre">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#UnprefixedMeasurementUnit"/>
+        <vim4:instantiates rdf:resource="http://iso.org/iso-80000-3.1#length"/>
+        <vim4:id>metre</vim4:id>
+        <dc:source>3-1.a</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#position-vector -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#position-vector">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>position-vector</vim4:id>
+        <dc:source>3-1.11</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#radial-distance -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#radial-distance">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>radial-distance</vim4:id>
+        <dc:source>3-1.6</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#radius -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#radius">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>radius</vim4:id>
+        <dc:source>3-1.5</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#radius-of-curvature -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#radius-of-curvature">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>radius-of-curvature</vim4:id>
+        <dc:source>3-1.13</dc:source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://iso.org/iso-80000-3.1#thickness -->
+
+
+    <owl:NamedIndividual rdf:about="http://iso.org/iso-80000-3.1#thickness">
+        <rdf:type rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <vim4:id>thickness</vim4:id>
+        <dc:source>3-1.4</dc:source>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

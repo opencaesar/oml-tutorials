@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/tutorial2/description/components#"
+     xml:base="http://example.com/tutorial2/description/components"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:base="http://example.com/tutorial2/vocabulary/base#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://example.com/tutorial2/description/components">
+        <owl:imports rdf:resource="http://example.com/tutorial2/vocabulary/base"/>
+        <owl:imports rdf:resource="http://example.com/tutorial2/vocabulary/mission"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Description"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#lander-ground-data-system -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#lander-ground-data-system">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Lander Ground Data System</base:hasCanonicalName>
+        <base:hasIdentifier>C.07</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#lander-launch-system -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#lander-launch-system">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Lander Launch System</base:hasCanonicalName>
+        <base:hasIdentifier>C.05</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#lander-spacecraft -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#lander-spacecraft">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Lander Spacecraft</base:hasCanonicalName>
+        <base:hasIdentifier>C.06</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#mission-operations-system -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#mission-operations-system">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Mission Operations System</base:hasCanonicalName>
+        <base:hasIdentifier>C.04</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-command-and-data-handling-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-command-and-data-handling-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter C&amp;DH Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.04</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-ground-data-system -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-ground-data-system">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Ground Data System</base:hasCanonicalName>
+        <base:hasIdentifier>C.03</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-guidance-navigation-control-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-guidance-navigation-control-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter GN&amp;C Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.06</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-harness -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-harness">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Harness</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.02</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-launch-system -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-launch-system">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Launch System</base:hasCanonicalName>
+        <base:hasIdentifier>C.01</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-mechanical-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-mechanical-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Mechanical Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.07</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-power-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-power-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Power Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.01</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-propulsion-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-propulsion-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Propulsion Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.09</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-spacecraft -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-spacecraft">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-command-and-data-handling-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-guidance-navigation-control-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-harness"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-mechanical-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-power-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-propulsion-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-spacraft-flight-software"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-telecom-subsystem"/>
+        <base:contains rdf:resource="http://example.com/tutorial2/description/components#orbiter-thermal-subsystem"/>
+        <base:hasCanonicalName>Orbiter Spacecraft</base:hasCanonicalName>
+        <base:hasIdentifier>C.02</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-spacraft-flight-software -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-spacraft-flight-software">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Flight Software</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.08</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-telecom-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-telecom-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Telecom Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.05</base:hasIdentifier>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/tutorial2/description/components#orbiter-thermal-subsystem -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/tutorial2/description/components#orbiter-thermal-subsystem">
+        <rdf:type rdf:resource="http://example.com/tutorial2/vocabulary/mission#Component"/>
+        <base:hasCanonicalName>Orbiter Thermal Subsystem</base:hasCanonicalName>
+        <base:hasIdentifier>C.02.03</base:hasIdentifier>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

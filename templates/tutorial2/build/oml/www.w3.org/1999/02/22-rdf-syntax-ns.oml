@@ -1,0 +1,20 @@
+@dc:creator "W3C"
+@dc:rights "Copyright 1999 W3C."
+@dc:source "https://www.w3.org/TR/owl2-syntax/#ref-xml-schema-datatypes"
+@dc:description "The RDF vocabulary is a subset of the vocabulary maintained by the W3C."
+@dc:title "RDF"
+vocabulary <http://www.w3.org/1999/02/22-rdf-syntax-ns#> as rdf {
+
+	extends <http://purl.org/dc/elements/1.1/> as dc
+
+	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+
+	annotation property about
+
+	@dc:source "https://www.w3.org/TR/owl2-syntax/#Literals"
+	scalar PlainLiteral :> rdfs:Literal
+
+	@dc:source "https://www.w3.org/TR/owl2-syntax/#XML_Literals"
+	scalar XMLLiteral :> rdfs:Literal
+
+}

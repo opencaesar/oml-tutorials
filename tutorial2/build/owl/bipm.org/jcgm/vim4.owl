@@ -1,0 +1,3592 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://bipm.org/jcgm/vim4#"
+     xml:base="http://bipm.org/jcgm/vim4"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:viewpoint="http://opencaesar.io/viewpoint#"
+     xmlns:iso-1087-1="http://iso.org/iso-1087-1#">
+    <owl:Ontology rdf:about="http://bipm.org/jcgm/vim4">
+        <owl:imports rdf:resource="http://iso.org/iso-1087-1"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:creator>Jet Propulsion Laboratory</dc:creator>
+        <dc:rights>Copyright 2021, by the California Institute of Technology. ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged. Any commercial use must be negotiated with the Office of Technology Transfer at the California Institute of Technology. This software may be subject to U.S. export control laws. By accepting this software, the user agrees to comply with all applicable U.S. export laws and regulations. User has the responsibility to obtain export licenses, or other export authority as may be required before exporting such information to foreign countries or providing access to foreign persons.</dc:rights>
+        <dc:source>https://www.bipm.org/documents/20126/54295284/VIM4_CD_210111c.pdf/a57419b7-790f-2cca-f7c9-25d54d049bf6</dc:source>
+        <dc:source>https://www.bipm.org/documents/20126/56018777/VIM4+Webinar+2+Significant+Changes+6+May+2021.pdf/634ea197-98c7-bb19-331b-4048a0933927</dc:source>
+        <dc:title>OML formalization of VIM4 Committee Draft 11 January 2021</dc:title>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Vocabulary"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#characterizes -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#characterizes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#IndividualProperty"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#Object"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>characterizes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#describes -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#describes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementProcedure"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#Measurement"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>describes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#given -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#given">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfUnits"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#SystemOfQuantities"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>given</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasInput -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#hasInput">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>hasInput</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasMultiple -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#hasMultiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#Multiple"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>hasMultiple</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasPowerOfUnitFactor -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#hasPowerOfUnitFactor">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>has Power Of Unit Factor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasPowerOfUnitaryQuantityFactor -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#hasPowerOfUnitaryQuantityFactor">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>has Power Of Unitary Quantity Factor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasQuantityDimensionFactor -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#hasQuantityDimensionFactor">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>has quantity dimension factor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#includes -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#includes">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementScale"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualProperty"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>includes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#instantiates -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#instantiates">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#IndividualProperty"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#GeneralProperty"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>instantiates</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isAttributedTo -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#isAttributedTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>isAttributedTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isBasedOn -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#isBasedOn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementProcedure"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>isBasedOn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isInfluencedBy -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#isInfluencedBy">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>isInfluencedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isMultipleOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#isMultipleOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>isMultipleOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#measures -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#measures">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>measures</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#per -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#per">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementProcedure"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementPrinciple"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#specializes -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#specializes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>specializes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasBaseUnit -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasBaseUnit">
+        <rdfs:subPropertyOf rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnit"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfUnits"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has base unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasBaseUnitaryQuantity -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasBaseUnitaryQuantity">
+        <rdfs:subPropertyOf rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnitaryQuantity"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfQuantities"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has base unitary quantity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasDerivedUnit -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasDerivedUnit">
+        <rdfs:subPropertyOf rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnit"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfUnits"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has derived unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasDerivedUnitaryQuantity -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasDerivedUnitaryQuantity">
+        <rdfs:subPropertyOf rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnitaryQuantity"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfQuantities"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has derived unitary quantity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasUnit -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasUnit">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfUnits"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#systemHasUnitaryQuantity -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#systemHasUnitaryQuantity">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemOfQuantities"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>system has unitary quantity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#unit -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#unit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#UnitaryQuantityValue"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>hasUnit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#usesCorrection -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#usesCorrection">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>usesCorrection</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#usesOperationsOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#usesOperationsOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementProcedure"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementMethod"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>usesOperationsOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#yieldsMeasuredValue -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#yieldsMeasuredValue">
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>yieldsMeasuredValue</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#yieldsMeasurementUncertainty -->
+
+
+    <owl:ObjectProperty rdf:about="http://bipm.org/jcgm/vim4#yieldsMeasurementUncertainty">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#MeasurementModel"/>
+        <rdfs:range rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUncertainty"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#forwardRelation"/>
+        <rdfs:label>yieldsMeasurementUncertainty</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://opencaesar.io/oml#hasSource -->
+
+
+    <owl:ObjectProperty rdf:about="http://opencaesar.io/oml#hasSource"/>
+    
+
+
+    <!-- http://opencaesar.io/oml#hasTarget -->
+
+
+    <owl:ObjectProperty rdf:about="http://opencaesar.io/oml#hasTarget"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#sameAs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#dimensionSymbol -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#dimensionSymbol">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.7]</rdfs:isDefinedBy>
+        <rdfs:label>dimension symbol</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#exponent -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#exponent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#RationalExponent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:label>exponent</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#hasDoubleNumber -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#hasDoubleNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#UnitaryQuantityValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.21]</rdfs:isDefinedBy>
+        <rdfs:label>hasDoubleNumber</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:label>id</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isCoherent -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#isCoherent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#HasCoherence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.14]</rdfs:isDefinedBy>
+        <rdfs:label>isCoherent</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isDimensionless -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#isDimensionless">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.8]</rdfs:isDefinedBy>
+        <rdfs:label>isDimensionless</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isOffSystemUnit -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#isOffSystemUnit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.15]</rdfs:isDefinedBy>
+        <rdfs:label>Is Off-System Unit</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isReferenceValue -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#isReferenceValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.24]</rdfs:isDefinedBy>
+        <rdfs:label>isReferenceValue</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#isTrueValue -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#isTrueValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.22]</rdfs:isDefinedBy>
+        <rdfs:label>isTrueValue</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#ordinalPosition -->
+
+
+    <owl:DatatypeProperty rdf:about="http://bipm.org/jcgm/vim4#ordinalPosition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://bipm.org/jcgm/vim4#Includes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#scalarProperty"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.19]</rdfs:isDefinedBy>
+        <rdfs:label>ordinalPosition</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Characterizes -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Characterizes">
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:comment>An IndividualProperty characterizes an Object.</rdfs:comment>
+        <rdfs:label>Characterizes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Describes -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Describes">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.7]</rdfs:isDefinedBy>
+        <rdfs:label>Describes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#GeneralNominalProperty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#GeneralNominalProperty">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#GeneralProperty"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 6.1]</rdfs:isDefinedBy>
+        <rdfs:label>general nominal property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#GeneralOrdinalQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#GeneralOrdinalQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#GeneralQuantity"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>general quantity whose instances can be compared by order but not by ratio</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.30]</rdfs:isDefinedBy>
+        <rdfs:label>general ordinal quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#GeneralProperty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#GeneralProperty">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:label>general property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#GeneralQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#GeneralQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#GeneralProperty"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>property whose instances can be compared by ratio or only by order</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:comment>General quantity in [VIM4 CD: 1.1] corresponds precisely to kind-of-quantity in [OonP: S.13.3.1].  </rdfs:comment>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.1]</rdfs:isDefinedBy>
+        <rdfs:label>general quantity</rdfs:label>
+        <rdfs:label>kind of quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#GeneralQuantity"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>general quantity whose instances can be compared by ratio</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.1 - 1.30]</rdfs:isDefinedBy>
+        <rdfs:label>general unitary quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Given -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Given">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.13]</rdfs:isDefinedBy>
+        <rdfs:label>Given</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasCoherence -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasCoherence">
+        <iso-1087-1:Characteristic>true</iso-1087-1:Characteristic>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.14]</rdfs:isDefinedBy>
+        <rdfs:label>HasCoherence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasInput -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasInput">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.14]</rdfs:isDefinedBy>
+        <rdfs:label>HasInput</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasMultiple -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasMultiple">
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.17, 1.18]</rdfs:isDefinedBy>
+        <rdfs:label>HasMultiple</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#RationalExponent"/>
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.12]</rdfs:isDefinedBy>
+        <rdfs:label>Has Power Of Unit Factor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#RationalExponent"/>
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.5]</rdfs:isDefinedBy>
+        <rdfs:label>Has Power Of Unitary Quantity Factor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasQuantityDimensionFactor -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasQuantityDimensionFactor">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#RationalExponent"/>
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.7]</rdfs:isDefinedBy>
+        <rdfs:label>Has Quantity Dimension Factor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#HasUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#HasUnit">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]</rdfs:isDefinedBy>
+        <rdfs:label>HasUnit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IdentifiedElement -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IdentifiedElement">
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://bipm.org/jcgm/vim4#id"/>
+        </owl:hasKey>
+        <iso-1087-1:Characteristic>true</iso-1087-1:Characteristic>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:label>IdentifiedElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Includes -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Includes">
+        <iso-1087-1:Property>true</iso-1087-1:Property>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.19]</rdfs:isDefinedBy>
+        <rdfs:label>Includes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IndividualNominalProperty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IndividualNominalProperty">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualProperty"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#instantiates"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#GeneralNominalProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 6.2]</rdfs:isDefinedBy>
+        <rdfs:label>IndividualNominalProperty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IndividualOrdinalQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IndividualOrdinalQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#instantiates"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#GeneralOrdinalQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>instance of a general ordinal quantity</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.31]</rdfs:isDefinedBy>
+        <rdfs:label>individual ordinal quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IndividualProperty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IndividualProperty">
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:comment>The identity of a property is the unique pair of the GeneralProperty it instantiates and of the Object it characterizes.</rdfs:comment>
+        <rdfs:label>IndividualProperty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IndividualQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IndividualQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualProperty"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#instantiates"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#GeneralQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>instance of a general quantity</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.2]</rdfs:isDefinedBy>
+        <rdfs:label>individual quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IndividualUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IndividualUnitaryQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#instantiates"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#GeneralUnitaryQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>instance of a general unitary quantity</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.2 - 1.31]</rdfs:isDefinedBy>
+        <rdfs:label>individual unitary quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#InherentOrdinalQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#InherentOrdinalQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualOrdinalQuantity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#characterizes"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.31]</rdfs:isDefinedBy>
+        <rdfs:label>InherentOrdinalQuantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#InherentUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#InherentUnitaryQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualUnitaryQuantity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#characterizes"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.2 except for the cases of Note 1]</rdfs:isDefinedBy>
+        <rdfs:label>InherentUnitaryQuantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#InherentUnitaryQuantityValue -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#InherentUnitaryQuantityValue">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#InherentUnitaryQuantity"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#UnitaryQuantityValue"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:comment>This combined concept is not explictly discussed in VIM4 CD but it is practically useful.</rdfs:comment>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.2 except for the cases of Note 1 and 1.20 for an IndividualUnitaryQuantity]</rdfs:isDefinedBy>
+        <rdfs:label>InherentUnitaryQuantityValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Instantiates -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Instantiates">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:label>Instantiates</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IsAttributedTo -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IsAttributedTo">
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.23, 2.1, 2.8, 2.10, 3.1, 6.5, 6.10]</rdfs:isDefinedBy>
+        <rdfs:label>IsAttributedTo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IsBasedOn -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IsBasedOn">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.7]</rdfs:isDefinedBy>
+        <rdfs:label>IsBasedOn</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IsInfluencedBy -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IsInfluencedBy">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.16]</rdfs:isDefinedBy>
+        <rdfs:label>IsInfluencedBy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#IsMultipleOf -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#IsMultipleOf">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.17, 1.18]</rdfs:isDefinedBy>
+        <rdfs:label>IsMultipleOf</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Measurement -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Measurement">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.1]</rdfs:isDefinedBy>
+        <rdfs:label>Measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementMethod -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementMethod">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.5]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementMethod</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementModel -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementModel">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.12]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementModel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementPrinciple -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementPrinciple">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.4]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementPrinciple</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementProcedure -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementProcedure">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.7]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementProcedure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementScale -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementScale">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.19]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementScale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementUncertainty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementUncertainty">
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 3.1]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementUncertainty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#MeasurementUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#MeasurementUnit">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualUnitaryQuantity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#characterizes"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.9]</rdfs:isDefinedBy>
+        <rdfs:label>MeasurementUnit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Measures -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Measures">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.15]</rdfs:isDefinedBy>
+        <rdfs:label>Measures</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Multiple -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Multiple">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Characteristic>true</iso-1087-1:Characteristic>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.17 and 1.18]</rdfs:isDefinedBy>
+        <rdfs:label>Multiple</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Object -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Object">
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:label>Object</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#OrdinalQuantityValue -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#OrdinalQuantityValue">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualOrdinalQuantity"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#isAttributedTo"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#InherentOrdinalQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.33]</rdfs:isDefinedBy>
+        <rdfs:label>OrdinalQuantityValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#OrdinalScale -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#OrdinalScale">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#MeasurementScale"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#includes"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#OrdinalQuantityValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.32]</rdfs:isDefinedBy>
+        <rdfs:label>OrdinalScale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Per -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Per">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.4, 2.7]</rdfs:isDefinedBy>
+        <rdfs:label>Per</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#PrefixedMeasurementUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#PrefixedMeasurementUnit">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#hasMultiple"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#Multiple"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#isMultipleOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.17 or 1.18]</rdfs:isDefinedBy>
+        <rdfs:label>PrefixedMeasurementUnit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#QuantityValue -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#QuantityValue">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualQuantity"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.20]</rdfs:isDefinedBy>
+        <rdfs:label>QuantityValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#RationalExponent -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#RationalExponent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#exponent"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Characteristic>true</iso-1087-1:Characteristic>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Aspect"/>
+        <rdfs:label>Rational Exponent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#ReferenceSet -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#ReferenceSet">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#MeasurementScale"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#includes"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#IndividualNominalProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 6.3]</rdfs:isDefinedBy>
+        <rdfs:label>ReferenceSet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#Specializes -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#Specializes">
+        <iso-1087-1:GenericRelation>true</iso-1087-1:GenericRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:label>Specializes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasBaseUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasBaseUnit">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnit"/>
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.10, 1.13]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Base Unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:description>quantity in a conventionally chosen subset of a given system of quantities,  where no quantity in the set of base quantities can be expressed in terms of the others.</dc:description>
+        <dc:source>system of unitary kinds-of-quantity [OonP: S.13.7, p 129]</dc:source>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.4]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Base Unitary Quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasDerivedUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#HasCoherence"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnit"/>
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.11, 1.13]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Derived Unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:description>quantity, in a system of quantities, defined in terms of the base quantities of that system.</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.5]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Derived Unitary Quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasUnit">
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.13]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity">
+        <iso-1087-1:PartitiveRelation>true</iso-1087-1:PartitiveRelation>
+        <dc:source>system of unitary kinds-of-quantity [OonP: S.13.7, p 129]</dc:source>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.3 Note 1]</rdfs:isDefinedBy>
+        <rdfs:label>System Has Unitary Quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemOfQuantities -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemOfQuantities">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>set of quantities together with a set of non-contradictory equations relating those quantities.</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:comment>system of quantities in [VIM4 CD: 1.3, Note 2] corresponds precisely to system of unitary kinds-ef-quantity in [OonP: S.13.7].</rdfs:comment>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.3]</rdfs:isDefinedBy>
+        <rdfs:label>system of quantities</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#SystemOfUnits -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#SystemOfUnits">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#HasCoherence"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IdentifiedElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#given"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#SystemOfQuantities"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:description>set of base units and derived units, together with their multiples and submultiples,   defined in accordance with given rules, for a given system of quantities.</dc:description>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.13, 1.14]</rdfs:isDefinedBy>
+        <rdfs:label>system of units</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#UnitaryQuantityValue -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#UnitaryQuantityValue">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#IndividualUnitaryQuantity"/>
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#QuantityValue"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#isAttributedTo"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#InherentUnitaryQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#unit"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]</rdfs:isDefinedBy>
+        <rdfs:label>UnitaryQuantityValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#UnitaryScale -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#UnitaryScale">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#MeasurementScale"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#includes"/>
+                <owl:allValuesFrom rdf:resource="http://bipm.org/jcgm/vim4#UnitaryQuantityValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.19]</rdfs:isDefinedBy>
+        <rdfs:label>UnitaryScale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#UnprefixedMeasurementUnit -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#UnprefixedMeasurementUnit">
+        <rdfs:subClassOf rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#hasMultiple"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#Multiple"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://bipm.org/jcgm/vim4#isMultipleOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://bipm.org/jcgm/vim4#MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <iso-1087-1:Concept>true</iso-1087-1:Concept>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Concept"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 1.9 except for 1.17 and 1.18]</rdfs:isDefinedBy>
+        <rdfs:label>UnprefixedMeasurementUnit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#UsesCorrection -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#UsesCorrection">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.17]</rdfs:isDefinedBy>
+        <rdfs:label>UsesCorrection</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#UsesOperationsOf -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#UsesOperationsOf">
+        <iso-1087-1:AssociativeRelation>true</iso-1087-1:AssociativeRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.5]</rdfs:isDefinedBy>
+        <rdfs:label>UsesOperationsOf</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#YieldsMeasuredValue -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#YieldsMeasuredValue">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 2.11]</rdfs:isDefinedBy>
+        <rdfs:label>YieldsMeasuredValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://bipm.org/jcgm/vim4#YieldsMeasurementUncertainty -->
+
+
+    <owl:Class rdf:about="http://bipm.org/jcgm/vim4#YieldsMeasurementUncertainty">
+        <iso-1087-1:CausalRelation>true</iso-1087-1:CausalRelation>
+        <dc:type rdf:resource="http://opencaesar.io/oml#RelationEntity"/>
+        <rdfs:isDefinedBy>[VIM4 CD: 3.1]</rdfs:isDefinedBy>
+        <rdfs:label>YieldsMeasurementUncertainty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description rdf:about="urn:swrl:var#q">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#b">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#c">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#d">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#ds">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#dq">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#bs">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#bq">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#f">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#du">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#fs">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#fu">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#fq">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#t">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>given derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Given"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#given"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>hasInput derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasInput"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasInput"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>hasMultiple derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasMultiple"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasMultiple"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>hasPowerOfUnitFactor derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitFactor"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasPowerOfUnitFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>hasPowerOfUnitaryQuantityFactor derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasPowerOfUnitaryQuantityFactor"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasPowerOfUnitaryQuantityFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>hasQuantityDimensionFactor derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasQuantityDimensionFactor"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasQuantityDimensionFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>unit derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#HasUnit"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#unit"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>includes derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Includes"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#includes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>instantiates derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Instantiates"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#instantiates"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>isAttributedTo derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#IsAttributedTo"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#isAttributedTo"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>isBasedOn derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#IsBasedOn"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#isBasedOn"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>isInfluencedBy derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#IsInfluencedBy"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#isInfluencedBy"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>InherentUnitaryQuantityValueReflexiveAttribution</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#InherentUnitaryQuantityValue"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#q"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#isAttributedTo"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#q"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#q"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>isMultipleOf derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#IsMultipleOf"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#isMultipleOf"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>measures derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Measures"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#measures"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>per derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Per"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#per"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>specializes derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Specializes"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#specializes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasBaseUnit derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnit"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasBaseUnit"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasBaseUnitaryQuantity derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasBaseUnitaryQuantity"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>SpecializesTransitivity</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#specializes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#b"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#specializes"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#b"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#c"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#specializes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#c"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasDerivedUnit derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasDerivedUnit"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasDerivedUnitaryQuantity derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasDerivedUnitaryQuantity"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasUnit derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnit"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnit"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>systemHasUnitaryQuantity derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#systemHasUnitaryQuantity"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>usesCorrection derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#UsesCorrection"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#usesCorrection"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>usesOperationsOf derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#UsesOperationsOf"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#usesOperationsOf"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>yieldsMeasuredValue derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#YieldsMeasuredValue"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#yieldsMeasuredValue"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>yieldsMeasurementUncertainty derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#YieldsMeasurementUncertainty"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#yieldsMeasurementUncertainty"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>DimensionDefinedWithinTheSameSystemOfQuantities</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasQuantityDimensionFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#b"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#ds"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl:var#dq"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasBaseUnitaryQuantity"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl:var#b"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl:var#b"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl:var#bs"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl:var#b"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl:var#bq"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#SameIndividualAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#ds"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#bs"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>DerivationDefinedWithinTheSameSystemOfUnits</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasPowerOfUnitFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#f"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnit"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#ds"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl:var#du"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnit"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl:var#fs"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl:var#fu"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#SameIndividualAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#ds"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#fs"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>DerivationDefinedWithinTheSameSystemOfQuantities</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#hasPowerOfUnitaryQuantityFactor"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#f"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasDerivedUnitaryQuantity"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#ds"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl:var#d"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl:var#dq"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#SystemHasUnitaryQuantity"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl:var#fs"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl:var#f"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl:var#fq"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#SameIndividualAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#ds"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#fs"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>characterizes derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Characterizes"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#characterizes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:label>describes derivation</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasSource"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://bipm.org/jcgm/vim4#Describes"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://opencaesar.io/oml#hasTarget"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl:var#r"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://bipm.org/jcgm/vim4#describes"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#s"/>
+                        <swrl:argument2 rdf:resource="urn:swrl:var#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+
