@@ -5,3 +5,6 @@ A set of tutorials on the Ontological Modeling Language (OML) that can be access
 ## Sources
 
 All the artifacts created throughout the OML tutorials are published in this repository for easy reference. However, to improve the learning experience, it is recommended that the user recreates them from scratch by following the instructions in the tutorials.
+
+## Open with Gitpod
+[![Gitpod](https://img.shields.io/badge/gitpod-open-blue?logo=gitpod)](https://gitpod.io/#https://github.com/opencaesar/oml-tutorials) 
