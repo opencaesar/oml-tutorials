@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuites name="http://example.com/tutorial1/description/bundle">
-  <testsuite name="Consistency">
-    <testcase name="http://example.com/tutorial1/description/bundle"/>
-  </testsuite>
-  <testsuite name="Satisfiability"/>
-</testsuites>
