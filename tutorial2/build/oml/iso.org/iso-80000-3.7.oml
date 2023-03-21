@@ -12,52 +12,52 @@ description <http://iso.org/iso-80000-3.7#> as iso-80000-3.7 {
   extends <http://iso.org/iso-80000-1#> as iso-80000-1
   
   @dc:source "3-7"
-  ci time : vim4:GeneralUnitaryQuantity
+  instance time : vim4:GeneralUnitaryQuantity
   [ vim4:id "time" ]
 
-  ri ISQ7-time 
+  relation instance ISQ7-time 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to time vim4:dimensionSymbol "T" ]
   
-  ri ISQ8-time 
+  relation instance ISQ8-time 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to time vim4:dimensionSymbol "T" ]
   
   // -------------------------------------------------------
   
   @dc:source "3-7.a"
-  ci second : vim4:UnprefixedMeasurementUnit
+  instance second : vim4:UnprefixedMeasurementUnit
   [ vim4:id "second" vim4:instantiates time ]
   
-  ri SI7-second : vim4:SystemHasBaseUnit
+  relation instance SI7-second : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI7 to second ]
   
-  ri SI8-second : vim4:SystemHasBaseUnit
+  relation instance SI8-second : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI8 to second ]
   // -------------------------------------------------------
   
   @dc:source "3-7.b"
-  ci minute : vim4:PrefixedMeasurementUnit
+  instance minute : vim4:PrefixedMeasurementUnit
   [ vim4:id "minute" vim4:instantiates time 
     vim4:hasMultiple iso-80000-1:sixty vim4:isMultipleOf second ]
   
-  ri SI7-minute : vim4:SystemHasDerivedUnit
+  relation instance SI7-minute : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to minute vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
-  ri SI8-minute : vim4:SystemHasDerivedUnit
+  relation instance SI8-minute : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to minute vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
   // -------------------------------------------------------
   
   @dc:source "3-7.c"
-  ci hour : vim4:PrefixedMeasurementUnit
+  instance hour : vim4:PrefixedMeasurementUnit
   [ vim4:id "hour" vim4:instantiates time 
     vim4:hasMultiple iso-80000-1:sixty vim4:isMultipleOf minute ]
   
-  ri SI7-hour : vim4:SystemHasDerivedUnit
+  relation instance SI7-hour : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to hour vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
-  ri SI8-hour : vim4:SystemHasDerivedUnit
+  relation instance SI8-hour : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to hour vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
   

@@ -13,58 +13,58 @@ description <http://iso.org/iec-80000-6.13#> as iec-80000-6.13 {
   extends <http://iso.org/iec-80000-6.11#> as iec-80000-6.11
   
   @dc:source "6-13"
-  ci capacitance : vim4:GeneralUnitaryQuantity 
+  instance capacitance : vim4:GeneralUnitaryQuantity 
   [ vim4:id "capacitance" ]
   
-  ri ISQ7-capacitance 
+  relation instance ISQ7-capacitance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to capacitance ]
   
-  ri ISQ7-electric-field-strength.electric-charge
+  relation instance ISQ7-electric-field-strength.electric-charge
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-capacitance to iec-80000-6.2:ISQ7-electric-charge vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ7-electric-field-strength.per.electric-potential
+  relation instance ISQ7-electric-field-strength.per.electric-potential
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-capacitance to iec-80000-6.11:ISQ7-electric-potential vim4:exponent "-1/1"^^owl:rational ]
   
-  ri ISQ8-capacitance 
+  relation instance ISQ8-capacitance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to capacitance ]
   
-  ri ISQ8-electric-field-strength.electric-charge
+  relation instance ISQ8-electric-field-strength.electric-charge
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-capacitance to iec-80000-6.2:ISQ8-electric-charge vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-electric-field-strength.per.electric-potential
+  relation instance ISQ8-electric-field-strength.per.electric-potential
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-capacitance to iec-80000-6.11:ISQ8-electric-potential vim4:exponent "-1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "6-13.a"
-  ci farad : vim4:UnprefixedMeasurementUnit
+  instance farad : vim4:UnprefixedMeasurementUnit
   [ vim4:id "farad" vim4:instantiates capacitance ]
   
-  ri SI7-farad : vim4:SystemHasDerivedUnit
+  relation instance SI7-farad : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to farad ]
   
-  ri SI7-farad.coulomb
+  relation instance SI7-farad.coulomb
   : vim4:HasPowerOfUnitFactor
   [ from SI7-farad to iec-80000-6.2:SI7-coulomb vim4:exponent "1/1"^^owl:rational ]
 
-  ri SI7-farad.per.volt
+  relation instance SI7-farad.per.volt
   : vim4:HasPowerOfUnitFactor
   [ from SI7-farad to iec-80000-6.11:SI7-volt vim4:exponent "-1/1"^^owl:rational ]
 
-  ri SI8-farad : vim4:SystemHasDerivedUnit
+  relation instance SI8-farad : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to farad ]
   
-  ri SI8-farad.coulomb
+  relation instance SI8-farad.coulomb
   : vim4:HasPowerOfUnitFactor
   [ from SI8-farad to iec-80000-6.2:SI8-coulomb vim4:exponent "1/1"^^owl:rational ]
 
-  ri SI8-farad.per.volt
+  relation instance SI8-farad.per.volt
   : vim4:HasPowerOfUnitFactor
   [ from SI8-farad to iec-80000-6.11:SI8-volt vim4:exponent "-1/1"^^owl:rational ]
 

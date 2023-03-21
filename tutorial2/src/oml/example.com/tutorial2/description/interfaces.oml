@@ -4,36 +4,36 @@ description <http://example.com/tutorial2/description/interfaces#> as interfaces
 	uses <http://example.com/tutorial2/vocabulary/mission#> as mission
 	extends <http://example.com/tutorial2/description/components#> as components
 
-	ci orbiter-ground-data-system.telemetryIn : mission:Interface [
+	instance orbiter-ground-data-system.telemetryIn : mission:Interface [
 		base:hasIdentifier "I.04"
 		base:hasCanonicalName "Telemetry In"
 	]
-	ri orbiter-ground-data-system.presents.telemetryIn : mission:Presents [
+	relation instance orbiter-ground-data-system.presents.telemetryIn : mission:Presents [
 		from components:orbiter-ground-data-system
 		to orbiter-ground-data-system.telemetryIn
 	]
-	ci orbiter-ground-data-system.commandOut : mission:Interface [
+	instance orbiter-ground-data-system.commandOut : mission:Interface [
 		base:hasIdentifier "I.03"
 		base:hasCanonicalName "Command Out"
 	]
-	ri orbiter-ground-data-system.presents.commandOut : mission:Presents [
+	relation instance orbiter-ground-data-system.presents.commandOut : mission:Presents [
 		from components:orbiter-ground-data-system
 		to orbiter-ground-data-system.commandOut
 	]
 
-	ci orbiter-spacecraft.commandIn : mission:Interface [
+	instance orbiter-spacecraft.commandIn : mission:Interface [
 		base:hasIdentifier "I.01"
 		base:hasCanonicalName "Command In"
 	]
-	ri orbiter-spacecraft.presents.commandIn : mission:Presents [
+	relation instance orbiter-spacecraft.presents.commandIn : mission:Presents [
 		from components:orbiter-spacecraft
 		to orbiter-spacecraft.commandIn
 	]
-	ci orbiter-spacecraft.telemetryOut : mission:Interface [
+	instance orbiter-spacecraft.telemetryOut : mission:Interface [
 		base:hasIdentifier "I.02"
 		base:hasCanonicalName "Telemetry Out"
 	]
-	ri orbiter-spacecraft.presents.telemetryOut : mission:Presents [
+	relation instance orbiter-spacecraft.presents.telemetryOut : mission:Presents [
 		from components:orbiter-spacecraft
 		to orbiter-spacecraft.telemetryOut
 	]

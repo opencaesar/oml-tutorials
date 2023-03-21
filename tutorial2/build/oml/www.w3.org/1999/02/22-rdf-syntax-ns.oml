@@ -12,9 +12,9 @@ vocabulary <http://www.w3.org/1999/02/22-rdf-syntax-ns#> as rdf {
 	annotation property about
 
 	@dc:source "https://www.w3.org/TR/owl2-syntax/#Literals"
-	scalar PlainLiteral :> rdfs:Literal
+	scalar PlainLiteral < rdfs:Literal
 
 	@dc:source "https://www.w3.org/TR/owl2-syntax/#XML_Literals"
-	scalar XMLLiteral :> rdfs:Literal
+	scalar XMLLiteral < rdfs:Literal
 
 }

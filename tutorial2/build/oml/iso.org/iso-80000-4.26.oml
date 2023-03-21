@@ -14,58 +14,58 @@ description <http://iso.org/iso-80000-4.26#> as iso-80000-4.26 {
   extends <http://iso.org/iso-80000-4.9#> as iso-80000-4.9
   
   @dc:source "4-26"
-  ci power : vim4:GeneralUnitaryQuantity
+  instance power : vim4:GeneralUnitaryQuantity
   [ vim4:id "mechanical-power" ]
   
-  ri ISQ7-power
+  relation instance ISQ7-power
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to power vim4:isDimensionless "false"^^xsd:boolean ]
   
-  ri ISQ7-power.force
+  relation instance ISQ7-power.force
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-power to iso-80000-4.9:ISQ7-force vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ7-power.velocity
+  relation instance ISQ7-power.velocity
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-power to iso-80000-3.8:ISQ7-velocity vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-power
+  relation instance ISQ8-power
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to power vim4:isDimensionless "false"^^xsd:boolean ]
   
-  ri ISQ8-power.force
+  relation instance ISQ8-power.force
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-power to iso-80000-4.9:ISQ8-force vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-power.velocity
+  relation instance ISQ8-power.velocity
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-power to iso-80000-3.8:ISQ8-velocity vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "4-26.a"
-  ci watt : vim4:UnprefixedMeasurementUnit 
+  instance watt : vim4:UnprefixedMeasurementUnit 
   [ vim4:id "mechanical.watt" vim4:instantiates power ]
   
-  ri SI7-watt : vim4:SystemHasDerivedUnit
+  relation instance SI7-watt : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to watt ]
   
-  ri SI7-watt.newton
+  relation instance SI7-watt.newton
   : vim4:HasPowerOfUnitFactor
   [ from SI7-watt to iso-80000-4.9:SI7-newton vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI7-watt.metre-per-second
+  relation instance SI7-watt.metre-per-second
   : vim4:HasPowerOfUnitFactor
   [ from SI7-watt to iso-80000-3.8:SI7-metre-per-second vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI8-watt : vim4:SystemHasDerivedUnit
+  relation instance SI8-watt : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to watt ]
   
-  ri SI8-watt.newton
+  relation instance SI8-watt.newton
   : vim4:HasPowerOfUnitFactor
   [ from SI8-watt to iso-80000-4.9:SI8-newton vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI8-watt.metre-per-second
+  relation instance SI8-watt.metre-per-second
   : vim4:HasPowerOfUnitFactor
   [ from SI8-watt to iso-80000-3.8:SI8-metre-per-second vim4:exponent "1/1"^^owl:rational ]
   

@@ -14,58 +14,58 @@ description <http://iso.org/iso-80000-4.11#> as iso-80000-4.11 {
   extends <http://iso.org/iso-80000-4.9#> as iso-80000-4.9
   
   @dc:source "4-11"
-  ci inpulse : vim4:GeneralUnitaryQuantity
+  instance inpulse : vim4:GeneralUnitaryQuantity
   [ vim4:id "impulse" ]
   
-  ri ISQ7-inpulse
+  relation instance ISQ7-inpulse
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to inpulse vim4:isDimensionless "false"^^xsd:boolean ]
   
-  ri ISQ7-inpulse.force
+  relation instance ISQ7-inpulse.force
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-inpulse to iso-80000-4.9:ISQ7-force vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ7-inpulse.time
+  relation instance ISQ7-inpulse.time
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-inpulse to iso-80000-3.7:ISQ7-time vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-inpulse
+  relation instance ISQ8-inpulse
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to inpulse vim4:isDimensionless "false"^^xsd:boolean ]
   
-  ri ISQ8-inpulse.force
+  relation instance ISQ8-inpulse.force
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-inpulse to iso-80000-4.9:ISQ8-force vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-inpulse.time
+  relation instance ISQ8-inpulse.time
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-inpulse to iso-80000-3.7:ISQ8-time vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "4-11.a"
-  ci newton-second : vim4:UnprefixedMeasurementUnit 
+  instance newton-second : vim4:UnprefixedMeasurementUnit 
   [ vim4:id "newton-second" vim4:instantiates inpulse ]
   
-  ri SI7-newton-second : vim4:SystemHasDerivedUnit
+  relation instance SI7-newton-second : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to newton-second ]
   
-  ri SI7-newton-second.newton
+  relation instance SI7-newton-second.newton
   : vim4:HasPowerOfUnitFactor
   [ from SI7-newton-second to iso-80000-4.9:SI7-newton vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI7-newton-second.second
+  relation instance SI7-newton-second.second
   : vim4:HasPowerOfUnitFactor
   [ from SI7-newton-second to iso-80000-3.7:SI7-second vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI8-newton-second : vim4:SystemHasDerivedUnit
+  relation instance SI8-newton-second : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to newton-second ]
   
-  ri SI8-newton-second.newton
+  relation instance SI8-newton-second.newton
   : vim4:HasPowerOfUnitFactor
   [ from SI8-newton-second to iso-80000-4.9:SI8-newton vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI8-newton-second.second
+  relation instance SI8-newton-second.second
   : vim4:HasPowerOfUnitFactor
   [ from SI8-newton-second to iso-80000-3.7:SI8-second vim4:exponent "1/1"^^owl:rational ]
   

@@ -17,51 +17,51 @@ description <http://iso.org/iso-80000-3.6#> as iso-80000-3.6 {
   extends <http://iso.org/iso-80000-3.5#> as iso-80000-3.5
   
   @dc:source "3-6"
-  ci solid-angle : vim4:GeneralUnitaryQuantity
+  instance solid-angle : vim4:GeneralUnitaryQuantity
   [ vim4:id "solid-angle" ]
   
-  ri ISQ7-solid-angle
+  relation instance ISQ7-solid-angle
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to solid-angle vim4:isDimensionless "true"^^xsd:boolean ]
   
-  ri ISQ7-solid-angle.area
+  relation instance ISQ7-solid-angle.area
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-solid-angle to iso-80000-3.3:ISQ7-area vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ7-solid-angle.per.radius
+  relation instance ISQ7-solid-angle.per.radius
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-solid-angle to iso-80000-3.1:ISQ7-radius vim4:exponent "-2/1"^^owl:rational ]
   
   @rdfs:seeAlso "https://iopscience.iop.org/article/10.1088/1681-7575/abe0fc"
-  ri ISQ8-solid-angle
+  relation instance ISQ8-solid-angle
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to solid-angle vim4:isDimensionless "false"^^xsd:boolean ]
   
-  ri ISQ8-solid-angle.angle
+  relation instance ISQ8-solid-angle.angle
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-solid-angle to iso-80000-3.5:ISQ8-plane-angle vim4:exponent "2/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-6.a"
-  ci steradian : vim4:UnprefixedMeasurementUnit
+  instance steradian : vim4:UnprefixedMeasurementUnit
   [ vim4:id "steradian" vim4:instantiates solid-angle ]
   
   @rdfs:seeAlso "https://iopscience.iop.org/article/10.1088/1681-7575/abe0fc"
-  ri SI7-steradian : vim4:SystemHasDerivedUnit 
+  relation instance SI7-steradian : vim4:SystemHasDerivedUnit 
   [ from iso-80000-1:SI7 to steradian vim4:isOffSystemUnit "false"^^xsd:boolean]
   
-  ri SI7-steradian.square_metre : vim4:HasPowerOfUnitFactor
+  relation instance SI7-steradian.square_metre : vim4:HasPowerOfUnitFactor
   [ from SI7-steradian to iso-80000-3.3:SI7-square_metre vim4:exponent "1/1"^^owl:rational ]
   
-  ri SI7-steradian.metre : vim4:HasPowerOfUnitFactor
+  relation instance SI7-steradian.metre : vim4:HasPowerOfUnitFactor
   [ from SI7-steradian to iso-80000-3.1:SI7-metre vim4:exponent "-2/1"^^owl:rational ]
   
   @rdfs:seeAlso "https://iopscience.iop.org/article/10.1088/1681-7575/abe0fc"
-  ri SI8-steradian : vim4:SystemHasDerivedUnit 
+  relation instance SI8-steradian : vim4:SystemHasDerivedUnit 
   [ from iso-80000-1:SI8 to steradian vim4:isOffSystemUnit "false"^^xsd:boolean]
   
-  ri SI8-steradian.radian : vim4:HasPowerOfUnitFactor
+  relation instance SI8-steradian.radian : vim4:HasPowerOfUnitFactor
   [ from SI8-steradian to iso-80000-3.5:SI8-radian vim4:exponent "2/1"^^owl:rational ]
   
 }

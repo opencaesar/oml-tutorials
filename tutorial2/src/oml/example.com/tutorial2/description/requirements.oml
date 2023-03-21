@@ -4,22 +4,22 @@ description <http://example.com/tutorial2/description/requirements#> as requirem
 	uses <http://example.com/tutorial2/vocabulary/mission#> as mission
 	extends <http://example.com/tutorial2/description/interfaces#> as interfaces
 
-	ci orbiter-ground-data-system-command-to-spacecraft : mission:Requirement [
+	instance orbiter-ground-data-system-command-to-spacecraft : mission:Requirement [
 		base:hasIdentifier "R.04"
 		mission:specifies interfaces:orbiter-ground-data-system.presents.commandOut
 	]
 
-	ci orbiter-spacecraft-command-from-ground-data-system : mission:Requirement [
+	instance orbiter-spacecraft-command-from-ground-data-system : mission:Requirement [
 		base:hasIdentifier "R.05"
 		mission:specifies interfaces:orbiter-spacecraft.presents.commandIn
 	]
 
-	ci orbiter-ground-data-system-telemetry-from-spacecraft : mission:Requirement [
+	instance orbiter-ground-data-system-telemetry-from-spacecraft : mission:Requirement [
 		base:hasIdentifier "R.06"
 		mission:specifies interfaces:orbiter-ground-data-system.presents.telemetryIn
 	]
 
-	ci orbiter-spacecraft-telemetry-to-ground-data-system : mission:Requirement [
+	instance orbiter-spacecraft-telemetry-to-ground-data-system : mission:Requirement [
 		base:hasIdentifier "R.07"
 		mission:specifies interfaces:orbiter-spacecraft.presents.telemetryOut
 	]

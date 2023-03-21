@@ -6,669 +6,661 @@ This software may be subject to U.S. export control laws. By accepting this soft
 @dc:source "https://www.bipm.org/documents/20126/56018777/VIM4+Webinar+2+Significant+Changes+6+May+2021.pdf/634ea197-98c7-bb19-331b-4048a0933927"
 vocabulary <http://bipm.org/jcgm/vim4#> as vim4 {
 
-  extends <http://purl.org/dc/elements/1.1/> as dc
-  extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
-  extends <http://www.w3.org/2002/07/owl#> as owl
-  extends <http://www.w3.org/2001/XMLSchema#> as xsd
-  extends <http://iso.org/iso-1087-1#> as iso-1087-1
-  
-  @rdfs:label "IdentifiedElement"
-  @iso-1087-1:Characteristic
-  aspect IdentifiedElement 
-  [ key id ]
-  
-  @rdfs:label "id"
-  @iso-1087-1:Property
-  scalar property id [
-    domain IdentifiedElement
-    range xsd:string
-    functional
-  ]
-  
-  @rdfs:label "Rational Exponent"
-  @iso-1087-1:Characteristic
-  aspect RationalExponent 
-  [ restricts scalar property exponent to exactly 1 owl:rational ]
+	extends <http://purl.org/dc/elements/1.1/> as dc
 
-  @rdfs:label "exponent"
-  @iso-1087-1:Property
-  scalar property exponent [
-    domain RationalExponent
-    range owl:rational
-    functional
-  ]
-  
-  @rdfs:label "HasCoherence"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.14]"
-  @iso-1087-1:Characteristic
-  aspect HasCoherence 
-  
-  @rdfs:label "isCoherent"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.14]"
-  @iso-1087-1:Property
-  scalar property isCoherent [
-    domain HasCoherence
-    range xsd:boolean
-    functional
-  ]
-  
-  @rdfs:label "general property"
-  @iso-1087-1:Concept
-  aspect GeneralProperty :> IdentifiedElement
-  
-  @rdfs:label "general nominal property"
-  @rdfs:isDefinedBy "[VIM4 CD: 6.1]"
-  @iso-1087-1:Concept
-  concept GeneralNominalProperty :> GeneralProperty
-  
-  @rdfs:label "general quantity"
-  @rdfs:label "kind of quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.1]"
-  @dc:^description "property whose instances can be compared by ratio or only by order"
-  @rdfs:comment """General quantity in [VIM4 CD: 1.1] corresponds precisely to kind-of-quantity in [OonP: S.13.3.1].
-  """
-  @iso-1087-1:Concept
-  aspect GeneralQuantity :> GeneralProperty
-  
-  @rdfs:label "general unitary quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.1 - 1.30]"
-  @dc:^description "general quantity whose instances can be compared by ratio"
-  @iso-1087-1:Concept
-  concept GeneralUnitaryQuantity :> GeneralQuantity
-  
-  @rdfs:label "Specializes"
-  @iso-1087-1:GenericRelation
-  relation entity Specializes [
-    from GeneralUnitaryQuantity
-    to GeneralUnitaryQuantity
-    @rdfs:label "specializes"
-    forward specializes
-    asymmetric
-    irreflexive
-  ]
-  
-  rule SpecializesTransitivity 
-  [ specializes(a,b) ^ specializes(b,c) -> specializes(a,c) ]
-  
-  @rdfs:label "general ordinal quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.30]"
-  @dc:^description "general quantity whose instances can be compared by order but not by ratio"
-  @iso-1087-1:Concept
-  concept GeneralOrdinalQuantity :> GeneralQuantity
-  
-  @rdfs:label "IndividualProperty"
-  @rdfs:comment "The identity of a property is the unique pair of the GeneralProperty it instantiates and of the Object it characterizes."
-  @iso-1087-1:Concept
-  aspect IndividualProperty
-  // Not supported in OML 1.0.6
-  // https://github.com/opencaesar/oml/issues/89
-  // [ key instantiates, characterizes ]
-  
-  @rdfs:label "IndividualNominalProperty"
-  @rdfs:isDefinedBy "[VIM4 CD: 6.2]"
-  @iso-1087-1:Concept
-  concept IndividualNominalProperty :> IndividualProperty [
-    restricts all relation instantiates to GeneralNominalProperty
-  ]
-  
-  @rdfs:label "individual quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.2]"
-  @dc:^description "instance of a general quantity"
-  @iso-1087-1:Concept
-  aspect IndividualQuantity :> IndividualProperty [
-    restricts all relation instantiates to GeneralQuantity
-  ]
-  
-  @rdfs:label "individual unitary quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.2 - 1.31]"
-  @dc:^description "instance of a general unitary quantity"
-  @iso-1087-1:Concept
-  concept IndividualUnitaryQuantity :> IndividualQuantity [
-    restricts all relation instantiates to GeneralUnitaryQuantity
-  ]
-  
-  @rdfs:label "individual ordinal quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.31]"
-  @dc:^description "instance of a general ordinal quantity"
-  @iso-1087-1:Concept
-  concept IndividualOrdinalQuantity :> IndividualQuantity [
-    restricts all relation instantiates to GeneralOrdinalQuantity
-  ]
-  
-  @rdfs:label "Instantiates"
-  @iso-1087-1:AssociativeRelation
-  relation entity Instantiates [
-    from IndividualProperty
-    to GeneralProperty
-    @rdfs:label "instantiates"
-    forward instantiates
-    functional
-  ]
-  
-  @rdfs:label "system of quantities"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.3]"
-  @dc:^description "set of quantities together with a set of non-contradictory equations relating those quantities."
-  @rdfs:comment """system of quantities in [VIM4 CD: 1.3, Note 2] corresponds precisely to system of unitary kinds-ef-quantity in [OonP: S.13.7]."""
-  @iso-1087-1:Concept
-  concept SystemOfQuantities :> IdentifiedElement
-  
-  @rdfs:label "System Has Unitary Quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.3 Note 1]"
-  @dc:source "system of unitary kinds-of-quantity [OonP: S.13.7, p 129]"
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasUnitaryQuantity [
-    from SystemOfQuantities
-    to GeneralUnitaryQuantity
-    @rdfs:label "system has unitary quantity"
-    forward systemHasUnitaryQuantity
-    // Not supported in OML 1.0.6
-    // https://github.com/opencaesar/oml/issues/89
-    // key oml:hasSource, oml:hasTarget
-  ]
-  
-  @rdfs:label "System Has Base Unitary Quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.4]"
-  @dc:^description """quantity in a conventionally chosen subset of a given system of quantities,
+	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+
+	extends <http://www.w3.org/2002/07/owl#> as owl
+
+	extends <http://www.w3.org/2001/XMLSchema#> as xsd
+
+	extends <http://iso.org/iso-1087-1#> as iso-1087-1
+
+	@rdfs:label "IdentifiedElement"
+	@iso-1087-1:Characteristic
+	aspect IdentifiedElement [
+		key id
+	]
+
+	@rdfs:label "id"
+	@iso-1087-1:Property
+	scalar property id [
+		domain IdentifiedElement
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "Rational Exponent"
+	@iso-1087-1:Characteristic
+	aspect RationalExponent < [
+		restricts scalar property exponent to exactly 1 owl:rational
+	]
+
+	@rdfs:label "exponent"
+	@iso-1087-1:Property
+	scalar property exponent [
+		domain RationalExponent
+		range owl:rational
+		functional
+	]
+
+	@rdfs:label "HasCoherence"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.14]"
+	@iso-1087-1:Characteristic
+	aspect HasCoherence
+
+	@rdfs:label "isCoherent"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.14]"
+	@iso-1087-1:Property
+	scalar property isCoherent [
+		domain HasCoherence
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "general property"
+	@iso-1087-1:Concept
+	aspect GeneralProperty < IdentifiedElement
+
+	@rdfs:label "general nominal property"
+	@rdfs:isDefinedBy "[VIM4 CD: 6.1]"
+	@iso-1087-1:Concept
+	concept GeneralNominalProperty < GeneralProperty
+
+	@rdfs:label "general quantity"
+	@rdfs:label "kind of quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.1]"
+	@dc:^description "property whose instances can be compared by ratio or only by order"
+	@rdfs:comment """General quantity in [VIM4 CD: 1.1] corresponds precisely to kind-of-quantity in [OonP: S.13.3.1]."""
+	@iso-1087-1:Concept
+	aspect GeneralQuantity < GeneralProperty
+
+	@rdfs:label "general unitary quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.1 - 1.30]"
+	@dc:^description "general quantity whose instances can be compared by ratio"
+	@iso-1087-1:Concept
+	concept GeneralUnitaryQuantity < GeneralQuantity
+
+	@rdfs:label "Specializes"
+	@iso-1087-1:GenericRelation
+	relation entity Specializes [
+		from GeneralUnitaryQuantity
+		to GeneralUnitaryQuantity
+		@rdfs:label "specializes"
+		forward specializes
+		asymmetric
+		irreflexive
+	]
+
+	rule SpecializesTransitivity [
+		specializes(a, b) ^ specializes(b, c) -> specializes(a, c)
+	]
+
+	@rdfs:label "general ordinal quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.30]"
+	@dc:^description "general quantity whose instances can be compared by order but not by ratio"
+	@iso-1087-1:Concept
+	concept GeneralOrdinalQuantity < GeneralQuantity
+
+	@rdfs:label "IndividualProperty"
+	@rdfs:comment "The identity of a property is the unique pair of the GeneralProperty it instantiates and of the Object it characterizes."
+	@iso-1087-1:Concept
+	aspect IndividualProperty [
+		// Not supported in OML 1.0.6
+		// https://github.com/opencaesar/oml/issues/89
+		// key instantiates, characterizes
+	]
+
+	@rdfs:label "IndividualNominalProperty"
+	@rdfs:isDefinedBy "[VIM4 CD: 6.2]"
+	@iso-1087-1:Concept
+	concept IndividualNominalProperty < IndividualProperty [
+		restricts all relation instantiates to GeneralNominalProperty
+	]
+
+	@rdfs:label "individual quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.2]"
+	@dc:^description "instance of a general quantity"
+	@iso-1087-1:Concept
+	aspect IndividualQuantity < IndividualProperty [
+		restricts all relation instantiates to GeneralQuantity
+	]
+
+	@rdfs:label "individual unitary quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.2 - 1.31]"
+	@dc:^description "instance of a general unitary quantity"
+	@iso-1087-1:Concept
+	concept IndividualUnitaryQuantity < IndividualQuantity [
+		restricts all relation instantiates to GeneralUnitaryQuantity
+	]
+
+	@rdfs:label "individual ordinal quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.31]"
+	@dc:^description "instance of a general ordinal quantity"
+	@iso-1087-1:Concept
+	concept IndividualOrdinalQuantity < IndividualQuantity [
+		restricts all relation instantiates to GeneralOrdinalQuantity
+	]
+
+	@rdfs:label "Instantiates"
+	@iso-1087-1:AssociativeRelation
+	relation entity Instantiates [
+		from IndividualProperty
+		to GeneralProperty
+		@rdfs:label "instantiates"
+		forward instantiates
+		functional
+	]
+
+	@rdfs:label "system of quantities"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.3]"
+	@dc:^description "set of quantities together with a set of non-contradictory equations relating those quantities."
+	@rdfs:comment """system of quantities in [VIM4 CD: 1.3, Note 2] corresponds precisely to system of unitary kinds-ef-quantity in [OonP: S.13.7]."""
+	@iso-1087-1:Concept
+	concept SystemOfQuantities < IdentifiedElement
+
+	@rdfs:label "System Has Unitary Quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.3 Note 1]"
+	@dc:source "system of unitary kinds-of-quantity [OonP: S.13.7, p 129]"
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasUnitaryQuantity [
+		from SystemOfQuantities
+		to GeneralUnitaryQuantity
+		@rdfs:label "system has unitary quantity"
+		forward systemHasUnitaryQuantity
+	// Not supported in OML 1.0.6
+	// https://github.com/opencaesar/oml/issues/89
+	// key oml:hasSource, oml:hasTarget
+	]
+
+	@rdfs:label "System Has Base Unitary Quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.4]"
+	@dc:^description """quantity in a conventionally chosen subset of a given system of quantities,
   where no quantity in the set of base quantities can be expressed in terms of the others."""
-  @dc:source "system of unitary kinds-of-quantity [OonP: S.13.7, p 129]"
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasBaseUnitaryQuantity :> SystemHasUnitaryQuantity [
-    from SystemOfQuantities
-    to GeneralUnitaryQuantity
-    @rdfs:label "system has base unitary quantity"
-    forward systemHasBaseUnitaryQuantity
-  ]
-  
-  @rdfs:label "dimension symbol"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.7]"
-  @iso-1087-1:Property
-  scalar property dimensionSymbol [
-    domain SystemHasBaseUnitaryQuantity
-    range xsd:string
-    functional
-  ]
-  
-  @rdfs:label "System Has Derived Unitary Quantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.5]"
-  @dc:^description """quantity, in a system of quantities, defined in terms of the base quantities of that system."""
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasDerivedUnitaryQuantity :> SystemHasUnitaryQuantity [
-    from SystemOfQuantities
-    to GeneralUnitaryQuantity
-    @rdfs:label "system has derived unitary quantity"
-    forward systemHasDerivedUnitaryQuantity
-  ]
-  
-  @rdfs:label "Has Power Of Unitary Quantity Factor"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.5]"
-  @iso-1087-1:CausalRelation
-  relation entity HasPowerOfUnitaryQuantityFactor :> RationalExponent [
-    from SystemHasDerivedUnitaryQuantity
-    to SystemHasUnitaryQuantity
-    @rdfs:label "has Power Of Unitary Quantity Factor"
-    forward hasPowerOfUnitaryQuantityFactor
-  ]
-  
-  rule DerivationDefinedWithinTheSameSystemOfQuantities [
-    hasPowerOfUnitaryQuantityFactor(d, f) ^
-    SystemHasDerivedUnitaryQuantity(ds, d, dq) ^
-    SystemHasUnitaryQuantity(fs, f, fq)
-    ->
-    sameAs(ds, fs)
-  ]
-  
-  @rdfs:label "Has Quantity Dimension Factor"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.7]"
-  @iso-1087-1:AssociativeRelation
-  relation entity HasQuantityDimensionFactor :> RationalExponent [
-    from SystemHasUnitaryQuantity
-    to SystemHasBaseUnitaryQuantity
-    @rdfs:label "has quantity dimension factor"
-    forward hasQuantityDimensionFactor
-  ]
-  
-  rule DimensionDefinedWithinTheSameSystemOfQuantities [
-    hasQuantityDimensionFactor(d, b) ^
-    SystemHasUnitaryQuantity(ds, d, dq) ^
-    SystemHasBaseUnitaryQuantity(bs, b, bq)
-    ->
-    sameAs(ds, bs)
-  ]
-  
-  @rdfs:label "isDimensionless"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.8]"
-  @iso-1087-1:Property
-  scalar property isDimensionless [
-    domain SystemHasDerivedUnitaryQuantity
-    range xsd:boolean
-    functional
-  ]
- 
-  @rdfs:label "system of units"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.13, 1.14]"
-  @dc:^description """set of base units and derived units, together with their multiples and submultiples, 
-  defined in accordance with given rules, for a given system of quantities."""
-  @iso-1087-1:Concept
-  concept SystemOfUnits :> IdentifiedElement, HasCoherence [
-    restricts relation given to exactly 1 SystemOfQuantities
-  ]
-  
-  // See https://github.com/opencaesar/oml/issues/90
-//  rule incoherent-derived-unit-implies-incoherent-system-of-units [
-//    systemHasDerivedUnit(su, dq) ^ isCoherent(dq, "false"^^xsd:boolean) ->
-//    isCoherent(su, "false"^^xsd:boolean)
-//  ]
-  
-  @rdfs:label "Given"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.13]"
-  @iso-1087-1:AssociativeRelation
-  relation entity Given [
-    from SystemOfUnits
-    to SystemOfQuantities
-    @rdfs:label "given"
-    forward given
-    functional
-  ]
-  
-  @rdfs:label "Object"
-  @iso-1087-1:Concept
-  aspect Object
-  
-  @rdfs:label "Characterizes"
-  @rdfs:comment """An IndividualProperty characterizes an Object."""
-  relation entity Characterizes [
-    from IndividualProperty
-    to Object
-    @rdfs:label "characterizes"
-    forward characterizes
-    functional
-  ]
-  
-  
-  @rdfs:label "QuantityValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.20]"
-  @iso-1087-1:Concept
-  aspect QuantityValue :> IndividualQuantity, IdentifiedElement
-  // Not supported in OML 1.0.6
-  // https://github.com/opencaesar/oml/issues/89
-  // [ key isAttributedTo ]
-  
-  @rdfs:label "isTrueValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.22]"
-  scalar property isTrueValue [
-    domain QuantityValue
-    range xsd:boolean
-    functional
-  ]
-  
-  @rdfs:label "isReferenceValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.24]"
-  scalar property isReferenceValue [
-    domain QuantityValue
-    range xsd:boolean
-    functional
-  ]
-  
-  @rdfs:label "IsAttributedTo"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.23, 2.1, 2.8, 2.10, 3.1, 6.5, 6.10]"
-  @iso-1087-1:PartitiveRelation
-  relation entity IsAttributedTo [
-    from QuantityValue
-    to IndividualQuantity
-    @rdfs:label "isAttributedTo"
-    forward isAttributedTo
-    functional
-  ]
-  
-  @rdfs:label "InherentOrdinalQuantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.31]"
-  @iso-1087-1:Concept
-  concept InherentOrdinalQuantity :> IndividualOrdinalQuantity [
-    restricts relation characterizes to exactly 1 Object
-  ]
-  
-  @rdfs:label "OrdinalQuantityValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.33]"
-  @iso-1087-1:Concept
-  concept OrdinalQuantityValue :> IndividualOrdinalQuantity, QuantityValue [
-    restricts all relation isAttributedTo to InherentOrdinalQuantity
-  ]
-  
-  @rdfs:label "InherentUnitaryQuantity"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.2 except for the cases of Note 1]"
-  @iso-1087-1:Concept
-  concept InherentUnitaryQuantity :> IndividualUnitaryQuantity [
-    restricts relation characterizes to exactly 1 Object
-  ]
-  
-  @rdfs:label "UnitaryQuantityValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]"
-  @iso-1087-1:Concept
-  concept UnitaryQuantityValue :> IndividualUnitaryQuantity, QuantityValue [
-    restricts relation unit to exactly 1 MeasurementUnit
-    restricts all relation isAttributedTo to InherentUnitaryQuantity
-  ]
-  
-  @rdfs:label "HasUnit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]"
-  @iso-1087-1:AssociativeRelation
-  relation entity HasUnit [
-    from UnitaryQuantityValue
-    to MeasurementUnit
-    @rdfs:label "hasUnit"
-    forward unit
-    functional
-  ]
-  
-  @rdfs:label "hasDoubleNumber"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.21]"
-  @iso-1087-1:Property
-  scalar property hasDoubleNumber [
-    domain UnitaryQuantityValue
-    range xsd:double
-    functional
-  ]
-  
-  @rdfs:label "InherentUnitaryQuantityValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.2 except for the cases of Note 1 and 1.20 for an IndividualUnitaryQuantity]"
-  @rdfs:comment "This combined concept is not explictly discussed in VIM4 CD but it is practically useful."
-  concept InherentUnitaryQuantityValue :> InherentUnitaryQuantity, UnitaryQuantityValue
-  
-  rule InherentUnitaryQuantityValueReflexiveAttribution [
-    InherentUnitaryQuantityValue(q) ->
-    isAttributedTo(q,q)
-  ]
-  
-  @rdfs:label "MeasurementUnit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.9]"
-  @iso-1087-1:Concept
-  concept MeasurementUnit :> IndividualUnitaryQuantity, IdentifiedElement [
-    restricts relation characterizes to exactly 0 Object
-  ]
-  
-  @rdfs:label "Multiple"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.17 and 1.18]"
-  @iso-1087-1:Characteristic
-  concept Multiple :> IdentifiedElement
-  
-  @rdfs:label "HasMultiple"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.17, 1.18]"
-  @iso-1087-1:Property
-  relation entity HasMultiple [
-    from MeasurementUnit
-    to Multiple
-    @rdfs:label "hasMultiple"
-    forward hasMultiple
-    functional
-  ]
-  
-  @rdfs:label "IsMultipleOf"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.17, 1.18]"
-  @iso-1087-1:AssociativeRelation
-  relation entity IsMultipleOf [
-    from MeasurementUnit
-    to MeasurementUnit
-    @rdfs:label "isMultipleOf"
-    forward isMultipleOf
-    asymmetric
-    irreflexive
-    functional
-  ]
-  
-  @rdfs:label "UnprefixedMeasurementUnit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.9 except for 1.17 and 1.18]"
-  @iso-1087-1:Concept
-  concept UnprefixedMeasurementUnit :> MeasurementUnit [
-    restricts relation hasMultiple to exactly 0 Multiple
-    restricts relation isMultipleOf to exactly 0 MeasurementUnit
-  ]
-  
-  @rdfs:label "PrefixedMeasurementUnit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.17 or 1.18]"
-  @iso-1087-1:Concept
-  concept PrefixedMeasurementUnit :> MeasurementUnit [
-    restricts relation hasMultiple to exactly 1 Multiple
-    restricts relation isMultipleOf to exactly 1 MeasurementUnit
-  ]
-  
-  @rdfs:label "System Has Unit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.13]"
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasUnit [
-    from SystemOfUnits
-    to MeasurementUnit
-    @rdfs:label "system has unit"
-    forward systemHasUnit
-    // Not supported in OML 1.0.6
-    // https://github.com/opencaesar/oml/issues/89
-    // key oml:hasSource, oml:hasTarget
-  ]
-  
-  @rdfs:label "System Has Base Unit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.10, 1.13]"
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasBaseUnit :> SystemHasUnit [
-    from SystemOfUnits
-    to MeasurementUnit
-    @rdfs:label "system has base unit"
-    forward systemHasBaseUnit
-  ]
-  
-  @rdfs:label "System Has Derived Unit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.11, 1.13]"
-  @iso-1087-1:PartitiveRelation
-  relation entity SystemHasDerivedUnit :> SystemHasUnit, HasCoherence [
-    from SystemOfUnits
-    to MeasurementUnit
-    @rdfs:label "system has derived unit"
-    forward systemHasDerivedUnit
-  ]
-  
-  @rdfs:label "Is Off-System Unit"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.15]"
-  @iso-1087-1:Property
-  scalar property isOffSystemUnit [
-    domain SystemHasDerivedUnit
-    range xsd:boolean
-    functional
-  ]
-  
-  
-  @rdfs:label "Has Power Of Unit Factor"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.12]"
-  @iso-1087-1:CausalRelation
-  relation entity HasPowerOfUnitFactor :> RationalExponent [
-    from SystemHasDerivedUnit
-    to SystemHasUnit
-    @rdfs:label "has Power Of Unit Factor"
-    forward hasPowerOfUnitFactor
-  ]
-  
-  rule DerivationDefinedWithinTheSameSystemOfUnits [
-    hasPowerOfUnitFactor(d, f) ^
-    SystemHasDerivedUnit(ds, d, du) ^
-    SystemHasUnit(fs, f, fu)
-    ->
-    sameAs(ds, fs)
-  ]
-  
-  @rdfs:label "MeasurementScale"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.19]"
-  @iso-1087-1:Concept
-  concept MeasurementScale :> IdentifiedElement
-  
-  @rdfs:label "Includes"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.19]"
-  @iso-1087-1:Property
-  relation entity Includes [
-    from MeasurementScale
-    to IndividualProperty
-    @rdfs:label "includes"
-    forward ^includes
-  ]
-  
-  @rdfs:label "ordinalPosition"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.19]"
-  @iso-1087-1:Property
-  scalar property ordinalPosition [
-    domain Includes
-    range xsd:positiveInteger
-    functional
-  ]
-  
-  @rdfs:label "UnitaryScale"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.19]"
-  @iso-1087-1:Concept
-  concept UnitaryScale :> MeasurementScale [
-    restricts all relation ^includes to UnitaryQuantityValue
-  ]
-  
-  @rdfs:label "OrdinalScale"
-  @rdfs:isDefinedBy "[VIM4 CD: 1.32]"
-  @iso-1087-1:Concept
-  concept OrdinalScale :> MeasurementScale [
-    restricts all relation ^includes to OrdinalQuantityValue
-  ]
-  
-  @rdfs:label "ReferenceSet"
-  @rdfs:isDefinedBy "[VIM4 CD: 6.3]"
-  @iso-1087-1:Concept
-  concept ReferenceSet :> MeasurementScale [
-    restricts all relation ^includes to IndividualNominalProperty
-  ]
-  
-  @rdfs:label "Measurement"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.1]"
-  @iso-1087-1:Concept
-  concept Measurement :> IdentifiedElement
-  
-  @rdfs:label "MeasurementPrinciple"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.4]"
-  @iso-1087-1:Concept
-  concept MeasurementPrinciple :> IdentifiedElement
-  
-  @rdfs:label "MeasurementMethod"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.5]"
-  @iso-1087-1:Concept
-  concept MeasurementMethod :> IdentifiedElement
-  
-  @rdfs:label "MeasurementProcedure"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.7]"
-  @iso-1087-1:Concept
-  concept MeasurementProcedure :> IdentifiedElement
-  
-  @rdfs:label "Describes"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.7]"
-  @iso-1087-1:AssociativeRelation
-  relation entity Describes [
-    from MeasurementProcedure
-    to Measurement
-    @rdfs:label "describes"
-    forward describes
-    functional
-  ]
-  
-  @rdfs:label "MeasurementModel"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.12]"
-  @iso-1087-1:Concept
-  concept MeasurementModel :> IdentifiedElement
-  
-  @rdfs:label "Per"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.4, 2.7]"
-  @iso-1087-1:AssociativeRelation
-  relation entity Per [
-    from MeasurementProcedure
-    to MeasurementPrinciple 
-    @rdfs:label "per"
-    forward per
-  ]
-  
-  @rdfs:label "UsesOperationsOf"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.5]"
-  @iso-1087-1:AssociativeRelation
-  relation entity UsesOperationsOf [
-    from MeasurementProcedure
-    to MeasurementMethod 
-    @rdfs:label "usesOperationsOf"
-    forward usesOperationsOf
-    functional
-  ]
-  
-  @rdfs:label "IsBasedOn"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.7]"
-  @iso-1087-1:AssociativeRelation
-  relation entity IsBasedOn [
-    from MeasurementProcedure
-    to MeasurementModel 
-    @rdfs:label "isBasedOn"
-    forward isBasedOn
-    functional
-  ]
-  
-  @rdfs:label "HasInput"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.14]"
-  @iso-1087-1:CausalRelation
-  relation entity HasInput [
-    from MeasurementModel
-    to IndividualQuantity
-    @rdfs:label "hasInput"
-    forward hasInput
-  ]
-  
-  @rdfs:label "Measures"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.15]"
-  @iso-1087-1:CausalRelation
-  relation entity Measures [
-    from MeasurementModel
-    to IndividualQuantity
-    @rdfs:label "measures"
-    forward measures
-    functional
-  ]
+	@dc:source "system of unitary kinds-of-quantity [OonP: S.13.7, p 129]"
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasBaseUnitaryQuantity [
+		from SystemOfQuantities
+		to GeneralUnitaryQuantity
+		@rdfs:label "system has base unitary quantity"
+		forward systemHasBaseUnitaryQuantity
+	] < SystemHasUnitaryQuantity
 
-  @rdfs:label "IsInfluencedBy"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.16]"
-  @iso-1087-1:CausalRelation
-  relation entity IsInfluencedBy [
-    from MeasurementModel
-    to IndividualQuantity
-    @rdfs:label "isInfluencedBy"
-    forward isInfluencedBy
-  ]
-  
-  @rdfs:label "UsesCorrection"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.17]"
-  @iso-1087-1:CausalRelation
-  relation entity UsesCorrection [
-    from MeasurementModel
-    to IndividualQuantity
-    @rdfs:label "usesCorrection"
-    forward usesCorrection
-  ]
-  
-  @rdfs:label "YieldsMeasuredValue"
-  @rdfs:isDefinedBy "[VIM4 CD: 2.11]"
-  @iso-1087-1:CausalRelation
-  relation entity YieldsMeasuredValue [
-    from MeasurementModel
-    to QuantityValue
-    @rdfs:label "yieldsMeasuredValue"
-    forward yieldsMeasuredValue
-  ]
-  
-  @rdfs:label "MeasurementUncertainty"
-  @rdfs:isDefinedBy "[VIM4 CD: 3.1]"
-  @iso-1087-1:Concept
-  concept MeasurementUncertainty
-  
-  @rdfs:label "YieldsMeasurementUncertainty"
-  @rdfs:isDefinedBy "[VIM4 CD: 3.1]"
-  @iso-1087-1:CausalRelation
-  relation entity YieldsMeasurementUncertainty [
-    from MeasurementModel
-    to MeasurementUncertainty
-    @rdfs:label "yieldsMeasurementUncertainty"
-    forward yieldsMeasurementUncertainty
-    functional
-  ]
+	@rdfs:label "dimension symbol"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.7]"
+	@iso-1087-1:Property
+	scalar property dimensionSymbol [
+		domain SystemHasBaseUnitaryQuantity
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "System Has Derived Unitary Quantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.5]"
+	@dc:^description """quantity, in a system of quantities, defined in terms of the base quantities of that system."""
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasDerivedUnitaryQuantity [
+		from SystemOfQuantities
+		to GeneralUnitaryQuantity
+		@rdfs:label "system has derived unitary quantity"
+		forward systemHasDerivedUnitaryQuantity
+	] < SystemHasUnitaryQuantity
+
+	@rdfs:label "Has Power Of Unitary Quantity Factor"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.5]"
+	@iso-1087-1:CausalRelation
+	relation entity HasPowerOfUnitaryQuantityFactor [
+		from SystemHasDerivedUnitaryQuantity
+		to SystemHasUnitaryQuantity
+		@rdfs:label "has Power Of Unitary Quantity Factor"
+		forward hasPowerOfUnitaryQuantityFactor
+	] < RationalExponent
+
+	rule DerivationDefinedWithinTheSameSystemOfQuantities [
+		hasPowerOfUnitaryQuantityFactor(d, f) ^ SystemHasDerivedUnitaryQuantity(ds, d, dq) ^ SystemHasUnitaryQuantity(fs, f, fq) -> sameAs(ds, fs)
+	]
+
+	@rdfs:label "Has Quantity Dimension Factor"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.7]"
+	@iso-1087-1:AssociativeRelation
+	relation entity HasQuantityDimensionFactor [
+		from SystemHasUnitaryQuantity
+		to SystemHasBaseUnitaryQuantity
+		@rdfs:label "has quantity dimension factor"
+		forward hasQuantityDimensionFactor
+	] < RationalExponent
+
+	rule DimensionDefinedWithinTheSameSystemOfQuantities [
+		hasQuantityDimensionFactor(d, b) ^ SystemHasUnitaryQuantity(ds, d, dq) ^ SystemHasBaseUnitaryQuantity(bs, b, bq) -> sameAs(ds, bs)
+	]
+
+	@rdfs:label "isDimensionless"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.8]"
+	@iso-1087-1:Property
+	scalar property isDimensionless [
+		domain SystemHasDerivedUnitaryQuantity
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "system of units"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.13, 1.14]"
+	@dc:^description """set of base units and derived units, together with their multiples and submultiples, 
+    defined in accordance with given rules, for a given system of quantities."""
+	@iso-1087-1:Concept
+	concept SystemOfUnits < IdentifiedElement, HasCoherence [
+		restricts relation given to exactly 1 SystemOfQuantities
+	]
+
+	// See https://github.com/opencaesar/oml/issues/90
+	// rule incoherent-derived-unit-implies-incoherent-system-of-units [
+	// systemHasDerivedUnit(su, dq) ^ isCoherent(dq, "false"^^xsd:boolean) ->
+	// isCoherent(su, "false"^^xsd:boolean)
+	// ]
+	@rdfs:label "Given"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.13]"
+	@iso-1087-1:AssociativeRelation
+	relation entity Given [
+		from SystemOfUnits
+		to SystemOfQuantities
+		@rdfs:label "given"
+		forward given
+		functional
+	]
+
+	@rdfs:label "Object"
+	@iso-1087-1:Concept
+	aspect Object
+
+	@rdfs:label "Characterizes"
+	@rdfs:comment """An IndividualProperty characterizes an Object."""
+	relation entity Characterizes [
+		from IndividualProperty
+		to Object
+		@rdfs:label "characterizes"
+		forward characterizes
+		functional
+	]
+
+	@rdfs:label "QuantityValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.20]"
+	@iso-1087-1:Concept
+	aspect QuantityValue [
+		// Not supported in OML 1.0.6
+		// https://github.com/opencaesar/oml/issues/89
+		// key isAttributedTo
+	] < IndividualQuantity, IdentifiedElement
+
+	@rdfs:label "isTrueValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.22]"
+	scalar property isTrueValue [
+		domain QuantityValue
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "isReferenceValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.24]"
+	scalar property isReferenceValue [
+		domain QuantityValue
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "IsAttributedTo"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.23, 2.1, 2.8, 2.10, 3.1, 6.5, 6.10]"
+	@iso-1087-1:PartitiveRelation
+	relation entity IsAttributedTo [
+		from QuantityValue
+		to IndividualQuantity
+		@rdfs:label "isAttributedTo"
+		forward isAttributedTo
+		functional
+	]
+
+	@rdfs:label "InherentOrdinalQuantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.31]"
+	@iso-1087-1:Concept
+	concept InherentOrdinalQuantity < IndividualOrdinalQuantity [
+		restricts relation characterizes to exactly 1 Object
+	]
+
+	@rdfs:label "OrdinalQuantityValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.33]"
+	@iso-1087-1:Concept
+	concept OrdinalQuantityValue < IndividualOrdinalQuantity, QuantityValue [
+		restricts all relation isAttributedTo to InherentOrdinalQuantity
+	]
+
+	@rdfs:label "InherentUnitaryQuantity"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.2 except for the cases of Note 1]"
+	@iso-1087-1:Concept
+	concept InherentUnitaryQuantity < IndividualUnitaryQuantity [
+		restricts relation characterizes to exactly 1 Object
+	]
+
+	@rdfs:label "UnitaryQuantityValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]"
+	@iso-1087-1:Concept
+	concept UnitaryQuantityValue < IndividualUnitaryQuantity, QuantityValue [
+		restricts relation unit to exactly 1 MeasurementUnit
+		restricts all relation isAttributedTo to InherentUnitaryQuantity
+	]
+
+	@rdfs:label "HasUnit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.20 for an IndividualUnitaryQuantity]"
+	@iso-1087-1:AssociativeRelation
+	relation entity HasUnit [
+		from UnitaryQuantityValue
+		to MeasurementUnit
+		@rdfs:label "hasUnit"
+		forward unit
+		functional
+	]
+
+	@rdfs:label "hasDoubleNumber"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.21]"
+	@iso-1087-1:Property
+	scalar property hasDoubleNumber [
+		domain UnitaryQuantityValue
+		range xsd:double
+		functional
+	]
+
+	@rdfs:label "InherentUnitaryQuantityValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.2 except for the cases of Note 1 and 1.20 for an IndividualUnitaryQuantity]"
+	@rdfs:comment "This combined concept is not explictly discussed in VIM4 CD but it is practically useful."
+	concept InherentUnitaryQuantityValue < InherentUnitaryQuantity, UnitaryQuantityValue
+
+	rule InherentUnitaryQuantityValueReflexiveAttribution [
+		InherentUnitaryQuantityValue(q) -> isAttributedTo(q, q)
+	]
+
+	@rdfs:label "MeasurementUnit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.9]"
+	@iso-1087-1:Concept
+	concept MeasurementUnit < IndividualUnitaryQuantity, IdentifiedElement [
+		restricts relation characterizes to exactly 0 Object
+	]
+
+	@rdfs:label "Multiple"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.17 and 1.18]"
+	@iso-1087-1:Characteristic
+	concept Multiple < IdentifiedElement
+
+	@rdfs:label "HasMultiple"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.17, 1.18]"
+	@iso-1087-1:Property
+	relation entity HasMultiple [
+		from MeasurementUnit
+		to Multiple
+		@rdfs:label "hasMultiple"
+		forward hasMultiple
+		functional
+	]
+
+	@rdfs:label "IsMultipleOf"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.17, 1.18]"
+	@iso-1087-1:AssociativeRelation
+	relation entity IsMultipleOf [
+		from MeasurementUnit
+		to MeasurementUnit
+		@rdfs:label "isMultipleOf"
+		forward isMultipleOf
+		asymmetric
+		irreflexive
+		functional
+	]
+
+	@rdfs:label "UnprefixedMeasurementUnit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.9 except for 1.17 and 1.18]"
+	@iso-1087-1:Concept
+	concept UnprefixedMeasurementUnit < MeasurementUnit [
+		restricts relation hasMultiple to exactly 0 Multiple
+		restricts relation isMultipleOf to exactly 0 MeasurementUnit
+	]
+
+	@rdfs:label "PrefixedMeasurementUnit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.17 or 1.18]"
+	@iso-1087-1:Concept
+	concept PrefixedMeasurementUnit < MeasurementUnit [
+		restricts relation hasMultiple to exactly 1 Multiple
+		restricts relation isMultipleOf to exactly 1 MeasurementUnit
+	]
+
+	@rdfs:label "System Has Unit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.13]"
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasUnit [
+		from SystemOfUnits
+		to MeasurementUnit
+		@rdfs:label "system has unit"
+		forward systemHasUnit
+	// Not supported in OML 1.0.6
+	// https://github.com/opencaesar/oml/issues/89
+	// key oml:hasSource, oml:hasTarget
+	]
+
+	@rdfs:label "System Has Base Unit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.10, 1.13]"
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasBaseUnit [
+		from SystemOfUnits
+		to MeasurementUnit
+		@rdfs:label "system has base unit"
+		forward systemHasBaseUnit
+	] < SystemHasUnit
+
+	@rdfs:label "System Has Derived Unit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.11, 1.13]"
+	@iso-1087-1:PartitiveRelation
+	relation entity SystemHasDerivedUnit [
+		from SystemOfUnits
+		to MeasurementUnit
+		@rdfs:label "system has derived unit"
+		forward systemHasDerivedUnit
+	] < SystemHasUnit, HasCoherence
+
+	@rdfs:label "Is Off-System Unit"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.15]"
+	@iso-1087-1:Property
+	scalar property isOffSystemUnit [
+		domain SystemHasDerivedUnit
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "Has Power Of Unit Factor"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.12]"
+	@iso-1087-1:CausalRelation
+	relation entity HasPowerOfUnitFactor [
+		from SystemHasDerivedUnit
+		to SystemHasUnit
+		@rdfs:label "has Power Of Unit Factor"
+		forward hasPowerOfUnitFactor
+	] < RationalExponent
+
+	rule DerivationDefinedWithinTheSameSystemOfUnits [
+		hasPowerOfUnitFactor(d, f) ^ SystemHasDerivedUnit(ds, d, du) ^ SystemHasUnit(fs, f, fu) -> sameAs(ds, fs)
+	]
+
+	@rdfs:label "MeasurementScale"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.19]"
+	@iso-1087-1:Concept
+	concept MeasurementScale < IdentifiedElement
+
+	@rdfs:label "Includes"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.19]"
+	@iso-1087-1:Property
+	relation entity Includes [
+		from MeasurementScale
+		to IndividualProperty
+		@rdfs:label "includes"
+		forward ^includes
+	]
+
+	@rdfs:label "ordinalPosition"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.19]"
+	@iso-1087-1:Property
+	scalar property ordinalPosition [
+		domain Includes
+		range xsd:positiveInteger
+		functional
+	]
+
+	@rdfs:label "UnitaryScale"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.19]"
+	@iso-1087-1:Concept
+	concept UnitaryScale < MeasurementScale [
+		restricts all relation ^includes to UnitaryQuantityValue
+	]
+
+	@rdfs:label "OrdinalScale"
+	@rdfs:isDefinedBy "[VIM4 CD: 1.32]"
+	@iso-1087-1:Concept
+	concept OrdinalScale < MeasurementScale [
+		restricts all relation ^includes to OrdinalQuantityValue
+	]
+
+	@rdfs:label "ReferenceSet"
+	@rdfs:isDefinedBy "[VIM4 CD: 6.3]"
+	@iso-1087-1:Concept
+	concept ReferenceSet < MeasurementScale [
+		restricts all relation ^includes to IndividualNominalProperty
+	]
+
+	@rdfs:label "Measurement"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.1]"
+	@iso-1087-1:Concept
+	concept Measurement < IdentifiedElement
+
+	@rdfs:label "MeasurementPrinciple"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.4]"
+	@iso-1087-1:Concept
+	concept MeasurementPrinciple < IdentifiedElement
+
+	@rdfs:label "MeasurementMethod"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.5]"
+	@iso-1087-1:Concept
+	concept MeasurementMethod < IdentifiedElement
+
+	@rdfs:label "MeasurementProcedure"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.7]"
+	@iso-1087-1:Concept
+	concept MeasurementProcedure < IdentifiedElement
+
+	@rdfs:label "Describes"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.7]"
+	@iso-1087-1:AssociativeRelation
+	relation entity Describes [
+		from MeasurementProcedure
+		to Measurement
+		@rdfs:label "describes"
+		forward describes
+		functional
+	]
+
+	@rdfs:label "MeasurementModel"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.12]"
+	@iso-1087-1:Concept
+	concept MeasurementModel < IdentifiedElement
+
+	@rdfs:label "Per"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.4, 2.7]"
+	@iso-1087-1:AssociativeRelation
+	relation entity Per [
+		from MeasurementProcedure
+		to MeasurementPrinciple
+		@rdfs:label "per"
+		forward per
+	]
+
+	@rdfs:label "UsesOperationsOf"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.5]"
+	@iso-1087-1:AssociativeRelation
+	relation entity UsesOperationsOf [
+		from MeasurementProcedure
+		to MeasurementMethod
+		@rdfs:label "usesOperationsOf"
+		forward usesOperationsOf
+		functional
+	]
+
+	@rdfs:label "IsBasedOn"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.7]"
+	@iso-1087-1:AssociativeRelation
+	relation entity IsBasedOn [
+		from MeasurementProcedure
+		to MeasurementModel
+		@rdfs:label "isBasedOn"
+		forward isBasedOn
+		functional
+	]
+
+	@rdfs:label "HasInput"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.14]"
+	@iso-1087-1:CausalRelation
+	relation entity HasInput [
+		from MeasurementModel
+		to IndividualQuantity
+		@rdfs:label "hasInput"
+		forward hasInput
+	]
+
+	@rdfs:label "Measures"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.15]"
+	@iso-1087-1:CausalRelation
+	relation entity Measures [
+		from MeasurementModel
+		to IndividualQuantity
+		@rdfs:label "measures"
+		forward measures
+		functional
+	]
+
+	@rdfs:label "IsInfluencedBy"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.16]"
+	@iso-1087-1:CausalRelation
+	relation entity IsInfluencedBy [
+		from MeasurementModel
+		to IndividualQuantity
+		@rdfs:label "isInfluencedBy"
+		forward isInfluencedBy
+	]
+
+	@rdfs:label "UsesCorrection"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.17]"
+	@iso-1087-1:CausalRelation
+	relation entity UsesCorrection [
+		from MeasurementModel
+		to IndividualQuantity
+		@rdfs:label "usesCorrection"
+		forward usesCorrection
+	]
+
+	@rdfs:label "YieldsMeasuredValue"
+	@rdfs:isDefinedBy "[VIM4 CD: 2.11]"
+	@iso-1087-1:CausalRelation
+	relation entity YieldsMeasuredValue [
+		from MeasurementModel
+		to QuantityValue
+		@rdfs:label "yieldsMeasuredValue"
+		forward yieldsMeasuredValue
+	]
+
+	@rdfs:label "MeasurementUncertainty"
+	@rdfs:isDefinedBy "[VIM4 CD: 3.1]"
+	@iso-1087-1:Concept
+	concept MeasurementUncertainty
+
+	@rdfs:label "YieldsMeasurementUncertainty"
+	@rdfs:isDefinedBy "[VIM4 CD: 3.1]"
+	@iso-1087-1:CausalRelation
+	relation entity YieldsMeasurementUncertainty [
+		from MeasurementModel
+		to MeasurementUncertainty
+		@rdfs:label "yieldsMeasurementUncertainty"
+		forward yieldsMeasurementUncertainty
+		functional
+	]
 }

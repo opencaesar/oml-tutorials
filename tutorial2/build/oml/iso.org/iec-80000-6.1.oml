@@ -10,27 +10,27 @@ description <http://iso.org/iec-80000-6.1#> as iec-80000-6.1 {
   extends <http://iso.org/iso-80000-1#> as iso-80000-1
   
   @dc:source "6-1"
-  ci electric-current : vim4:GeneralUnitaryQuantity 
+  instance electric-current : vim4:GeneralUnitaryQuantity 
   [ vim4:id "electric-current" ]
   
-  ri ISQ7-electric-current 
+  relation instance ISQ7-electric-current 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to electric-current vim4:dimensionSymbol "I" ]
   
-  ri ISQ8-electric-current 
+  relation instance ISQ8-electric-current 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to electric-current vim4:dimensionSymbol "I" ]
   
   // -------------------------------------------------------
   
   @dc:source "6-1.a"
-  ci ampere : vim4:UnprefixedMeasurementUnit
+  instance ampere : vim4:UnprefixedMeasurementUnit
   [ vim4:id "ampere" vim4:instantiates electric-current ]
   
-  ri SI7-ampere : vim4:SystemHasBaseUnit
+  relation instance SI7-ampere : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI7 to ampere ]
   
-  ri SI8-ampere : vim4:SystemHasBaseUnit
+  relation instance SI8-ampere : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI8 to ampere ]
   
 }

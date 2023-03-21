@@ -29,11 +29,11 @@ vocabulary <http://iso.org/iso-1087-1#> as iso-1087-1 {
   
   @rdfs:label "essential characteristic"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.6]"
-  annotation property EssentialCharacteristic :> Characteristic
+  annotation property EssentialCharacteristic < Characteristic
   
   @rdfs:label "delimiting characteristic"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.7]"
-  annotation property DelimitingCharacteristic :> Characteristic
+  annotation property DelimitingCharacteristic < Characteristic
   
   @rdfs:label "hierarchical relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.20]"
@@ -41,11 +41,11 @@ vocabulary <http://iso.org/iso-1087-1#> as iso-1087-1 {
   
   @rdfs:label "generic relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.21]"
-  annotation property GenericRelation :> HierarchicalRelation
+  annotation property GenericRelation < HierarchicalRelation
   
   @rdfs:label "partitive relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.22]"
-  annotation property PartitiveRelation :> HierarchicalRelation
+  annotation property PartitiveRelation < HierarchicalRelation
   
   @rdfs:label "associative relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.23]"
@@ -53,15 +53,15 @@ vocabulary <http://iso.org/iso-1087-1#> as iso-1087-1 {
   
   @rdfs:label "sequential relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.24]"
-  annotation property SequentialRelation :> AssociativeRelation
+  annotation property SequentialRelation < AssociativeRelation
   
   @rdfs:label "temporal relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.25]"
-  annotation property TemporalRelation :> SequentialRelation
+  annotation property TemporalRelation < SequentialRelation
   
   @rdfs:label "causal relation"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.26]"
-  annotation property CausalRelation :> AssociativeRelation
+  annotation property CausalRelation < AssociativeRelation
   
   @rdfs:label "concept system"
   @rdfs:isDefinedBy "[ISO 1087-1:3.2.11]"
@@ -89,6 +89,6 @@ The annotation object should be an instance or a specialization of ConceptSystem
   
   @rdfs:label "shows"
   @rdfs:comment """Annotation subject is shown in the diagram of the annotated ontology."""
-  annotation property Shows :> viewpoint:show
+  annotation property Shows < viewpoint:show
   
 }

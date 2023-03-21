@@ -13,58 +13,58 @@ description <http://iso.org/iec-80000-6.46#> as iec-80000-6.46 {
   extends <http://iso.org/iec-80000-6.11#> as iec-80000-6.11
   
   @dc:source "6-46"
-  ci resistance : vim4:GeneralUnitaryQuantity 
+  instance resistance : vim4:GeneralUnitaryQuantity 
   [ vim4:id "resistance" ]
   
-  ri ISQ7-resistance 
+  relation instance ISQ7-resistance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to resistance ]
   
-  ri ISQ7-resistance.voltage
+  relation instance ISQ7-resistance.voltage
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-resistance to iec-80000-6.11:ISQ7-voltage vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ7-resistance.per.electric-current
+  relation instance ISQ7-resistance.per.electric-current
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-resistance to iec-80000-6.1:ISQ7-electric-current vim4:exponent "-1/1"^^owl:rational ]
   
-  ri ISQ8-resistance 
+  relation instance ISQ8-resistance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to resistance ]
   
-  ri ISQ8-resistance.voltage
+  relation instance ISQ8-resistance.voltage
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-resistance to iec-80000-6.11:ISQ8-voltage vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-resistance.per.electric-current
+  relation instance ISQ8-resistance.per.electric-current
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-resistance to iec-80000-6.1:ISQ8-electric-current vim4:exponent "-1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "6-46.a"
-  ci ohm : vim4:UnprefixedMeasurementUnit
+  instance ohm : vim4:UnprefixedMeasurementUnit
   [ vim4:id "ohm" vim4:instantiates resistance ]
   
-  ri SI7-ohm : vim4:SystemHasDerivedUnit
+  relation instance SI7-ohm : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to ohm ]
   
-  ri SI7-ohm.volt
+  relation instance SI7-ohm.volt
   : vim4:HasPowerOfUnitFactor
   [ from SI7-ohm to iec-80000-6.11:SI7-volt vim4:exponent "1/1"^^owl:rational ]
 
-  ri SI7-ohm.per.ampere
+  relation instance SI7-ohm.per.ampere
   : vim4:HasPowerOfUnitFactor
   [ from SI7-ohm to iec-80000-6.1:SI7-ampere vim4:exponent "-1/1"^^owl:rational ]
 
-  ri SI8-ohm : vim4:SystemHasDerivedUnit
+  relation instance SI8-ohm : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to ohm ]
   
-  ri SI8-ohm.volt
+  relation instance SI8-ohm.volt
   : vim4:HasPowerOfUnitFactor
   [ from SI8-ohm to iec-80000-6.11:SI8-volt vim4:exponent "1/1"^^owl:rational ]
 
-  ri SI8-ohm.per.ampere
+  relation instance SI8-ohm.per.ampere
   : vim4:HasPowerOfUnitFactor
   [ from SI8-ohm to iec-80000-6.1:SI8-ampere vim4:exponent "-1/1"^^owl:rational ]
 

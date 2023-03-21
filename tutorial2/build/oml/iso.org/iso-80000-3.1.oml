@@ -12,312 +12,312 @@ description <http://iso.org/iso-80000-3.1#> as iso-80000-3.1 {
   extends <http://iso.org/iso-80000-1#> as iso-80000-1
   
   @dc:source "3-1.1"
-  ci ^length : vim4:GeneralUnitaryQuantity 
+  instance ^length : vim4:GeneralUnitaryQuantity 
   [ vim4:id "length" ]
   
-  ri ISQ7-length 
+  relation instance ISQ7-length 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to ^length vim4:dimensionSymbol "L" ]
   
-  ri ISQ8-length 
+  relation instance ISQ8-length 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to ^length vim4:dimensionSymbol "L" ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.a"
-  ci metre : vim4:UnprefixedMeasurementUnit
+  instance metre : vim4:UnprefixedMeasurementUnit
   [ vim4:id "metre" vim4:instantiates ^length ]
 
-  ri SI7-metre : vim4:SystemHasBaseUnit
+  relation instance SI7-metre : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI7 to metre ]
   
-  ri SI8-metre : vim4:SystemHasBaseUnit
+  relation instance SI8-metre : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI8 to metre ]
   
   // -------------------------------------------------------
   
-  ci decimetre : vim4:PrefixedMeasurementUnit 
-  [ vim4:id "decimetre" vim4:isMultipleOf metre vim4:hasMultiple iso-80000-1:deci ]
+  instance decimetre : vim4:PrefixedMeasurementUnit 
+  [ vim4:id "decimetre" vim4:isMultipleOf metre vim4:hasMultiple iso-80000-1:deinstance ]
   
-  ri SI7-decimetre : vim4:SystemHasDerivedUnit
+  relation instance SI7-decimetre : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to decimetre vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
-  ri SI8-decimetre : vim4:SystemHasDerivedUnit
+  relation instance SI8-decimetre : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to decimetre vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
   // -------------------------------------------------------
   
-  ci kilometre : vim4:PrefixedMeasurementUnit 
+  instance kilometre : vim4:PrefixedMeasurementUnit 
   [ vim4:id "kilometre" vim4:isMultipleOf metre vim4:hasMultiple iso-80000-1:kilo ]
   
-  ri SI7-kilometre : vim4:SystemHasDerivedUnit
+  relation instance SI7-kilometre : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI7 to kilometre vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
-  ri SI8-kilometre : vim4:SystemHasDerivedUnit
+  relation instance SI8-kilometre : vim4:SystemHasDerivedUnit
   [ from iso-80000-1:SI8 to kilometre vim4:isOffSystemUnit "true"^^xsd:boolean ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.2"
-  ci breadth : vim4:GeneralUnitaryQuantity 
+  instance breadth : vim4:GeneralUnitaryQuantity 
   [ vim4:id "breadth" ]
   
-  ri ISQ7-breadth 
+  relation instance ISQ7-breadth 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to breadth ]
   
-  ri ISQ7-breadth.length
+  relation instance ISQ7-breadth.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-breadth to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-breadth 
+  relation instance ISQ8-breadth 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to breadth ]
   
-  ri ISQ8-breadth.length
+  relation instance ISQ8-breadth.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-breadth to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.3"
-  ci height : vim4:GeneralUnitaryQuantity 
+  instance height : vim4:GeneralUnitaryQuantity 
   [ vim4:id "height" ]
   
-  ri ISQ7-height 
+  relation instance ISQ7-height 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to height ]
   
-  ri ISQ7-height.length
+  relation instance ISQ7-height.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-height to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-height 
+  relation instance ISQ8-height 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to height ]
   
-  ri ISQ8-height.length
+  relation instance ISQ8-height.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-height to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.4"
-  ci thickness : vim4:GeneralUnitaryQuantity 
+  instance thickness : vim4:GeneralUnitaryQuantity 
   [ vim4:id "thickness" ]
   
-  ri ISQ7-thickness 
+  relation instance ISQ7-thickness 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to thickness ]
   
-  ri ISQ7-thickness.length
+  relation instance ISQ7-thickness.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-thickness to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-thickness 
+  relation instance ISQ8-thickness 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to thickness ]
   
-  ri ISQ8-thickness.length
+  relation instance ISQ8-thickness.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-thickness to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.5"
-  ci radius : vim4:GeneralUnitaryQuantity 
+  instance radius : vim4:GeneralUnitaryQuantity 
   [ vim4:id "radius" ]
   
-  ri ISQ7-radius 
+  relation instance ISQ7-radius 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to radius ]
   
-  ri ISQ7-radius.length
+  relation instance ISQ7-radius.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-radius to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-radius 
+  relation instance ISQ8-radius 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to radius ]
   
-  ri ISQ8-radius.length
+  relation instance ISQ8-radius.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-radius to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.6"
-  ci radial-distance : vim4:GeneralUnitaryQuantity 
+  instance radial-distance : vim4:GeneralUnitaryQuantity 
   [ vim4:id "radial-distance" ]
   
-  ri ISQ7-radial-distance 
+  relation instance ISQ7-radial-distance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to radial-distance ]
   
-  ri ISQ7-radial-distance.length
+  relation instance ISQ7-radial-distance.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-radial-distance to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-radial-distance 
+  relation instance ISQ8-radial-distance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to radial-distance ]
   
-  ri ISQ8-radial-distance.length
+  relation instance ISQ8-radial-distance.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-radial-distance to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.7"
-  ci diameter : vim4:GeneralUnitaryQuantity 
+  instance diameter : vim4:GeneralUnitaryQuantity 
   [ vim4:id "diameter" ]
   
-  ri ISQ7-diameter 
+  relation instance ISQ7-diameter 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to diameter ]
   
-  ri ISQ7-diameter.length
+  relation instance ISQ7-diameter.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-diameter to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-diameter 
+  relation instance ISQ8-diameter 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to diameter ]
   
-  ri ISQ8-diameter.length
+  relation instance ISQ8-diameter.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-diameter to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.8"
-  ci length-of-path : vim4:GeneralUnitaryQuantity 
+  instance length-of-path : vim4:GeneralUnitaryQuantity 
   [ vim4:id "length-of-path" ]
   
-  ri ISQ7-length-of-path 
+  relation instance ISQ7-length-of-path 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to length-of-path ]
   
-  ri ISQ7-length-of-path.length
+  relation instance ISQ7-length-of-path.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-length-of-path to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-length-of-path 
+  relation instance ISQ8-length-of-path 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to length-of-path ]
   
-  ri ISQ8-length-of-path.length
+  relation instance ISQ8-length-of-path.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-length-of-path to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.9"
-  ci distance : vim4:GeneralUnitaryQuantity 
+  instance distance : vim4:GeneralUnitaryQuantity 
   [ vim4:id "distance" ]
   
-  ri ISQ7-distance 
+  relation instance ISQ7-distance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to distance ]
   
-  ri ISQ7-distance.length
+  relation instance ISQ7-distance.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-distance to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-distance 
+  relation instance ISQ8-distance 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to distance ]
   
-  ri ISQ8-distance.length
+  relation instance ISQ8-distance.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-distance to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.10"
-  ci cartesian-coordinate : vim4:GeneralUnitaryQuantity 
+  instance cartesian-coordinate : vim4:GeneralUnitaryQuantity 
   [ vim4:id "cartesian-coordinate" ]
   
-  ri ISQ7-cartesian-coordinate 
+  relation instance ISQ7-cartesian-coordinate 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to cartesian-coordinate ]
   
-  ri ISQ7-cartesian-coordinate.length
+  relation instance ISQ7-cartesian-coordinate.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-cartesian-coordinate to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-cartesian-coordinate 
+  relation instance ISQ8-cartesian-coordinate 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to cartesian-coordinate ]
   
-  ri ISQ8-cartesian-coordinate.length
+  relation instance ISQ8-cartesian-coordinate.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-cartesian-coordinate to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.11"
-  ci position-vector : vim4:GeneralUnitaryQuantity 
+  instance position-vector : vim4:GeneralUnitaryQuantity 
   [ vim4:id "position-vector" ]
   
-  ri ISQ7-position-vector 
+  relation instance ISQ7-position-vector 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to position-vector ]
   
-  ri ISQ7-position-vector.length
+  relation instance ISQ7-position-vector.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-position-vector to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-position-vector 
+  relation instance ISQ8-position-vector 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to position-vector ]
   
-  ri ISQ8-position-vector.length
+  relation instance ISQ8-position-vector.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-position-vector to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.12"
-  ci displacement : vim4:GeneralUnitaryQuantity 
+  instance displacement : vim4:GeneralUnitaryQuantity 
   [ vim4:id "displacement" ]
   
-  ri ISQ7-displacement 
+  relation instance ISQ7-displacement 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to displacement ]
   
-  ri ISQ7-displacement.length
+  relation instance ISQ7-displacement.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-displacement to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-displacement 
+  relation instance ISQ8-displacement 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to displacement ]
   
-  ri ISQ8-displacement.length
+  relation instance ISQ8-displacement.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-displacement to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   
   // -------------------------------------------------------
   
   @dc:source "3-1.13"
-  ci radius-of-curvature : vim4:GeneralUnitaryQuantity 
+  instance radius-of-curvature : vim4:GeneralUnitaryQuantity 
   [ vim4:id "radius-of-curvature" ]
   
-  ri ISQ7-radius-of-curvature 
+  relation instance ISQ7-radius-of-curvature 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to radius-of-curvature ]
   
-  ri ISQ7-radius-of-curvature.length
+  relation instance ISQ7-radius-of-curvature.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ7-radius-of-curvature to iso-80000-3.1:ISQ7-length vim4:exponent "1/1"^^owl:rational ]
   
-  ri ISQ8-radius-of-curvature 
+  relation instance ISQ8-radius-of-curvature 
   : vim4:SystemHasDerivedUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to radius-of-curvature ]
   
-  ri ISQ8-radius-of-curvature.length
+  relation instance ISQ8-radius-of-curvature.length
   : vim4:HasPowerOfUnitaryQuantityFactor
   [ from ISQ8-radius-of-curvature to iso-80000-3.1:ISQ8-length vim4:exponent "1/1"^^owl:rational ]
   

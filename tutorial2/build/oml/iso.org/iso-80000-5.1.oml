@@ -10,27 +10,27 @@ description <http://iso.org/iso-80000-5.1#> as iso-80000-5.1 {
   extends <http://iso.org/iso-80000-1#> as iso-80000-1
   
   @dc:source "5-1"
-  ci thermodynamic-temperature : vim4:GeneralUnitaryQuantity 
+  instance thermodynamic-temperature : vim4:GeneralUnitaryQuantity 
   [ vim4:id "thermodynamic-temperature" ]
   
-  ri ISQ7-thermodynamic-temperature 
+  relation instance ISQ7-thermodynamic-temperature 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ7 to thermodynamic-temperature vim4:dimensionSymbol "\Theta" ]
   
-  ri ISQ8-thermodynamic-temperature 
+  relation instance ISQ8-thermodynamic-temperature 
   : vim4:SystemHasBaseUnitaryQuantity 
   [ from iso-80000-1:ISQ8 to thermodynamic-temperature vim4:dimensionSymbol "\Theta" ]
   
   // -------------------------------------------------------
   
   @dc:source "5-1.a"
-  ci kelvin : vim4:UnprefixedMeasurementUnit
+  instance kelvin : vim4:UnprefixedMeasurementUnit
   [ vim4:id "kelvin: " vim4:instantiates thermodynamic-temperature ]
   
-  ri SI7-kelvin : vim4:SystemHasBaseUnit
+  relation instance SI7-kelvin : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI7 to kelvin ]
   
-  ri SI8-kelvin : vim4:SystemHasBaseUnit
+  relation instance SI8-kelvin : vim4:SystemHasBaseUnit
   [ from iso-80000-1:SI8 to kelvin ]
   
   
