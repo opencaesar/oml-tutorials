@@ -59,7 +59,7 @@ configurations {
  */
 ext { 
     //coreVersion = '+'
-    metrologyVersion = '+'
+    metrologyVersion = '5.+'
 }
 
 /*
