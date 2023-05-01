@@ -58,7 +58,7 @@ configurations {
  * Dependency versions
  */
 ext { 
-    coreVersion = '+'
+    coreVersion = '4.+'
 }
 
 /*
