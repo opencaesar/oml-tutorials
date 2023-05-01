@@ -1,4 +1,0 @@
-vocabulary bundle <http://bipm.org/jcgm/jcgm-bundle#> as jcgm-bundle {
-
-	includes <http://bipm.org/jcgm/vim4#>
-}
