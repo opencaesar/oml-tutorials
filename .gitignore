@@ -5,3 +5,5 @@
 
 # Fuseki output directory
 .fuseki
+
+build
