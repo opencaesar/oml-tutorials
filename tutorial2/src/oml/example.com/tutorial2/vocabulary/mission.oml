@@ -95,6 +95,6 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 
 	@rdfs:comment "When interfaces presented by components are joined, we infer that the components are connected."
 	rule Junction-infers-Connection [
-		presents(c1, i1) ^ joins(i1, i2) ^ isPresentedBy(i2, c2) -> connectsTo(c1, c2)
+		presents(c1, i1) & joins(i1, i2) & isPresentedBy(i2, c2) -> connectsTo(c1, c2)
 	]
 }

@@ -38,7 +38,7 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	@rdfs:comment "An enumeration of spiciness levels"
 	scalar Spiciness [
 		oneOf "Hot", "Medium", "Mild"
-	] < xsd:string
+	]
 
 	@rdfs:comment "The spiciness property of a food item"
 	scalar property hasSpiceness [
