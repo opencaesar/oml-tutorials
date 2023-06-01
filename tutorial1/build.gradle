@@ -55,17 +55,10 @@ configurations {
 }
 
 /*
- * Dependency versions
- */
-ext { 
-    coreVersion = '4.+'
-}
-
-/*
  * The OML dependencies
  */
 dependencies {
-    oml "io.opencaesar.ontologies:core-vocabularies:$coreVersion"
+    oml "io.opencaesar.ontologies:core-vocabularies:4.+"
 }
 
 /*

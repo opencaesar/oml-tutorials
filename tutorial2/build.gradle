@@ -55,19 +55,11 @@ configurations {
 }
 
 /*
- * Dependency versions
- */
-ext { 
-    //coreVersion = '+'
-    metrologyVersion = '6.+'
-}
-
-/*
  * The OML dependencies
  */
 dependencies {
     //oml "io.opencaesar.ontologies:core-vocabularies:$coreVersion"
-    oml "io.opencaesar.ontologies:metrology-vocabularies:$metrologyVersion"
+    oml "io.opencaesar.ontologies:metrology-vocabularies:6.+"
 }
 
 /*
