@@ -5,13 +5,13 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 
 	@rdfs:comment "An Objective=] represents a specific interest 
 	that one or more stakeholders have in the successful execution of a mission."
-	concept Objective :> base:IdentifiedThing, base:AggregatedThing [
+	concept Objective < base:IdentifiedThing, base:AggregatedThing [
 		restricts all relation base:aggregates to Objective
 		restricts all relation base:isAggregatedIn to Objective
 	]
 
 	@rdfs:comment "A Mission pursues Objectives."
-	concept Mission :> base:IdentifiedThing
+	concept Mission < base:IdentifiedThing
 
 	@rdfs:comment "A Mission pursues zero or more Objectives."
 	relation entity Pursues [
@@ -24,7 +24,7 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 	]
 
 	@rdfs:comment "A Component is something that can be deployed in a mission."
-	concept Component :> base:IdentifiedThing
+	concept Component < base:IdentifiedThing
 
 	@rdfs:comment "A Mission deploys zero or more Components."
 	relation entity Deploys [
@@ -37,13 +37,13 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 	]
 
 	@rdfs:comment "A Component can be organized hierarchically by containing other Components. "
-	ref concept Component :> base:ContainedElement [
+	ref concept Component < base:ContainedElement [
 		restricts all relation base:contains to Component
 		restricts all relation base:isContainedIn to Component
 	]
 
 	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."
-	concept Interface :> base:IdentifiedThing
+	concept Interface < base:IdentifiedThing
 
 	@rdfs:comment "A Component presents zero or more Interfaces."
 	relation entity Presents [
@@ -60,10 +60,10 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 	aspect SpecifiedThing
 
 	@rdfs:comment "Presents is a relation that can be specified by a requirement."
-	ref relation entity Presents :> SpecifiedThing
+	ref relation entity Presents < SpecifiedThing
 
 	@rdfs:comment "A Requirement specifies that something must be true about something."
-	concept Requirement :> base:IdentifiedThing
+	concept Requirement < base:IdentifiedThing
 
 	@rdfs:comment "A Requirement specifies zero or more SpecifiedThings."
 	relation entity Specifies [
@@ -77,13 +77,13 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 	]
 
 	@rdfs:comment "A Junction joins two or more Interfaces."
-	relation entity Junction :> base:IdentifiedThing [
+	relation entity Junction [
 		from Interface
 		to Interface
 		forward joins
 		symmetric
 		irreflexive
-	]
+	] < base:IdentifiedThing 
 
 	@rdfs:comment "A Component connects to zero or more components."
 	relation entity Connection [
@@ -95,6 +95,6 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 
 	@rdfs:comment "When interfaces presented by components are joined, we infer that the components are connected."
 	rule Junction-infers-Connection [
-		presents(c1, i1) ^ joins(i1, i2) ^ isPresentedBy(i2, c2) -> connectsTo(c1, c2)
+		presents(c1, i1) & joins(i1, i2) & isPresentedBy(i2, c2) -> connectsTo(c1, c2)
 	]
 }

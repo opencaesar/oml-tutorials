@@ -20,12 +20,12 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-        classpath 'io.opencaesar.owl:owl-fuseki-gradle:1.+'
-        classpath 'io.opencaesar.owl:owl-query-gradle:1.+'
-        classpath 'io.opencaesar.owl:owl-load-gradle:1.+'
-        classpath 'io.opencaesar.owl:owl-reason-gradle:1.+'
-        classpath 'io.opencaesar.oml:oml-merge-gradle:1.+'
-        classpath 'io.opencaesar.adapters:oml2owl-gradle:1.+'
+        classpath 'io.opencaesar.owl:owl-fuseki-gradle:2.+'
+        classpath 'io.opencaesar.owl:owl-query-gradle:2.+'
+        classpath 'io.opencaesar.owl:owl-load-gradle:2.+'
+        classpath 'io.opencaesar.owl:owl-reason-gradle:2.+'
+        classpath 'io.opencaesar.oml:oml-merge-gradle:2.+'
+        classpath 'io.opencaesar.adapters:oml2owl-gradle:2.+'
 	}
 }
 
@@ -55,17 +55,10 @@ configurations {
 }
 
 /*
- * Dependency versions
- */
-ext { 
-    coreVersion = '3.+'
-}
-
-/*
  * The OML dependencies
  */
 dependencies {
-    oml "io.opencaesar.ontologies:core-vocabularies:$coreVersion"
+    oml "io.opencaesar.ontologies:core-vocabularies:4.+"
 }
 
 /*

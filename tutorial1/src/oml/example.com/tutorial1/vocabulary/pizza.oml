@@ -24,7 +24,7 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	// Identified Things
 
 	@rdfs:comment "The class of food items"
-	concept Food :> IdentifiedThing
+	concept Food < IdentifiedThing
 
 	@rdfs:comment "A relation from a food to another used as an ingredient"
 	relation entity HasIngredient [
@@ -36,10 +36,8 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	]
 
 	@rdfs:comment "An enumeration of spiciness levels"
-	enumerated scalar Spiciness [
-		"Hot",
-		"Medium",
-		"Mild"
+	scalar Spiciness [
+		oneOf "Hot", "Medium", "Mild"
 	]
 
 	@rdfs:comment "The spiciness property of a food item"
@@ -52,68 +50,68 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	// Foods
 	
 	@rdfs:comment "The class of pizzas"
-	concept Pizza :> Food [
+	concept Pizza < Food [
 		restricts some relation hasBase to PizzaBase
 	]
 
 	@rdfs:comment "The class of pizza bases"
-	concept PizzaBase :> Food
+	concept PizzaBase < Food
 
 	@rdfs:comment "The class of pizza toppings"
-	concept PizzaTopping :> Food
+	concept PizzaTopping < Food
 
 	@rdfs:comment "A relation from a pizza to a base"
-	relation entity HasBase :> HasIngredient [
+	relation entity HasBase [
 		from Pizza
 		to PizzaBase
 		forward hasBase
 		reverse isBaseOf
 		functional
 		inverse functional
-	]
+	] < HasIngredient 
 
 	@rdfs:comment "A relation from a pizza to a topping"
-	relation entity HasTopping :> HasIngredient [
+	relation entity HasTopping [
 		from Pizza
 		to PizzaTopping
 		forward hasTopping
 		reverse isToppingOf
 		inverse functional
-	]
+	] < HasIngredient
 
 	// Pizzas
 		
 	@rdfs:comment "The class of pizzas with some cheese toppings"
-	concept CheesyPizza :> Pizza [
+	concept CheesyPizza < Pizza [
 		restricts some relation hasTopping to CheeseTopping
 	]
 	
 	@rdfs:comment "The class of pizzas with some meat toppings"
-	concept MeatyPizza :> Pizza [
+	concept MeatyPizza < Pizza [
 		restricts some relation hasTopping to MeatTopping
 	]
 	
 	@rdfs:comment "The class of pizzas with all vegetarian toppings"
-	concept VegetarianPizza :> Pizza [
+	concept VegetarianPizza < Pizza [
 		restricts all relation hasTopping to VegetarianTopping
 	]
 
 	@rdfs:comment "The class of American pizzas"
-	concept American :> CheesyPizza, MeatyPizza [
+	concept American < CheesyPizza, MeatyPizza [
 		restricts some relation hasTopping to MozzarellaTopping
 		restricts some relation hasTopping to SausageTopping
 		restricts some relation hasTopping to TomatoTopping
 	]
 
 	@rdfs:comment "The class of Veneziana pizzas"
-	concept Veneziana :> CheesyPizza, MeatyPizza [
+	concept Veneziana < CheesyPizza, MeatyPizza [
 		restricts some relation hasTopping to MozzarellaTopping
 		restricts some relation hasTopping to TomatoTopping
 		restricts some relation hasTopping to SultanaTopping
 	]
 
 	@rdfs:comment "The class of Margherita pizzas"
-	concept Margherita :> CheesyPizza, VegetarianPizza [
+	concept Margherita < CheesyPizza, VegetarianPizza [
 		restricts some relation hasTopping to MozzarellaTopping
 		restricts some relation hasTopping to TomatoTopping
 	]
@@ -121,80 +119,80 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	// Pizza Bases
 
 	@rdfs:comment "The class of deep pan bases"
-	concept DeepPanBase :> PizzaBase
+	concept DeepPanBase < PizzaBase
 	
 	@rdfs:comment "The class of thin and crispy bases"
-	concept ThinAndCrispyBase :> PizzaBase
+	concept ThinAndCrispyBase < PizzaBase
 
 	// Pizza Toppings
 		
 	@rdfs:comment "The class of meat toppings"
-	concept MeatTopping :> PizzaTopping
+	concept MeatTopping < PizzaTopping
 	
 	@rdfs:comment "The class of vegetarian toppings"
-	concept VegetarianTopping :> PizzaTopping
+	concept VegetarianTopping < PizzaTopping
 
 	@rdfs:comment "The class of hot spiciness toppings"
-	concept HotTopping :> PizzaTopping [
+	concept HotTopping < PizzaTopping [
 		restricts scalar property hasSpiceness to "Hot"
 	]
 
 	@rdfs:comment "The class of medium spiciness toppings"
-	concept MediumTopping :> PizzaTopping [
+	concept MediumTopping < PizzaTopping [
 		restricts scalar property hasSpiceness to "Medium"
 	]
 
 	@rdfs:comment "The class of mild spiciness toppings"
-	concept MildTopping :> PizzaTopping [
+	concept MildTopping < PizzaTopping [
 		restricts scalar property hasSpiceness to "Mild"
 	]
 
 	// Meat Topping
 
 	@rdfs:comment "The class sausage toppings"
-	concept SausageTopping :> MeatTopping, MildTopping
+	concept SausageTopping < MeatTopping, MildTopping
 	@rdfs:comment "The class spiced beef toppings"
-	concept SpicedBeefTopping :> MeatTopping, HotTopping
+	concept SpicedBeefTopping < MeatTopping, HotTopping
 	
 	// Vegetarion Toppings
 
 	@rdfs:comment "The class sauce toppings"
-	concept SauceTopping :> VegetarianTopping
+	concept SauceTopping < VegetarianTopping
 	@rdfs:comment "The class cheese toppings"
-	concept CheeseTopping :> VegetarianTopping
+	concept CheeseTopping < VegetarianTopping
 	@rdfs:comment "The class fruit toppings"
-	concept FruitTopping :> VegetarianTopping
+	concept FruitTopping < VegetarianTopping
 	@rdfs:comment "The class vegetable toppings"
-	concept VegetableTopping :> VegetarianTopping
+	concept VegetableTopping < VegetarianTopping
 
 	// Sauce Toppings
 
 	@rdfs:comment "The class of tabasco toppings"
-	concept TobascoTopping :> SauceTopping, HotTopping
+	concept TobascoTopping < SauceTopping, HotTopping
 
 	// Cheese Toppings
 
 	@rdfs:comment "The class of parmesan toppings"
-	concept ParmesanTopping :> CheeseTopping, MildTopping
+	concept ParmesanTopping < CheeseTopping, MildTopping
 	@rdfs:comment "The class of mozzarella toppings"
-	concept MozzarellaTopping :> CheeseTopping, MildTopping
+	concept MozzarellaTopping < CheeseTopping, MildTopping
 
 	// Fruit Toppings
 
 	@rdfs:comment "The class of sultana toppings"
-	concept SultanaTopping :> FruitTopping, MediumTopping
+	concept SultanaTopping < FruitTopping, MediumTopping
 	
 	// Vegetable Toppings
 
 	@rdfs:comment "The class of pepper toppings"
-	concept PepperTopping :> VegetableTopping
+	concept PepperTopping < VegetableTopping
 	@rdfs:comment "The class of tomatoe toppings"
-	concept TomatoTopping :> VegetableTopping, MildTopping
+	concept TomatoTopping < VegetableTopping, MildTopping
 
 	// Pepper Toppings
 
 	@rdfs:comment "The class of jalapeno pepper toppings"
-	concept JalapenoPepperTopping :> PepperTopping, HotTopping
+	concept JalapenoPepperTopping < PepperTopping, HotTopping
 	@rdfs:comment "The class of sweet pepper toppings"
-	concept SweetPepperTopping :> PepperTopping, MildTopping
+	concept SweetPepperTopping < PepperTopping, MildTopping
 }
