@@ -1,0 +1,4 @@
+vocabulary bundle <http://example.com/tutorial3/vocabulary/bundle#> as ^bundle {
+	
+	includes <http://example.com/tutorial3/vocabulary/mission#>
+}

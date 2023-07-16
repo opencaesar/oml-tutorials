@@ -7,3 +7,12 @@
 .fuseki
 
 build
+
+# vscode
+.history
+
+# eclipse
+*/.settings/
+*/.project
+
+
