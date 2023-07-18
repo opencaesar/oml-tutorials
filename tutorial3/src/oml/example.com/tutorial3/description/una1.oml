@@ -4,22 +4,22 @@ description <http://example.com/tutorial3/description/una1#> as una1 {
 	uses <http://example.com/tutorial3/vocabulary/mission#> as mission
 
     instance C1 : mission:Component [
-		base:hasIdentifier "C.1"
+//		base:hasIdentifier "C.1"
         mission:presents I1
         mission:presents I2
 	]
 
     instance C2 : mission:Component [
-		base:hasIdentifier "C.2"
+//		base:hasIdentifier "C.2"
         mission:presents I2
 	]
 
     instance I1 : mission:Interface [
-		base:hasIdentifier "I.1"
+//		base:hasIdentifier "I.1"
 	]
 
     instance I2 : mission:Interface [
-		base:hasIdentifier "I.2"
+//		base:hasIdentifier "I.2"
 	]
 
 

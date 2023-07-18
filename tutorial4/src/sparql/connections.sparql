@@ -1,5 +1,5 @@
-PREFIX base:        <http://example.com/tutorial3/vocabulary/base#>
-PREFIX mission:     <http://example.com/tutorial3/vocabulary/mission#>
+PREFIX base:        <http://example.com/tutorial4/vocabulary/base#>
+PREFIX mission:     <http://example.com/tutorial4/vocabulary/mission#>
 
 SELECT DISTINCT ?c1_name ?c2_name
 WHERE {

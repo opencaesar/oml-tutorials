@@ -1,8 +1,8 @@
 /* 
  * The Maven coordinates for the project artifact
  */
-ext.title = 'tutorial3'
-description = 'This is tutorial4 example'
+ext.title = 'Tutorial5'
+description = 'This is tutorial5 example'
 group = 'com.example'
 version = '1.0.0'
 
@@ -34,9 +34,9 @@ buildscript {
  */
 ext.dataset = [
     // Name of dataset (matches one used in .fuseki.ttl file)
-    name: 'tutorial3',
+    name: 'tutorial5',
     // Root ontology IRI of the dataset
-    rootOntologyIri: 'http://example.com/tutorial3/description/bundle',
+    rootOntologyIri: 'http://example.com/tutorial5/description/bundle',
 ]
 
 /*
@@ -104,7 +104,6 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", depends
 task startFuseki(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     configurationPath = file('.fuseki.ttl')
     outputFolderPath = file('.fuseki')
-    webUI = true
 }
 
 /*
@@ -117,7 +116,7 @@ task stopFuseki(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
 /*
  * A task to load an OWL catalog to a Fuseki dataset endpoint
  */
-task owlLoad(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [startFuseki, owlReason]) {
+task owlLoad(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: owlReason) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3030/$dataset.name".toString()
     fileExtensions = ['owl', 'ttl']
@@ -148,9 +147,7 @@ task build(group: "oml") {
 /*
  * A task to delete the build artifacts
  */
-task clean(type: Delete, group: "oml") {
-	delete 'build'
-}
+task clean(type: Delete, group: "oml")
 
 /*
  * Publish artifact to maven
