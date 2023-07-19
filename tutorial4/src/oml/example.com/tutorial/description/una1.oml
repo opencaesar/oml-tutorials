@@ -11,19 +11,14 @@ description <http://example.com/tutorial/description/una1#> as una1 {
     instance I2 : mission:Interface
 
     relation instance C1.I1 : mission:Presents [
-        from C1
-        to I1
+        from C1 to I1
     ]
 
     relation instance C1.I2 : mission:Presents [
-        from C1
-        to I2
+        from C1 to I2
     ]
 
-    
     relation instance C2.I2 : mission:Presents [
-        from C2
-        to I2
+        from C2 to I2
     ]
-    
 }

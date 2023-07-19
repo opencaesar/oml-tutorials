@@ -2,10 +2,12 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 	
 	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
 
-	@rdfs:comment "A Component is something that can be deployed in a mission."
+	@rdfs:comment "A Component is something that can be deployed 
+	in a mission."
 	concept Component
 
-	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."
+	@rdfs:comment "An Interface represents a set of features 
+	that describe some Component's interaction with another Component."
 	concept Interface
 
 	@rdfs:comment "A Component presents zero or more Interfaces."
