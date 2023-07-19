@@ -1,5 +1,0 @@
-description bundle <http://example.com/tutorial/description/bundle#> as ^bundle {
-	
-	uses <http://example.com/tutorial/vocabulary/bundle#>
-	includes <http://example.com/tutorial/description/una1#>
-}

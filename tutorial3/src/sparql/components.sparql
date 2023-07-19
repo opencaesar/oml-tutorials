@@ -1,8 +1,0 @@
-PREFIX base:        <http://example.com/tutorial/vocabulary/base#>
-PREFIX mission:     <http://example.com/tutorial/vocabulary/mission#>
-
-SELECT DISTINCT ?i
-WHERE {
-	<http://example.com/tutorial/description/una1#C2> mission:presents ?i .
-}
-ORDER BY ?i
