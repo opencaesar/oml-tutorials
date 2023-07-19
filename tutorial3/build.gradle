@@ -34,9 +34,9 @@ buildscript {
  */
 ext.dataset = [
     // Name of dataset (matches one used in .fuseki.ttl file)
-    name: 'tutorial3',
+    name: 'tutorial',
     // Root ontology IRI of the dataset
-    rootOntologyIri: 'http://example.com/tutorial3/description/bundle',
+    rootOntologyIri: 'http://example.com/tutorial/description/bundle',
 ]
 
 /*

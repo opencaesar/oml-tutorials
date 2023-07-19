@@ -1,0 +1,149 @@
+vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
+	
+	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+	extends <http://www.w3.org/2001/XMLSchema#> as xsd
+
+	@rdfs:comment "The class of things having an id and a canonical name"
+	aspect IdentifiedThing
+
+	@rdfs:comment "The has canonical name property"
+	scalar property hasCanonicalName [
+		domain IdentifiedThing
+		range xsd:string
+	]
+
+	@rdfs:comment "The has identifier property"
+	scalar property hasIdentifier [
+		domain IdentifiedThing
+		range xsd:string
+	]
+
+	@rdfs:comment "The has description property"
+	scalar property hasDescription [
+		domain IdentifiedThing
+		range xsd:string
+	]
+
+	@rdfs:comment "The class of things that can be aggregated"
+	aspect AggregatedThing
+
+	@rdfs:comment "The aggregates relation between aggregated things"
+	relation entity Aggregates [
+		from AggregatedThing
+		to AggregatedThing
+		forward aggregates
+		reverse isAggregatedIn
+		asymmetric
+		irreflexive
+	]
+
+	@rdfs:comment "A ContainedElement is a thing that can participate in homeomeric containment relationships."
+	aspect ContainedElement
+
+	@rdfs:comment "Contains is a many-to-many relation used to represent homeomeric relations that form directed rooted trees."
+	relation entity Contains [
+		from ContainedElement
+		to ContainedElement
+		forward contains
+		reverse isContainedIn
+		inverse functional
+		asymmetric
+		irreflexive
+	]
+
+
+	@rdfs:comment "An Objective=] represents a specific interest 
+	that one or more stakeholders have in the successful execution of a mission."
+	concept Objective < IdentifiedThing, AggregatedThing [
+		restricts all relation aggregates to Objective
+		restricts all relation isAggregatedIn to Objective
+	]
+
+	@rdfs:comment "A Mission pursues Objectives."
+	concept Mission < IdentifiedThing
+
+	@rdfs:comment "A Mission pursues zero or more Objectives."
+	relation entity Pursues [
+		from Mission
+		to Objective
+		forward pursues
+		reverse isPursuedBy
+		asymmetric
+		irreflexive
+	]
+
+	@rdfs:comment "A Component is something that can be deployed in a mission."
+	concept Component < IdentifiedThing
+
+	@rdfs:comment "A Mission deploys zero or more Components."
+	relation entity Deploys [
+		from Mission
+		to Component
+		forward deploys
+		reverse isDeployedBy
+		asymmetric
+		irreflexive
+	]
+
+	@rdfs:comment "A Component can be organized hierarchically by containing other Components. "
+	ref concept Component < ContainedElement [
+		restricts all relation contains to Component
+		restricts all relation isContainedIn to Component
+	]
+
+	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."
+	concept Interface < IdentifiedThing
+
+	@rdfs:comment "A Component presents zero or more Interfaces."
+	relation entity Presents [
+		from Component
+		to Interface
+		forward presents
+		reverse isPresentedBy
+		inverse functional
+		asymmetric
+		irreflexive
+	]
+
+	@rdfs:comment "SpecifiedThing is something that isSpecifiedBy a Requirement"
+	aspect SpecifiedThing
+
+	@rdfs:comment "Presents is a relation that can be specified by a requirement."
+	ref relation entity Presents < SpecifiedThing
+
+	@rdfs:comment "A Requirement specifies that something must be true about something."
+	concept Requirement < IdentifiedThing
+
+	@rdfs:comment "A Requirement specifies zero or more SpecifiedThings."
+	relation entity Specifies [
+		from Requirement
+		to SpecifiedThing
+		forward specifies
+		reverse isSpecifiedBy
+		functional
+		asymmetric
+		irreflexive
+	]
+
+	@rdfs:comment "A Junction joins two or more Interfaces."
+	relation entity Junction [
+		from Interface
+		to Interface
+		forward joins
+		symmetric
+		irreflexive
+	] < IdentifiedThing 
+
+	@rdfs:comment "A Component connects to zero or more components."
+	relation entity Connection [
+		from Component
+		to Component
+		forward connectsTo
+		symmetric
+	]
+
+	@rdfs:comment "When interfaces presented by components are joined, we infer that the components are connected."
+	rule Junction-infers-Connection [
+		presents(c1, i1) & joins(i1, i2) & isPresentedBy(i2, c2) -> connectsTo(c1, c2)
+	]
+}
