@@ -58,7 +58,7 @@ configurations {
  * The OML dependencies
  */
 dependencies {
-    oml "io.opencaesar.ontologies:core-vocabularies:4.+"
+    oml "io.opencaesar.ontologies:core-vocabularies:5.+"
 }
 
 /*
