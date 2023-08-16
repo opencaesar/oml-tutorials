@@ -58,7 +58,7 @@ configurations {
  * The OML dependencies
  */
 dependencies {
-    oml "io.opencaesar.ontologies:metrology-vocabularies:6.+"
+    oml "io.opencaesar.ontologies:metrology-vocabularies:7.+"
 }
 
 /*

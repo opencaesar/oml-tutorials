@@ -6,8 +6,8 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 	@rdfs:comment "An Objective=] represents a specific interest 
 	that one or more stakeholders have in the successful execution of a mission."
 	concept Objective < base:IdentifiedThing, base:AggregatedThing [
-		restricts all relation base:aggregates to Objective
-		restricts all relation base:isAggregatedIn to Objective
+		restricts all base:aggregates to Objective
+		restricts all base:isAggregatedIn to Objective
 	]
 
 	@rdfs:comment "A Mission pursues Objectives."
@@ -38,8 +38,8 @@ vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
 
 	@rdfs:comment "A Component can be organized hierarchically by containing other Components. "
 	ref concept Component < base:ContainedElement [
-		restricts all relation base:contains to Component
-		restricts all relation base:isContainedIn to Component
+		restricts all base:contains to Component
+		restricts all base:isContainedIn to Component
 	]
 
 	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."

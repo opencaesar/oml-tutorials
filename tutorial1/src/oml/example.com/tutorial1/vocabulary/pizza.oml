@@ -51,7 +51,7 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 	
 	@rdfs:comment "The class of pizzas"
 	concept Pizza < Food [
-		restricts some relation hasBase to PizzaBase
+		restricts some hasBase to PizzaBase
 	]
 
 	@rdfs:comment "The class of pizza bases"
@@ -83,37 +83,37 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 		
 	@rdfs:comment "The class of pizzas with some cheese toppings"
 	concept CheesyPizza < Pizza [
-		restricts some relation hasTopping to CheeseTopping
+		restricts some hasTopping to CheeseTopping
 	]
 	
 	@rdfs:comment "The class of pizzas with some meat toppings"
 	concept MeatyPizza < Pizza [
-		restricts some relation hasTopping to MeatTopping
+		restricts some hasTopping to MeatTopping
 	]
 	
 	@rdfs:comment "The class of pizzas with all vegetarian toppings"
 	concept VegetarianPizza < Pizza [
-		restricts all relation hasTopping to VegetarianTopping
+		restricts all hasTopping to VegetarianTopping
 	]
 
 	@rdfs:comment "The class of American pizzas"
 	concept American < CheesyPizza, MeatyPizza [
-		restricts some relation hasTopping to MozzarellaTopping
-		restricts some relation hasTopping to SausageTopping
-		restricts some relation hasTopping to TomatoTopping
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to SausageTopping
+		restricts some hasTopping to TomatoTopping
 	]
 
 	@rdfs:comment "The class of Veneziana pizzas"
 	concept Veneziana < CheesyPizza, MeatyPizza [
-		restricts some relation hasTopping to MozzarellaTopping
-		restricts some relation hasTopping to TomatoTopping
-		restricts some relation hasTopping to SultanaTopping
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to TomatoTopping
+		restricts some hasTopping to SultanaTopping
 	]
 
 	@rdfs:comment "The class of Margherita pizzas"
 	concept Margherita < CheesyPizza, VegetarianPizza [
-		restricts some relation hasTopping to MozzarellaTopping
-		restricts some relation hasTopping to TomatoTopping
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to TomatoTopping
 	]
 
 	// Pizza Bases
@@ -134,17 +134,17 @@ vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
 
 	@rdfs:comment "The class of hot spiciness toppings"
 	concept HotTopping < PizzaTopping [
-		restricts scalar property hasSpiceness to "Hot"
+		restricts hasSpiceness to "Hot"
 	]
 
 	@rdfs:comment "The class of medium spiciness toppings"
 	concept MediumTopping < PizzaTopping [
-		restricts scalar property hasSpiceness to "Medium"
+		restricts hasSpiceness to "Medium"
 	]
 
 	@rdfs:comment "The class of mild spiciness toppings"
 	concept MildTopping < PizzaTopping [
-		restricts scalar property hasSpiceness to "Mild"
+		restricts hasSpiceness to "Mild"
 	]
 
 	// Meat Topping
