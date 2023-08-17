@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="5f3ebd413394d3fec5305dba46b70c3b4dadbe5f" name="document-revision">
+  <meta content="f49b81bab2c7d9cc721941395be3c2cee9a13215" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2272,7 +2272,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial3"><span class="secno">4</span> <span class="content">Tutorial 3: OML CI/CD</span></a>
      <ol class="toc">
       <li><a href="#tutorial3-learning-objectives"><span class="secno">4.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial3-motivation"><span class="secno">4.2</span> <span class="content">Motivation</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -4393,21 +4392,21 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
     <h2 class="heading settled" data-level="4" id="tutorial3"><span class="secno">4. </span><span class="content">Tutorial 3: OML CI/CD</span><a class="self-link" href="#tutorial3"></a></h2>
     <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on <a href="#tutorial2">Tutorial 2</a>. Please do that first before going further.</p>
     <h3 class="heading settled" data-level="4.1" id="tutorial3-learning-objectives"><span class="secno">4.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial3-learning-objectives"></a></h3>
-     This tutorial teaches how to set up an OML project for Continuous Integration and Delivery (CI/CD). Students will gain a practical understanding of the following activities: 
+     Managing an OML project in a git repository makes a lot of sense. First, OML models are textual files, which allows git to edit them natively. Second, all the OML IDEs already support git. Third, the VS Code extension for OML supports editing OML files in the cloud (and even in the browser in the future). Finally, the products of an OML project, typically documents, can be published online in git directly. Following the best practices of model-based development, such documents should be produced automatically from models through a rigorous and repeatable process. This is possible to achieve thanks to the process of Continuous Integration of Delivery (CI/CD) that is supported by most git repos. 
+    <p>This tutorial teaches how to set up a CI/CD pipeline for an OML project managed in a git repo. Users will learn the following:</p>
     <ol>
      <li data-md>
-      <p>Orchestrating an OML build process with Gradle scripts.</p>
+      <p>How to setup an OML build script with Gradle.</p>
      <li data-md>
-      <p>Generating documentation for an OML project.</p>
+      <p>How to generate default docs for an OML project.</p>
      <li data-md>
-      <p>Designing a custom report for an OML project with Jupyter Notebook.</p>
+      <p>How to create custom but consistent docs for an OML project with Jupyter Notebooks.</p>
      <li data-md>
-      <p>Managing an OML project in a git repository and publishing its reports to a web server.</p>
+      <p>How to manage an OML project in a git repository and publish its docs to its web server.</p>
      <li data-md>
-      <p>Setting up a CI/CD pipeline in the git repository to build and update the reports on each commit.</p>
+      <p>How to setup a CI/CD pipeline in the gut repository to build and update the docs on each commit.</p>
     </ol>
     <p class="note" role="note"><span class="marker">Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/kepler16b-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="4.2" id="tutorial3-motivation"><span class="secno">4.2. </span><span class="content">Motivation</span><a class="self-link" href="#tutorial3-motivation"></a></h3>
    </div>
   </main>
 <script>
