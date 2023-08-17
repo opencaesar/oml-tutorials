@@ -12,3 +12,6 @@ This tutorial teaches how to set up an OML project for Continuous Integration an
 1. Setting up a CI/CD pipeline in the git repository to build and update the reports on each commit.
 
 Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
+
+## Motivation ## {#tutorial3-motivation}
+
