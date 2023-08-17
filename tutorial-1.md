@@ -5,7 +5,7 @@ Note: If you have not already done so, please follow the [Getting Ready](#gettin
 ## Learning Objectives ## {#tutorial1-learning-objectives}
 This tutorial provides a quick overview of the basic workflows of OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain (we use a Pizza domain since everyone is familiar with it), then use such vocabulary to describe knowledge (the pizzas sold by some pizza restaurant). Furthermore, users will learn how to build the project to check its logical consistency (e.g., vegetarian pizzas have no meat ingredients), and how to run queries on the described knowledge to answer business questions (e.g., how much ingredients were used? and how many vegan pizzas were sold?).
 
-Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1), but we encourage the reader to recreate them by following the instructions below.
+Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/pizza-example), but we encourage the reader to recreate them by following the instructions below.
 
 ## Create OML Project ## {#tutorial1-create-oml-project}
 

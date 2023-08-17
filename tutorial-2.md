@@ -1,11 +1,11 @@
 # Tutorial 2: OML Patterns # {#tutorial2}
 
-Note: If you have not already done so, please do [Tutorial 1](#tutorial1) first before doing this one since we assume your familiarity with the basics of OML.
+Note: This tutorial builds on [Tutorial 1](#tutorial1). Please do that first before going further.
 
 ## Learning Objectives ## {#tutorial2-learning-objectives}
 This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.
 
-Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/oml-tutorials/tree/master/tutorial2), but we encourage the reader to recreate them by following the instructions below.
+Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
 
 ## Create OML Project ##  {#tutorial2-oml-project}
 

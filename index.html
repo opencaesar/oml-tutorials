@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="42dba3cd8fdc955c979b2f6f04641260fc4936af" name="document-revision">
+  <meta content="b00dfc23787be25935b90640f885608cda066303" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2349,7 +2349,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p class="note" role="note"><span class="marker">Note:</span> If you have not already done so, please follow the <a href="#getting-ready">Getting Ready</a> instructions first before proceeding.</p>
     <h3 class="heading settled" data-level="2.1" id="tutorial1-learning-objectives"><span class="secno">2.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial1-learning-objectives"></a></h3>
      This tutorial provides a quick overview of the basic workflows of OML. Users will learn how to create an OML project, and within it, create a vocabulary for a simple domain (we use a Pizza domain since everyone is familiar with it), then use such vocabulary to describe knowledge (the pizzas sold by some pizza restaurant). Furthermore, users will learn how to build the project to check its logical consistency (e.g., vegetarian pizzas have no meat ingredients), and how to run queries on the described knowledge to answer business questions (e.g., how much ingredients were used? and how many vegan pizzas were sold?). 
-    <p class="note" role="note"><span class="marker">Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial1">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
+    <p class="note" role="note"><span class="marker">Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/pizza-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
     <h3 class="heading settled" data-level="2.2" id="tutorial1-create-oml-project"><span class="secno">2.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial1-create-oml-project"></a></h3>
     <ol>
      <li data-md>
@@ -2930,10 +2930,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <h3 class="heading settled" data-level="2.10" id="tutorial1-summary"><span class="secno">2.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial1-summary"></a></h3>
     <p>This tutorial introduced the OML language, its <em>Rosetta</em> workbench, and its main modeling and analysis workflows.  It demonstrated how OML can be used to define a semantic business vocabulary (`pizza` in this case) that can be used to describe knowledge (the pizzas made by a `restaurant` in this case), check its consistency and generate inferences with the help of a logical reasoner, and write queries to answer business questions. It also demonstrated how the <em>Rosetta</em> workbench can be used to author OML ontologies and run and inspect the results of analysis tasks (developed in Gradle), like the <em>build</em> task that invokes a logical reasoner, the <em>startFusei</em> and <em>stopFuseki</em> tasks to start/stop the <em>Fuseki</em> server, and the <em>owlQuery</em> task that runs SPARQL queries on the model.</p>
     <h2 class="heading settled" data-level="3" id="tutorial2"><span class="secno">3. </span><span class="content">Tutorial 2: OML Patterns</span><a class="self-link" href="#tutorial2"></a></h2>
-    <p class="note" role="note"><span class="marker">Note:</span> If you have not already done so, please do <a href="#tutorial1">Tutorial 1</a> first before doing this one since we assume your familiarity with the basics of OML.</p>
+    <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on <a href="#tutorial1">Tutorial 1</a>. Please do that first before going further.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial2-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial2-learning-objectives"></a></h3>
      This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth. 
-    <p class="note" role="note"><span class="marker">Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/oml-tutorials/tree/master/tutorial2">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
+    <p class="note" role="note"><span class="marker">Note:</span> the source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/kepler16b-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
     <h3 class="heading settled" data-level="3.2" id="tutorial2-oml-project"><span class="secno">3.2. </span><span class="content">Create OML Project</span><a class="self-link" href="#tutorial2-oml-project"></a></h3>
     <p>We will start by creating an OML project that has a vocabulary bundle and a description bundle that uses it.</p>
     <ol>
