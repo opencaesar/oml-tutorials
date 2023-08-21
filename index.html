@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="abb48a8d3342b54c0ce6eee7ab9a9b78c6e0595f" name="document-revision">
+  <meta content="7f7f5ec3938f9c0607c84b7d0c6cec39a79ceaa3" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2363,6 +2363,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial3-setup-ci-cd-workflow"><span class="secno">3.3</span> <span class="content">Setup CI/CD Workflow</span></a>
       <li><a href="#tutorial3-generate-default-docs"><span class="secno">3.4</span> <span class="content">Generate Default Docs</span></a>
       <li><a href="#tutorial3-generate-custom-doc"><span class="secno">3.5</span> <span class="content">Generate Custom Docs</span></a>
+      <li><a href="#tutorial3-summary"><span class="secno">3.6</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -3581,25 +3582,62 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </video>
     </ol>
     <h3 class="heading settled" data-level="3.4" id="tutorial3-generate-default-docs"><span class="secno">3.4. </span><span class="content">Generate Default Docs</span><a class="self-link" href="#tutorial3-generate-default-docs"></a></h3>
-     The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc</a> that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will use the Gradle version and invoke it from the CI workflow. 
+     Now that we established a basic CI workflow, we can now add the CD part by publishing default documentation from the OML project on each commit. The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc-gradle</a> that generates default documentation for a given OML datasets (we obtain such dataset by converting the OML dataset to OWL). We will use this tool to generate the default documentation. 
     <ol>
      <li data-md>
-      <p>In the project’s root folder, navigate to the `build.gradle` file and double click it to open its editor.</p>
+      <p>In your web browser, navigate to the repo’s URL, click on the Settings tab, then on the Pages tab (on the right).</p>
      <li data-md>
-      <p>Find the `buildscript` clause, and its nested `dependencies` clause, and add a dependency on the `owl-doc` tool, like this:</p>
+      <p>Under Build and Deployment, source, select the `Github Actions` from the drop down menu.</p>
+    </ol>
+    <p class="note" role="note"><span class="marker">Note:</span> This instructs Github to use the `ci.yml` that we previously created to publish a web site for the repo.</p>
+    <ol start="3">
+     <li data-md>
+      <p>In OML Rosetta workspace, modeling perspective, right click on the project and select Team -> Switch To -> main.</p>
+     <li data-md>
+      <p>Right click on the project again and select Team -> Pull. A pull results dialog will open. Press the button to close it.</p>
+     <li data-md>
+      <p>Navigate to the `build.gradle` file and double click it to open its editor.</p>
+     <li data-md>
+      <p>Find the `dependencies` clause within the `buildscript` clause, and add a new dependency on the `owl-doc-gradle` tool on the top:</p>
     </ol>
 <pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- n>buildscript</c-> <c- p>{</c-></span><span class="line-no" data-line="2"></span><span class="line">	<c- n>repositories</c-> <c- p>{</c-></span><span class="line-no" data-line="3"></span><span class="line">        <c- p>...</c-></span><span class="line-no" data-line="4"></span><span class="line">	<c- p>}</c-></span><span class="line-no" data-line="5"></span><span class="line">	<c- n>dependencies</c-> <c- p>{</c-></span><span class="line-no" data-line="6"></span><span class="line">        <c- n>classpath</c-> <c- ss>'io</c-><c- p>.</c-><c- n>opencaesar</c-><c- p>.</c-><c- n>owl</c-><c- p>:</c-><c- n>owl</c-><c- o>-</c-><c- n>doc</c-><c- o>-</c-><c- n>gradle</c-><c- p>:</c-><c- mi>2</c-><c- p>.</c-><c- o>+</c->'</span><span class="line-no" data-line="7"></span><span class="line">        <c- p>...</c-></span><span class="line-no" data-line="8"></span><span class="line">	<c- p>}</c-></span><span class="line-no" data-line="9"></span><span class="line"><c- p>}</c-></span></pre>
-    <ol>
+    <ol start="7">
      <li data-md>
-      <p>Find a task called  and copy/paste the following task code right before it.</p>
+      <p>Find a task called `owlReason`, copy/paste the following task right after it, and save the `build.gradle` file.</p>
     </ol>
-<pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- d>/*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- d> * A task to generate documentation for the OWL catalog</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- d> */</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>task</c-> <c- n>generateDocs</c-><c- p>(</c-><c- k>type</c-><c- nc>:</c-> <c- n>io</c-><c- p>.</c-><c- n>opencaesar</c-><c- p>.</c-><c- n>owl</c-><c- p>.</c-><c- n>doc</c-><c- p>.</c-><c- nc>OwlDocTask</c-><c- p>,</c-> <c- n>dependsOn</c-><c- p>:</c-> <c- n>owlReason</c-><c- p>)</c-> <c- p>{</c-></span><span class="line-no" data-line="5"></span><span class="line">    <c- c1>// OWL catalog</c-></span><span class="line-no" data-line="6"></span><span class="line">    <c- n>inputCatalogPath</c-> <c- o>=</c-> <c- n>file</c-><c- p>(</c-><c- ss>'build</c-><c- o>/</c-><c- n>owl</c-><c- o>/</c-><c- n>catalog</c-><c- p>.</c-><c- n>xml</c->'<c- p>)</c-></span><span class="line-no" data-line="7"></span><span class="line">    <c- c1>// OWL catalog title</c-></span><span class="line-no" data-line="8"></span><span class="line">    <c- n>inputCatalogTitle</c-> <c- o>=</c-> <c- s>"Kepler16b"</c-></span><span class="line-no" data-line="9"></span><span class="line">    <c- c1>// OWL catalog version</c-></span><span class="line-no" data-line="10"></span><span class="line">    <c- n>inputCatalogVersion</c-> <c- o>=</c-> <c- n>project</c-><c- p>.</c-><c- n>version</c-></span><span class="line-no" data-line="11"></span><span class="line">    <c- c1>// OWL Ontology Iris</c-></span><span class="line-no" data-line="12"></span><span class="line">    <c- n>inputOntologyIris</c-> <c- o>=</c-> <c- p>[</c-> <c- s>"$rootIri/classes"</c-><c- p>,</c-> <c- s>"$rootIri/properties"</c-><c- p>,</c->  <c- s>"$rootIri/individuals"</c-> <c- p>]</c-></span><span class="line-no" data-line="13"></span><span class="line">    <c- c1>// Output folder</c-></span><span class="line-no" data-line="14"></span><span class="line">    <c- n>outputFolderPath</c-> <c- o>=</c-> <c- n>file</c-><c- p>(</c-><c- ss>'build</c-><c- o>/</c-><c- n>doc</c->'<c- p>)</c-></span><span class="line-no" data-line="15"></span><span class="line">    <c- c1>// Output case sensitivie path</c-></span><span class="line-no" data-line="16"></span><span class="line">    <c- n>outputCaseSensitive</c-> <c- o>=</c-> <c- n>org</c-><c- p>.</c-><c- n>gradle</c-><c- p>.</c-><c- n>internal</c-><c- p>.</c-><c- n>os</c-><c- p>.</c-><c- nc>OperatingSystem</c-><c- p>.</c-><c- n>current</c-><c- p>().</c-><c- n>isLinux</c-><c- p>()</c-></span><span class="line-no" data-line="17"></span><span class="line"><c- p>}</c-></span></pre>
-    <p class="note" role="note"><span class="marker">Note:</span> that `generateDocs` task is typed by `OwlDocTask` and declares that it dependends on `owlReason`, which itself depends on `omlToOwl`. We configured it this way because a) it requires the dataset to be in OWL format, and b) we like to include in the entailments in the docs. If we do not need (b), then we can change it to depend on `omlToOwl` directly and change the `inputONtologyIris` param to [ "$rootIri" ].</p>
-    <ol>
+<pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- d>/*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- d> * A task to generate documentation for the OWL catalog</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- d> * @seeAlso https://github.com/opencaesar/owl-tools/blob/master/owl-doc/README.md</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- d> */</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- n>task</c-> <c- n>generateDocs</c-><c- p>(</c-><c- k>type</c-><c- nc>:</c-> <c- n>io</c-><c- p>.</c-><c- n>opencaesar</c-><c- p>.</c-><c- n>owl</c-><c- p>.</c-><c- n>doc</c-><c- p>.</c-><c- nc>OwlDocTask</c-><c- p>,</c-> <c- n>dependsOn</c-><c- p>:</c-> <c- n>owlReason</c-><c- p>)</c-> <c- p>{</c-></span><span class="line-no" data-line="6"></span><span class="line">    <c- c1>// OWL catalog</c-></span><span class="line-no" data-line="7"></span><span class="line">    <c- n>inputCatalogPath</c-> <c- o>=</c-> <c- n>file</c-><c- p>(</c-><c- ss>'build</c-><c- o>/</c-><c- n>owl</c-><c- o>/</c-><c- n>catalog</c-><c- p>.</c-><c- n>xml</c->'<c- p>)</c-></span><span class="line-no" data-line="8"></span><span class="line">    <c- c1>// OWL catalog title</c-></span><span class="line-no" data-line="9"></span><span class="line">    <c- n>inputCatalogTitle</c-> <c- o>=</c-> <c- ss>'Kepler16</c-><c- n>b</c->'</span><span class="line-no" data-line="10"></span><span class="line">    <c- c1>// OWL Ontology Iris</c-></span><span class="line-no" data-line="11"></span><span class="line">    <c- n>inputOntologyIris</c-> <c- o>=</c-> <c- p>[</c-> <c- s>"$rootIri/classes"</c-><c- p>,</c-> <c- s>"$rootIri/properties"</c-><c- p>,</c->  <c- s>"$rootIri/individuals"</c-> <c- p>]</c-></span><span class="line-no" data-line="12"></span><span class="line">    <c- c1>// Output folder</c-></span><span class="line-no" data-line="13"></span><span class="line">    <c- n>outputFolderPath</c-> <c- o>=</c-> <c- n>file</c-><c- p>(</c-><c- ss>'build</c-><c- o>/</c-><c- n>doc</c->'<c- p>)</c-></span><span class="line-no" data-line="14"></span><span class="line">    <c- c1>// Output case sensitivie path</c-></span><span class="line-no" data-line="15"></span><span class="line">    <c- n>outputCaseSensitive</c-> <c- o>=</c-> <c- n>org</c-><c- p>.</c-><c- n>gradle</c-><c- p>.</c-><c- n>internal</c-><c- p>.</c-><c- n>os</c-><c- p>.</c-><c- nc>OperatingSystem</c-><c- p>.</c-><c- n>current</c-><c- p>().</c-><c- n>isLinux</c-><c- p>()</c-></span><span class="line-no" data-line="16"></span><span class="line"><c- p>}</c-></span></pre>
+    <p class="note" role="note"><span class="marker">Note:</span> that `generateDocs` task is typed by `OwlDocTask` and declares that it dependends on `owlReason`, which itself depends on `omlToOwl`. We configured it this way because a) it requires the dataset to be in OWL format, and b) we like to include the entailments in the docs. If we do not need (b), then we can change it to depend on `omlToOwl` directly and change the `inputONtologyIris` param to [ "$rootIri" ].</p>
+    <ol start="8">
      <li data-md>
-      <p>Save the `build.gradle` file.</p>
+      <p>In the Model Explorere view’s toolbar, click on the View menu (vertical dots), and select Filters and Customization action.</p>
+      <p><img src="assets/img/Tutorial3-Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the dialog, uncheck the `*.resources` box. Click OK.</p>
+     <li data-md>
+      <p>Navigate to the `.github/workflows/ci.yml` file and double click it to open its editor.</p>
+     <li data-md>
+      <p>At the end of the `build` job, append the following 2 steps:</p>
+    </ol>
+<pre class="language-yaml highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">- <c- f>name</c-><c- p>:</c-> Generate Documents</span><span class="line-no" data-line="2"></span><span class="line">  <c- f>run</c-><c- p>:</c-> ./gradlew generateDocs</span><span class="line-no" data-line="3"></span><span class="line">- <c- f>name</c-><c- p>:</c-> Publish</span><span class="line-no" data-line="4"></span><span class="line">  <c- f>uses</c-><c- p>:</c-> actions/upload-pages-artifact@v1</span><span class="line-no" data-line="5"></span><span class="line">  <c- f>with</c-><c- p>:</c-></span><span class="line-no" data-line="6"></span><span class="line">    <c- f>path</c-><c- p>:</c-> build/doc/</span></pre>
+    <p class="note" role="note"><span class="marker">Note:</span> The first step invokes the generateDocs task, and the second step uloads its output (`build/doc` folder`) as a Github Pages artifact.</p>
+    <ol start="12">
+     <li data-md>
+      <p>Add the following new `deploy` job after the `build` job (separate them by an empty line). Save the editor.</p>
+    </ol>
+<pre class="language-yaml highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- f>deploy</c-><c- p>:</c-></span><span class="line-no" data-line="2"></span><span class="line">  <c- f>needs</c-><c- p>:</c-> build</span><span class="line-no" data-line="3"></span><span class="line">  <c- f>permissions</c-><c- p>:</c-></span><span class="line-no" data-line="4"></span><span class="line">    <c- f>pages</c-><c- p>:</c-> write</span><span class="line-no" data-line="5"></span><span class="line">    <c- f>id-token</c-><c- p>:</c-> write</span><span class="line-no" data-line="6"></span><span class="line">  <c- f>environment</c-><c- p>:</c-></span><span class="line-no" data-line="7"></span><span class="line">    <c- f>name</c-><c- p>:</c-> github-pages</span><span class="line-no" data-line="8"></span><span class="line">    <c- f>url</c-><c- p>:</c-> ${{ steps.deployment.outputs.page_url }}</span><span class="line-no" data-line="9"></span><span class="line">  <c- f>runs-on</c-><c- p>:</c-> ubuntu-latest</span><span class="line-no" data-line="10"></span><span class="line">  <c- f>steps</c-><c- p>:</c-></span><span class="line-no" data-line="11"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Deploy</span><span class="line-no" data-line="12"></span><span class="line">      <c- f>id</c-><c- p>:</c-> deployment</span><span class="line-no" data-line="13"></span><span class="line">      <c- f>uses</c-><c- p>:</c-> actions/deploy-pages@v1</span></pre>
+    <p class="note" role="note"><span class="marker">Note:</span> The `deploy` job publishes the Github Pages artifact to be the repo’s web server’s content.</p>
+    <ol start="13">
+     <li data-md>
+      <p>Switch to the `Git` perspective, focus on the Git Staging view, stage the ci.yml file, write a commit message (e.g., adding docgen), and press the `Commit and Push` button.</p>
+     <li data-md>
+      <p>In your web browser, navigate to the repo’s URL, and click on the Actions tab. You should see the CI workflow running.</p>
+      <p><img src="assets/img/Tutorial3-Publish-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Once it finishes successfully (green tick), click on the run liml, and under the `deploy` step, click on the URL. You should see a page that looks like this:</p>
+      <p><img src="assets/img/Tutorial3-View-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
     </ol>
     <h3 class="heading settled" data-level="3.5" id="tutorial3-generate-custom-doc"><span class="secno">3.5. </span><span class="content">Generate Custom Docs</span><a class="self-link" href="#tutorial3-generate-custom-doc"></a></h3>
+    <h3 class="heading settled" data-level="3.6" id="tutorial3-summary"><span class="secno">3.6. </span><span class="content">Summary</span><a class="self-link" href="#tutorial3-summary"></a></h3>
    </div>
   </main>
 <script>

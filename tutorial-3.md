@@ -127,11 +127,21 @@ Note: The CI script above has a single job called `build` with 6 steps. The firs
 	</video>
 
 ## Generate Default Docs ## {#tutorial3-generate-default-docs}
-The openCAESAR project provides a tool called [owl-doc](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will use the Gradle version and invoke it from the CI workflow.
+Now that we established a basic CI workflow, we can now add the CD part by publishing default documentation from the OML project on each commit. The openCAESAR project provides a tool called [owl-doc-gradle](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) that generates default documentation for a given OML datasets (we obtain such dataset by converting the OML dataset to OWL). We will use this tool to generate the default documentation.
 
-1. In the project's root folder, navigate to the `build.gradle` file and double click it to open its editor.
+1. In your web browser, navigate to the repo's URL, click on the Settings tab, then on the Pages tab (on the right).
 
-1. Find the `buildscript` clause, and its nested `dependencies` clause, and add a dependency on the `owl-doc` tool, like this:
+2. Under Build and Deployment, source, select the `Github Actions` from the drop down menu.
+
+Note: This instructs Github to use the `ci.yml` that we previously created to publish a web site for the repo.
+
+3. In OML Rosetta workspace, modeling perspective, right click on the project and select Team -> Switch To -> main.
+
+4. Right click on the project again and select Team -> Pull. A pull results dialog will open. Press the button to close it.
+
+5. Navigate to the `build.gradle` file and double click it to open its editor.
+
+6. Find the `dependencies` clause within the `buildscript` clause, and add a new dependency on the `owl-doc-gradle` tool on the top:
 
 ```scala
 buildscript {
@@ -145,19 +155,18 @@ buildscript {
 }
 ```
 
-1. Find a task called  and copy/paste the following task code right before it.
+7. Find a task called `owlReason`, copy/paste the following task right after it, and save the `build.gradle` file.
 
 ```scala
 /*
  * A task to generate documentation for the OWL catalog
+ * @seeAlso https://github.com/opencaesar/owl-tools/blob/master/owl-doc/README.md
  */
 task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) {
     // OWL catalog
     inputCatalogPath = file('build/owl/catalog.xml')
     // OWL catalog title
-    inputCatalogTitle = "Kepler16b"
-    // OWL catalog version
-    inputCatalogVersion = project.version
+    inputCatalogTitle = 'Kepler16b'
     // OWL Ontology Iris
     inputOntologyIris = [ "$rootIri/classes", "$rootIri/properties",  "$rootIri/individuals" ]
     // Output folder
@@ -167,8 +176,59 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
 }
 ```
 
-Note: that `generateDocs` task is typed by `OwlDocTask` and declares that it dependends on `owlReason`, which itself depends on `omlToOwl`. We configured it this way because a) it requires the dataset to be in OWL format, and b) we like to include in the entailments in the docs. If we do not need (b), then we can change it to depend on `omlToOwl` directly and change the `inputONtologyIris` param to [ "$rootIri" ].
+Note: that `generateDocs` task is typed by `OwlDocTask` and declares that it dependends on `owlReason`, which itself depends on `omlToOwl`. We configured it this way because a) it requires the dataset to be in OWL format, and b) we like to include the entailments in the docs. If we do not need (b), then we can change it to depend on `omlToOwl` directly and change the `inputONtologyIris` param to [ "$rootIri" ].
 
-1. Save the `build.gradle` file.
+8. In the Model Explorere view's toolbar, click on the View menu (vertical dots), and select Filters and Customization action.
+
+	<img src="assets/img/Tutorial3-Refresh-Project.png" width="100%" style="border:1px groove black;"/>
+
+9. In the dialog, uncheck the `*.resources` box. Click OK.
+
+10. Navigate to the `.github/workflows/ci.yml` file and double click it to open its editor.
+
+11. At the end of the `build` job, append the following 2 steps:
+
+```yaml
+    - name: Generate Documents
+      run: ./gradlew generateDocs
+    - name: Publish
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: build/doc/
+```
+
+Note: The first step invokes the generateDocs task, and the second step uloads its output (`build/doc` folder`) as a Github Pages artifact.
+
+12. Add the following new `deploy` job after the `build` job (separate them by an empty line). Save the editor.
+
+```yaml
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
+```
+
+Note: The `deploy` job publishes the Github Pages artifact to be the repo's web server's content.
+
+13. Switch to the `Git` perspective, focus on the Git Staging view, stage the ci.yml file, write a commit message (e.g., adding docgen), and press the `Commit and Push` button.
+
+14. In your web browser, navigate to the repo's URL, and click on the Actions tab. You should see the CI workflow running.
+
+	<img src="assets/img/Tutorial3-Publish-Default-Docs.png" width="100%" style="border:1px groove black;"/>
+
+15. Once it finishes successfully (green tick), click on the run liml, and under the `deploy` step, click on the URL. You should see a page that looks like this:
+
+	<img src="assets/img/Tutorial3-View-Default-Docs.png" width="100%" style="border:1px groove black;"/>
 
 ## Generate Custom Docs ## {#tutorial3-generate-custom-doc}
+
+## Summary ## {#tutorial3-summary}
