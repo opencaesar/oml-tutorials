@@ -1,4 +1,4 @@
-# Getting Ready # {#getting-ready}
+<h2 id="getting-ready" class="no-num">Getting Ready</h2>
 
 OML has a user-friendly [textual grammar](http://www.opencaesar.io/oml/#Language-Reference) that can be edited using a simple text editor. However, for extra support like wizards, syntax highlighting, live validation, and content-assist, a user can use one of the OML editors provided by openCAESAR project. One such editor, called [OML Rosetta](https://github.com/opencaesar/oml-rosetta), is a plugin to the Eclipse IDE. Another editor, called [OML Luxor](https://github.com/opencaesar/oml-luxor), is an extension to the VSCode IDE that can be used in a VSCode desktop client or browser-based client (like [Gitpod](https://www.gitpod.io/)). In this tutorial, we will demonstrate using the OML Rosetta editor, but the reader can follow using any other editor. 
 

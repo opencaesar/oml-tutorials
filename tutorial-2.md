@@ -1,6 +1,6 @@
 # Tutorial 2: OML Patterns # {#tutorial2}
 
-Note: This tutorial builds on [Tutorial 1](#tutorial1). Please do that first before going further.
+Note: This tutorial builds on [Tutorial 1](#tutorial1). Please do that first before proceeding.
 
 ## Learning Objectives ## {#tutorial2-learning-objectives}
 This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.
@@ -52,7 +52,7 @@ A systems engineering endeavor begins with objectives to be achieved. Objectives
 
 We will create two vocabularies and add them to the vocabulary bundle. The first vocabulary is called `base`, which we will use to define basic patterns, and the second is called `mission`, which we will use to describe patterns related to missions in systems engineering. We will then add to them the details of pattern P1.
 
-1. Create a vocabulary with the IRI `<http://example.com/tutorial2/vocabulary/base#>` and prefix `base`. Copy the following OML code as its contents. Save the editor.
+1. Create a vocabulary with the IRI <`http://example.com/tutorial2/vocabulary/base#`> and prefix `base`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 vocabulary <http://example.com/tutorial2/vocabulary/base#> as base {
@@ -62,7 +62,7 @@ vocabulary <http://example.com/tutorial2/vocabulary/base#> as base {
 }
 ```
 
-2. Create a vocabulary with the IRI `<http://example.com/tutorial2/vocabulary/mission#>` and prefix `mission`. Copy the following OML code as its contents. Save the editor.
+2. Create a vocabulary with the IRI <`http://example.com/tutorial2/vocabulary/mission#`> and prefix `mission`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 vocabulary <http://example.com/tutorial2/vocabulary/mission#> as mission {
@@ -89,9 +89,11 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
 1. In the `vocabulary/base` ontology, append the following OML code to its body (i.e., insert it before the closing `}` bracket):
 
-```scala
+<pre highlight="scala" line-highlight="3, 16">
 	@rdfs:comment "The class of things having an id and a canonical name"
-	aspect IdentifiedThing
+	aspect IdentifiedThing [
+		key hasIdentifier
+	]
 
 	@rdfs:comment "The has canonical name property"
 	scalar property hasCanonicalName [
@@ -103,6 +105,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 	scalar property hasIdentifier [
 		domain IdentifiedThing
 		range xsd:string
+		functional
 	]
 
 	@rdfs:comment "The has description property"
@@ -123,9 +126,11 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 		asymmetric
 		irreflexive
 	]
-```
+</pre>
 
 Note: the syntax used for annotations on ontology members above (e.g., `@rdfs:comment "value"` used to put a comment on a vocabulary member). What comes after the `@` is the IRI of an annotation property (declared in some vocabulary) followed by a (literal or IRI) value.
+
+Note: the `key` axiom in the IdentifiedThing aspect. It says that instances of this type must have unique values for their `hasIdentifier` property (which is similar to the concept of primary key in relational schemas). For this to work as expected, properties that are part of a key needs to be defined as `functional`, meaning that may have a maximum of one value. Otherwise, two instances with different values for `hasIdentifier` may still be inferred as aliases to the same instance with twos values for the key property.
 
 6. In the `vocabulary/mission` ontology, append the following OML code to its body:
 
@@ -157,7 +162,7 @@ Note: the syntax used for annotations on ontology members above (e.g., `@rdfs:co
 
 We will now create a new description model for the objectives of the Kepler16 mission, then add it to the description bundle. Each description is identified with an id and a canonical name and may specify which other objective it aggregates.
 
-9. Create a description with the IRI `<http://example.com/tutorial2/description/objectives#>` and prefix `objectives`. Copy the following OML code as its contents. Save the editor.
+9. Create a description with the IRI <`http://example.com/tutorial2/description/objectives#`> and prefix `objectives`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/objectives#> as objectives {
@@ -328,7 +333,7 @@ Note: the semantic (logical) flags specified on the relation entity `Pursues`. T
 
 Let us now use the pattern in describing a couple of missions in kepler6b.
 
-4. Create a description with the IRI `<http://example.com/tutorial2/description/missions#>` and prefix `missions`. Copy the following OML code as its contents. Save the editor.
+4. Create a description with the IRI <`http://example.com/tutorial2/description/missions#`> and prefix `missions`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/missions#> as missions {
@@ -493,7 +498,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
 We will now add more details to the `missions` description using the pattern above. Specifically, we will add components and specify that the mission deploys some of them (the roots of component containment as shown in pattern P4 later).
 
-4. Create a description with the IRI `<http://example.com/tutorial2/description/components#>` and prefix `components`. Copy the following OML code as its contents. Save the editor.
+4. Create a description with the IRI <`http://example.com/tutorial2/description/components#`> and prefix `components`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/components#> as components {
@@ -714,7 +719,7 @@ This pattern adds a mass quantity to a mechanical component and a magnitude for 
 
 **New Vocabularies**
 
-1. Create a vocabulary with the IRI `<http://example.com/tutorial2/vocabulary/mechanical#>` and prefix `mechanical`. Copy the following OML code as its contents. Save the editor.
+1. Create a vocabulary with the IRI <`http://example.com/tutorial2/vocabulary/mechanical#`> and prefix `mechanical`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 vocabulary <http://example.com/tutorial2/vocabulary/mechanical#> as mechanical {
@@ -756,7 +761,7 @@ Note: how concept `MassMagnitude` specializes `vim4:InherentUnitaryQuantityValue
 
 Now we can use this pattern to define the mechanical components and add their mass characterizations.
 
-5. Create a description with the IRI `<http://example.com/tutorial2/description/masses#>` and prefix `masses`. Copy the following OML code as its contents. Save the editor.
+5. Create a description with the IRI <`http://example.com/tutorial2/description/masses#`> and prefix `masses`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/masses#> as masses {
@@ -990,7 +995,7 @@ Components contain other components. These subcomponents interact in ways that l
 
 With this pattern, we can model the interfaces of some of the components in kepler16b.
 
-4. Create a description with the IRI `<http://example.com/tutorial2/description/interfaces#>` and prefix `interfaces`. Copy the following OML code as its contents. Save the editor.
+4. Create a description with the IRI <`http://example.com/tutorial2/description/interfaces#`> and prefix `interfaces`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/interfaces#> as interfaces {
@@ -1099,7 +1104,7 @@ Note: how we added aspect `SpecifiedThing` as another supertype to relation enti
 
 With this pattern in the vocabulary, and with (Component `Presents` Interface) relation instances specified in P6 before, we can now create requirements that specify those instances.
 
-4. Create a description with the IRI `<http://example.com/tutorial2/description/requirements#>` and prefix `requirements`. Copy the following OML code as its contents. Save the editor.
+4. Create a description with the IRI <`http://example.com/tutorial2/description/requirements#`> and prefix `requirements`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/requirements#> as requirements {
@@ -1233,7 +1238,7 @@ Note: how the rule `Junction-infers-Connection` says that when a component prese
 
 With this pattern in the vocabulary, we can specify `Junction` relation instances between some interfaces.
 
-4. Create a description with the IRI `<http://example.com/tutorial2/description/junctions#>` and prefix `junctions`. Copy the following OML code as its contents. Save the editor.
+4. Create a description with the IRI <`http://example.com/tutorial2/description/junctions#`> and prefix `junctions`. Copy the following OML code as its contents. Save the editor.
 
 ```scala
 description <http://example.com/tutorial2/description/junctions#> as junctions {
