@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="4a70efb8742c36f3abae21e7ef6632053a471411" name="document-revision">
+  <meta content="abb48a8d3342b54c0ce6eee7ab9a9b78c6e0595f" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2360,7 +2360,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <ol class="toc">
       <li><a href="#tutorial3-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
       <li><a href="#tutorial3-manage-project-in-git"><span class="secno">3.2</span> <span class="content">Manage Project in Git</span></a>
-      <li><a href="#tutorial3-setup-ci-cd-pipeline"><span class="secno">3.3</span> <span class="content">Setup CI/CD Pipeline</span></a>
+      <li><a href="#tutorial3-setup-ci-cd-workflow"><span class="secno">3.3</span> <span class="content">Setup CI/CD Workflow</span></a>
       <li><a href="#tutorial3-generate-default-docs"><span class="secno">3.4</span> <span class="content">Generate Default Docs</span></a>
       <li><a href="#tutorial3-generate-custom-doc"><span class="secno">3.5</span> <span class="content">Generate Custom Docs</span></a>
      </ol>
@@ -3507,12 +3507,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial2">Tutorial 2</a>. Please do that first before proceeding.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial3-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial3-learning-objectives"></a></h3>
      Managing an OML project in a git repository makes a lot of sense. First, OML models are textual files, which allows git to edit them natively. Second, all the OML workbenches already support git. Third, the VS Code extension for OML supports editing OML files in the cloud (and even in the browser in the future). Finally, the products of an OML project, typically documents, can be published online in git directly. Following the best practices of model-based development, such documents should be produced automatically from models through a rigorous and repeatable process. This is possible to achieve thanks to the process of Continuous Integration of Delivery (CI/CD) that is supported by most git repos. 
-    <p>This tutorial teaches how to set up a CI/CD pipeline for an OML project managed in a git repo. Users will learn the following:</p>
+    <p>This tutorial teaches how to set up a CI/CD workflow for an OML project managed in a git repo. Users will learn the following:</p>
     <ul>
      <li data-md>
       <p>How to manage an OML project in a git repository</p>
      <li data-md>
-      <p>How to setup a CI/CD pipeline in the git repository to build the project on each commit</p>
+      <p>How to setup a CI/CD workflow in the git repository to build the project on each commit</p>
      <li data-md>
       <p>How to generate the default docs for an OML project and update it on each commit</p>
      <li data-md>
@@ -3538,14 +3538,50 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Stage, commit, and push the project to the Github remote repo using the following commands:</p>
     </ol>
 <pre class="language-shell highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">$ git add .</span><span class="line-no" data-line="2"></span><span class="line">$ git commit -m <c- u>"initial commit"</c-></span><span class="line-no" data-line="3"></span><span class="line">$ git push --set-upstream origin main -f</span></pre>
-    <p>15 In your web browser, refresh the repo’s page. You should now see the repository looking like this:</p>
-    <p><img src="assets/img/Tutorial3-Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
-    <h3 class="heading settled" data-level="3.3" id="tutorial3-setup-ci-cd-pipeline"><span class="secno">3.3. </span><span class="content">Setup CI/CD Pipeline</span><a class="self-link" href="#tutorial3-setup-ci-cd-pipeline"></a></h3>
+    <ol start="5">
+     <li data-md>
+      <p>In your web browser, refresh the repo’s page. You should now see the repository looking like this:</p>
+      <p><img src="assets/img/Tutorial3-Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the OML Rosetta workspace, right click on the project and choose Refresh.</p>
+      <p><img src="assets/img/Tutorial3-Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <h3 class="heading settled" data-level="3.3" id="tutorial3-setup-ci-cd-workflow"><span class="secno">3.3. </span><span class="content">Setup CI/CD Workflow</span><a class="self-link" href="#tutorial3-setup-ci-cd-workflow"></a></h3>
+     In this step, we will use Github Actions to create a CI/CD workflow that builds the project and run queries on any commit. 
     <ol>
      <li data-md>
+      <p>In a web browser, navigate to your repo’s web page, and click on the Actions tab.</p>
+      <p><img src="assets/img/Tutorial3-Select-Actions.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the Actions page, click on the `Configure` button of the `Simple workflow`.</p>
+      <p><img src="assets/img/Tutorial3-Select-Simple-Worflow.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the path, rename the file to `ci.yml`.</p>
+      <p><img src="assets/img/Tutorial3-Rename-Workflow.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Replace the file contents by the following code:</p>
+    </ol>
+<pre class="language-yaml highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- f>name</c-><c- p>:</c-> CI/CD</span><span class="line-no" data-line="2"></span><span class="line"></span><span class="line-no" data-line="3"></span><span class="line"><c- f>on</c-><c- p>:</c-></span><span class="line-no" data-line="4"></span><span class="line">  <c- f>push</c-><c- p>:</c-></span><span class="line-no" data-line="5"></span><span class="line">    <c- f>branches</c-><c- p>:</c-> [ <c- s>"main"</c-> ]</span><span class="line-no" data-line="6"></span><span class="line">  <c- f>pull_request</c-><c- p>:</c-></span><span class="line-no" data-line="7"></span><span class="line">    <c- f>branches</c-><c- p>:</c-> [ <c- s>"main"</c-> ]</span><span class="line-no" data-line="8"></span><span class="line"></span><span class="line-no" data-line="9"></span><span class="line"><c- f>permissions</c-><c- p>:</c-></span><span class="line-no" data-line="10"></span><span class="line">  <c- f>contents</c-><c- p>:</c-> read</span><span class="line-no" data-line="11"></span><span class="line"></span><span class="line-no" data-line="12"></span><span class="line"><c- f>jobs</c-><c- p>:</c-></span><span class="line-no" data-line="13"></span><span class="line">  <c- f>build</c-><c- p>:</c-></span><span class="line-no" data-line="14"></span><span class="line">    <c- f>runs-on</c-><c- p>:</c-> ubuntu-latest</span><span class="line-no" data-line="15"></span><span class="line">    <c- f>steps</c-><c- p>:</c-></span><span class="line-no" data-line="16"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Checkout</span><span class="line-no" data-line="17"></span><span class="line">      <c- f>uses</c-><c- p>:</c-> actions/checkout@v3</span><span class="line-no" data-line="18"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Set up JDK 17</span><span class="line-no" data-line="19"></span><span class="line">      <c- f>uses</c-><c- p>:</c-> actions/setup-java@v3</span><span class="line-no" data-line="20"></span><span class="line">      <c- f>with</c-><c- p>:</c-></span><span class="line-no" data-line="21"></span><span class="line">        <c- f>java-version</c-><c- p>:</c-> <c- s>'17'</c-></span><span class="line-no" data-line="22"></span><span class="line">        <c- f>distribution</c-><c- p>:</c-> <c- s>'temurin'</c-></span><span class="line-no" data-line="23"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Setup Gradle</span><span class="line-no" data-line="24"></span><span class="line">      <c- f>uses</c-><c- p>:</c-> gradle/gradle-build-action@v2</span><span class="line-no" data-line="25"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Build</span><span class="line-no" data-line="26"></span><span class="line">      <c- f>run</c-><c- p>:</c-> ./gradlew build</span><span class="line-no" data-line="27"></span><span class="line">	- <c- f>name</c-><c- p>:</c-> Query</span><span class="line-no" data-line="28"></span><span class="line">      run: ./gradlew startFuseki owlQuery stopFuseki</span><span class="line-no" data-line="29"></span><span class="line">    - name: Upload</span><span class="line-no" data-line="30"></span><span class="line">      if: ${{ always() }}</span><span class="line-no" data-line="31"></span><span class="line">      uses: actions/upload-artifact@v3</span><span class="line-no" data-line="32"></span><span class="line">      with:</span><span class="line-no" data-line="33"></span><span class="line">        <c- f>name</c-><c- p>:</c-> build</span><span class="line-no" data-line="34"></span><span class="line">        <c- f>path</c-><c- p>:</c-> build/</span></pre>
+    <p class="note" role="note"><span class="marker">Note:</span> The CI script above has a single job called `build` with 6 steps. The first 3 checkout the repo, setup jdk, and setup gradle. The next 3, build the project (which run the DL reasoner), run the SPARQL queries, and upload the build folder (for inspection in case of error).</p>
+    <ol start="5">
+     <li data-md>
+      <p>Commit the CI file and watch the first CI run complete successfully.</p>
+      <video controls style="border:1px groove black;" width="100%">
+       <source src="assets/mov/Tutorial3-First-CI-Build.mp4">
+      </video>
+     <li data-md>
+      <p>Now, We will create a new branch, add a syntax error in the OML model (cross referencing a non-existing element) in it, commit it to the repo, and see how the CI workflow detects it. After that, we will undo the change to fix it.</p>
+      <video controls style="border:1px groove black;" width="100%">
+       <source src="assets/mov/Tutorial3-Second-CI-Build.mp4">
+      </video>
+     <li data-md>
+      <p>Then, we will add a semantic error in the OML model (make an assembly contained by two containers) to see how the CI workflow detects it (by finding the inverse functional `base:contains` relation violated in this case). After that, we will undo the change to fix it.</p>
+      <video controls style="border:1px groove black;" width="100%">
+       <source src="assets/mov/Tutorial3-Third-CI-Build.mp4">
+      </video>
     </ol>
     <h3 class="heading settled" data-level="3.4" id="tutorial3-generate-default-docs"><span class="secno">3.4. </span><span class="content">Generate Default Docs</span><a class="self-link" href="#tutorial3-generate-default-docs"></a></h3>
-     The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc</a> that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will do the latter. 
+     The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc</a> that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will use the Gradle version and invoke it from the CI workflow. 
     <ol>
      <li data-md>
       <p>In the project’s root folder, navigate to the `build.gradle` file and double click it to open its editor.</p>
