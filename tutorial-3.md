@@ -21,11 +21,11 @@ In this step, we will create a Github repo for the project and push it there usi
 
 	<img src="assets/img/Tutorial3-Create-New-Repo.png" width="100%" style="border:1px groove black;"/>
 
-1. Back in your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.
+2. Back in your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.
 
 	<img src="assets/img/Tutorial3-Select-Project-Properties.png" width="100%" style="border:1px groove black;"/>
 
-1. Open the `Terminal` application on your machine, navigate to the project's path, and initialize the repo using the following commands:
+3. Open the `Terminal` application on your machine, navigate to the project's path, and initialize the repo using the following commands:
 
 ```shell
 $ cd path/to/tutorial2
@@ -36,7 +36,7 @@ $ git pull
 
 Note: Replace OWNER by your new Github repo's owner.
 
-1. Stage, commit, and push the project to the Github remote repo using the following commands:
+4. Stage, commit, and push the project to the Github remote repo using the following commands:
 
 ```shell
 $ git add .
@@ -44,12 +44,13 @@ $ git commit -m "initial commit"
 $ git push --set-upstream origin main -f
 ```
 
-1. In your web browser, refresh the repo's page. You should now see the repository looking like this:
+15 In your web browser, refresh the repo's page. You should now see the repository looking like this:
 
 	<img src="assets/img/Tutorial3-Refresh-Repository.png" width="100%" style="border:1px groove black;"/>
 
 ## Setup CI/CD Pipeline ## {#tutorial3-setup-ci-cd-pipeline}
 
+1.
 
 ## Generate Default Docs ## {#tutorial3-generate-default-docs}
 The openCAESAR project provides a tool called [owl-doc](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will do the latter.
