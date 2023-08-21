@@ -229,6 +229,8 @@ Note: The `deploy` job publishes the Github Pages artifact to be the repo's web 
 
 	<img src="assets/img/Tutorial3-View-Default-Docs.png" width="100%" style="border:1px groove black;"/>
 
+Note: Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element's descriptions) and push it. Notice how this triggers the CI workflow to rerun to update the documentation. 
+
 ## Generate Custom Docs ## {#tutorial3-generate-custom-doc}
 
 ## Summary ## {#tutorial3-summary}
