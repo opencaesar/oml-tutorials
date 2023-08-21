@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="be58deb9a2869ca75ef106229a38830b0a93f6db" name="document-revision">
+  <meta content="4a70efb8742c36f3abae21e7ef6632053a471411" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -3533,17 +3533,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-shell highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">$ cd path/to/tutorial2</span><span class="line-no" data-line="2"></span><span class="line">$ git init</span><span class="line-no" data-line="3"></span><span class="line">$ git remote add origin git@github.com:OWNER/kepler16b-example.git</span><span class="line-no" data-line="4"></span><span class="line">$ git pull</span></pre>
     <p class="note" role="note"><span class="marker">Note:</span> Replace OWNER by your new Github repo’s owner.</p>
-    <ol>
+    <ol start="4">
      <li data-md>
       <p>Stage, commit, and push the project to the Github remote repo using the following commands:</p>
     </ol>
 <pre class="language-shell highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">$ git add .</span><span class="line-no" data-line="2"></span><span class="line">$ git commit -m <c- u>"initial commit"</c-></span><span class="line-no" data-line="3"></span><span class="line">$ git push --set-upstream origin main -f</span></pre>
+    <p>15 In your web browser, refresh the repo’s page. You should now see the repository looking like this:</p>
+    <p><img src="assets/img/Tutorial3-Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
+    <h3 class="heading settled" data-level="3.3" id="tutorial3-setup-ci-cd-pipeline"><span class="secno">3.3. </span><span class="content">Setup CI/CD Pipeline</span><a class="self-link" href="#tutorial3-setup-ci-cd-pipeline"></a></h3>
     <ol>
      <li data-md>
-      <p>In your web browser, refresh the repo’s page. You should now see the repository looking like this:</p>
-      <p><img src="assets/img/Tutorial3-Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
     </ol>
-    <h3 class="heading settled" data-level="3.3" id="tutorial3-setup-ci-cd-pipeline"><span class="secno">3.3. </span><span class="content">Setup CI/CD Pipeline</span><a class="self-link" href="#tutorial3-setup-ci-cd-pipeline"></a></h3>
     <h3 class="heading settled" data-level="3.4" id="tutorial3-generate-default-docs"><span class="secno">3.4. </span><span class="content">Generate Default Docs</span><a class="self-link" href="#tutorial3-generate-default-docs"></a></h3>
      The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc</a> that generates default documentation for an OML datasets. Such tool, like most openCAESAR analysis tools, can be invoked both as a standard-alone CLI, or as a task through the Gradle CLI. In this exercise, we will do the latter. 
     <ol>
