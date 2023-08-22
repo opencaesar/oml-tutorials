@@ -1,29 +1,29 @@
-# Tutorial 3: OML CI/CD # {#tutorial3}
+# Tutorial 4: OML CI/CD # {#tutorial4}
 
-Note: This tutorial builds on the project developed in [Tutorial 2](#tutorial2). Please do that first before proceeding.
+Note: This tutorial builds on the project developed in [Tutorial 3](#tutorial3). Please do that first before proceeding.
 
-## Learning Objectives ## {#tutorial3-learning-objectives}
+## Learning Objectives ## {#tutorial4-learning-objectives}
 Managing an OML project in a git repository makes a lot of sense. First, OML models are textual files, which allows git to edit them natively. Second, all the OML workbenches already support git. Third, the VS Code extension for OML supports editing OML files in the cloud (and even in the browser in the future). Finally, the products of an OML project, typically documents, can be published online in git directly. Following the best practices of model-based development, such documents should be produced automatically from models through a rigorous and repeatable process. This is possible to achieve thanks to the process of Continuous Integration of Delivery (CI/CD) that is supported by most git repos.
 
-This tutorial teaches how to set up a CI/CD workflow for an OML project managed in a git repo. Users will learn the following:
+This tutorial teaches the following skills:
 
 - How to manage an OML project in a git repository
-- How to setup a CI/CD workflow in the git repository to build the project on each commit
-- How to generate the default docs for an OML project and update it on each commit
-- How to generate custom docs for an OML project and update it on each commit
+- How to setup a CI/CD process in the git repository to build the project on each commit
+- How to publish OML Doc for an OML project and update it on each commit
+- How to publish a Jupyter Notebook for an OML project and update it on each commit
 
 Note: The source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
 
-## Manage Project in Git ## {#tutorial3-manage-project-in-git}
+## Manage Project in Git ## {#tutorial4-manage-project-in-git}
 In this step, we will create a Github repo for the project and push it there using the [Git CLI](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 1. Open a web browser. navigate to your Github organization and select the `New Repository` button. Set the name of the repo to `kepler16b-example` and the other settings as shown below. Finally, click the `Create Repository` button.
 
-	<img src="assets/img/Tutorial3-Create-New-Repo.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Create-New-Repo.png" width="100%" style="border:1px groove black;"/>
 
 2. Back in your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.
 
-	<img src="assets/img/Tutorial3-Select-Project-Properties.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Select-Project-Properties.png" width="100%" style="border:1px groove black;"/>
 
 3. Open the `Terminal` application on your machine, navigate to the project's path, and initialize the repo using the following commands:
 
@@ -46,26 +46,26 @@ $ git push --set-upstream origin main -f
 
 5. In your web browser, refresh the repo's page. You should now see the repository looking like this:
 
-	<img src="assets/img/Tutorial3-Refresh-Repository.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Refresh-Repository.png" width="100%" style="border:1px groove black;"/>
 
 6. In the OML Rosetta workspace, right click on the project and choose Refresh.
 
-	<img src="assets/img/Tutorial3-Refresh-Project.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
 
-## Setup CI/CD Workflow ## {#tutorial3-setup-ci-cd-workflow}
+## Setup CI/CD Process ## {#tutorial4-setup-ci-cd-process}
 In this step, we will use Github Actions to create a CI/CD workflow that builds the project and run queries on any commit.
 
 1. In a web browser, navigate to your repo's web page, and click on the Actions tab.
 
-	<img src="assets/img/Tutorial3-Select-Actions.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Select-Actions.png" width="100%" style="border:1px groove black;"/>
 
 2. In the Actions page, click on the `Configure` button of the `Simple workflow`.
 
-	<img src="assets/img/Tutorial3-Select-Simple-Worflow.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Select-Simple-Worflow.png" width="100%" style="border:1px groove black;"/>
 
 3. In the path, rename the file to `ci.yml`.
 
-	<img src="assets/img/Tutorial3-Rename-Workflow.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Rename-Workflow.png" width="100%" style="border:1px groove black;"/>
 
 4. Replace the file contents by the following code:
 
@@ -111,22 +111,22 @@ Note: The CI script above has a single job called `build` with 6 steps. The firs
 5. Commit the CI file and watch the first CI run complete successfully.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/mov/Tutorial3-First-CI-Build.mp4"/>
+		<source src="assets/tutorial4/First-CI-Build.mp4"/>
 	</video>
 
 6. Now, We will create a new branch, add a syntax error in the OML model (cross referencing a non-existing element) in it, commit it to the repo, and see how the CI workflow detects it. After that, we will undo the change to fix it.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/mov/Tutorial3-Second-CI-Build.mp4"/>
+		<source src="assets/tutorial4/Second-CI-Build.mp4"/>
 	</video>
 
 7. Then, we will add a semantic error in the OML model (make an assembly contained by two containers) to see how the CI workflow detects it (by finding the inverse functional `base:contains` relation violated in this case). After that, we will undo the change to fix it.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/mov/Tutorial3-Third-CI-Build.mp4"/>
+		<source src="assets/tutorial4/Third-CI-Build.mp4"/>
 	</video>
 
-## Generate Default Docs ## {#tutorial3-generate-default-docs}
+## Publish OML Doc ## {#tutorial4-publish-oml-doc}
 Now that we established a basic CI workflow, we can now add the CD part by publishing default documentation from the OML project on each commit. The openCAESAR project provides a tool called [owl-doc-gradle](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) that generates default documentation for a given OML datasets (we obtain such dataset by converting the OML dataset to OWL). We will use this tool to generate the default documentation.
 
 1. In your web browser, navigate to the repo's URL, click on the Settings tab, then on the Pages tab (on the right).
@@ -180,7 +180,7 @@ Note: that `generateDocs` task is typed by `OwlDocTask` and declares that it dep
 
 8. In the Model Explorere view's toolbar, click on the View menu (vertical dots), and select Filters and Customization action.
 
-	<img src="assets/img/Tutorial3-Refresh-Project.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
 
 9. In the dialog, uncheck the `*.resources` box. Click OK.
 
@@ -223,14 +223,18 @@ Note: The `deploy` job publishes the Github Pages artifact to be the repo's web 
 
 14. In your web browser, navigate to the repo's URL, and click on the Actions tab. You should see the CI workflow running.
 
-	<img src="assets/img/Tutorial3-Publish-Default-Docs.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Publish-Default-Docs.png" width="100%" style="border:1px groove black;"/>
 
 15. Once it finishes successfully (green tick), click on the run liml, and under the `deploy` step, click on the URL. You should see a page that looks like this:
 
-	<img src="assets/img/Tutorial3-View-Default-Docs.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/View-Default-Docs.png" width="100%" style="border:1px groove black;"/>
 
-Note: Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element's descriptions) and push it. Notice how this triggers the CI workflow to rerun to update the documentation. 
+Note: Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element's descriptions) and push it. Observe how this triggers the CI workflow to rerun to update the documentation.
 
-## Generate Custom Docs ## {#tutorial3-generate-custom-doc}
+## Publish Jupyter Notebook ## {#tutorial4-generate-jupyter-nb}
 
-## Summary ## {#tutorial3-summary}
+TBD
+
+## Summary ## {#tutorial4-summary}
+
+TBD

@@ -15,17 +15,17 @@ We will start by creating an OML project that has a vocabulary bundle and a desc
 1. Name the project `tutorial2`. Click Next.
 1. Fill the OML project details as seen below. Click Finish.
 
-    <img src="assets/img/Tutorial2-Create-OML-Project.png" width="100%"/>
+    <img src="assets/tutorial2/Create-OML-Project.png" width="100%"/>
 
 1. In the [=Model Explorer view=], double click on the build.gradle file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/mov/Tutorial2-Modify-Gradle-Build.mov"/>
+     <source src="assets/tutorial2/Modify-Gradle-Build.mov"/>
    </video>
 
 1. In the [=Model Explorer view=], expand the `tutorial2` project, right-click on the `src/oml/example.com/tutorial2` folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.
 
-    <img src="assets/img/Tutorial2-Create-Vocabulary-Bundle.png" width="100%"/>
+    <img src="assets/tutorial2/Create-Vocabulary-Bundle.png" width="100%"/>
 
 1. In the [=Model Explorer view=], double click on the file `src/oml/example.com/tutorial2/description/bundle.oml` to open its editor. Paste the following OML code as the contents of the file.
 
@@ -85,7 +85,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
 4. if you did all the previous steps correctly, the following should be the contents of all files so far.
 
-    <img src="assets/img/Tutorial2-P1-Initial-Ontologies.png" width="100%"/>
+    <img src="assets/tutorial2/P1-Initial-Ontologies.png" width="100%"/>
 
 1. In the `vocabulary/base` ontology, append the following OML code to its body (i.e., insert it before the closing `}` bracket):
 
@@ -147,8 +147,8 @@ Note: the `key` axiom in the IdentifiedThing aspect. It says that instances of t
 
 	<table>
 		<tr>
-			<td><img src="assets/img/Tutorial2-P1-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
-			<td><img src="assets/img/Tutorial2-P1-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P1-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P1-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
 		</tr>
 		<tr>
 			<td>Base Vocabulary</td>
@@ -211,7 +211,7 @@ description <http://example.com/tutorial2/description/objectives#> as objectives
 
 	<table>
 		<tr>
-			<td><img src="assets/img/Tutorial2-P1-Objectives-Description.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P1-Objectives-Description.png" width="100%" style="border:1px groove black;"/></td>
 		</tr>
 		<tr>
 			<td>Objectives Desrciption</td>
@@ -253,7 +253,7 @@ ORDER BY ?o1_id ?o2_id
 
 15. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/objectives.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/img/Tutorial2-P1-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P1-Query-Results.png" width="100%"/>
 
 16. With this JSON results, one could develop a visualization like the following:
 
@@ -325,7 +325,7 @@ Note: the semantic (logical) flags specified on the relation entity `Pursues`. T
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-    <img src="assets/img/Tutorial2-P2-Mission-Vocabulary.png" width="100%"/>
+    <img src="assets/tutorial2/P2-Mission-Vocabulary.png" width="100%"/>
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -360,7 +360,7 @@ description <http://example.com/tutorial2/description/missions#> as missions {
 
 5. The following is a visualization of the `missions` description we just created.
 
-    <img src="assets/img/Tutorial2-P2-Missions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P2-Missions-Description.png" width="100%"/>
 
 6. Append the following OML code to the body of `description/bundle` to include the new `missions` ontology. Save the editor.
 
@@ -400,7 +400,7 @@ ORDER BY ?m_id ?o1_id ?o2_id
 
 10. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/missions.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/img/Tutorial2-P2-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P2-Query-Results.png" width="100%"/>
 
 11. With this JSON results, one could develop visualizations like the following:
 
@@ -490,7 +490,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-    <img src="assets/img/Tutorial2-P3-Mission-Vocabulary.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Mission-Vocabulary.png" width="100%"/>
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -604,11 +604,11 @@ Note: This should clear the errors from the previous step.
 
 7. The following is a visualization of the `components` and `missions` descriptions so far:
 
-    <img src="assets/img/Tutorial2-P3-Components-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Components-Description.png" width="100%"/>
 
 	Components
 
-    <img src="assets/img/Tutorial2-P3-Missions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Missions-Description.png" width="100%"/>
 
 	Missions
 
@@ -670,8 +670,8 @@ Note: that we used the `ref` keyword here to add more statements to the concept 
 		<col style="width:40%">
 		<col style="width:60%">
 		<tr>
-			<td><img src="assets/img/Tutorial2-P4-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
-			<td><img src="assets/img/Tutorial2-P4-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P4-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P4-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
 		</tr>
 		<tr>
 			<td>Base Vocabulary</td>
@@ -703,7 +703,7 @@ Now, we will use the pattern to describe the physical composition (containment) 
 
 6. The following is a visualization of the `components` description so far:
 
-    <img src="assets/img/Tutorial2-P4-Components-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P4-Components-Description.png" width="100%"/>
 	
 7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -747,7 +747,7 @@ Note: how concept `MassMagnitude` specializes `vim4:InherentUnitaryQuantityValue
 
 2. The following is a visualization of the `mechanical` vocabulary:
 
-	<img src="assets/img/Tutorial2-P5-Mechanical-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P5-Mechanical-Vocabulary.png" width="100%"/>
 
 7. Append the following OML code to the body of `vocabulary/bundle` to include the new `mechanical` ontology. Save the editor.
 
@@ -851,7 +851,7 @@ Note: how the magnitude of each component is specified with a double literal. Th
 
 6. The following is a visualization of the `masses` description:
 
-    <img src="assets/img/Tutorial2-P5-Masses-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P5-Masses-Description.png" width="100%"/>
 
 8. Append the following OML code to the body of `description/bundle` to include the new `masses` ontology. Save the editor.
 
@@ -894,7 +894,7 @@ ORDER BY ?c1_id ?c2_id
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/components.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/img/Tutorial2-P5-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P5-Query-Results.png" width="100%"/>
 
 12. With this JSON results, one could develop visualizations like the following:
 
@@ -987,7 +987,7 @@ Components contain other components. These subcomponents interact in ways that l
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/img/Tutorial2-P6-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P6-Mission-Vocabulary.png" width="100%"/>
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1046,7 +1046,7 @@ Note: Creating a relation instance is an alternative to creating an unreified (s
 
 5. The following is a visualization of the `interfaces` description:
 
-    <img src="assets/img/Tutorial2-P6-Interfaces-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P6-Interfaces-Description.png" width="100%"/>
 
 6. Append the following OML code to the body of `description/bundle` to include the new `interfaces` ontology. Save the editor.
 
@@ -1096,7 +1096,7 @@ Note: how we added aspect `SpecifiedThing` as another supertype to relation enti
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/img/Tutorial2-P7-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P7-Mission-Vocabulary.png" width="100%"/>
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1137,7 +1137,7 @@ description <http://example.com/tutorial2/description/requirements#> as requirem
 
 5. The following is a visualization of the `requirements` description:
 
-    <img src="assets/img/Tutorial2-P7-Requirements-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P7-Requirements-Description.png" width="100%"/>
 
 6. Append the following OML code to the body of `description/bundle` to include the new `requirements` ontology. Save the editor.
 
@@ -1179,7 +1179,7 @@ ORDER BY ?r_id ?c_id ?i_id
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/requirements.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/img/Tutorial2-P7-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P7-Query-Results.png" width="100%"/>
 
 12. With this JSON results, one could develop a requirement doc generator that would generate the following:
 
@@ -1230,7 +1230,7 @@ Note: how the rule `Junction-infers-Connection` says that when a component prese
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/img/Tutorial2-P8-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P8-Mission-Vocabulary.png" width="100%"/>
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1265,7 +1265,7 @@ description <http://example.com/tutorial2/description/junctions#> as junctions {
 
 5. The following is a visualization of the `junctions` description:
 
-    <img src="assets/img/Tutorial2-P8-Junctions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P8-Junctions-Description.png" width="100%"/>
 
 6. Append the following OML code to the body of `description/bundle` to include the new `junctions` ontology. Save the editor.
 
@@ -1300,7 +1300,7 @@ ORDER BY ?c1_name ?c2_name
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/connections.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/img/Tutorial2-P8-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P8-Query-Results.png" width="100%"/>
 
 Note: how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.
 

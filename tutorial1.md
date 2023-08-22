@@ -13,7 +13,7 @@ Note: the source files created in this tutorial are available for reference in t
 1. Enter the project name as `tutorial1`. Press Next.
 1. Enter the project details as shown below. Press Finish.
 
-    <img src="assets/img/Tutorial1-Create-OML-Project.png" width="100%"/>
+    <img src="assets/tutorial1/Create-OML-Project.png" width="100%"/>
 
 1. The `tutorial1` project should now be visible in the [=Model Explorer view=].
 
@@ -21,7 +21,7 @@ Note: The project creation process may take a few seconds. Rosetta will show the
 
 5. Expand the `tutorial1` project node in the [=Model Explorer view=] as shown in the image below.
 
-    <img src="assets/img/Tutorial1-Expanded-Project.png" width="100%"/>
+    <img src="assets/tutorial1/Expanded-Project.png" width="100%"/>
 
 ## Create OML Vocabulary ## {#tutorial1-create-oml-vocabulary}
 
@@ -31,11 +31,11 @@ Now, you will create a simple vocabulary for describing pizzas along with their 
 
 1. Enter the details of the `pizza` vocabulary as shown below. Press Finish.
 
-    <img src="assets/img/Tutorial1-Create-Pizza-Vocabulary.png" width="100%"/>
+    <img src="assets/tutorial1/Create-Pizza-Vocabulary.png" width="100%"/>
 
 1. The `pizza` vocabulary will be created and its OML editor opens as shown below.
 
-    <img src="assets/img/Tutorial1-Pizza-Vocabulary-Editor.png" width="100%"/>
+    <img src="assets/tutorial1/Pizza-Vocabulary-Editor.png" width="100%"/>
 
 1. Copy the following OML code and paste it as the new content of vocabulary `pizza`.
 
@@ -248,11 +248,11 @@ Now, you will create a vocabulary bundle to enable logical closed-world reasonin
 
 1. Enter the details of the `pizza-bundle` vocabulary bundle as shown below. Press Finish.
 
-    <img src="assets/img/Tutorial1-Create-Pizza-Vocabulary-Bundle.png" width="100%"/>
+    <img src="assets/tutorial1/Create-Pizza-Vocabulary-Bundle.png" width="100%"/>
 
 1. The `pizza-bundle` vocabulary bundle will be created and its OML editor opens as shown below.
 
-    <img src="assets/img/Tutorial1-Pizza-Vocabulary-Bundle-Editor.png" width="100%"/>
+    <img src="assets/tutorial1/Pizza-Vocabulary-Bundle-Editor.png" width="100%"/>
 
 1. Copy the following OML code and paste it as the new content of the vocabulary bundle.
 
@@ -276,11 +276,11 @@ Now, you will create a description of the pizza instances baked by a particular 
 
 1. Enter the details of the `restaurant` description as shown below. Press Finish.
 
-    <img src="assets/img/Tutorial1-Create-Restaurant-Description.png" width="100%"/>
+    <img src="assets/tutorial1/Create-Restaurant-Description.png" width="100%"/>
 
 1. The `restaurant` description will be created and its OML editor opens as shown below.
 
-    <img src="assets/img/Tutorial1-Restaurant-Description-Editor.png" width="100%"/>
+    <img src="assets/tutorial1/Restaurant-Description-Editor.png" width="100%"/>
 
 1. Copy the following OML code and paste it as the new content of the description.
 
@@ -383,7 +383,7 @@ Now, you will include the restaurant description in a description bundle that wi
 
 1. Double-click on the `description/bundle.oml` file in the [=Model Explorer view=] to open the editor (if not already open).
 
-    <img src="assets/img/Tutorial1-Edit-Description-Bundle.png" width="100%"/>
+    <img src="assets/tutorial1/Edit-Description-Bundle.png" width="100%"/>
 
 1. Copy the following OML code and paste it as the new content of description bundle.
 
@@ -408,19 +408,19 @@ Now, it is time to run the Gradle `build` task of the project to verify whether 
 
 1. Click on the [=Gradle Task view=] and wait until the `tutorial1` project shows up there (keep an eye on the loading message in the status bar bottom-right).
 
-    <img src="assets/img/Tutorial1-Show-Gradle-Tasks.png" width="100%"/>
+    <img src="assets/tutorial1/Show-Gradle-Tasks.png" width="100%"/>
 
 1. Expand the `tutorial1` node followed by expanding the `oml` node.
 
 1. Double-click on the `build` task and wait for it to finish running in the [=Gradle Executions view=].
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/mov/Tutorial1-Run-Build-Task.mov"/>
+     <source src="assets/tutorial1/Run-Build-Task.mov"/>
    </video>
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it is all green icons.
 
-    <img src="assets/img/Tutorial1-Successful-Build.png" width="100%"/>
+    <img src="assets/tutorial1/Successful-Build.png" width="100%"/>
 
 ## Fix Logical Inconsistency ## {#tutorial1-fix-logical-inconsistency}
 
@@ -432,22 +432,22 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
 1. In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become similar to the value of `hasId` of instance `pizza1` (in line 16). Save the editor.
 
-    <img src="assets/img/Tutorial1-Change-Pizza2-Id.png" width="100%"/>
+    <img src="assets/tutorial1/Change-Pizza2-Id.png" width="100%"/>
 
 1. In the [=Gradle Task view=] double-click to rerun task `tutorial1/oml/build` again, and wait for it to finish running in the [=Gradle Executions view=].
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it now shows a failure (red icons) on task `owlReason`.
 
-    <img src="assets/img/Tutorial1-Build-Failure.png" width="100%"/>
+    <img src="assets/tutorial1/Build-Failure.png" width="100%"/>
 
 1. Right click on the `Execute run for :owlReason` red icon and select `Show Failures` from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.
 
-    <img src="assets/img/Tutorial1-Failure-Dialog.png" width="100%"/>
+    <img src="assets/tutorial1/Failure-Dialog.png" width="100%"/>
 
 1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/mov/Tutorial1-Inspect-Inconsistency.mov"/>
+     <source src="assets/tutorial1/Inspect-Inconsistency.mov"/>
    </video>
 
 **Explaining the problem**
@@ -456,7 +456,7 @@ This problem demonstrates why it is useful to use a logical reasoner to detect i
 
 In this case, the brief description is *"an individual belongs to a type and its complement"*. This means there exists an individual (called an instance in OML) in the model that can be inferred, using the logical semantics of the used vocabulary, to be classified by two classes that are disjoint (i.e., do not have an intersection, or in other words are a complement of each other, hence cannot be types of the same instance).
 
-<img src="assets/img/Tutorial1-Logical-Explanation.png" width="100%"/>
+<img src="assets/tutorial1/Logical-Explanation.png" width="100%"/>
 
 Looking at the minimal ontology presented, we can figure out the cause of the problem. It says that relation `hasBase` is *functional*, meaning that it can have maximum one value for a given instance. Looking at the relevant snippet of the pizza vocabulary confirms that.
 
@@ -519,15 +519,15 @@ Now that the model is consistent, it is time to get some value out of it by usin
 
 1. Navigate in the [=Model Explorer view=] to the `src` folder, and right click on it and choose New -> Folder.
 
-    <img src="assets/img/Tutorial1-Create-SPARQL-Folder.png" width="100%" style="border:1px groove black;"/>
+    <img src="assets/tutorial1/Create-SPARQL-Folder.png" width="100%" style="border:1px groove black;"/>
 
 1. Enter the name of the folder as `sparql` and press Finish. This creates a new folder `src/sparql` in the [=Model Explorer view=].
 
-    <img src="assets/img/Tutorial1-SPARQL-Folder.png" width="100%"/>
+    <img src="assets/tutorial1/SPARQL-Folder.png" width="100%"/>
 
 1. Right click on the `src/sparql` folder in the [=Model Explorer view=] and select New -> File.
 
-    <img src="assets/img/Tutorial1-Create-SPARQL-Query.png" width="100%"/>
+    <img src="assets/tutorial1/Create-SPARQL-Query.png" width="100%"/>
 
 1. Enter the name of the file as `NumberOfToppings.sparql` and press Finish. This creates a new file under the `sparql` folder in the [=Model Explorer view=].
 
@@ -579,7 +579,7 @@ WHERE {
 
 8. By now, you should see the following in the [=Model Explorer view=].
 
-    <img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"/>
+    <img src="assets/tutorial1/All-Three-SPARQL-Queries.png" width="100%"/>
 
 9. Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the [=Gradle Task view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
 
@@ -590,24 +590,24 @@ Note: A *Fuseki* server should now be running locally on your machine.
 1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to folder `build/results` to see the JSON files resulting from running the queries. Each one is named after one query.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/mov/Tutorial1-Show-Query-Results.mov"/>
+     <source src="assets/tutorial1/Show-Query-Results.mov"/>
    </video>
 
 12. Double click on file `NumberOfToppings.json` in the [=Model Explorer view=] to open its editor.
 
-    <img src="assets/img/Tutorial1-Show-Query-Results-1.png" width="100%"/>
+    <img src="assets/tutorial1/Show-Query-Results-1.png" width="100%"/>
 
 >This query returned a table of two columns. The first column named `toppingKind` represents the unique topping kinds (identified by their IRIs) that were used by the restaurant in making pizzas. The second column named `toppingCount`  represents the total count of each topping kind that were used to make those pizzas.
 
 13. Double click on file `WhichPizzaIsSpicy.json` in the [=Model Explorer view=] to open its editor.
 
-    <img src="assets/img/Tutorial1-Show-Query-Results-2.png" width="100%"/>
+    <img src="assets/tutorial1/Show-Query-Results-2.png" width="100%"/>
 
 >This query returned a table of one column named `pizza` which represents the pizzas (identified by their IRIs) that were considered spicy because the spiciness of one of their toppings was *Hot*.
 
 14. Double click on file `WhichPizzaIsVegan.json` in the [=Model Explorer view=] to open its editor.
 
-    <img src="assets/img/Tutorial1-Show-Query-Results-3.png" width="100%"/>
+    <img src="assets/tutorial1/Show-Query-Results-3.png" width="100%"/>
 
 >This query returned a table of one column named `pizza` which represents the pizzas (identified by their IRIs) that were considered *vegan* because none their toppings were non-vegetable.
 

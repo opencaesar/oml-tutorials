@@ -18,13 +18,15 @@ Abstract: This set of tutorials introduces the ontological approach to systems m
 </pre>
 <div export=true>
 
-<pre class=include>path: tools.md</pre>
+<pre class=include>path: tutorial0.md</pre>
 
-<pre class=include>path: tutorial-1.md</pre>
+<pre class=include>path: tutorial1.md</pre>
 
-<pre class=include>path: tutorial-2.md</pre>
+<pre class=include>path: tutorial2.md</pre>
 
-<pre class=include>path: tutorial-3.md</pre>
+<pre class=include>path: tutorial3.md</pre>
+
+<pre class=include>path: tutorial4.md</pre>
 
 </div>
 <style>

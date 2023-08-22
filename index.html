@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="6f51e2d1a02ac3ad86fe4f5f94abb8e6b738dcee" name="document-revision">
+  <meta content="32fa9d59b39ec4d0b4e4d7b0fc9b07a83eedc328" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2294,7 +2294,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.opencaesar.io/oml/"><img alt="OML Specification" height="48" src="https://opencaesar.github.io/oml/images/oml.svg"></a></p>
    <h1 class="p-name no-ref" id="title">OML Tutorials</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-08-17">17 August 2023</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-08-22">22 August 2023</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2356,14 +2356,21 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial2-summary"><span class="secno">2.11</span> <span class="content">Summary</span></a>
      </ol>
     <li>
-     <a href="#tutorial3"><span class="secno">3</span> <span class="content">Tutorial 3: OML CI/CD</span></a>
+     <a href="#tutorial3"><span class="secno">3</span> <span class="content">Tutorial 3: OML Reports</span></a>
      <ol class="toc">
       <li><a href="#tutorial3-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial3-manage-project-in-git"><span class="secno">3.2</span> <span class="content">Manage Project in Git</span></a>
-      <li><a href="#tutorial3-setup-ci-cd-workflow"><span class="secno">3.3</span> <span class="content">Setup CI/CD Workflow</span></a>
-      <li><a href="#tutorial3-generate-default-docs"><span class="secno">3.4</span> <span class="content">Generate Default Docs</span></a>
-      <li><a href="#tutorial3-generate-custom-doc"><span class="secno">3.5</span> <span class="content">Generate Custom Docs</span></a>
-      <li><a href="#tutorial3-summary"><span class="secno">3.6</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial3-create-jupyter-notebook"><span class="secno">3.2</span> <span class="content">Create Jupyter Notebook</span></a>
+      <li><a href="#tutorial3-summary"><span class="secno">3.3</span> <span class="content">Summary</span></a>
+     </ol>
+    <li>
+     <a href="#tutorial4"><span class="secno">4</span> <span class="content">Tutorial 4: OML CI/CD</span></a>
+     <ol class="toc">
+      <li><a href="#tutorial4-learning-objectives"><span class="secno">4.1</span> <span class="content">Learning Objectives</span></a>
+      <li><a href="#tutorial4-manage-project-in-git"><span class="secno">4.2</span> <span class="content">Manage Project in Git</span></a>
+      <li><a href="#tutorial4-setup-ci-cd-process"><span class="secno">4.3</span> <span class="content">Setup CI/CD Process</span></a>
+      <li><a href="#tutorial4-publish-oml-doc"><span class="secno">4.4</span> <span class="content">Publish OML Doc</span></a>
+      <li><a href="#tutorial4-generate-jupyter-nb"><span class="secno">4.5</span> <span class="content">Publish Jupyter Notebook</span></a>
+      <li><a href="#tutorial4-summary"><span class="secno">4.6</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -2385,17 +2392,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li data-md>
       <p>Download the latest release of OML Rosetta archive that matches your OS from <a href="https://github.com/opencaesar/oml-rosetta/releases/latest">oml-rosetta</a>.</p>
-      <p><img src="assets/img/Rosetta-Download.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial0/Rosetta-Download.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Unzip the archive to some folder on your local drive to get the Rosetta app.</p>
       <p class="note" role="note"><span class="marker">Note:</span> If you’re on a Mac, run this command in the terminal to get around the issue that the app is not yet signed (a temporary issue).</p>
 <pre class="language-javascript highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">$xattr <c- o>-</c->cr <c- o>&lt;</c->path<c- o>/</c->to<c- o>/</c->Rosetta<c- p>.</c->app<c- o>></c-></span></pre>
      <li data-md>
       <p>Navigate to the Rosetta app icon and double click to run it.</p>
-      <p><img src="assets/img/splash.bmp" width="100%"></p>
+      <p><img src="assets/tutorial0/splash.bmp" width="100%"></p>
      <li data-md>
       <p>When prompted to choose a workspace, create a new one in your local file system.</p>
-      <p><img src="assets/img/Rosetta-Launcher.png" width="100%"></p>
+      <p><img src="assets/tutorial0/Rosetta-Launcher.png" width="100%"></p>
     </ol>
     <h3 class="heading settled" id="run-oml-rosetta"><span class="content">Run OML Rosetta</span></h3>
     <ol>
@@ -2403,20 +2410,20 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Once Rosetta opens with the workspace, switch to the Modeling Perspective.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Switch-to-Modeling-Perspective.mov">
+     <source src="assets/tutorial0/Switch-to-Modeling-Perspective.mov">
     </video>
     <ol>
      <li data-md>
       <p>Once the Modeling Perspective opens, make some extra views visible.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Show-Views.mov">
+     <source src="assets/tutorial0/Show-Views.mov">
     </video>
     <ol>
      <li data-md>
       <p>This is how the Modeling Perspective should look like now.</p>
     </ol>
-    <p><img src="assets/img/Final-Modeling-Perspective.png" width="100%"></p>
+    <p><img src="assets/tutorial0/Final-Modeling-Perspective.png" width="100%"></p>
     <p>Notice the following components of the Modeling Perspective above:</p>
     <ol>
      <li data-md>
@@ -2439,7 +2446,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Turn on the Show line number preference by navigating to the Preferences dialog in the main menu bar (on a Mac, you will find it under the `Rosetta` menu; on Windows, you will find it under the `Windows` menu).</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Enable-Line-Numbers.mov">
+     <source src="assets/tutorial0/Enable-Line-Numbers.mov">
     </video>
     <h2 class="heading settled" data-level="1" id="tutorial1"><span class="secno">1. </span><span class="content">Tutorial 1: OML Basics</span><a class="self-link" href="#tutorial1"></a></h2>
     <p class="note" role="note"><span class="marker">Note:</span> If you have not already done so, please follow the <a href="#getting-ready">Getting Ready</a> instructions first before proceeding.</p>
@@ -2454,7 +2461,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Enter the project name as `tutorial1`. Press Next.</p>
      <li data-md>
       <p>Enter the project details as shown below. Press Finish.</p>
-      <p><img src="assets/img/Tutorial1-Create-OML-Project.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-OML-Project.png" width="100%"></p>
      <li data-md>
       <p>The `tutorial1` project should now be visible in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①">Model Explorer view</a>.</p>
     </ol>
@@ -2462,7 +2469,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>Expand the `tutorial1` project node in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②">Model Explorer view</a> as shown in the image below.</p>
-      <p><img src="assets/img/Tutorial1-Expanded-Project.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Expanded-Project.png" width="100%"></p>
     </ol>
     <h3 class="heading settled" data-level="1.3" id="tutorial1-create-oml-vocabulary"><span class="secno">1.3. </span><span class="content">Create OML Vocabulary</span><a class="self-link" href="#tutorial1-create-oml-vocabulary"></a></h3>
     <p>Now, you will create a simple vocabulary for describing pizzas along with their bases and toppings. Different kinds of  pizzas, bases, and toppings are modeled, along with their properties, interrelations, and restrictions.</p>
@@ -2471,10 +2478,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Right click on the `tutorial1` subfolder (highlighted in the picture above) in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view③">Model Explorer view</a> and select New -> OML Model.</p>
      <li data-md>
       <p>Enter the details of the `pizza` vocabulary as shown below. Press Finish.</p>
-      <p><img src="assets/img/Tutorial1-Create-Pizza-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-Pizza-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>The `pizza` vocabulary will be created and its OML editor opens as shown below.</p>
-      <p><img src="assets/img/Tutorial1-Pizza-Vocabulary-Editor.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Pizza-Vocabulary-Editor.png" width="100%"></p>
      <li data-md>
       <p>Copy the following OML code and paste it as the new content of vocabulary `pizza`.</p>
     </ol>
@@ -2486,10 +2493,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Right click on the `vocabulary` subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view④">Model Explorer view</a> and select New -> OML Model.</p>
      <li data-md>
       <p>Enter the details of the `pizza-bundle` vocabulary bundle as shown below. Press Finish.</p>
-      <p><img src="assets/img/Tutorial1-Create-Pizza-Vocabulary-Bundle.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-Pizza-Vocabulary-Bundle.png" width="100%"></p>
      <li data-md>
       <p>The `pizza-bundle` vocabulary bundle will be created and its OML editor opens as shown below.</p>
-      <p><img src="assets/img/Tutorial1-Pizza-Vocabulary-Bundle-Editor.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Pizza-Vocabulary-Bundle-Editor.png" width="100%"></p>
      <li data-md>
       <p>Copy the following OML code and paste it as the new content of the vocabulary bundle.</p>
     </ol>
@@ -2501,10 +2508,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Right click on the `description` subfolder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑤">Model Explorer view</a> and select New -> OML Model.</p>
      <li data-md>
       <p>Enter the details of the `restaurant` description as shown below. Press Finish.</p>
-      <p><img src="assets/img/Tutorial1-Create-Restaurant-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-Restaurant-Description.png" width="100%"></p>
      <li data-md>
       <p>The `restaurant` description will be created and its OML editor opens as shown below.</p>
-      <p><img src="assets/img/Tutorial1-Restaurant-Description-Editor.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Restaurant-Description-Editor.png" width="100%"></p>
      <li data-md>
       <p>Copy the following OML code and paste it as the new content of the description.</p>
     </ol>
@@ -2514,7 +2521,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li data-md>
       <p>Double-click on the `description/bundle.oml` file in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑥">Model Explorer view</a> to open the editor (if not already open).</p>
-      <p><img src="assets/img/Tutorial1-Edit-Description-Bundle.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Edit-Description-Bundle.png" width="100%"></p>
      <li data-md>
       <p>Copy the following OML code and paste it as the new content of description bundle.</p>
     </ol>
@@ -2524,19 +2531,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li data-md>
       <p>Click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view">Gradle Task view</a> and wait until the `tutorial1` project shows up there (keep an eye on the loading message in the status bar bottom-right).</p>
-      <p><img src="assets/img/Tutorial1-Show-Gradle-Tasks.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Show-Gradle-Tasks.png" width="100%"></p>
      <li data-md>
       <p>Expand the `tutorial1` node followed by expanding the `oml` node.</p>
      <li data-md>
       <p>Double-click on the `build` task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view">Gradle Executions view</a>.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Tutorial1-Run-Build-Task.mov">
+     <source src="assets/tutorial1/Run-Build-Task.mov">
     </video>
     <ol>
      <li data-md>
       <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①">Gradle Executions view</a> and notice that it is all green icons.</p>
-      <p><img src="assets/img/Tutorial1-Successful-Build.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Successful-Build.png" width="100%"></p>
     </ol>
     <h3 class="heading settled" data-level="1.8" id="tutorial1-fix-logical-inconsistency"><span class="secno">1.8. </span><span class="content">Fix Logical Inconsistency</span><a class="self-link" href="#tutorial1-fix-logical-inconsistency"></a></h3>
     <p>Now, we will introduce a logical problem in the OML code above and see how the reasoner helps us detect it and explain it.</p>
@@ -2546,25 +2553,25 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Click on the `restaurant.oml` editor to bring it in focus.</p>
      <li data-md>
       <p>In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become similar to the value of `hasId` of instance `pizza1` (in line 16). Save the editor.</p>
-      <p><img src="assets/img/Tutorial1-Change-Pizza2-Id.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Change-Pizza2-Id.png" width="100%"></p>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①">Gradle Task view</a> double-click to rerun task `tutorial1/oml/build` again, and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②">Gradle Executions view</a>.</p>
      <li data-md>
       <p>Inspect the build status in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view③">Gradle Executions view</a> and notice that it now shows a failure (red icons) on task `owlReason`.</p>
-      <p><img src="assets/img/Tutorial1-Build-Failure.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Build-Failure.png" width="100%"></p>
      <li data-md>
       <p>Right click on the `Execute run for :owlReason` red icon and select `Show Failures` from the context menu. The follow dialog shows up saying that some "Ontology is inconsistent. Check tutorial1/build/reports/reasoning.xml for more details". Click Close button.</p>
-      <p><img src="assets/img/Tutorial1-Failure-Dialog.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Failure-Dialog.png" width="100%"></p>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑦">Model Explorer view</a>, right click on the `tutorial1` project and choose <em>Refresh</em>. Then, navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Tutorial1-Inspect-Inconsistency.mov">
+     <source src="assets/tutorial1/Inspect-Inconsistency.mov">
     </video>
     <p><strong>Explaining the problem</strong></p>
     <p>This problem demonstrates why it is useful to use a logical reasoner to detect inconsistencies that may otherwise be non-obvious or unexpected. When this occurs, the reasoner provides a brief description and a minimal ontology that demonstrates the problem.</p>
     <p>In this case, the brief description is <em>"an individual belongs to a type and its complement"</em>. This means there exists an individual (called an instance in OML) in the model that can be inferred, using the logical semantics of the used vocabulary, to be classified by two classes that are disjoint (i.e., do not have an intersection, or in other words are a complement of each other, hence cannot be types of the same instance).</p>
-    <p><img src="assets/img/Tutorial1-Logical-Explanation.png" width="100%"></p>
+    <p><img src="assets/tutorial1/Logical-Explanation.png" width="100%"></p>
     <p>Looking at the minimal ontology presented, we can figure out the cause of the problem. It says that relation `hasBase` is <em>functional</em>, meaning that it can have maximum one value for a given instance. Looking at the relevant snippet of the pizza vocabulary confirms that.</p>
 <pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A relation from a pizza to a base"</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>relation</c-> <c- n>entity</c-> <c- nc>HasBase</c-> <c- p>[</c-></span><span class="line-no" data-line="3"></span><span class="line">    <c- n>from</c-> <c- nc>Pizza</c-></span><span class="line-no" data-line="4"></span><span class="line">    <c- n>to</c-> <c- nc>PizzaBase</c-></span><span class="line-no" data-line="5"></span><span class="line">    <c- n>forward</c-> <c- n>hasBase</c-></span><span class="line-no" data-line="6"></span><span class="line">    <c- n>reverse</c-> <c- n>isBaseOf</c-></span><span class="line-no" data-line="7"></span><span class="line">    <c- n>functional</c-></span><span class="line-no" data-line="8"></span><span class="line">    <c- n>inverse</c-> <c- n>functional</c-></span><span class="line-no" data-line="9"></span><span class="line"><c- p>]</c-> <c- o>&lt;</c-> <c- nc>HasIngredient</c-></span></pre>
     <p>Moreover, it says that instance `base1` is a value of property `hasBase` on instance `pizza1`, and instance `base2` is a value of property `hasBase` on instance `pizza2`. Looking at the relevant snippet of the restaurant description confirms that.</p>
@@ -2589,13 +2596,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li data-md>
       <p>Navigate in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑧">Model Explorer view</a> to the `src` folder, and right click on it and choose New -> Folder.</p>
-      <p><img src="assets/img/Tutorial1-Create-SPARQL-Folder.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-SPARQL-Folder.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Enter the name of the folder as `sparql` and press Finish. This creates a new folder `src/sparql` in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑨">Model Explorer view</a>.</p>
-      <p><img src="assets/img/Tutorial1-SPARQL-Folder.png" width="100%"></p>
+      <p><img src="assets/tutorial1/SPARQL-Folder.png" width="100%"></p>
      <li data-md>
       <p>Right click on the `src/sparql` folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⓪">Model Explorer view</a> and select New -> File.</p>
-      <p><img src="assets/img/Tutorial1-Create-SPARQL-Query.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Create-SPARQL-Query.png" width="100%"></p>
      <li data-md>
       <p>Enter the name of the file as `NumberOfToppings.sparql` and press Finish. This creates a new file under the `sparql` folder in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①①">Model Explorer view</a>.</p>
      <li data-md>
@@ -2615,7 +2622,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="8">
      <li data-md>
       <p>By now, you should see the following in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①②">Model Explorer view</a>.</p>
-      <p><img src="assets/img/Tutorial1-All-Three-SPARQL-Queries.png" width="100%"></p>
+      <p><img src="assets/tutorial1/All-Three-SPARQL-Queries.png" width="100%"></p>
      <li data-md>
       <p>Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view③">Gradle Task view</a> and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view⑥">Gradle Executions view</a>.</p>
     </ol>
@@ -2627,12 +2634,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①③">Model Explorer view</a>, right click on the `tutorial1` project and choose <em>Refresh</em>. Then, navigate to folder `build/results` to see the JSON files resulting from running the queries. Each one is named after one query.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Tutorial1-Show-Query-Results.mov">
+     <source src="assets/tutorial1/Show-Query-Results.mov">
     </video>
     <ol start="12">
      <li data-md>
       <p>Double click on file `NumberOfToppings.json` in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①④">Model Explorer view</a> to open its editor.</p>
-      <p><img src="assets/img/Tutorial1-Show-Query-Results-1.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Show-Query-Results-1.png" width="100%"></p>
     </ol>
     <blockquote>
      <p>This query returned a table of two columns. The first column named `toppingKind` represents the unique topping kinds (identified by their IRIs) that were used by the restaurant in making pizzas. The second column named `toppingCount`  represents the total count of each topping kind that were used to make those pizzas.</p>
@@ -2640,7 +2647,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="13">
      <li data-md>
       <p>Double click on file `WhichPizzaIsSpicy.json` in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑤">Model Explorer view</a> to open its editor.</p>
-      <p><img src="assets/img/Tutorial1-Show-Query-Results-2.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Show-Query-Results-2.png" width="100%"></p>
     </ol>
     <blockquote>
      <p>This query returned a table of one column named `pizza` which represents the pizzas (identified by their IRIs) that were considered spicy because the spiciness of one of their toppings was <em>Hot</em>.</p>
@@ -2648,7 +2655,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="14">
      <li data-md>
       <p>Double click on file `WhichPizzaIsVegan.json` in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑥">Model Explorer view</a> to open its editor.</p>
-      <p><img src="assets/img/Tutorial1-Show-Query-Results-3.png" width="100%"></p>
+      <p><img src="assets/tutorial1/Show-Query-Results-3.png" width="100%"></p>
     </ol>
     <blockquote>
      <p>This query returned a table of one column named `pizza` which represents the pizzas (identified by their IRIs) that were considered <em>vegan</em> because none their toppings were non-vegetable.</p>
@@ -2674,17 +2681,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Name the project `tutorial2`. Click Next.</p>
      <li data-md>
       <p>Fill the OML project details as seen below. Click Finish.</p>
-      <p><img src="assets/img/Tutorial2-Create-OML-Project.png" width="100%"></p>
+      <p><img src="assets/tutorial2/Create-OML-Project.png" width="100%"></p>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑦">Model Explorer view</a>, double click on the build.gradle file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/mov/Tutorial2-Modify-Gradle-Build.mov">
+     <source src="assets/tutorial2/Modify-Gradle-Build.mov">
     </video>
     <ol>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑧">Model Explorer view</a>, expand the `tutorial2` project, right-click on the `src/oml/example.com/tutorial2` folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.</p>
-      <p><img src="assets/img/Tutorial2-Create-Vocabulary-Bundle.png" width="100%"></p>
+      <p><img src="assets/tutorial2/Create-Vocabulary-Bundle.png" width="100%"></p>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑨">Model Explorer view</a>, double click on the file `src/oml/example.com/tutorial2/description/bundle.oml` to open its editor. Paste the following OML code as the contents of the file.</p>
     </ol>
@@ -2719,7 +2726,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="4">
      <li data-md>
       <p>if you did all the previous steps correctly, the following should be the contents of all files so far.</p>
-      <p><img src="assets/img/Tutorial2-P1-Initial-Ontologies.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P1-Initial-Ontologies.png" width="100%"></p>
      <li data-md>
       <p>In the `vocabulary/base` ontology, append the following OML code to its body (i.e., insert it before the closing `}` bracket):</p>
     </ol>
@@ -2737,8 +2744,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <table>
        <tbody>
         <tr>
-         <td><img src="assets/img/Tutorial2-P1-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
-         <td><img src="assets/img/Tutorial2-P1-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/tutorial2/P1-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/tutorial2/P1-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
         <tr>
          <td>Base Vocabulary
          <td>Mission Vocabulary
@@ -2759,7 +2766,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <table>
        <tbody>
         <tr>
-         <td><img src="assets/img/Tutorial2-P1-Objectives-Description.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/tutorial2/P1-Objectives-Description.png" style="border:1px groove black;" width="100%">
         <tr>
          <td>Objectives Desrciption
       </table>
@@ -2783,7 +2790,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view⑨">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①②">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
       <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②⓪">Model Explorer view</a> and select `Refresh`. Navigate to the file `build/results/objectives.json` and double click it to open its editor. You should see the following results in JSON.</p>
-      <p><img src="assets/img/Tutorial2-P1-Query-Results.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P1-Query-Results.png" width="100%"></p>
      <li data-md>
       <p>With this JSON results, one could develop a visualization like the following:</p>
     </ol>
@@ -2841,7 +2848,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mission` vocabulary so far:</p>
-      <p><img src="assets/img/Tutorial2-P2-Mission-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P2-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①③">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -2855,7 +2862,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>The following is a visualization of the `missions` description we just created.</p>
-      <p><img src="assets/img/Tutorial2-P2-Missions-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P2-Missions-Description.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `missions` ontology. Save the editor.</p>
     </ol>
@@ -2876,7 +2883,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①②">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑤">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
       <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②①">Model Explorer view</a> and select `Refresh`. Navigate to the file `build/results/missions.json` and double click it to open its editor. You should see the following results in JSON.</p>
-      <p><img src="assets/img/Tutorial2-P2-Query-Results.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P2-Query-Results.png" width="100%"></p>
      <li data-md>
       <p>With this JSON results, one could develop visualizations like the following:</p>
     </ol>
@@ -3008,7 +3015,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mission` vocabulary so far:</p>
-      <p><img src="assets/img/Tutorial2-P3-Mission-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P3-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①③">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑥">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3035,9 +3042,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="7">
      <li data-md>
       <p>The following is a visualization of the `components` and `missions` descriptions so far:</p>
-      <p><img src="assets/img/Tutorial2-P3-Components-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P3-Components-Description.png" width="100%"></p>
       <p>Components</p>
-      <p><img src="assets/img/Tutorial2-P3-Missions-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P3-Missions-Description.png" width="100%"></p>
       <p>Missions</p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `components` ontology. Save the editor.</p>
@@ -3074,8 +3081,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <col style="width:60%">
        <tbody>
         <tr>
-         <td><img src="assets/img/Tutorial2-P4-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
-         <td><img src="assets/img/Tutorial2-P4-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/tutorial2/P4-Base-Vocabulary.png" style="border:1px groove black;" width="100%">
+         <td><img src="assets/tutorial2/P4-Mission-Vocabulary.png" style="border:1px groove black;" width="100%">
         <tr>
          <td>Base Vocabulary
          <td>Mission Vocabulary
@@ -3093,7 +3100,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="6">
      <li data-md>
       <p>The following is a visualization of the `components` description so far:</p>
-      <p><img src="assets/img/Tutorial2-P4-Components-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P4-Components-Description.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑥">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑨">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3113,7 +3120,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mechanical` vocabulary:</p>
-      <p><img src="assets/img/Tutorial2-P5-Mechanical-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P5-Mechanical-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `vocabulary/bundle` to include the new `mechanical` ontology. Save the editor.</p>
     </ol>
@@ -3134,7 +3141,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="6">
      <li data-md>
       <p>The following is a visualization of the `masses` description:</p>
-      <p><img src="assets/img/Tutorial2-P5-Masses-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P5-Masses-Description.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `masses` ontology. Save the editor.</p>
     </ol>
@@ -3155,7 +3162,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①⑨">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②②">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
       <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②②">Model Explorer view</a> and select `Refresh`. Navigate to the file `build/results/components.json` and double click it to open its editor. You should see the following results in JSON.</p>
-      <p><img src="assets/img/Tutorial2-P5-Query-Results.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P5-Query-Results.png" width="100%"></p>
      <li data-md>
       <p>With this JSON results, one could develop visualizations like the following:</p>
     </ol>
@@ -3370,7 +3377,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mission` vocabulary so far:</p>
-      <p><img src="assets/img/Tutorial2-P6-Mission-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P6-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⓪">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②③">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3386,7 +3393,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>The following is a visualization of the `interfaces` description:</p>
-      <p><img src="assets/img/Tutorial2-P6-Interfaces-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P6-Interfaces-Description.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `interfaces` ontology. Save the editor.</p>
     </ol>
@@ -3410,7 +3417,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mission` vocabulary so far:</p>
-      <p><img src="assets/img/Tutorial2-P7-Mission-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P7-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②②">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑤">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3424,7 +3431,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>The following is a visualization of the `requirements` description:</p>
-      <p><img src="assets/img/Tutorial2-P7-Requirements-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P7-Requirements-Description.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `requirements` ontology. Save the editor.</p>
     </ol>
@@ -3445,7 +3452,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②④">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑦">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
       <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②③">Model Explorer view</a> and select `Refresh`. Navigate to the file `build/results/requirements.json` and double click it to open its editor. You should see the following results in JSON.</p>
-      <p><img src="assets/img/Tutorial2-P7-Query-Results.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P7-Query-Results.png" width="100%"></p>
      <li data-md>
       <p>With this JSON results, one could develop a requirement doc generator that would generate the following:</p>
     </ol>
@@ -3464,7 +3471,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="2">
      <li data-md>
       <p>The following is a visualization of the `mission` vocabulary so far:</p>
-      <p><img src="assets/img/Tutorial2-P8-Mission-Vocabulary.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P8-Mission-Vocabulary.png" width="100%"></p>
      <li data-md>
       <p>Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑤">Gradle Task view</a>, and waiting for it to finish running in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view②⑧">Gradle Executions view</a>. This should run with no errors.</p>
     </ol>
@@ -3478,7 +3485,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>The following is a visualization of the `junctions` description:</p>
-      <p><img src="assets/img/Tutorial2-P8-Junctions-Description.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P8-Junctions-Description.png" width="100%"></p>
      <li data-md>
       <p>Append the following OML code to the body of `description/bundle` to include the new `junctions` ontology. Save the editor.</p>
     </ol>
@@ -3499,36 +3506,55 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view②⑦">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view③⓪">Gradle Executions view</a>. It should run with no errors.</p>
      <li data-md>
       <p>Right click on the project in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view②④">Model Explorer view</a> and select `Refresh`. Navigate to the file `build/results/connections.json` and double click it to open its editor. You should see the following results in JSON.</p>
-      <p><img src="assets/img/Tutorial2-P8-Query-Results.png" width="100%"></p>
+      <p><img src="assets/tutorial2/P8-Query-Results.png" width="100%"></p>
     </ol>
     <p class="note" role="note"><span class="marker">Note:</span> how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.</p>
     <h3 class="heading settled" data-level="2.11" id="tutorial2-summary"><span class="secno">2.11. </span><span class="content">Summary</span><a class="self-link" href="#tutorial2-summary"></a></h3>
     <p>This tutorial introduced the pattern-based approach of modeling with OML. It demonstrated how vocabulary can be designed in terms of patterns with well-defined syntax and semantics that allow useful analysis to be carried out on a model in support of a particular methodology of systems modeling. It also demonstrated how descriptions can be organized into loosely coupled fragments that declare minimum dependencies on each other. This can help scalability when specifying large models (by loading the minimum information only). It can also improve reusability of models (by reusing the minimum information only). Finally, the tutorial also covered some more syntax and semantics of OML that makes modeling and reasoning flexible and powerful. We saw the use of aspects as mix-in types to add capabilities to concepts and relation entities, relation entities and how they can be used to create both reified and unreified links, scalar properties and how they are typed by datatypes, restrictions and how they can be used to tighten the range or values of properties, and rules and semantic flags of relation entities and how they can influence logical entailments and reasoning.</p>
-    <h2 class="heading settled" data-level="3" id="tutorial3"><span class="secno">3. </span><span class="content">Tutorial 3: OML CI/CD</span><a class="self-link" href="#tutorial3"></a></h2>
+    <h2 class="heading settled" data-level="3" id="tutorial3"><span class="secno">3. </span><span class="content">Tutorial 3: OML Reports</span><a class="self-link" href="#tutorial3"></a></h2>
     <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial2">Tutorial 2</a>. Please do that first before proceeding.</p>
     <h3 class="heading settled" data-level="3.1" id="tutorial3-learning-objectives"><span class="secno">3.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial3-learning-objectives"></a></h3>
+     The ability to create a model is not complete without the ability to analyze it and share the result of analysis with stakeholders. In Tutorial 3, we saw how OML models can be analyzed with SPARQL queries and the results visualized but we did not show how we created those visualizations. This tutorial builds on this and teaches the following analyzes skills: 
+    <ul>
+     <li data-md>
+      <p>How to analyze SPARQL query results further</p>
+     <li data-md>
+      <p>How to visualize analysis results</p>
+     <li data-md>
+      <p>How to mix visualizations with narrative text,</p>
+     <li data-md>
+      <p>How to package all analysis in a notebook to present to stakeholders.</p>
+    </ul>
+    <p class="note" role="note"><span class="marker">Note:</span> The source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/kepler16b-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
+    <h3 class="heading settled" data-level="3.2" id="tutorial3-create-jupyter-notebook"><span class="secno">3.2. </span><span class="content">Create Jupyter Notebook</span><a class="self-link" href="#tutorial3-create-jupyter-notebook"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="3.3" id="tutorial3-summary"><span class="secno">3.3. </span><span class="content">Summary</span><a class="self-link" href="#tutorial3-summary"></a></h3>
+    <p>TBD</p>
+    <h2 class="heading settled" data-level="4" id="tutorial4"><span class="secno">4. </span><span class="content">Tutorial 4: OML CI/CD</span><a class="self-link" href="#tutorial4"></a></h2>
+    <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial3">Tutorial 3</a>. Please do that first before proceeding.</p>
+    <h3 class="heading settled" data-level="4.1" id="tutorial4-learning-objectives"><span class="secno">4.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial4-learning-objectives"></a></h3>
      Managing an OML project in a git repository makes a lot of sense. First, OML models are textual files, which allows git to edit them natively. Second, all the OML workbenches already support git. Third, the VS Code extension for OML supports editing OML files in the cloud (and even in the browser in the future). Finally, the products of an OML project, typically documents, can be published online in git directly. Following the best practices of model-based development, such documents should be produced automatically from models through a rigorous and repeatable process. This is possible to achieve thanks to the process of Continuous Integration of Delivery (CI/CD) that is supported by most git repos. 
-    <p>This tutorial teaches how to set up a CI/CD workflow for an OML project managed in a git repo. Users will learn the following:</p>
+    <p>This tutorial teaches the following skills:</p>
     <ul>
      <li data-md>
       <p>How to manage an OML project in a git repository</p>
      <li data-md>
-      <p>How to setup a CI/CD workflow in the git repository to build the project on each commit</p>
+      <p>How to setup a CI/CD process in the git repository to build the project on each commit</p>
      <li data-md>
-      <p>How to generate the default docs for an OML project and update it on each commit</p>
+      <p>How to publish OML Doc for an OML project and update it on each commit</p>
      <li data-md>
-      <p>How to generate custom docs for an OML project and update it on each commit</p>
+      <p>How to publish a Jupyter Notebook for an OML project and update it on each commit</p>
     </ul>
     <p class="note" role="note"><span class="marker">Note:</span> The source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/kepler16b-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="3.2" id="tutorial3-manage-project-in-git"><span class="secno">3.2. </span><span class="content">Manage Project in Git</span><a class="self-link" href="#tutorial3-manage-project-in-git"></a></h3>
+    <h3 class="heading settled" data-level="4.2" id="tutorial4-manage-project-in-git"><span class="secno">4.2. </span><span class="content">Manage Project in Git</span><a class="self-link" href="#tutorial4-manage-project-in-git"></a></h3>
      In this step, we will create a Github repo for the project and push it there using the <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git CLI</a>. 
     <ol>
      <li data-md>
       <p>Open a web browser. navigate to your Github organization and select the `New Repository` button. Set the name of the repo to `kepler16b-example` and the other settings as shown below. Finally, click the `Create Repository` button.</p>
-      <p><img src="assets/img/Tutorial3-Create-New-Repo.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Create-New-Repo.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Back in your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.</p>
-      <p><img src="assets/img/Tutorial3-Select-Project-Properties.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Select-Project-Properties.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Open the `Terminal` application on your machine, navigate to the project’s path, and initialize the repo using the following commands:</p>
     </ol>
@@ -3542,23 +3568,23 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="5">
      <li data-md>
       <p>In your web browser, refresh the repo’s page. You should now see the repository looking like this:</p>
-      <p><img src="assets/img/Tutorial3-Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Refresh-Repository.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>In the OML Rosetta workspace, right click on the project and choose Refresh.</p>
-      <p><img src="assets/img/Tutorial3-Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
     </ol>
-    <h3 class="heading settled" data-level="3.3" id="tutorial3-setup-ci-cd-workflow"><span class="secno">3.3. </span><span class="content">Setup CI/CD Workflow</span><a class="self-link" href="#tutorial3-setup-ci-cd-workflow"></a></h3>
+    <h3 class="heading settled" data-level="4.3" id="tutorial4-setup-ci-cd-process"><span class="secno">4.3. </span><span class="content">Setup CI/CD Process</span><a class="self-link" href="#tutorial4-setup-ci-cd-process"></a></h3>
      In this step, we will use Github Actions to create a CI/CD workflow that builds the project and run queries on any commit. 
     <ol>
      <li data-md>
       <p>In a web browser, navigate to your repo’s web page, and click on the Actions tab.</p>
-      <p><img src="assets/img/Tutorial3-Select-Actions.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Select-Actions.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>In the Actions page, click on the `Configure` button of the `Simple workflow`.</p>
-      <p><img src="assets/img/Tutorial3-Select-Simple-Worflow.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Select-Simple-Worflow.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>In the path, rename the file to `ci.yml`.</p>
-      <p><img src="assets/img/Tutorial3-Rename-Workflow.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Rename-Workflow.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Replace the file contents by the following code:</p>
     </ol>
@@ -3568,20 +3594,20 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Commit the CI file and watch the first CI run complete successfully.</p>
       <video controls style="border:1px groove black;" width="100%">
-       <source src="assets/mov/Tutorial3-First-CI-Build.mp4">
+       <source src="assets/tutorial4/First-CI-Build.mp4">
       </video>
      <li data-md>
       <p>Now, We will create a new branch, add a syntax error in the OML model (cross referencing a non-existing element) in it, commit it to the repo, and see how the CI workflow detects it. After that, we will undo the change to fix it.</p>
       <video controls style="border:1px groove black;" width="100%">
-       <source src="assets/mov/Tutorial3-Second-CI-Build.mp4">
+       <source src="assets/tutorial4/Second-CI-Build.mp4">
       </video>
      <li data-md>
       <p>Then, we will add a semantic error in the OML model (make an assembly contained by two containers) to see how the CI workflow detects it (by finding the inverse functional `base:contains` relation violated in this case). After that, we will undo the change to fix it.</p>
       <video controls style="border:1px groove black;" width="100%">
-       <source src="assets/mov/Tutorial3-Third-CI-Build.mp4">
+       <source src="assets/tutorial4/Third-CI-Build.mp4">
       </video>
     </ol>
-    <h3 class="heading settled" data-level="3.4" id="tutorial3-generate-default-docs"><span class="secno">3.4. </span><span class="content">Generate Default Docs</span><a class="self-link" href="#tutorial3-generate-default-docs"></a></h3>
+    <h3 class="heading settled" data-level="4.4" id="tutorial4-publish-oml-doc"><span class="secno">4.4. </span><span class="content">Publish OML Doc</span><a class="self-link" href="#tutorial4-publish-oml-doc"></a></h3>
      Now that we established a basic CI workflow, we can now add the CD part by publishing default documentation from the OML project on each commit. The openCAESAR project provides a tool called <a href="https://github.com/opencaesar/owl-tools/tree/master/owl-doc">owl-doc-gradle</a> that generates default documentation for a given OML datasets (we obtain such dataset by converting the OML dataset to OWL). We will use this tool to generate the default documentation. 
     <ol>
      <li data-md>
@@ -3610,7 +3636,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol start="8">
      <li data-md>
       <p>In the Model Explorere view’s toolbar, click on the View menu (vertical dots), and select Filters and Customization action.</p>
-      <p><img src="assets/img/Tutorial3-Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Refresh-Project.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>In the dialog, uncheck the `*.resources` box. Click OK.</p>
      <li data-md>
@@ -3631,14 +3657,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Switch to the `Git` perspective, focus on the Git Staging view, stage the ci.yml file, write a commit message (e.g., adding docgen), and press the `Commit and Push` button.</p>
      <li data-md>
       <p>In your web browser, navigate to the repo’s URL, and click on the Actions tab. You should see the CI workflow running.</p>
-      <p><img src="assets/img/Tutorial3-Publish-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/Publish-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
       <p>Once it finishes successfully (green tick), click on the run liml, and under the `deploy` step, click on the URL. You should see a page that looks like this:</p>
-      <p><img src="assets/img/Tutorial3-View-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
+      <p><img src="assets/tutorial4/View-Default-Docs.png" style="border:1px groove black;" width="100%"></p>
     </ol>
-    <p class="note" role="note"><span class="marker">Note:</span> Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element’s descriptions) and push it. Notice how this triggers the CI workflow to rerun to update the documentation.</p>
-    <h3 class="heading settled" data-level="3.5" id="tutorial3-generate-custom-doc"><span class="secno">3.5. </span><span class="content">Generate Custom Docs</span><a class="self-link" href="#tutorial3-generate-custom-doc"></a></h3>
-    <h3 class="heading settled" data-level="3.6" id="tutorial3-summary"><span class="secno">3.6. </span><span class="content">Summary</span><a class="self-link" href="#tutorial3-summary"></a></h3>
+    <p class="note" role="note"><span class="marker">Note:</span> Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element’s descriptions) and push it. Observe how this triggers the CI workflow to rerun to update the documentation.</p>
+    <h3 class="heading settled" data-level="4.5" id="tutorial4-generate-jupyter-nb"><span class="secno">4.5. </span><span class="content">Publish Jupyter Notebook</span><a class="self-link" href="#tutorial4-generate-jupyter-nb"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="4.6" id="tutorial4-summary"><span class="secno">4.6. </span><span class="content">Summary</span><a class="self-link" href="#tutorial4-summary"></a></h3>
+    <p>TBD</p>
    </div>
   </main>
 <script>
