@@ -4,9 +4,9 @@
 .idea
 
 # Fuseki output directory
-.fuseki
+.fuseki*
 
-build
+build*
 
 # vscode
 .history

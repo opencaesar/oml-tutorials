@@ -20,5 +20,4 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 		asymmetric
 		irreflexive
 	]
-
 }

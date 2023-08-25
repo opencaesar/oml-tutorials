@@ -1,0 +1,12 @@
+PREFIX mission: <http://example.com/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?graph ?i ?cid ?iid
+WHERE {
+    GRAPH ?graph {
+        <http://example.com/tutorial/description/una1#C2> 
+            mission:presents ?i ;
+            mission:hasIdentifier ?cid .
+        ?i mission:hasIdentifier ?iid .
+    }
+}
+ORDER BY ?graph ?i

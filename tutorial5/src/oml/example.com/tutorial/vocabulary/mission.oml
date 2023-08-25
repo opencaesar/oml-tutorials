@@ -3,7 +3,7 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
 	extends <http://www.w3.org/2001/XMLSchema#> as xsd
 
-	@rdfs:comment "The class of things having an id and a canonical name"
+	@rdfs:comment "The class of things having an id"
 	aspect IdentifiedThing
 
 	@rdfs:comment "The has identifier property"
@@ -12,10 +12,12 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 		range xsd:string
 	]
 
-	@rdfs:comment "A Component is something that can be deployed in a mission."
+	@rdfs:comment "A Component is something that can be deployed
+	in a mission."
 	concept Component < IdentifiedThing
 
-	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."
+	@rdfs:comment "An Interface represents a set of features 
+	that describe some Component's interaction with another Component."
 	concept Interface < IdentifiedThing
 
 	@rdfs:comment "A Component presents zero or more Interfaces."

@@ -4,9 +4,7 @@ SELECT ?id ?x
 WHERE {
     {
         SELECT ?id
-        WHERE {
-        ?x mission:hasIdentifier ?id .
-        }
+        WHERE { ?x mission:hasIdentifier ?id . }
         GROUP BY ?id
         HAVING (COUNT(?x) > 1)
     }

@@ -1,7 +1,9 @@
-PREFIX mission:     <http://example.com/tutorial/vocabulary/mission#>
+PREFIX mission: <http://example.com/tutorial/vocabulary/mission#>
 
+# What are the interfaces, ?i, presented by C2?
 SELECT DISTINCT ?i
 WHERE {
-	<http://example.com/tutorial/description/una1#C2> mission:presents ?i .
+	<http://example.com/tutorial/description/una1#C2> 
+	mission:presents ?i .
 }
 ORDER BY ?i
