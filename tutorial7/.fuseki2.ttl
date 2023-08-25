@@ -1,0 +1,63 @@
+
+PREFIX :        <#>
+PREFIX fuseki:  <http://jena.apache.org/fuseki#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
+PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
+
+[] rdf:type fuseki:Server ;
+    fuseki:services (
+        :queryService
+        :updateService
+    ) .
+
+# Service description for "/tutorial/query" for querying with union graph.
+:queryService rdf:type fuseki:Service ;
+    fuseki:name     "tutorial-query" ;
+    fuseki:serviceReadWriteGraphStore "data" ; # Added for compatibility with owl-load task
+    fuseki:endpoint [
+        fuseki:operation fuseki:query ;
+        fuseki:name "query" ;
+        ja:context [ ja:cxtName "tdb:unionDefaultGraph" ; ja:cxtValue true ] ;
+    ] ;
+    fuseki:dataset :dataset ;
+    .
+
+# Service description for "/tutorial/update" for owl-load, which involves query (existing graphs) and update (delete existing graphs & upload data)
+:updateService rdf:type fuseki:Service ;
+    fuseki:name     "tutorial-update" ;
+    fuseki:serviceReadWriteGraphStore "data" ; # Added for compatibility with owl-load task
+    fuseki:endpoint [
+        fuseki:operation fuseki:query ;
+        fuseki:name "query" ;
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:update ;
+        fuseki:name "update" 
+    ] ;
+    fuseki:dataset :dataset ;
+    .
+
+## ---------------------------------------------------------------
+
+:dataset rdf:type       ja:RDFDataset ;
+    ja:defaultGraph     :model_inf ;
+    .
+
+:model_inf a ja:InfModel ;
+    ja:baseModel :tdbGraph ;
+    ja:reasoner [
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
+    ] .
+
+:tdbGraph rdf:type tdb2:GraphTDB2 ;
+    tdb2:dataset :tdbDataset .
+
+## Base data in TDB.
+:tdbDataset rdf:type tdb2:DatasetTDB2 ;
+    tdb2:location "--mem--" ;
+    # If the unionDefaultGraph is used, then the "update" service should be removed.
+    # tdb:unionDefaultGraph true ;
+    .
