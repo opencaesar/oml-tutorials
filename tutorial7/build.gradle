@@ -113,7 +113,7 @@ task startFuseki0(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
 task startFuseki1(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     configurationPath = file('.fuseki1.ttl')
     outputFolderPath = file('.fuseki1')
-    port = 3030
+    port = 3031
     additionalClasspathDependencies = [
     ]
     webUI = true
@@ -122,7 +122,7 @@ task startFuseki1(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
 task startFuseki2(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     configurationPath = file('.fuseki2.ttl')
     outputFolderPath = file('.fuseki2')
-    port = 3030
+    port = 3032
     additionalClasspathDependencies = [
         "com.github.galigator.openllet:openllet-jena:2.6.5"
     ]
@@ -132,7 +132,7 @@ task startFuseki2(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
 task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     configurationPath = file('.fuseki3.ttl')
     outputFolderPath = file('.fuseki3')
-    port = 3030
+    port = 3033
     additionalClasspathDependencies = [
         "com.github.galigator.openllet:openllet-jena:2.6.5"
     ]
@@ -142,7 +142,7 @@ task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
 task startFuseki4(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     configurationPath = file('.fuseki4.ttl')
     outputFolderPath = file('.fuseki4')
-    port = 3030
+    port = 3034
     additionalClasspathDependencies = [
         "com.github.galigator.openllet:openllet-jena:2.6.5"
     ]
@@ -215,7 +215,7 @@ task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
 
 task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3031/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
         "$dataset.rootOntologyIri/classes".toString(),
@@ -226,7 +226,7 @@ task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
 
 task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
-    endpointURL = "http://localhost:3030/tutorial-update".toString()
+    endpointURL = "http://localhost:3032/tutorial-update".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
         "$dataset.rootOntologyIri/classes".toString(),
@@ -237,7 +237,7 @@ task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
 
 task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3033/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
         "$dataset.rootOntologyIri/classes".toString(),
@@ -248,7 +248,7 @@ task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
 
 task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3034/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
         "$dataset.rootOntologyIri/classes".toString(),
@@ -268,28 +268,28 @@ task owlQuery0(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn
 }
 
 task owlQuery1(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad1) {
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3031/tutorial".toString()
     queryPath = file('src/sparql')
     resultPath = file('build/results')
     format = 'json'
 }
 
 task owlQuery2(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad2) {
-    endpointURL = "http://localhost:3030/tutorial-query".toString()
+    endpointURL = "http://localhost:3032/tutorial-query".toString()
     queryPath = file('src/sparql')
     resultPath = file('build/results')
     format = 'json'
 }
 
 task owlQuery3(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad3) {
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3033/tutorial".toString()
     queryPath = file('src/sparql')
     resultPath = file('build/results')
     format = 'json'
 }
 
 task owlQuery4(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad4) {
-    endpointURL = "http://localhost:3030/tutorial".toString()
+    endpointURL = "http://localhost:3034/tutorial".toString()
     queryPath = file('src/sparql')
     resultPath = file('build/results')
     format = 'json'
