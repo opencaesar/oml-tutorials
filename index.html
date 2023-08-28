@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="465577cfd03ee76246ad9c7d665168a4872012db" name="document-revision">
+  <meta content="2d465be5eb845697b40eb40b96a0dbcd1831db5e" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2262,7 +2262,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.opencaesar.io/oml/"><img alt="OML Specification" height="48" src="https://opencaesar.github.io/oml/images/oml.svg"></a></p>
    <h1 class="p-name no-ref" id="title">OML Tutorials</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-08-22">22 August 2023</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-08-28">28 August 2023</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2349,6 +2349,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial4-visualize-mass-rollup"><span class="secno">4.11</span> <span class="content">P5: Visualize Mass Rollup</span></a>
       <li><a href="#tutorial4-change-the-model"><span class="secno">4.12</span> <span class="content">Change the Model</span></a>
       <li><a href="#tutorial4-summary"><span class="secno">4.13</span> <span class="content">Summary</span></a>
+     </ol>
+    <li>
+     <a href="#tutorial5"><span class="secno">5</span> <span class="content">Tutorial 5: OML Sirius</span></a>
+     <ol class="toc">
+      <li><a href="#tutorial5-learning-objectives"><span class="secno">5.1</span> <span class="content">Learning Objectives</span></a>
+      <li><a href="#tutorial5-create-vocabulary"><span class="secno">5.2</span> <span class="content">Create Vocabulary</span></a>
+      <li><a href="#tutorial5-create-viewpoint"><span class="secno">5.3</span> <span class="content">Create Viewpoint</span></a>
+      <li><a href="#tutorial5-create-diagram-viewer"><span class="secno">5.4</span> <span class="content">Create Diagram Viewer</span></a>
+      <li><a href="#tutorial5-create-diagram-editor"><span class="secno">5.5</span> <span class="content">Create Diagram Editor</span></a>
+      <li><a href="#tutorial5-create-table-editor"><span class="secno">5.6</span> <span class="content">Create Table Editor</span></a>
+      <li><a href="#tutorial5-create-property-sheet"><span class="secno">5.7</span> <span class="content">Create Property Sheet</span></a>
+      <li><a href="#tutorial5-summary"><span class="secno">5.8</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -3671,7 +3683,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <source src="assets/tutorial3/Third-CI-Build.mp4">
     </video>
     <h3 class="heading settled" data-level="3.6" id="tutorial3-summary"><span class="secno">3.6. </span><span class="content">Summary</span><a class="self-link" href="#tutorial3-summary"></a></h3>
-    <p>Managing OML projects in Git repositories with CI pipelines is crucial for collaboration and maintaining project quality. This tutorial demonstrated how to manage a project in a Github repository, set up a CI pipeline using GitHub Actions, and use it to detect syntactic and semantic errors in commits pushed to the repository.</p>
+    <p>In the realm of OML projects, efficient collaboration and project integrity are paramount. This tutorial serves as a comprehensive guide, detailing the strategic management of OML projects within Git repositories, fortified by Continuous Integration (CI) pipelines. Through a step-by-step approach, the tutorial expertly navigates learners through the intricacies of project management on GitHub repositories, followed by the establishment of robust CI pipelines using GitHub Actions. A focal point of the tutorial lies in the demonstration of how these pipelines can adeptly identify both syntactic and semantic errors in commits pushed to the repository. By embracing these methodologies, professionals can elevate project collaboration, fortify quality control, and ensure the consistent enhancement of OML projects within a collaborative environment.</p>
     <h2 class="heading settled" data-level="4" id="tutorial4"><span class="secno">4. </span><span class="content">Tutorial 4: OML Reports</span><a class="self-link" href="#tutorial4"></a></h2>
     <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial3">Tutorial 3</a>. Please do that first before proceeding.</p>
     <h3 class="heading settled" data-level="4.1" id="tutorial4-learning-objectives"><span class="secno">4.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial4-learning-objectives"></a></h3>
@@ -3922,6 +3934,24 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
     <h3 class="heading settled" data-level="4.13" id="tutorial4-summary"><span class="secno">4.13. </span><span class="content">Summary</span><a class="self-link" href="#tutorial4-summary"></a></h3>
     <p>This tutorial serves as a comprehensive guide, outlining the step-by-step process of utilizing Jupyter Notebook and GitHub Pages to visualize the results derived from querying OML datasets. Through clear and concise instructions, learners will gain practical insights into the seamless integration of these tools for efficient data exploration, analysis, and collaborative review. By employing automation techniques, the tutorial demonstrates how the generated notebook content and OML documentation can be effortlessly deployed onto GitHub Pages, facilitating real-time impact assessment and fostering a collaborative environment for informed decision-making. This tutorial proves particularly valuable for professionals seeking enhanced methods of data visualization and streamlined peer review processes within the context of OML datasets.</p>
+    <h2 class="heading settled" data-level="5" id="tutorial5"><span class="secno">5. </span><span class="content">Tutorial 5: OML Sirius</span><a class="self-link" href="#tutorial5"></a></h2>
+    <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial1">Tutorial 1</a>. Please do that first before proceeding.</p>
+    <h3 class="heading settled" data-level="5.1" id="tutorial5-learning-objectives"><span class="secno">5.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial5-learning-objectives"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.2" id="tutorial5-create-vocabulary"><span class="secno">5.2. </span><span class="content">Create Vocabulary</span><a class="self-link" href="#tutorial5-create-vocabulary"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.3" id="tutorial5-create-viewpoint"><span class="secno">5.3. </span><span class="content">Create Viewpoint</span><a class="self-link" href="#tutorial5-create-viewpoint"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.4" id="tutorial5-create-diagram-viewer"><span class="secno">5.4. </span><span class="content">Create Diagram Viewer</span><a class="self-link" href="#tutorial5-create-diagram-viewer"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.5" id="tutorial5-create-diagram-editor"><span class="secno">5.5. </span><span class="content">Create Diagram Editor</span><a class="self-link" href="#tutorial5-create-diagram-editor"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.6" id="tutorial5-create-table-editor"><span class="secno">5.6. </span><span class="content">Create Table Editor</span><a class="self-link" href="#tutorial5-create-table-editor"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.7" id="tutorial5-create-property-sheet"><span class="secno">5.7. </span><span class="content">Create Property Sheet</span><a class="self-link" href="#tutorial5-create-property-sheet"></a></h3>
+    <p>TBD</p>
+    <h3 class="heading settled" data-level="5.8" id="tutorial5-summary"><span class="secno">5.8. </span><span class="content">Summary</span><a class="self-link" href="#tutorial5-summary"></a></h3>
+    <p>TBD</p>
    </div>
   </main>
 <script>
