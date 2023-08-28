@@ -121,7 +121,7 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
 
 	<img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
 
-5. Open the `.github/workflows/ci.yml` file and add the following step right after the `Query` step.
+5. Open the `.github/workflows/ci.yml` file and add the following step right after the `Upload` step.
 
 ```yaml
     - name: Generate Docs
@@ -144,9 +144,92 @@ A convenient choice here is to deploy to the repository's [Github Pages](https:/
 
 	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
 
+  Note: This choice means that the content of Pages will be published by a Github Actions workflow. As we will see below, this will allow the repository's CI script to publish it,
+
 ## Create Jupyter Notebook ## {#tutorial4-create-jupyter-notebook}
 
-TBD
+In this step, we will create a simple Jupyter Notebook in the project and setup the CI workflow to publish it to Github Pages.
+
+1. In VS Code Explorer, right click on the `src` folder, select New Folder, and call it `ipynb`.
+
+2. Right click on the `ipynb` folder, select New File, and call it `index.ipynb`. This opens a Jupiter Notebook editor with a single empty cell.
+
+	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
+
+3. In the top right cornder of the editor, click on the `Select Kernel` button, select `Python Environments`, and select one of the available Python 3 environments. Notice that now the name of the selected kernel shows up in the top right corner.
+
+4. Hover over the first empty cell in the editor. A toolbar appears with a trash can. Click on the trash can to delete the cell.
+
+5. In place of the cell, you should now see two buttons, one says `Python` and the other says `Markdown`. Click on the latter. This adds a Markdown cell as the first cell.
+
+6. In the cell, type the following text, then click on the `✓` (tick) icon in the cell's toolbar to apply. The editor should now look like the picture below.
+
+```
+# Kepler16b
+The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.
+```
+
+	<img src="assets/tutorial4/Add-Notebook-Title.png" width="100%" style="border:1px groove black;"/>
+
+Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some depednencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.
+
+7. In VS Code Explorer, right click on the `ipynb` folder, choose New File, and name it `requirements.txt`. Insert the following text as its contents and save.
+
+```python
+ipykernel
+nbconvert
+pandas
+plantuml
+igraph
+cairocffi
+```
+Note: A `requirements.txt` file is a typical Python mechanism to declare dependencies. In this case, the first two dependencies are the minimum required to enable executing and converting the notebook to HTML. The rest of the dependencies are libraries that will be used in the steps below to visualize the analysis results.
+
+	<img src="assets/tutorial4/Add-Requirements.png" width="100%" style="border:1px groove black;"/>
+
+8. Open the `.github/workflows/ci.yml` file and add the following step right after the `Generate Docs` step.
+
+```yaml
+    - name: Set up Python 3
+      uses: actions/setup-python@v4
+      with: 
+        python-version: '3.10'
+    - name: Install Requirements
+      run: pip install -r src/ipynb/requirements.txt
+    - name: Run Notebook
+      run: python -m nbconvert --execute --to notebook --no-input src/ipynb/index.ipynb --output-dir='build/web' 
+    - name: Convert Notebook to HTML
+      run: python -m nbconvert --to html --no-input build/web/index.ipynb
+    - name: Publish
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: build/web
+        
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
+```
+	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;"/>
+
+Note: The first set of steps are added to the `build` job. They setup a Python 3 environment, install the dependencies, run the notebook, convert it to HTML in the `build/web` folder, then upload the folder as a Pages artifact. Then, a new job named `deploy` is added. This job runs after `build` is done and deploys the Pages artifact to the web server.
+
+9. Using the Source Control tab, commit and push all the three files `index.ipynb`, `requirements.txt` and `ci.yml`. Check that the CI workflow succeeded on the repository's Actions tab. You should see the following page in your browser:
+
+	<img src="assets/tutorial4/First-Noetbook-CI-Build.png" width="100%" style="border:1px groove black;"/>
+
+10. Click on the hyperlink in the `deploy` box to navigate the deployed Github Pages of the repository. This should open up a new page that looks like this:
+
+
 
 ## P1: Reference Documentation ## {#tutorial4-reference-documentation}
 
