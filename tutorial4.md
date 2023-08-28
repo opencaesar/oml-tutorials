@@ -8,7 +8,7 @@ Modeling a system with OML would not be useful without the ability to analyze th
 
 By the end of this tutorial, readers will be able to:
 
-1. Utilize Jupyter Notebook to create an interactive and data-rich report based on SPARQL query results.
+1. Utilize Jupyter Notebook to create a rich report based on SPARQL query results ([final result](http://www.opencaesar.io/kepler16b-example/)).
 2. Generate canonical OML documentation (OmlDoc) that can be cross referenced from the report.
 3. Evolve a CI pipeline to be a CI/CD pipeline that runs analysis and deploys its results.
 
