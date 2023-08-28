@@ -374,26 +374,24 @@ description <http://example.com/tutorial2/description/missions#> as missions {
 
 Now we will create a SPARQL query to extract the pattern instances from the description.
 
-8. Creat the file `src/sparql/missions.sparql` and copy the following SPARQL code as its content. It looks for missions that purses objectives (and their aggregated objectives).
+8. Creat the file `src/sparql/missions.sparql` and copy the following SPARQL code as its content. It looks for missions that purses objectives.
 
 ```scala
 PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
 PREFIX mission:     <http://example.com/tutorial2/vocabulary/mission#>
 
-SELECT DISTINCT ?m_id ?m_name ?o1_id ?o2_id
+SELECT DISTINCT ?m_id ?m_name ?o_id ?o_name
 WHERE {
 	?m a mission:Mission ;
 		base:hasIdentifier ?m_id ;
-		base:hasCanonicalName ?m_name;
+		base:hasCanonicalName ?m_name ;
 		mission:pursues [
-        	a mission:Objective ;
-        	base:hasIdentifier ?o1_id ;
-        	base:aggregates [
-          		base:hasIdentifier ?o2_id ;
-        	]
-      ]
+        a mission:Objective ;
+        base:hasIdentifier ?o_id ;
+    	  base:hasCanonicalName ?o_name
+    ]
 }
-ORDER BY ?m_id ?o1_id ?o2_id
+ORDER BY ?m_id ?o_id
 ```
 
 9. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
@@ -406,62 +404,238 @@ ORDER BY ?m_id ?o1_id ?o2_id
 
 Note: the visualization code is not part of this tutorial
 
-<html>
-<head>
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-.node {
-		cursor: pointer;
-	}
-
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 3px;
+fill: #fff;
+stroke: steelblue;
+stroke-width: 3px;
 }
-
 .node text {
-  font: 12px sans-serif;
+font: 12px sans-serif;
 }
-
 .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
-}
-
-#table2 {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px 18px #888888;
-}
-
-#table2 td, #table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#table2 tr:nth-child(even){background-color: #f2f2f2;}
-
-#table2 tr:hover {background-color: #ddd;}
-
-#table2 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  padding: 8px;
-  background-color: #04AA6D;
-  color: white;
+fill: none;
+stroke: #ccc;
+stroke-width: 1px;
 }
 </style>
-</head>
-<body>
-<table id="table2"><thead><tr><th>m_id</th><th>m_name</th><th>o1_id</th><th>o2_id</th></tr></thead><tbody><tr><td>M.01</td><td>Orbiter Mission</td><td>O.01</td><td>O.02</td></tr><tr><td></td><td></td><td>O.03</td><td>O.02</td></tr><tr><td></td><td></td><td></td><td>O.04</td></tr><tr><td></td><td></td><td>O.07</td><td>O.02</td></tr><tr><td>M.02</td><td>Lander Mission</td><td>O.01</td><td>O.02</td></tr><tr><td></td><td></td><td>O.07</td><td>O.02</td></tr></tbody></table>
-<p></p>
-<svg width="960" height="500"><g transform="translate(120,20)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,146.36363636363637,180,146.36363636363637"></path><path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,376.3636363636364,180,376.3636363636364"></path><path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,41.81818181818182,360,41.81818181818182"></path><path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,146.36363636363637,360,146.36363636363637"></path><path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,250.90909090909093,360,250.90909090909093"></path><path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,334.54545454545456,360,334.54545454545456"></path><path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,418.1818181818182,360,418.1818181818182"></path><path class="link" d="M360,41.81818181818182C450,41.81818181818182,450,41.81818181818182,540,41.81818181818182"></path><path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,125.45454545454547,540,125.45454545454547"></path><path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,167.27272727272728,540,167.27272727272728"></path><path class="link" d="M360,250.90909090909093C450,250.90909090909093,450,250.90909090909093,540,250.90909090909093"></path><path class="link" d="M360,334.54545454545456C450,334.54545454545456,450,334.54545454545456,540,334.54545454545456"></path><path class="link" d="M360,418.1818181818182C450,418.1818181818182,450,418.1818181818182,540,418.1818181818182"></path></g><g transform="translate(540, 418.18182373046875)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.02</text></g><g transform="translate(540, 334.5454406738281)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.02</text></g><g transform="translate(540, 250.90908813476562)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.02</text></g><g transform="translate(540, 167.27272033691406)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.04</text></g><g transform="translate(540, 125.45454406738281)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.02</text></g><g transform="translate(540, 41.818180084228516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">O.02</text></g><g transform="translate(360, 418.18182373046875)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">O.07</text></g><g transform="translate(360, 334.5454406738281)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">O.01</text></g><g transform="translate(360, 250.90908813476562)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">O.07</text></g><g transform="translate(360, 146.36363220214844)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">O.03</text></g><g transform="translate(360, 41.818180084228516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">O.01</text></g><g transform="translate(180, 376.3636474609375)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Lander Mission</text></g><g transform="translate(180, 146.36363220214844)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Orbiter Mission</text></g><g transform="translate(0, 261.3636474609375)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Missions</text></g></g></svg>
-</body>
-</html>
+<div id="figure3"></div>
+<script type="module">
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+function drawTree(data, containerID, root_name, unique=true, _width=960, _height=500, depthMultiplier=180) {
+
+	function getOrCreateNode(id, name, dict){
+		var node = dict[id];
+		if (!node){
+			node = {}
+			node.id  = id;
+			node.name = name;
+			dict[id] = node;
+		}
+		return node;
+	}
+	
+	function addNode(parentid, id, name, dict){
+		var parent = dict[parentid];
+		var node = dict[id];
+		if (!node){
+			node = getOrCreateNode(id,name,dict);
+			node.parent = parent.id;
+			if (!parent.children){
+				parent.children = [];
+			}
+			parent.children.push(node);
+		}
+		return node;
+	}
+	
+	function transform(data){
+		var idToNode = [];
+		var root = getOrCreateNode("-1",root_name,idToNode);
+		root.parent = "null";
+		var columns = [ "m_id" , "m_name" , "o_id" , "o_name" ];
+		data.forEach(row => {
+			var parent_id = "-1";
+			for (let i = 0; i < columns.length/2; i++) {
+				if (row[columns[2*i]]) {
+					var childId = (!unique ? parent_id+"." : "") +row[columns[2*i]];
+					addNode(parent_id, childId, row[columns[2*i]]+" "+row[columns[2*i+1]], idToNode);
+					parent_id = childId;
+				}
+			}
+		});	
+		return root;
+	}
+	
+	function getVal(d){
+		return d.value + (d.children ? d.data.value : 0);
+	}
+
+	
+	var treeData = transform(data);
+
+	// ************** Generate the tree diagram	 *****************
+	var margin = {top: 20, right: 120, bottom: 20, left: 120},
+		width = _width - margin.right - margin.left,
+		height = _height - margin.top - margin.bottom;
+		
+	var i = 0,
+		root;
+		
+		
+	var root = d3.hierarchy(treeData)
+			.sum(d => d.value)
+			.sort((a, b) => b.value - a.value)
+			
+	var tree = d3.tree();
+	tree.size([height, width]); 
+	var diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
+	
+	var svg = d3.select(containerID).append("svg")
+		.attr("width", width + margin.right + margin.left)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  	const gLink = svg.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#555")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
+	root.x0 = height / 2;
+	root.y0 = 0;
+
+	function update(source) {
+	    const duration = d3.event && d3.event.altKey ? 2500 : 250;
+	    const nodes = root.descendants().reverse();
+	    const links = root.links();
+	
+	    // Compute the new tree layout.
+	    tree(root);
+	
+	    let left = root;
+	    let right = root;
+	    root.eachBefore(node => {
+	      if (node.x < left.x) left = node;
+	      if (node.x > right.x) right = node;
+	    });
+
+		// Normalize for fixed-depth.
+	    nodes.forEach(function(d) { d.y = d.depth * depthMultiplier; });
+
+	
+	    const height = right.x - left.x + margin.top + margin.bottom;
+	
+	    const transition = svg.transition()
+	        .duration(duration);
+	
+	 	// Update the nodes…
+	  	var node = svg.selectAll("g.node")
+		  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+	
+	    // Enter any new nodes at the parent's previous position.
+	    const nodeEnter = node.enter().append("g")
+	        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+		  	.attr("class", "node")
+	        .on("click", click);
+	
+	    nodeEnter.append("circle")
+ 		  .attr("r", 1e-6)
+		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+	
+	    nodeEnter.append("text")
+	        .attr("dy", "0.35em")
+	        .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	        .text(function(d){
+				return d.data.name;
+			});
+	
+	    // Transition nodes to their new position.
+	    const nodeUpdate = node.merge(nodeEnter).transition(transition)
+		  	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+		nodeUpdate.select("circle")
+		  .attr("r", 10)
+		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+		nodeUpdate.select("text")
+		  .style("fill-opacity", 1);
+	    
+		// Transition exiting nodes to the parent's new position.
+	    const nodeExit = node.exit().transition(transition)
+		  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+		  .remove();
+
+		nodeExit.select("circle")
+		  .attr("r", 1e-6);
+	
+	  	nodeExit.select("text")
+		  .style("fill-opacity", 1e-6);
+	
+	    // Update the links…
+	    const link = gLink.selectAll("path")
+	      .data(links, d => d.target.id);
+	
+	    // Enter any new links at the parent's previous position.
+	    const linkEnter = link.enter().append("path")
+			.attr("class", "link")
+	        .attr("d", d => {
+	          const o = {x: source.x0, y: source.y0};
+	          return diagonal({source: o, target: o});
+	        });
+	
+	    // Transition links to their new position.
+	    link.merge(linkEnter).transition(transition)
+	        .attr("d", diagonal);
+	
+	    // Transition exiting nodes to the parent's new position.
+	    link.exit().transition(transition).remove()
+	        .attr("d", d => {
+	          const o = {x: source.x, y: source.y};
+	          return diagonal({source: o, target: o});
+	        });
+	
+	    // Stash the old positions for transition.
+	    root.eachBefore(d => {
+	      d.x0 = d.x;
+	      d.y0 = d.y;
+	    });
+	 }
+
+  	update(root);
+
+	// Toggle children on click.
+	function click(event, d) {
+	  if (d.children) {
+		d._children = d.children;
+		d.children = null;
+	  } else {
+		d.children = d._children;
+		d._children = null;
+	  }
+	  update(d);
+	}
+}
+var data = [{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.01","o_name":"Characterize the atmosphere of Kepler 16b"},{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.03","o_name":"Characterize the gravitational field of Kepler 16b"},{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.07","o_name":"Characterize the energetic particule environment of the Kepler 16b binary star system"},{"m_id":"M.02","m_name":"Lander Mission","o_id":"O.01","o_name":"Characterize the atmosphere of Kepler 16b"},{"m_id":"M.02","m_name":"Lander Mission","o_id":"O.07","o_name":"Characterize the energetic particule environment of the Kepler 16b binary star system"}]
+drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 ## P3: Mission deploys Component ## {#tutorial2-p3}
 

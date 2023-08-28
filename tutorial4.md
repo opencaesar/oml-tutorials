@@ -160,7 +160,7 @@ In this step, we will create a simple Jupyter Notebook in the project and setup 
 
 4. Hover over the first empty cell in the editor. A toolbar appears with a trash can. Click on the trash can to delete the cell.
 
-5. In place of the cell, you should now see two buttons, one says `Python` and the other says `Markdown`. Click on the latter. This adds a Markdown cell as the first cell.
+5. In place of the cell, you should now see two buttons, one says `Code` and the other says `Markdown`. Click on the latter. This adds a Markdown cell as the first cell.
 
 6. In the cell, type the following text, then click on the `✓` (tick) icon in the cell's toolbar to apply. The editor should now look like the picture below.
 
@@ -187,7 +187,13 @@ Note: A `requirements.txt` file is a typical Python mechanism to declare depende
 
 	<img src="assets/tutorial4/Add-Requirements.png" width="100%" style="border:1px groove black;"/>
 
-8. Open the `.github/workflows/ci.yml` file and add the following step right after the `Generate Docs` step.
+8. In VS Code Terminal, activate the python environment used by the notebook's kernel, then run the following command to install the dependencies locally:
+
+```shell
+pip install -r src/ipynb/requirements.txt
+```
+
+9. Open the `.github/workflows/ci.yml` file and add the following step right after the `Generate Docs` step.
 
 ```yaml
     - name: Set up Python 3
@@ -223,27 +229,89 @@ Note: A `requirements.txt` file is a typical Python mechanism to declare depende
 
 Note: The first set of steps are added to the `build` job. They setup a Python 3 environment, install the dependencies, run the notebook, convert it to HTML in the `build/web` folder, then upload the folder as a Pages artifact. Then, a new job named `deploy` is added. This job runs after `build` is done and deploys the Pages artifact to the web server.
 
-9. Using the Source Control tab, commit and push all the three files `index.ipynb`, `requirements.txt` and `ci.yml`. Check that the CI workflow succeeded on the repository's Actions tab. You should see the following page in your browser:
+10. Using the Source Control tab, commit and push all the three files `index.ipynb`, `requirements.txt` and `ci.yml`. Check that the CI workflow succeeded on the repository's Actions tab. You should see the following page in your browser:
 
 	<img src="assets/tutorial4/First-Noetbook-CI-Build.png" width="100%" style="border:1px groove black;"/>
 
-10. Click on the hyperlink in the `deploy` box to navigate the deployed Github Pages of the repository. This should open up a new page that looks like this:
+11. Click on the hyperlink in the `deploy` box to navigate the deployed Github Pages of the repository. This should open up a new page that looks like this:
 
-
+	<img src="assets/tutorial4/First-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
 ## P1: Reference Documentation ## {#tutorial4-reference-documentation}
 
-TBD
+In this step, we will add to the notebook some cross references to the OML documentation that we generated previously for the project.
+
+1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
+
+```
+## Missions
+The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/tutorial2/description/missions/lander.html) and an [Orbiter Mission](doc/example.com/tutorial2/description/missions/orbiter.html), each of which pursues a number of objectives. For details, check the [full documentation](doc).
+```
+
+9. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/Second-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+
+10. Click on the three hyperlinks and verify that you can naigate to them fine. 
 
 ## P2: Visualize Missions ## {#tutorial4-visualize-missions}
 
+In this step, we will add the first visualization of SPARQL query results to the notebook. In this case, we will visualize data from the `build/results/missions.json` file, which holds the result of running the `missions.sparql` query, which matched missions and the objectives they pursue. We will use [d3.js](https://d3js.org/) to code this visualization, but to make this easier to present here, we will copy and paste a python file called `utilities.py` (that has helpful utilitiy functions) to the priject.
+
+1. Navigate to the file [utilities.py](https://github.com/opencaesar/kepler16b-example/blob/main/src/ipynb/utilities.py) and copy its contents.
+
+2. In VS Code Explorere, right click on the `ipynb` folder, select New File, name it `utilities.py`, and paste the contents to it. Save.
+
+	<img src="assets/tutorial4/Add-Utilities.png" width="100%" style="border:1px groove black;"/>
+
+3. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
+
+```python
+from utilities import *
+df = dataframe("missions.json")
+data = df.to_json(orient = "records")
+HTML(tree.safe_substitute(data=data))
+```
+
+	<img src="assets/tutorial4/Add-Missions-Viz.png" width="100%" style="border:1px groove black;"/>
+
+Note: Click on the circles to collapse/expand them
+
+4. Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/Third-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+
+## P3: Visualize Objectives ## {#tutorial4-visualize-objectives}
+
+In this step, we will add a visualization for the data in the `build/results/objectives.json` file, which holds the result of running the `objectives.sparql` query, which matched the objective aggregation hierarchy. We will use the [plantuml](https://www.plantuml.com/) tool to code this visualization.
+
+1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
+
+```
+## Objectives
+The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:
+```
+
+2. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
+
+```python
+from utilities import *
+df = dataframe("missions.json")
+data = df.to_json(orient = "records")
+HTML(tree.safe_substitute(data=data))
+```
+
+	<img src="assets/tutorial4/Add-Objectives-Viz.png" width="100%" style="border:1px groove black;"/>
+
+3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/Fourth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+
+## P4: Visualize Components ## {#tutorial4-visualize-components}
+
 TBD
 
-## P3: Visualize Components ## {#tutorial4-visualize-components}
-
-TBD
-
-## P4: Visualize Mass Rollup ## {#tutorial4-visualize-mass-rollup}
+## P5: Visualize Mass Rollup ## {#tutorial4-visualize-mass-rollup}
 
 TDB
 

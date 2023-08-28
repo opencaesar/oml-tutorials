@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="6df77a4d556e5bd423e2ec6c9d8f24fbad343270" name="document-revision">
+  <meta content="d1fa1238b9c8fdc1698ad515da4f612e0228a04e" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -1519,50 +1519,18 @@ Possible extra rowspan handling
 }
 </style>
 <style>
-.node {
-		cursor: pointer;
-	}
-
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 3px;
+fill: #fff;
+stroke: steelblue;
+stroke-width: 3px;
 }
-
 .node text {
-  font: 12px sans-serif;
+font: 12px sans-serif;
 }
-
 .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
-}
-
-#table2 {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px 18px #888888;
-}
-
-#table2 td, #table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#table2 tr:nth-child(even){background-color: #f2f2f2;}
-
-#table2 tr:hover {background-color: #ddd;}
-
-#table2 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  padding: 8px;
-  background-color: #04AA6D;
-  color: white;
+fill: none;
+stroke: #ccc;
+stroke-width: 1px;
 }
 </style>
 <style>
@@ -2376,10 +2344,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial4-create-jupyter-notebook"><span class="secno">4.6</span> <span class="content">Create Jupyter Notebook</span></a>
       <li><a href="#tutorial4-reference-documentation"><span class="secno">4.7</span> <span class="content">P1: Reference Documentation</span></a>
       <li><a href="#tutorial4-visualize-missions"><span class="secno">4.8</span> <span class="content">P2: Visualize Missions</span></a>
-      <li><a href="#tutorial4-visualize-components"><span class="secno">4.9</span> <span class="content">P3: Visualize Components</span></a>
-      <li><a href="#tutorial4-visualize-mass-rollup"><span class="secno">4.10</span> <span class="content">P4: Visualize Mass Rollup</span></a>
-      <li><a href="#tutorial4-experiment-with-changes"><span class="secno">4.11</span> <span class="content">Experiment With Changes</span></a>
-      <li><a href="#tutorial4-summary"><span class="secno">4.12</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial4-visualize-objectives"><span class="secno">4.9</span> <span class="content">P3: Visualize Objectives</span></a>
+      <li><a href="#tutorial4-visualize-components"><span class="secno">4.10</span> <span class="content">P4: Visualize Components</span></a>
+      <li><a href="#tutorial4-visualize-mass-rollup"><span class="secno">4.11</span> <span class="content">P5: Visualize Mass Rollup</span></a>
+      <li><a href="#tutorial4-experiment-with-changes"><span class="secno">4.12</span> <span class="content">Experiment With Changes</span></a>
+      <li><a href="#tutorial4-summary"><span class="secno">4.13</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -2884,9 +2853,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p>Now we will create a SPARQL query to extract the pattern instances from the description.</p>
     <ol start="8">
      <li data-md>
-      <p>Creat the file `src/sparql/missions.sparql` and copy the following SPARQL code as its content. It looks for missions that purses objectives (and their aggregated objectives).</p>
+      <p>Creat the file `src/sparql/missions.sparql` and copy the following SPARQL code as its content. It looks for missions that purses objectives.</p>
     </ol>
-<pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c-></span><span class="line-no" data-line="2"></span><span class="line"><c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c-></span><span class="line-no" data-line="3"></span><span class="line"></span><span class="line-no" data-line="4"></span><span class="line"><c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>m_name</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- nc>WHERE</c-> <c- p>{</c-></span><span class="line-no" data-line="6"></span><span class="line">	<c- o>?</c-><c- n>m</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>;</c-></span><span class="line-no" data-line="7"></span><span class="line">		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>m_id</c-> <c- p>;</c-></span><span class="line-no" data-line="8"></span><span class="line">		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>m_name</c-><c- p>;</c-></span><span class="line-no" data-line="9"></span><span class="line">		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- p>[</c-></span><span class="line-no" data-line="10"></span><span class="line">        	<c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c-></span><span class="line-no" data-line="11"></span><span class="line">        	<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o1_id</c-> <c- p>;</c-></span><span class="line-no" data-line="12"></span><span class="line">        	<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- p>[</c-></span><span class="line-no" data-line="13"></span><span class="line">          		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o2_id</c-> <c- p>;</c-></span><span class="line-no" data-line="14"></span><span class="line">        	<c- p>]</c-></span><span class="line-no" data-line="15"></span><span class="line">      <c- p>]</c-></span><span class="line-no" data-line="16"></span><span class="line"><c- p>}</c-></span><span class="line-no" data-line="17"></span><span class="line"><c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c-></span></pre>
+<pre class="language-scala highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c-></span><span class="line-no" data-line="2"></span><span class="line"><c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c-></span><span class="line-no" data-line="3"></span><span class="line"></span><span class="line-no" data-line="4"></span><span class="line"><c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>m_name</c-> <c- o>?</c-><c- n>o_id</c-> <c- o>?</c-><c- n>o_name</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- nc>WHERE</c-> <c- p>{</c-></span><span class="line-no" data-line="6"></span><span class="line">	<c- o>?</c-><c- n>m</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>;</c-></span><span class="line-no" data-line="7"></span><span class="line">		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>m_id</c-> <c- p>;</c-></span><span class="line-no" data-line="8"></span><span class="line">		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>m_name</c-> <c- p>;</c-></span><span class="line-no" data-line="9"></span><span class="line">		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- p>[</c-></span><span class="line-no" data-line="10"></span><span class="line">        <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c-></span><span class="line-no" data-line="11"></span><span class="line">        <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o_id</c-> <c- p>;</c-></span><span class="line-no" data-line="12"></span><span class="line">    	  <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o_name</c-></span><span class="line-no" data-line="13"></span><span class="line">    <c- p>]</c-></span><span class="line-no" data-line="14"></span><span class="line"><c- p>}</c-></span><span class="line-no" data-line="15"></span><span class="line"><c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>o_id</c-></span></pre>
     <ol start="9">
      <li data-md>
       <p>Let’s now run this query by running the task `tutorial2/oml/owlQuery` from the <a data-link-type="dfn" href="#gradle-task-view" id="ref-for-gradle-task-view①②">Gradle Task view</a> and waiting for it to finish execution in the <a data-link-type="dfn" href="#gradle-executions-view" id="ref-for-gradle-executions-view①⑤">Gradle Executions view</a>. It should run with no errors.</p>
@@ -2897,121 +2866,222 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>With this JSON results, one could develop visualizations like the following:</p>
     </ol>
     <p class="note" role="note"><span class="marker">Note:</span> the visualization code is not part of this tutorial</p>
-    <table id="table2">
-     <thead>
-      <tr>
-       <th>m_id
-       <th>m_name
-       <th>o1_id
-       <th>o2_id
-     <tbody>
-      <tr>
-       <td>M.01
-       <td>Orbiter Mission
-       <td>O.01
-       <td>O.02
-      <tr>
-       <td>
-       <td>
-       <td>O.03
-       <td>O.02
-      <tr>
-       <td>
-       <td>
-       <td>
-       <td>O.04
-      <tr>
-       <td>
-       <td>
-       <td>O.07
-       <td>O.02
-      <tr>
-       <td>M.02
-       <td>Lander Mission
-       <td>O.01
-       <td>O.02
-      <tr>
-       <td>
-       <td>
-       <td>O.07
-       <td>O.02
-    </table>
-    <p></p>
-    <svg height="500" width="960">
-     <g transform="translate(120,20)">
-      <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
-       <path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,146.36363636363637,180,146.36363636363637"></path>
-       <path class="link" d="M0,261.3636363636364C90,261.3636363636364,90,376.3636363636364,180,376.3636363636364"></path>
-       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,41.81818181818182,360,41.81818181818182"></path>
-       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,146.36363636363637,360,146.36363636363637"></path>
-       <path class="link" d="M180,146.36363636363637C270,146.36363636363637,270,250.90909090909093,360,250.90909090909093"></path>
-       <path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,334.54545454545456,360,334.54545454545456"></path>
-       <path class="link" d="M180,376.3636363636364C270,376.3636363636364,270,418.1818181818182,360,418.1818181818182"></path>
-       <path class="link" d="M360,41.81818181818182C450,41.81818181818182,450,41.81818181818182,540,41.81818181818182"></path>
-       <path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,125.45454545454547,540,125.45454545454547"></path>
-       <path class="link" d="M360,146.36363636363637C450,146.36363636363637,450,167.27272727272728,540,167.27272727272728"></path>
-       <path class="link" d="M360,250.90909090909093C450,250.90909090909093,450,250.90909090909093,540,250.90909090909093"></path>
-       <path class="link" d="M360,334.54545454545456C450,334.54545454545456,450,334.54545454545456,540,334.54545454545456"></path>
-       <path class="link" d="M360,418.1818181818182C450,418.1818181818182,450,418.1818181818182,540,418.1818181818182"></path>
-      </g>
-      <g class="node" transform="translate(540, 418.18182373046875)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
-      </g>
-      <g class="node" transform="translate(540, 334.5454406738281)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
-      </g>
-      <g class="node" transform="translate(540, 250.90908813476562)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
-      </g>
-      <g class="node" transform="translate(540, 167.27272033691406)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.04</text>
-      </g>
-      <g class="node" transform="translate(540, 125.45454406738281)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
-      </g>
-      <g class="node" transform="translate(540, 41.818180084228516)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">O.02</text>
-      </g>
-      <g class="node" transform="translate(360, 418.18182373046875)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">O.07</text>
-      </g>
-      <g class="node" transform="translate(360, 334.5454406738281)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">O.01</text>
-      </g>
-      <g class="node" transform="translate(360, 250.90908813476562)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">O.07</text>
-      </g>
-      <g class="node" transform="translate(360, 146.36363220214844)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">O.03</text>
-      </g>
-      <g class="node" transform="translate(360, 41.818180084228516)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">O.01</text>
-      </g>
-      <g class="node" transform="translate(180, 376.3636474609375)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">Lander Mission</text>
-      </g>
-      <g class="node" transform="translate(180, 146.36363220214844)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">Orbiter Mission</text>
-      </g>
-      <g class="node" transform="translate(0, 261.3636474609375)">
-       <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="end" x="-13">Missions</text>
-      </g>
-     </g>
-    </svg>
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+     <div class="jp-Cell-outputWrapper">
+      <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser"></div>
+      <div class="jp-OutputArea jp-Cell-outputArea">
+       <div class="jp-OutputArea-child jp-OutputArea-executeResult">
+        <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+         <div id="figure3"></div>
+<script type="module">
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+function drawTree(data, containerID, root_name, unique=true, _width=960, _height=500, depthMultiplier=180) {
+
+	function getOrCreateNode(id, name, dict){
+		var node = dict[id];
+		if (!node){
+			node = {}
+			node.id  = id;
+			node.name = name;
+			dict[id] = node;
+		}
+		return node;
+	}
+	
+	function addNode(parentid, id, name, dict){
+		var parent = dict[parentid];
+		var node = dict[id];
+		if (!node){
+			node = getOrCreateNode(id,name,dict);
+			node.parent = parent.id;
+			if (!parent.children){
+				parent.children = [];
+			}
+			parent.children.push(node);
+		}
+		return node;
+	}
+	
+	function transform(data){
+		var idToNode = [];
+		var root = getOrCreateNode("-1",root_name,idToNode);
+		root.parent = "null";
+		var columns = [ "m_id" , "m_name" , "o_id" , "o_name" ];
+		data.forEach(row => {
+			var parent_id = "-1";
+			for (let i = 0; i < columns.length/2; i++) {
+				if (row[columns[2*i]]) {
+					var childId = (!unique ? parent_id+"." : "") +row[columns[2*i]];
+					addNode(parent_id, childId, row[columns[2*i]]+" "+row[columns[2*i+1]], idToNode);
+					parent_id = childId;
+				}
+			}
+		});	
+		return root;
+	}
+	
+	function getVal(d){
+		return d.value + (d.children ? d.data.value : 0);
+	}
+
+	
+	var treeData = transform(data);
+
+	// ************** Generate the tree diagram	 *****************
+	var margin = {top: 20, right: 120, bottom: 20, left: 120},
+		width = _width - margin.right - margin.left,
+		height = _height - margin.top - margin.bottom;
+		
+	var i = 0,
+		root;
+		
+		
+	var root = d3.hierarchy(treeData)
+			.sum(d => d.value)
+			.sort((a, b) => b.value - a.value)
+			
+	var tree = d3.tree();
+	tree.size([height, width]); 
+	var diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
+	
+	var svg = d3.select(containerID).append("svg")
+		.attr("width", width + margin.right + margin.left)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  	const gLink = svg.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#555")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
+	root.x0 = height / 2;
+	root.y0 = 0;
+
+	function update(source) {
+	    const duration = d3.event && d3.event.altKey ? 2500 : 250;
+	    const nodes = root.descendants().reverse();
+	    const links = root.links();
+	
+	    // Compute the new tree layout.
+	    tree(root);
+	
+	    let left = root;
+	    let right = root;
+	    root.eachBefore(node => {
+	      if (node.x < left.x) left = node;
+	      if (node.x > right.x) right = node;
+	    });
+
+		// Normalize for fixed-depth.
+	    nodes.forEach(function(d) { d.y = d.depth * depthMultiplier; });
+
+	
+	    const height = right.x - left.x + margin.top + margin.bottom;
+	
+	    const transition = svg.transition()
+	        .duration(duration);
+	
+	 	// Update the nodes…
+	  	var node = svg.selectAll("g.node")
+		  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+	
+	    // Enter any new nodes at the parent’s previous position.
+	    const nodeEnter = node.enter().append("g")
+	        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+		  	.attr("class", "node")
+	        .on("click", click);
+	
+	    nodeEnter.append("circle")
+ 		  .attr("r", 1e-6)
+		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+	
+	    nodeEnter.append("text")
+	        .attr("dy", "0.35em")
+	        .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	        .text(function(d){
+				return d.data.name;
+			});
+	
+	    // Transition nodes to their new position.
+	    const nodeUpdate = node.merge(nodeEnter).transition(transition)
+		  	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+		nodeUpdate.select("circle")
+		  .attr("r", 10)
+		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+		nodeUpdate.select("text")
+		  .style("fill-opacity", 1);
+	    
+		// Transition exiting nodes to the parent’s new position.
+	    const nodeExit = node.exit().transition(transition)
+		  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+		  .remove();
+
+		nodeExit.select("circle")
+		  .attr("r", 1e-6);
+	
+	  	nodeExit.select("text")
+		  .style("fill-opacity", 1e-6);
+	
+	    // Update the links…
+	    const link = gLink.selectAll("path")
+	      .data(links, d => d.target.id);
+	
+	    // Enter any new links at the parent’s previous position.
+	    const linkEnter = link.enter().append("path")
+			.attr("class", "link")
+	        .attr("d", d => {
+	          const o = {x: source.x0, y: source.y0};
+	          return diagonal({source: o, target: o});
+	        });
+	
+	    // Transition links to their new position.
+	    link.merge(linkEnter).transition(transition)
+	        .attr("d", diagonal);
+	
+	    // Transition exiting nodes to the parent’s new position.
+	    link.exit().transition(transition).remove()
+	        .attr("d", d => {
+	          const o = {x: source.x, y: source.y};
+	          return diagonal({source: o, target: o});
+	        });
+	
+	    // Stash the old positions for transition.
+	    root.eachBefore(d => {
+	      d.x0 = d.x;
+	      d.y0 = d.y;
+	    });
+	 }
+
+  	update(root);
+
+	// Toggle children on click.
+	function click(event, d) {
+	  if (d.children) {
+		d._children = d.children;
+		d.children = null;
+	  } else {
+		d.children = d._children;
+		d._children = null;
+	  }
+	  update(d);
+	}
+}
+var data = [{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.01","o_name":"Characterize the atmosphere of Kepler 16b"},{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.03","o_name":"Characterize the gravitational field of Kepler 16b"},{"m_id":"M.01","m_name":"Orbiter Mission","o_id":"O.07","o_name":"Characterize the energetic particule environment of the Kepler 16b binary star system"},{"m_id":"M.02","m_name":"Lander Mission","o_id":"O.01","o_name":"Characterize the atmosphere of Kepler 16b"},{"m_id":"M.02","m_name":"Lander Mission","o_id":"O.07","o_name":"Characterize the energetic particule environment of the Kepler 16b binary star system"}]
+drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
+</script>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
     <h3 class="heading settled" data-level="2.5" id="tutorial2-p3"><span class="secno">2.5. </span><span class="content">P3: Mission deploys Component</span><a class="self-link" href="#tutorial2-p3"></a></h3>
     <p><strong>Pattern Synopsis</strong></p>
     <p>We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc.  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.</p>
@@ -3679,7 +3749,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Open the file `build/web/doc/index.html` in a web browser, and browse through the generated documentation.</p>
       <p><img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
-      <p>Open the `.github/workflows/ci.yml` file and add the following step right after the `Query` step.</p>
+      <p>Open the `.github/workflows/ci.yml` file and add the following step right after the `Upload` step.</p>
     </ol>
 <pre class="language-yaml highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">- <c- f>name</c-><c- p>:</c-> Generate Docs</span><span class="line-no" data-line="2"></span><span class="line">  <c- f>run</c-><c- p>:</c-> ./gradlew generateDocs</span></pre>
     <p><img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" style="border:1px groove black;" width="100%"></p>
@@ -3697,19 +3767,113 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>In the `Build and Deployment` section, click on the `Source` combo box, and select `Github Actions`.</p>
       <p><img src="assets/tutorial4/Setup-Github-Pages.png" style="border:1px groove black;" width="100%"></p>
     </ul>
+    <p class="note" role="note"><span class="marker">Note:</span> This choice means that the content of Pages will be published by a Github Actions workflow. As we will see below, this will allow the repository’s CI script to publish it,</p>
     <h3 class="heading settled" data-level="4.6" id="tutorial4-create-jupyter-notebook"><span class="secno">4.6. </span><span class="content">Create Jupyter Notebook</span><a class="self-link" href="#tutorial4-create-jupyter-notebook"></a></h3>
-    <p>TBD</p>
+    <p>In this step, we will create a simple Jupyter Notebook in the project and setup the CI workflow to publish it to Github Pages.</p>
+    <ol>
+     <li data-md>
+      <p>In VS Code Explorer, right click on the `src` folder, select New Folder, and call it `ipynb`.</p>
+     <li data-md>
+      <p>Right click on the `ipynb` folder, select New File, and call it `index.ipynb`. This opens a Jupiter Notebook editor with a single empty cell.</p>
+      <p><img src="assets/tutorial4/Setup-Github-Pages.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the top right cornder of the editor, click on the `Select Kernel` button, select `Python Environments`, and select one of the available Python 3 environments. Notice that now the name of the selected kernel shows up in the top right corner.</p>
+     <li data-md>
+      <p>Hover over the first empty cell in the editor. A toolbar appears with a trash can. Click on the trash can to delete the cell.</p>
+     <li data-md>
+      <p>In place of the cell, you should now see two buttons, one says `Code` and the other says `Markdown`. Click on the latter. This adds a Markdown cell as the first cell.</p>
+     <li data-md>
+      <p>In the cell, type the following text, then click on the `✓` (tick) icon in the cell’s toolbar to apply. The editor should now look like the picture below.</p>
+    </ol>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line"># Kepler16b</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.</span></pre>
+    <p><img src="assets/tutorial4/Add-Notebook-Title.png" style="border:1px groove black;" width="100%"></p>
+    <p>Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some depednencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.</p>
+    <ol start="7">
+     <li data-md>
+      <p>In VS Code Explorer, right click on the `ipynb` folder, choose New File, and name it `requirements.txt`. Insert the following text as its contents and save.</p>
+    </ol>
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- n>ipykernel</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>nbconvert</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>pandas</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>plantuml</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- n>igraph</c-></span><span class="line-no" data-line="6"></span><span class="line"><c- n>cairocffi</c-></span></pre>
+    Note: A `requirements.txt` file is a typical Python mechanism to declare dependencies. In this case, the first two dependencies are the minimum required to enable executing and converting the notebook to HTML. The rest of the dependencies are libraries that will be used in the steps below to visualize the analysis results. 
+    <p><img src="assets/tutorial4/Add-Requirements.png" style="border:1px groove black;" width="100%"></p>
+    <ol start="8">
+     <li data-md>
+      <p>In VS Code Terminal, activate the python environment used by the notebook’s kernel, then run the following command to install the dependencies locally:</p>
+    </ol>
+<pre class="language-shell highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">pip install -r src/ipynb/requirements.txt</span></pre>
+    <ol start="9">
+     <li data-md>
+      <p>Open the `.github/workflows/ci.yml` file and add the following step right after the `Generate Docs` step.</p>
+    </ol>
+<pre class="language-yaml highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">  - <c- f>name</c-><c- p>:</c-> Set up Python 3</span><span class="line-no" data-line="2"></span><span class="line">    <c- f>uses</c-><c- p>:</c-> actions/setup-python@v4</span><span class="line-no" data-line="3"></span><span class="line">    <c- f>with</c-><c- p>:</c-> </span><span class="line-no" data-line="4"></span><span class="line">      <c- f>python-version</c-><c- p>:</c-> <c- s>'3.10'</c-></span><span class="line-no" data-line="5"></span><span class="line">  - <c- f>name</c-><c- p>:</c-> Install Requirements</span><span class="line-no" data-line="6"></span><span class="line">    <c- f>run</c-><c- p>:</c-> pip install -r src/ipynb/requirements.txt</span><span class="line-no" data-line="7"></span><span class="line">  - <c- f>name</c-><c- p>:</c-> Run Notebook</span><span class="line-no" data-line="8"></span><span class="line">    <c- f>run</c-><c- p>:</c-> python -m nbconvert --execute --to notebook --no-input src/ipynb/index.ipynb --output-dir='build/web' </span><span class="line-no" data-line="9"></span><span class="line">  - <c- f>name</c-><c- p>:</c-> Convert Notebook to HTML</span><span class="line-no" data-line="10"></span><span class="line">    <c- f>run</c-><c- p>:</c-> python -m nbconvert --to html --no-input build/web/index.ipynb</span><span class="line-no" data-line="11"></span><span class="line">  - <c- f>name</c-><c- p>:</c-> Publish</span><span class="line-no" data-line="12"></span><span class="line">    <c- f>uses</c-><c- p>:</c-> actions/upload-pages-artifact@v1</span><span class="line-no" data-line="13"></span><span class="line">    <c- f>with</c-><c- p>:</c-></span><span class="line-no" data-line="14"></span><span class="line">      <c- f>path</c-><c- p>:</c-> build/web</span><span class="line-no" data-line="15"></span><span class="line">      </span><span class="line-no" data-line="16"></span><span class="line"><c- f>deploy</c-><c- p>:</c-></span><span class="line-no" data-line="17"></span><span class="line">  <c- f>needs</c-><c- p>:</c-> build</span><span class="line-no" data-line="18"></span><span class="line">  <c- f>permissions</c-><c- p>:</c-></span><span class="line-no" data-line="19"></span><span class="line">    <c- f>pages</c-><c- p>:</c-> write</span><span class="line-no" data-line="20"></span><span class="line">    <c- f>id-token</c-><c- p>:</c-> write</span><span class="line-no" data-line="21"></span><span class="line">  <c- f>environment</c-><c- p>:</c-></span><span class="line-no" data-line="22"></span><span class="line">    <c- f>name</c-><c- p>:</c-> github-pages</span><span class="line-no" data-line="23"></span><span class="line">    <c- f>url</c-><c- p>:</c-> ${{ steps.deployment.outputs.page_url }}</span><span class="line-no" data-line="24"></span><span class="line">  <c- f>runs-on</c-><c- p>:</c-> ubuntu-latest</span><span class="line-no" data-line="25"></span><span class="line">  <c- f>steps</c-><c- p>:</c-></span><span class="line-no" data-line="26"></span><span class="line">    - <c- f>name</c-><c- p>:</c-> Deploy</span><span class="line-no" data-line="27"></span><span class="line">      <c- f>id</c-><c- p>:</c-> deployment</span><span class="line-no" data-line="28"></span><span class="line">      <c- f>uses</c-><c- p>:</c-> actions/deploy-pages@v1</span></pre>
+     <img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" style="border:1px groove black;" width="100%"> 
+    <p class="note" role="note"><span class="marker">Note:</span> The first set of steps are added to the `build` job. They setup a Python 3 environment, install the dependencies, run the notebook, convert it to HTML in the `build/web` folder, then upload the folder as a Pages artifact. Then, a new job named `deploy` is added. This job runs after `build` is done and deploys the Pages artifact to the web server.</p>
+    <ol start="10">
+     <li data-md>
+      <p>Using the Source Control tab, commit and push all the three files `index.ipynb`, `requirements.txt` and `ci.yml`. Check that the CI workflow succeeded on the repository’s Actions tab. You should see the following page in your browser:</p>
+      <p><img src="assets/tutorial4/First-Noetbook-CI-Build.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Click on the hyperlink in the `deploy` box to navigate the deployed Github Pages of the repository. This should open up a new page that looks like this:</p>
+      <p><img src="assets/tutorial4/First-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
     <h3 class="heading settled" data-level="4.7" id="tutorial4-reference-documentation"><span class="secno">4.7. </span><span class="content">P1: Reference Documentation</span><a class="self-link" href="#tutorial4-reference-documentation"></a></h3>
-    <p>TBD</p>
+    <p>In this step, we will add to the notebook some cross references to the OML documentation that we generated previously for the project.</p>
+    <ol>
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
+    </ol>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Missions</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/tutorial2/description/missions/lander.html) and an [Orbiter Mission](doc/example.com/tutorial2/description/missions/orbiter.html), each of which pursues a number of objectives. For details, check the [full documentation](doc).</span></pre>
+    <ol start="9">
+     <li data-md>
+      <p>Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Second-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Click on the three hyperlinks and verify that you can naigate to them fine.</p>
+    </ol>
     <h3 class="heading settled" data-level="4.8" id="tutorial4-visualize-missions"><span class="secno">4.8. </span><span class="content">P2: Visualize Missions</span><a class="self-link" href="#tutorial4-visualize-missions"></a></h3>
+    <p>In this step, we will add the first visualization of SPARQL query results to the notebook. In this case, we will visualize data from the `build/results/missions.json` file, which holds the result of running the `missions.sparql` query, which matched missions and the objectives they pursue. We will use <a href="https://d3js.org/">d3.js</a> to code this visualization, but to make this easier to present here, we will copy and paste a python file called `utilities.py` (that has helpful utilitiy functions) to the priject.</p>
+    <ol>
+     <li data-md>
+      <p>Navigate to the file <a href="https://github.com/opencaesar/kepler16b-example/blob/main/src/ipynb/utilities.py">utilities.py</a> and copy its contents.</p>
+     <li data-md>
+      <p>In VS Code Explorere, right click on the `ipynb` folder, select New File, name it `utilities.py`, and paste the contents to it. Save.</p>
+      <p><img src="assets/tutorial4/Add-Utilities.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Code</em> cell, and type the following code in it. Click on the execute button on the cell’s left side  to run.</p>
+    </ol>
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"missions.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>data</c-> <c- o>=</c-> <c- n>df</c-><c- o>.</c-><c- n>to_json</c-><c- p>(</c-><c- n>orient</c-> <c- o>=</c-> <c- u>"records"</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>HTML</c-><c- p>(</c-><c- n>tree</c-><c- o>.</c-><c- n>safe_substitute</c-><c- p>(</c-><c- n>data</c-><c- o>=</c-><c- n>data</c-><c- p>))</c-></span></pre>
+    <p><img src="assets/tutorial4/Add-Missions-Viz.png" style="border:1px groove black;" width="100%"></p>
+    <p class="note" role="note"><span class="marker">Note:</span> Click on the circles to collapse/expand them</p>
+    <ol start="4">
+     <li data-md>
+      <p>Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Third-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <h3 class="heading settled" data-level="4.9" id="tutorial4-visualize-objectives"><span class="secno">4.9. </span><span class="content">P3: Visualize Objectives</span><a class="self-link" href="#tutorial4-visualize-objectives"></a></h3>
+    <p>In this step, we will add a visualization for the data in the `build/results/objectives.json` file, which holds the result of running the `objectives.sparql` query, which matched the objective aggregation hierarchy. We will use the <a href="https://www.plantuml.com/">plantuml</a> tool to code this visualization.</p>
+    <ol>
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
+    </ol>
+<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Objectives</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:</span></pre>
+    <ol start="2">
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Code</em> cell, and type the following code in it. Click on the execute button on the cell’s left side  to run.</p>
+    </ol>
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"missions.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>data</c-> <c- o>=</c-> <c- n>df</c-><c- o>.</c-><c- n>to_json</c-><c- p>(</c-><c- n>orient</c-> <c- o>=</c-> <c- u>"records"</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>HTML</c-><c- p>(</c-><c- n>tree</c-><c- o>.</c-><c- n>safe_substitute</c-><c- p>(</c-><c- n>data</c-><c- o>=</c-><c- n>data</c-><c- p>))</c-></span></pre>
+    <p><img src="assets/tutorial4/Add-Missions-Viz.png" style="border:1px groove black;" width="100%"></p>
+    <p class="note" role="note"><span class="marker">Note:</span> Click on the circles to collapse/expand them</p>
+    <ol start="5">
+     <li data-md>
+      <p>Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Third-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <h3 class="heading settled" data-level="4.10" id="tutorial4-visualize-components"><span class="secno">4.10. </span><span class="content">P4: Visualize Components</span><a class="self-link" href="#tutorial4-visualize-components"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="4.9" id="tutorial4-visualize-components"><span class="secno">4.9. </span><span class="content">P3: Visualize Components</span><a class="self-link" href="#tutorial4-visualize-components"></a></h3>
-    <p>TBD</p>
-    <h3 class="heading settled" data-level="4.10" id="tutorial4-visualize-mass-rollup"><span class="secno">4.10. </span><span class="content">P4: Visualize Mass Rollup</span><a class="self-link" href="#tutorial4-visualize-mass-rollup"></a></h3>
+    <h3 class="heading settled" data-level="4.11" id="tutorial4-visualize-mass-rollup"><span class="secno">4.11. </span><span class="content">P5: Visualize Mass Rollup</span><a class="self-link" href="#tutorial4-visualize-mass-rollup"></a></h3>
     <p>TDB</p>
-    <h3 class="heading settled" data-level="4.11" id="tutorial4-experiment-with-changes"><span class="secno">4.11. </span><span class="content">Experiment With Changes</span><a class="self-link" href="#tutorial4-experiment-with-changes"></a></h3>
+    <h3 class="heading settled" data-level="4.12" id="tutorial4-experiment-with-changes"><span class="secno">4.12. </span><span class="content">Experiment With Changes</span><a class="self-link" href="#tutorial4-experiment-with-changes"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="4.12" id="tutorial4-summary"><span class="secno">4.12. </span><span class="content">Summary</span><a class="self-link" href="#tutorial4-summary"></a></h3>
+    <h3 class="heading settled" data-level="4.13" id="tutorial4-summary"><span class="secno">4.13. </span><span class="content">Summary</span><a class="self-link" href="#tutorial4-summary"></a></h3>
     <p>TBD</p>
    </div>
   </main>
