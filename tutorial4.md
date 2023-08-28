@@ -1,163 +1,99 @@
-# Tutorial 4: OML CI/CD # {#tutorial4}
+# Tutorial 4: OML Reports # {#tutorial4}
 
 Note: This tutorial builds on the project developed in [Tutorial 3](#tutorial3). Please do that first before proceeding.
 
 ## Learning Objectives ## {#tutorial4-learning-objectives}
-Managing an OML project in a git repository makes a lot of sense. First, OML models are textual files, which allows git to edit them natively. Second, all the OML workbenches already support git. Third, the VS Code extension for OML supports editing OML files in the cloud (and even in the browser in the future). Finally, the products of an OML project, typically documents, can be published online in git directly. Following the best practices of model-based development, such documents should be produced automatically from models through a rigorous and repeatable process. This is possible to achieve thanks to the process of Continuous Integration of Delivery (CI/CD) that is supported by most git repos.
 
-This tutorial teaches the following skills:
+Modeling a system with OML would not be useful without the ability to analyze the model and share the analysis results with the project's stakeholders. In [Tutorial 2](#tutorial2), we learned how an OML model can be analyzed with SPARQL queries, and the results visualized, but we did not see how those visualizations were created. Moreover, in [Tutorial 3](#tutorial3), we learned how a (CI or Continuous Integration) pipeline can run the build task automatically, but we did not see how it can also automate the analysis of the project and the deployment of the results to the project's stakeholder (CD or Continuous Deployment).
 
-- How to manage an OML project in a git repository
-- How to setup a CI/CD process in the git repository to build the project on each commit
-- How to publish OML Doc for an OML project and update it on each commit
-- How to publish a Jupyter Notebook for an OML project and update it on each commit
+By the end of this tutorial, readers will be able to:
+
+1. Utilize Jupyter Notebook to create an interactive and data-rich report based on SPARQL query results.
+2. Generate canonical OML documentation (OmlDoc) that can be cross referenced from the report.
+3. Evolve a CI pipeline to be a CI/CD pipeline that runs analysis and deploys its results.
 
 Note: The source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
 
-## Manage Project in Git ## {#tutorial4-manage-project-in-git}
-In this step, we will create a Github repo for the project and push it there using the [Git CLI](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+## Install Jupyter Notebook ## {#tutorial4-install-jupyter-notebook}
 
-1. Open a web browser. navigate to your Github organization and select the `New Repository` button. Set the name of the repo to `kepler16b-example` and the other settings as shown below. Finally, click the `Create Repository` button.
+Jupyter is an open-source project that lets you easily combine Markdown text and executable Python source code on one canvas called a notebook. Many editors support working with Jupyter Notebooks; however, in this tutorial we will use VS Code.
 
-	<img src="assets/tutorial4/Create-New-Repo.png" width="100%" style="border:1px groove black;"/>
+1. If you don't already have Python with the Jupyter package, follow these [instructions](https://noteable.io/jupyter-notebook/install-jupyter-notebook/).
 
-2. Back in your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.
+2. If you don't already have VS Code with Jupyter Notebook extension, follow these [instructions](https://code.visualstudio.com/download).
 
-	<img src="assets/tutorial4/Select-Project-Properties.png" width="100%" style="border:1px groove black;"/>
+3. Run VS Code client and if the Terminal window is not already visible, open it by selecting View -> Terminal from the main menu.
 
-3. Open the `Terminal` application on your machine, navigate to the project's path, and initialize the repo using the following commands:
+Note: for best experience in this tutorial, switch VS Code to the `Light Modern` [color theme](https://code.visualstudio.com/docs/getstarted/themes).
 
-```shell
-$ cd path/to/tutorial2
-$ git init
-$ git remote add origin git@github.com:OWNER/kepler16b-example.git
-$ git pull
-```
+		<img src="assets/tutorial4/VS-Code.png" width="100%" style="border:1px groove black;"/>
 
-Note: Replace OWNER by your new Github repo's owner.
+4. Select File -> Open Folder .. and select the folder of the project you created in [Tutorial 2](#tutorial2).
 
-4. Stage, commit, and push the project to the Github remote repo using the following commands:
+	<img src="assets/tutorial4/Open-Folder.png" width="100%" style="border:1px groove black;"/>
 
-```shell
-$ git add .
-$ git commit -m "initial commit"
-$ git push --set-upstream origin main -f
-```
+Note: Assuming you had also done `Tutorial 3`, this folder should be a clone of a git repository called `kepler16b-example`.`
 
-5. In your web browser, refresh the repo's page. You should now see the repository looking like this:
+## Run SPARQL Queries ## {#tutorial4-run-sparql-queries}
 
-	<img src="assets/tutorial4/Refresh-Repository.png" width="100%" style="border:1px groove black;"/>
+Recall from [Tutorial 2](#tutorial2) that an OML project can create SPARQL query files in some path and store results in some other path. The code below is an excerpt from the project's `./build.gradle` file showing a task called `owlQuery` that runs the SPARQL queries.
 
-6. In the OML Rosetta workspace, right click on the project and choose Refresh.
-
-	<img src="assets/tutorial4/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
-
-## Setup CI/CD Process ## {#tutorial4-setup-ci-cd-process}
-In this step, we will use Github Actions to create a CI/CD workflow that builds the project and run queries on any commit.
-
-1. In a web browser, navigate to your repo's web page, and click on the Actions tab.
-
-	<img src="assets/tutorial4/Select-Actions.png" width="100%" style="border:1px groove black;"/>
-
-2. In the Actions page, click on the `Configure` button of the `Simple workflow`.
-
-	<img src="assets/tutorial4/Select-Simple-Worflow.png" width="100%" style="border:1px groove black;"/>
-
-3. In the path, rename the file to `ci.yml`.
-
-	<img src="assets/tutorial4/Rename-Workflow.png" width="100%" style="border:1px groove black;"/>
-
-4. Replace the file contents by the following code:
-
-```yaml
-name: CI/CD
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
-    - name: Build
-      run: ./gradlew build
-	- name: Query
-      run: ./gradlew startFuseki owlQuery stopFuseki
-    - name: Upload
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: build
-        path: build/
-```
-
-Note: The CI script above has a single job called `build` with 6 steps. The first 3 checkout the repo, setup jdk, and setup gradle. The next 3, build the project (which run the DL reasoner), run the SPARQL queries, and upload the build folder (for inspection in case of error).
-
-5. Commit the CI file and watch the first CI run complete successfully.
-
-	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial4/First-CI-Build.mp4"/>
-	</video>
-
-6. Now, We will create a new branch, add a syntax error in the OML model (cross referencing a non-existing element) in it, commit it to the repo, and see how the CI workflow detects it. After that, we will undo the change to fix it.
-
-	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial4/Second-CI-Build.mp4"/>
-	</video>
-
-7. Then, we will add a semantic error in the OML model (make an assembly contained by two containers) to see how the CI workflow detects it (by finding the inverse functional `base:contains` relation violated in this case). After that, we will undo the change to fix it.
-
-	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial4/Third-CI-Build.mp4"/>
-	</video>
-
-## Publish OML Doc ## {#tutorial4-publish-oml-doc}
-Now that we established a basic CI workflow, we can now add the CD part by publishing default documentation from the OML project on each commit. The openCAESAR project provides a tool called [owl-doc-gradle](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) that generates default documentation for a given OML datasets (we obtain such dataset by converting the OML dataset to OWL). We will use this tool to generate the default documentation.
-
-1. In your web browser, navigate to the repo's URL, click on the Settings tab, then on the Pages tab (on the right).
-
-2. Under Build and Deployment, source, select the `Github Actions` from the drop down menu.
-
-Note: This instructs Github to use the `ci.yml` that we previously created to publish a web site for the repo.
-
-3. In OML Rosetta workspace, modeling perspective, right click on the project and select Team -> Switch To -> main.
-
-4. Right click on the project again and select Team -> Pull. A pull results dialog will open. Press the button to close it.
-
-5. Navigate to the `build.gradle` file and double click it to open its editor.
-
-6. Find the `dependencies` clause within the `buildscript` clause, and add a new dependency on the `owl-doc-gradle` tool on the top:
-
-```scala
-buildscript {
-	repositories {
-        ...
-	}
-	dependencies {
-        classpath 'io.opencaesar.owl:owl-doc-gradle:2.+'
-        ...
-	}
+```groovy
+task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad) {
+    inputs.files(owlLoad.inputs.files) // rerun when the dataset changes
+    endpointURL = "http://localhost:3030/$dataset".toString()
+    queryPath = file('src/sparql')
+    resultPath = file('build/results')
+    format = 'json'
 }
 ```
 
-7. Find a task called `owlReason`, copy/paste the following task right after it, and save the `build.gradle` file.
+1. In the Terminal view, run the following command, then inspect the json files in the `build/results` folder.
 
-```scala
+```shell
+$ ./gradlew owlQuery
+
+> Task :startFuseki
+Fuseki server is already running with pid=56106
+
+BUILD SUCCESSFUL in 6s
+6 actionable tasks: 3 executed, 3 up-to-date
+```
+
+	<img src="assets/tutorial4/Run-Qwl-Query.png" width="100%" style="border:1px groove black;"/>
+
+2. Open the `.github/workflows/ci.yml` file (created in [Tutorial 3](#tutorial3)) and insert the following step right before the `Upload`` one:
+
+```yaml
+    - name: Query
+      run: ./gradlew owlQuery
+```
+
+	<img src="assets/tutorial4/Add-Owl-Query-To-CI.png" width="100%" style="border:1px groove black;"/>
+
+3. Click on the Source Control tab on the left; you should find the `ci.yml` file listed. Type a commit message and select `Commit & Push` button. Answer `Yes` in the next dialog box. Wait for the operation to finish.
+
+4. In a web browser, navigate to the `kepler16b-example` Github repo you created in [Tutorial 3](#tutorial3). Click on the Actons tab. Wait until the CI workflow succeeds.
+
+	<img src="assets/tutorial4/Owl-Query-CI-Succeeds.png" width="100%" style="border:1px groove black;"/>
+
+## Generate OML Doc ## {#tutorial4-generate-oml-doc}
+
+In this step, we will add a new task of type `OwlDoc` to the `build.gradle` file. This tool generates default documentation for an Oml dataset. We will also add it to the CI script.
+
+Not: An [OwlDoc](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) task requires the Oml dataset to be converted first to Owl, which we get when we chain it to an [Oml2Owl](https://github.com/opencaesar/owl-adapter/blob/master/oml2owl/README.md) task.
+
+1. In VS Code, wwitch to the Explorer tab on the left. Open the `build.gradle` file. Find the `buildscript.dependencies` clause. Add a new dependency on the `owl-doc-gradle` tool on the top:
+
+```groovy
+  classpath 'io.opencaesar.owl:owl-doc-gradle:2.+'
+```
+
+	<img src="assets/tutorial4/Add-Owl-Doc-Dependency.png" width="100%" style="border:1px groove black;"/>
+
+2. In the `build.gradle` file, insert the following `generateDocs` task right before the `startFuseki` task. Save.
+
+```groovy
 /*
  * A task to generate documentation for the OWL catalog
  * @seeAlso https://github.com/opencaesar/owl-tools/blob/master/owl-doc/README.md
@@ -170,68 +106,65 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
     // OWL Ontology Iris
     inputOntologyIris = [ "$rootIri/classes", "$rootIri/properties",  "$rootIri/individuals" ]
     // Output folder
-    outputFolderPath = file('build/doc')
+    outputFolderPath = file('build/web/doc')
     // Output case sensitivie path
     outputCaseSensitive = org.gradle.internal.os.OperatingSystem.current().isLinux()
 }
 ```
+	<img src="assets/tutorial4/Add-Owl-Doc-Task.png" width="100%" style="border:1px groove black;"/>
 
-Note: that `generateDocs` task is typed by `OwlDocTask` and declares that it dependends on `owlReason`, which itself depends on `omlToOwl`. We configured it this way because a) it requires the dataset to be in OWL format, and b) we like to include the entailments in the docs. If we do not need (b), then we can change it to depend on `omlToOwl` directly and change the `inputONtologyIris` param to [ "$rootIri" ].
+3. In Terminal, run `./gradlew generateDocs`. Inspect the `build/web/doc` folder. You will find the generatd HTML documentation. 
 
-8. In the Model Explorere view's toolbar, click on the View menu (vertical dots), and select Filters and Customization action.
+	<img src="assets/tutorial4/Run-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
 
-	<img src="assets/tutorial4/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
+4. Open the file `build/web/doc/index.html` in a web browser, and browse through the generated documentation.
 
-9. In the dialog, uncheck the `*.resources` box. Click OK.
+	<img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
 
-10. Navigate to the `.github/workflows/ci.yml` file and double click it to open its editor.
-
-11. At the end of the `build` job, append the following 2 steps:
+5. Open the `.github/workflows/ci.yml` file and add the following step right after the `Query` step.
 
 ```yaml
-    - name: Generate Documents
+    - name: Generate Docs
       run: ./gradlew generateDocs
-    - name: Publish
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: build/doc/
 ```
 
-Note: The first step invokes the generateDocs task, and the second step uloads its output (`build/doc` folder`) as a Github Pages artifact.
+	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;"/>
 
-12. Add the following new `deploy` job after the `build` job (separate them by an empty line). Save the editor.
+6. Using the Source Control tab, commit and push both `build.gradle` and `ci.yml` files. Check that the CI workflow succeeded on the repository's Actions tab.
 
-```yaml
-  deploy:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v1
-```
+## Setup Github Pages ## {#tutorial4-setup-github-pages}
 
-Note: The `deploy` job publishes the Github Pages artifact to be the repo's web server's content.
+In the next few sections, we will create a Jupyter Notebook, convert it to HTML, and publish (deploy) it. Before we can do that, we need to setup a web server to deploy it to. 
 
-13. Switch to the `Git` perspective, focus on the Git Staging view, stage the ci.yml file, write a commit message (e.g., adding docgen), and press the `Commit and Push` button.
+A convenient choice here is to deploy to the repository's [Github Pages](https://pages.github.com/). This makes the page accessible at the address `http://OWNER.github.io/kepler16b-example/` (where OWNER is the repository's owner on github).
 
-14. In your web browser, navigate to the repo's URL, and click on the Actions tab. You should see the CI workflow running.
+- In your web browser, navigate to the repo's URL, click on the Settings tab, then on the Pages tab (on the right).
 
-	<img src="assets/tutorial4/Publish-Default-Docs.png" width="100%" style="border:1px groove black;"/>
+- In the `Build and Deployment` section, click on the `Source` combo box, and select `Github Actions`.
 
-15. Once it finishes successfully (green tick), click on the run liml, and under the `deploy` step, click on the URL. You should see a page that looks like this:
+	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
 
-	<img src="assets/tutorial4/View-Default-Docs.png" width="100%" style="border:1px groove black;"/>
+## Create Jupyter Notebook ## {#tutorial4-create-jupyter-notebook}
 
-Note: Try to browse the generated documentation to be familiar with it. As an exercise, make a change to one of the OML description files (e.g., change one of the element's descriptions) and push it. Observe how this triggers the CI workflow to rerun to update the documentation.
+TBD
 
-## Publish Jupyter Notebook ## {#tutorial4-generate-jupyter-nb}
+## P1: Reference Documentation ## {#tutorial4-reference-documentation}
+
+TBD
+
+## P2: Visualize Missions ## {#tutorial4-visualize-missions}
+
+TBD
+
+## P3: Visualize Components ## {#tutorial4-visualize-components}
+
+TBD
+
+## P4: Visualize Mass Rollup ## {#tutorial4-visualize-mass-rollup}
+
+TDB
+
+## Experiment With Changes ## {#tutorial4-experiment-with-changes}
 
 TBD
 
