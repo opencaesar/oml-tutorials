@@ -164,7 +164,7 @@ In this step, we will create a simple Jupyter Notebook in the project and setup 
 
 6. In the cell, type the following text, then click on the `✓` (tick) icon in the cell's toolbar to apply. The editor should now look like the picture below.
 
-```
+```markdown
 # Kepler16b
 The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.
 ```
@@ -243,7 +243,7 @@ In this step, we will add to the notebook some cross references to the OML docum
 
 1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
 
-```
+```markdown
 ## Missions
 The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/tutorial2/description/missions/lander.html) and an [Orbiter Mission](doc/example.com/tutorial2/description/missions/orbiter.html), each of which pursues a number of objectives. For details, check the [full documentation](doc).
 ```
@@ -287,7 +287,7 @@ In this step, we will add a visualization for the data in the `build/results/obj
 
 1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
 
-```
+```markdown
 ## Objectives
 The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:
 ```
@@ -296,9 +296,11 @@ The Kepler16b missions' objectives aggregate other lower level objectives as dep
 
 ```python
 from utilities import *
-df = dataframe("missions.json")
-data = df.to_json(orient = "records")
-HTML(tree.safe_substitute(data=data))
+df = dataframe("objectives.json")
+objectives1 = todict(df, 'o1_id', 'o1_name')
+objectives2 = todict(df, 'o2_id', 'o2_name')
+aggregations = tolists(df, 'o1_id', 'o2_id')
+diagram(objects(union(objectives1, objectives2), aggregations, 'o--', 'objective'))
 ```
 
 	<img src="assets/tutorial4/Add-Objectives-Viz.png" width="100%" style="border:1px groove black;"/>
@@ -309,16 +311,87 @@ HTML(tree.safe_substitute(data=data))
 
 ## P4: Visualize Components ## {#tutorial4-visualize-components}
 
-TBD
+In this step, we will add a visualization for the data in the `build/results/components.json` file, which holds the result of running the `components.sparql` query, which matched the component physical decomposition hierarchy. We will use the [plantuml](https://www.plantuml.com/) tool to code this visualization.
+
+1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
+
+```markdown
+## Components
+The Kelper16 missions' components are organized in a physical decomposition hierarchy as shown below.
+```
+
+2. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
+
+```python
+from utilities import *
+df = dataframe("components.json")
+components1 = todict(df, 'c1_id', 'c1_name')
+components2 = todict(df, 'c2_id', 'c2_name')
+compositions = tolists(df, 'c2_id', 'c1_id')
+diagram('left to right direction\nskinparam nodesep 10\n'+objects(union(components1, components2), compositions, '*--', 'component'))
+```
+
+	<img src="assets/tutorial4/Add-Components-Viz.png" width="100%" style="border:1px groove black;"/>
+
+3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/Fifth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
 ## P5: Visualize Mass Rollup ## {#tutorial4-visualize-mass-rollup}
 
-TDB
+In this step, we will add another visualization for the data in the `build/results/components.json` file. This time, we will use the mass matched for each leaf component and roll them up the composition hierarchy. This means the masses of composed components are summed up and set as the mass of their composing component. The final mass of each component is then shown in a [Pandas](https://pandas.pydata.org/docs/index.html#) table.
 
-## Experiment With Changes ## {#tutorial4-experiment-with-changes}
+1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
 
-TBD
+```markdown
+## Mass Rollup
+The Kelper16 missions' components are characterized by their masses. Those masses are rolled up the physical decomposition hierarchy as shown below."
+```
+
+2. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
+
+```python
+from utilities import *
+df = dataframe("components.json")
+components = tolist(df, 'c1_id')
+compositions = tolists(df, 'c2_id', 'c1_id')
+masses = [float(x) if not pd.isna(x) else 0 for x in tolist(df, 'c1_mass')]
+graph = rollup(components, compositions, "mass", masses)
+df = df[['c1_id', 'c1_name', 'c1_mass']]
+df.loc[:, 'c1_mass'] = graph.vs["mass"]
+df = df.rename(columns={"c1_id": "Id", "c1_name": "Name", "c1_mass": "Mass"})
+style = df.style.hide(axis="index").set_properties(**{'text-align': 'left', 'font-size': '12pt',})
+style.format(precision=2).set_table_styles([dict(selector='th', props=[('text-align', 'left')])])
+```
+
+	<img src="assets/tutorial4/Add-Mass-Rollup-Viz.png" width="100%" style="border:1px groove black;"/>
+
+3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/Sixth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+
+## Change the Model ## {#tutorial4-change-the-model}
+
+Now that we have developed an interesting notebook as a report to share with stakeholders, we can now change the OML model and see the notebook getting updated automatically.
+
+1. In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/missions.oml` by adding a new objective to the `lander` mission. Save.
+
+	<img src="assets/tutorial4/Make-Change-1.png" width="100%" style="border:1px groove black;"/>
+
+2. Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+
+	<img src="assets/tutorial4/View-Change-1.png" width="100%" style="border:1px groove black;"/>
+
+3. In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/masses.oml` by changing the mass of `components:orbiter-propulsion-subsystem` from 6 to 106.
+
+	<img src="assets/tutorial4/Make-Change-2.png" width="100%" style="border:1px groove black;"/>
+
+4. Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Notice the new mass for `C.02.09` and changed mass of the composing component `C.02` now 100 higher than before.
+
+	<img src="assets/tutorial4/View-Change-2.png" width="100%" style="border:1px groove black;"/>
+
+5. In VS Code Explorer, tevert the changes you made to the two OML files above. Using the Source Control tab, commit `mission.oml` and `masses.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Verify that the page returns to the original contents before the changes.
 
 ## Summary ## {#tutorial4-summary}
 
-TBD
+This tutorial serves as a comprehensive guide, outlining the step-by-step process of utilizing Jupyter Notebook and GitHub Pages to visualize the results derived from querying OML datasets. Through clear and concise instructions, learners will gain practical insights into the seamless integration of these tools for efficient data exploration, analysis, and collaborative review. By employing automation techniques, the tutorial demonstrates how the generated notebook content and OML documentation can be effortlessly deployed onto GitHub Pages, facilitating real-time impact assessment and fostering a collaborative environment for informed decision-making. This tutorial proves particularly valuable for professionals seeking enhanced methods of data visualization and streamlined peer review processes within the context of OML datasets.

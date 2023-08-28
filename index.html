@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="d1fa1238b9c8fdc1698ad515da4f612e0228a04e" name="document-revision">
+  <meta content="465577cfd03ee76246ad9c7d665168a4872012db" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2347,7 +2347,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial4-visualize-objectives"><span class="secno">4.9</span> <span class="content">P3: Visualize Objectives</span></a>
       <li><a href="#tutorial4-visualize-components"><span class="secno">4.10</span> <span class="content">P4: Visualize Components</span></a>
       <li><a href="#tutorial4-visualize-mass-rollup"><span class="secno">4.11</span> <span class="content">P5: Visualize Mass Rollup</span></a>
-      <li><a href="#tutorial4-experiment-with-changes"><span class="secno">4.12</span> <span class="content">Experiment With Changes</span></a>
+      <li><a href="#tutorial4-change-the-model"><span class="secno">4.12</span> <span class="content">Change the Model</span></a>
       <li><a href="#tutorial4-summary"><span class="secno">4.13</span> <span class="content">Summary</span></a>
      </ol>
     <li>
@@ -3785,7 +3785,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <li data-md>
       <p>In the cell, type the following text, then click on the `✓` (tick) icon in the cell’s toolbar to apply. The editor should now look like the picture below.</p>
     </ol>
-<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line"># Kepler16b</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.</span></pre>
+<pre class="language-markdown highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"># Kepler16b</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.</span></pre>
     <p><img src="assets/tutorial4/Add-Notebook-Title.png" style="border:1px groove black;" width="100%"></p>
     <p>Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some depednencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.</p>
     <ol start="7">
@@ -3821,7 +3821,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <li data-md>
       <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
     </ol>
-<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Missions</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/tutorial2/description/missions/lander.html) and an [Orbiter Mission](doc/example.com/tutorial2/description/missions/orbiter.html), each of which pursues a number of objectives. For details, check the [full documentation](doc).</span></pre>
+<pre class="language-markdown highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Missions</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b project delivers two missions: [<c- f>a Lander Mission</c->](<c- e>doc/example.com/tutorial2/description/missions/lander.html</c->) and an [<c- f>Orbiter Mission</c->](<c- e>doc/example.com/tutorial2/description/missions/orbiter.html</c->), each of which pursues a number of objectives. For details, check the [<c- f>full documentation</c->](<c- e>doc</c->).</span></pre>
     <ol start="9">
      <li data-md>
       <p>Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
@@ -3854,27 +3854,74 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <li data-md>
       <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
     </ol>
-<pre class="line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Objectives</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:</span></pre>
+<pre class="language-markdown highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Objectives</span><span class="line-no" data-line="2"></span><span class="line">The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:</span></pre>
     <ol start="2">
      <li data-md>
       <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Code</em> cell, and type the following code in it. Click on the execute button on the cell’s left side  to run.</p>
     </ol>
-<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"missions.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>data</c-> <c- o>=</c-> <c- n>df</c-><c- o>.</c-><c- n>to_json</c-><c- p>(</c-><c- n>orient</c-> <c- o>=</c-> <c- u>"records"</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>HTML</c-><c- p>(</c-><c- n>tree</c-><c- o>.</c-><c- n>safe_substitute</c-><c- p>(</c-><c- n>data</c-><c- o>=</c-><c- n>data</c-><c- p>))</c-></span></pre>
-    <p><img src="assets/tutorial4/Add-Missions-Viz.png" style="border:1px groove black;" width="100%"></p>
-    <p class="note" role="note"><span class="marker">Note:</span> Click on the circles to collapse/expand them</p>
-    <ol start="5">
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"objectives.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>objectives1</c-> <c- o>=</c-> <c- n>todict</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'o1_id'</c-><c- p>,</c-> <c- t>'o1_name'</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>objectives2</c-> <c- o>=</c-> <c- n>todict</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'o2_id'</c-><c- p>,</c-> <c- t>'o2_name'</c-><c- p>)</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- n>aggregations</c-> <c- o>=</c-> <c- n>tolists</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'o1_id'</c-><c- p>,</c-> <c- t>'o2_id'</c-><c- p>)</c-></span><span class="line-no" data-line="6"></span><span class="line"><c- n>diagram</c-><c- p>(</c-><c- n>objects</c-><c- p>(</c-><c- n>union</c-><c- p>(</c-><c- n>objectives1</c-><c- p>,</c-> <c- n>objectives2</c-><c- p>),</c-> <c- n>aggregations</c-><c- p>,</c-> <c- t>'o--'</c-><c- p>,</c-> <c- t>'objective'</c-><c- p>))</c-></span></pre>
+    <p><img src="assets/tutorial4/Add-Objectives-Viz.png" style="border:1px groove black;" width="100%"></p>
+    <ol start="3">
      <li data-md>
-      <p>Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
-      <p><img src="assets/tutorial4/Third-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+      <p>Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Fourth-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
     </ol>
     <h3 class="heading settled" data-level="4.10" id="tutorial4-visualize-components"><span class="secno">4.10. </span><span class="content">P4: Visualize Components</span><a class="self-link" href="#tutorial4-visualize-components"></a></h3>
-    <p>TBD</p>
+    <p>In this step, we will add a visualization for the data in the `build/results/components.json` file, which holds the result of running the `components.sparql` query, which matched the component physical decomposition hierarchy. We will use the <a href="https://www.plantuml.com/">plantuml</a> tool to code this visualization.</p>
+    <ol>
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
+    </ol>
+<pre class="language-markdown highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Components</span><span class="line-no" data-line="2"></span><span class="line">The Kelper16 missions' components are organized in a physical decomposition hierarchy as shown below.</span></pre>
+    <ol start="2">
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Code</em> cell, and type the following code in it. Click on the execute button on the cell’s left side  to run.</p>
+    </ol>
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"components.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>components1</c-> <c- o>=</c-> <c- n>todict</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c1_id'</c-><c- p>,</c-> <c- t>'c1_name'</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>components2</c-> <c- o>=</c-> <c- n>todict</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c2_id'</c-><c- p>,</c-> <c- t>'c2_name'</c-><c- p>)</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- n>compositions</c-> <c- o>=</c-> <c- n>tolists</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c2_id'</c-><c- p>,</c-> <c- t>'c1_id'</c-><c- p>)</c-></span><span class="line-no" data-line="6"></span><span class="line"><c- n>diagram</c-><c- p>(</c-><c- t>'left to right direction</c-><c- se>\n</c-><c- t>skinparam nodesep 10</c-><c- se>\n</c-><c- t>'</c-><c- o>+</c-><c- n>objects</c-><c- p>(</c-><c- n>union</c-><c- p>(</c-><c- n>components1</c-><c- p>,</c-> <c- n>components2</c-><c- p>),</c-> <c- n>compositions</c-><c- p>,</c-> <c- t>'*--'</c-><c- p>,</c-> <c- t>'component'</c-><c- p>))</c-></span></pre>
+    <p><img src="assets/tutorial4/Add-Components-Viz.png" style="border:1px groove black;" width="100%"></p>
+    <ol start="3">
+     <li data-md>
+      <p>Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Fifth-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
     <h3 class="heading settled" data-level="4.11" id="tutorial4-visualize-mass-rollup"><span class="secno">4.11. </span><span class="content">P5: Visualize Mass Rollup</span><a class="self-link" href="#tutorial4-visualize-mass-rollup"></a></h3>
-    <p>TDB</p>
-    <h3 class="heading settled" data-level="4.12" id="tutorial4-experiment-with-changes"><span class="secno">4.12. </span><span class="content">Experiment With Changes</span><a class="self-link" href="#tutorial4-experiment-with-changes"></a></h3>
-    <p>TBD</p>
+    <p>In this step, we will add another visualization for the data in the `build/results/components.json` file. This time, we will use the mass matched for each leaf component and roll them up the composition hierarchy. This means the masses of composed components are summed up and set as the mass of their composing component. The final mass of each component is then shown in a <a href="https://pandas.pydata.org/docs/index.html#">Pandas</a> table.</p>
+    <ol>
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Markdown</em> cell, and type the following text in it. Click the `✓` icon to apply.</p>
+    </ol>
+<pre class="language-markdown highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line">## Mass Rollup</span><span class="line-no" data-line="2"></span><span class="line">The Kelper16 missions' components are characterized by their masses. Those masses are rolled up the physical decomposition hierarchy as shown below."</span></pre>
+    <ol start="2">
+     <li data-md>
+      <p>In the `src/ipynb/index.ipynb` editor, add a new <em>Code</em> cell, and type the following code in it. Click on the execute button on the cell’s left side  to run.</p>
+    </ol>
+<pre class="language-python highlight line-numbered"><span class="line-no" data-line="1"></span><span class="line"><c- kn>from</c-> <c- nn>utilities</c-> <c- kn>import</c-> <c- o>*</c-></span><span class="line-no" data-line="2"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>dataframe</c-><c- p>(</c-><c- u>"components.json"</c-><c- p>)</c-></span><span class="line-no" data-line="3"></span><span class="line"><c- n>components</c-> <c- o>=</c-> <c- n>tolist</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c1_id'</c-><c- p>)</c-></span><span class="line-no" data-line="4"></span><span class="line"><c- n>compositions</c-> <c- o>=</c-> <c- n>tolists</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c2_id'</c-><c- p>,</c-> <c- t>'c1_id'</c-><c- p>)</c-></span><span class="line-no" data-line="5"></span><span class="line"><c- n>masses</c-> <c- o>=</c-> <c- p>[</c->float<c- p>(</c-><c- n>x</c-><c- p>)</c-> <c- k>if</c-> <c- ow>not</c-> <c- n>pd</c-><c- o>.</c-><c- n>isna</c-><c- p>(</c-><c- n>x</c-><c- p>)</c-> <c- k>else</c-> <c- mi>0</c-> <c- k>for</c-> <c- n>x</c-> <c- ow>in</c-> <c- n>tolist</c-><c- p>(</c-><c- n>df</c-><c- p>,</c-> <c- t>'c1_mass'</c-><c- p>)]</c-></span><span class="line-no" data-line="6"></span><span class="line"><c- n>graph</c-> <c- o>=</c-> <c- n>rollup</c-><c- p>(</c-><c- n>components</c-><c- p>,</c-> <c- n>compositions</c-><c- p>,</c-> <c- u>"mass"</c-><c- p>,</c-> <c- n>masses</c-><c- p>)</c-></span><span class="line-no" data-line="7"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>df</c-><c- p>[[</c-><c- t>'c1_id'</c-><c- p>,</c-> <c- t>'c1_name'</c-><c- p>,</c-> <c- t>'c1_mass'</c-><c- p>]]</c-></span><span class="line-no" data-line="8"></span><span class="line"><c- n>df</c-><c- o>.</c-><c- n>loc</c-><c- p>[:,</c-> <c- t>'c1_mass'</c-><c- p>]</c-> <c- o>=</c-> <c- n>graph</c-><c- o>.</c-><c- n>vs</c-><c- p>[</c-><c- u>"mass"</c-><c- p>]</c-></span><span class="line-no" data-line="9"></span><span class="line"><c- n>df</c-> <c- o>=</c-> <c- n>df</c-><c- o>.</c-><c- n>rename</c-><c- p>(</c-><c- n>columns</c-><c- o>=</c-><c- p>{</c-><c- u>"c1_id"</c-><c- p>:</c-> <c- u>"Id"</c-><c- p>,</c-> <c- u>"c1_name"</c-><c- p>:</c-> <c- u>"Name"</c-><c- p>,</c-> <c- u>"c1_mass"</c-><c- p>:</c-> <c- u>"Mass"</c-><c- p>})</c-></span><span class="line-no" data-line="10"></span><span class="line"><c- n>style</c-> <c- o>=</c-> <c- n>df</c-><c- o>.</c-><c- n>style</c-><c- o>.</c-><c- n>hide</c-><c- p>(</c-><c- n>axis</c-><c- o>=</c-><c- u>"index"</c-><c- p>)</c-><c- o>.</c-><c- n>set_properties</c-><c- p>(</c-><c- o>**</c-><c- p>{</c-><c- t>'text-align'</c-><c- p>:</c-> <c- t>'left'</c-><c- p>,</c-> <c- t>'font-size'</c-><c- p>:</c-> <c- t>'12pt'</c-><c- p>,})</c-></span><span class="line-no" data-line="11"></span><span class="line"><c- n>style</c-><c- o>.</c-><c- n>format</c-><c- p>(</c-><c- n>precision</c-><c- o>=</c-><c- mi>2</c-><c- p>)</c-><c- o>.</c-><c- n>set_table_styles</c-><c- p>([</c->dict<c- p>(</c-><c- n>selector</c-><c- o>=</c-><c- t>'th'</c-><c- p>,</c-> <c- n>props</c-><c- o>=</c-><c- p>[(</c-><c- t>'text-align'</c-><c- p>,</c-> <c- t>'left'</c-><c- p>)])])</c-></span></pre>
+    <p><img src="assets/tutorial4/Add-Mass-Rollup-Viz.png" style="border:1px groove black;" width="100%"></p>
+    <ol start="3">
+     <li data-md>
+      <p>Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/Sixth-Notebook-Publish.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <h3 class="heading settled" data-level="4.12" id="tutorial4-change-the-model"><span class="secno">4.12. </span><span class="content">Change the Model</span><a class="self-link" href="#tutorial4-change-the-model"></a></h3>
+    <p>Now that we have developed an interesting notebook as a report to share with stakeholders, we can now change the OML model and see the notebook getting updated automatically.</p>
+    <ol>
+     <li data-md>
+      <p>In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/missions.oml` by adding a new objective to the `lander` mission. Save.</p>
+      <p><img src="assets/tutorial4/Make-Change-1.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.</p>
+      <p><img src="assets/tutorial4/View-Change-1.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/masses.oml` by changing the mass of `components:orbiter-propulsion-subsystem` from 6 to 106.</p>
+      <p><img src="assets/tutorial4/Make-Change-2.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Notice the new mass for `C.02.09` and changed mass of the composing component `C.02` now 100 higher than before.</p>
+      <p><img src="assets/tutorial4/View-Change-2.png" style="border:1px groove black;" width="100%"></p>
+     <li data-md>
+      <p>In VS Code Explorer, tevert the changes you made to the two OML files above. Using the Source Control tab, commit `mission.oml` and `masses.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Verify that the page returns to the original contents before the changes.</p>
+    </ol>
     <h3 class="heading settled" data-level="4.13" id="tutorial4-summary"><span class="secno">4.13. </span><span class="content">Summary</span><a class="self-link" href="#tutorial4-summary"></a></h3>
-    <p>TBD</p>
+    <p>This tutorial serves as a comprehensive guide, outlining the step-by-step process of utilizing Jupyter Notebook and GitHub Pages to visualize the results derived from querying OML datasets. Through clear and concise instructions, learners will gain practical insights into the seamless integration of these tools for efficient data exploration, analysis, and collaborative review. By employing automation techniques, the tutorial demonstrates how the generated notebook content and OML documentation can be effortlessly deployed onto GitHub Pages, facilitating real-time impact assessment and fostering a collaborative environment for informed decision-making. This tutorial proves particularly valuable for professionals seeking enhanced methods of data visualization and streamlined peer review processes within the context of OML datasets.</p>
    </div>
   </main>
 <script>
