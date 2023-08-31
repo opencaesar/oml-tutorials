@@ -76,19 +76,19 @@ task omlDependencies(type:io.opencaesar.oml.merge.OmlMergeTask, group:"oml") {
 /*
  * A task to convert the OML catalog to OWL catalog
  */
-task omlToOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, group:"oml", dependsOn: omlDependencies) {
+task omlToOwlVEntailments(type:io.opencaesar.oml2owl.Oml2OwlTask, group:"oml", dependsOn: omlDependencies) {
     // OML catalog
     inputCatalogPath = file('catalog.xml')
     // OWL catalog
-    outputCatalogPath = file('build/owl/catalog.xml')
+    outputCatalogPath = file('build/owl-ventailments/catalog.xml')
 }
 
 /*
  * A task to run the Openllet reasoner on the OWL catalog
  */
-task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", dependsOn: omlToOwl) {
+task owlReasonVocabulary(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", dependsOn: omlToOwlVEntailments) {
     // OWL catalog
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     // Input ontology IRI to reason on
     inputOntologyIri = "$dataset.rootVocabularyBundleIri".toString()
     // Entailment statements to generate and the ontologies to persist them in
@@ -96,13 +96,35 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", depends
         "$dataset.rootVocabularyBundleIri/classes = ALL_SUBCLASS".toString(),
         "$dataset.rootVocabularyBundleIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
         "$dataset.rootVocabularyBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString(),
+    ]
+    // Junit error report
+    reportPath = file('build/reports-ventailments/reasoning.xml')
+}
+
+
+task omlToOwlDEntailments(type:io.opencaesar.oml2owl.Oml2OwlTask, group:"oml", dependsOn: omlDependencies) {
+    // OML catalog
+    inputCatalogPath = file('catalog.xml')
+    // OWL catalog
+    outputCatalogPath = file('build/owl-dentailments/catalog.xml')
+}
+
+task owlReasonDescription(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", dependsOn: omlToOwlDEntailments) {
+    // OWL catalog
+    catalogPath = file('build/owl-dentailments/catalog.xml')
+    // Input ontology IRI to reason on
+    inputOntologyIri = "$dataset.rootDescriptionBundleIri".toString()
+    // Entailment statements to generate and the ontologies to persist them in
+    specs = [
         "$dataset.rootDescriptionBundleIri/classes = ALL_SUBCLASS".toString(),
         "$dataset.rootDescriptionBundleIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
         "$dataset.rootDescriptionBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
     ]
     // Junit error report
-    reportPath = file('build/reports/reasoning.xml')
+    reportPath = file('build/reports-dentailments/reasoning.xml')
 }
+
+task owlReason(group:"oml", dependsOn: [owlReasonVocabulary, owlReasonDescription]) {}
 
 /*
  * Start the headless Fuseki servers
@@ -212,7 +234,7 @@ startFuseki4.configure { mustRunAfter stopFuseki }
  * A task to load an OWL catalog to a Fuseki dataset endpoint
  */
 task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     endpointURL = "http://localhost:3030/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
@@ -224,7 +246,7 @@ task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [
 }
 
 task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     endpointURL = "http://localhost:3031/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
@@ -236,7 +258,7 @@ task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [
 }
 
 task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     endpointURL = "http://localhost:3032/tutorial-update".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
@@ -248,7 +270,7 @@ task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [
 }
 
 task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     endpointURL = "http://localhost:3033/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
@@ -260,7 +282,7 @@ task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [
 }
 
 task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl/catalog.xml')
+    catalogPath = file('build/owl-ventailments/catalog.xml')
     endpointURL = "http://localhost:3034/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [

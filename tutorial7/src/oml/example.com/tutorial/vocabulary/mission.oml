@@ -27,11 +27,11 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 		key hasIdentifier
 	]
 
-	concept EMComponent < Component [
+	concept EMComponent < Component = [
 		restricts hasRating to "EM"^^xsd:string
 	]
 
-	concept RadHardComponent < Component [
+	concept RadHardComponent < Component = [
 		restricts hasRating to "RadHard"^^xsd:string
 	]
 
