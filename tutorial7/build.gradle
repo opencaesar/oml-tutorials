@@ -95,16 +95,20 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", depends
     specs = [
         "$dataset.rootVocabularyBundleIri/classes = ALL_SUBCLASS".toString(),
         "$dataset.rootVocabularyBundleIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
-        "$dataset.rootVocabularyBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
+        "$dataset.rootVocabularyBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString(),
+        "$dataset.rootDescriptionBundleIri/classes = ALL_SUBCLASS".toString(),
+        "$dataset.rootDescriptionBundleIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
+        "$dataset.rootDescriptionBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
     ]
     // Junit error report
     reportPath = file('build/reports/reasoning.xml')
 }
 
 /*
- * Start the headless Fuseki server
+ * Start the headless Fuseki servers
  */
-task startFuseki0(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+
+task startFuseki0(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki") {
     configurationPath = file('.fuseki0.ttl')
     outputFolderPath = file('.fuseki0')
     port = 3030
@@ -113,7 +117,7 @@ task startFuseki0(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     webUI = true
 }
 
-task startFuseki1(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+task startFuseki1(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki") {
     configurationPath = file('.fuseki1.ttl')
     outputFolderPath = file('.fuseki1')
     port = 3031
@@ -122,7 +126,7 @@ task startFuseki1(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     webUI = true
 }
 
-task startFuseki2(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+task startFuseki2(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki") {
     configurationPath = file('.fuseki2.ttl')
     outputFolderPath = file('.fuseki2')
     port = 3032
@@ -132,7 +136,7 @@ task startFuseki2(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     webUI = true
 }
 
-task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki") {
     configurationPath = file('.fuseki3.ttl')
     outputFolderPath = file('.fuseki3')
     port = 3033
@@ -142,7 +146,7 @@ task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     webUI = true
 }
 
-task startFuseki4(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+task startFuseki4(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki") {
     configurationPath = file('.fuseki4.ttl')
     outputFolderPath = file('.fuseki4')
     port = 3034
@@ -152,33 +156,35 @@ task startFuseki4(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
     webUI = true
 }
 
+task startFuseki(group:"fuseki", dependsOn: [startFuseki0, startFuseki1, startFuseki2, startFuseki3, startFuseki4]) {}
+
 /*
- * Stop the headless Fuseki server
+ * Stop the headless Fuseki servers
  */
 
-task stopFuseki0(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+task stopFuseki0(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"fuseki") {
     outputFolderPath = file('.fuseki0')
 }
 
-task stopFuseki1(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+task stopFuseki1(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"fuseki") {
     outputFolderPath = file('.fuseki1')
 }
 
-task stopFuseki2(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+task stopFuseki2(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"fuseki") {
     outputFolderPath = file('.fuseki2')
 }
 
-task stopFuseki3(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+task stopFuseki3(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"fuseki") {
     outputFolderPath = file('.fuseki3')
 }
 
-task stopFuseki4(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+task stopFuseki4(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"fuseki") {
     outputFolderPath = file('.fuseki4')
 }
 /*
  * Stop all running Fuseki servers.
  */
-task stopFuseki(group:"oml") {
+task stopFuseki(group:"fuseki") {
     if (file('.fuseki0/fuseki.pid').exists()) {
         dependsOn stopFuseki0
     }
@@ -205,7 +211,7 @@ startFuseki4.configure { mustRunAfter stopFuseki }
 /*
  * A task to load an OWL catalog to a Fuseki dataset endpoint
  */
-task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
+task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3030/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
@@ -217,7 +223,7 @@ task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     ]
 }
 
-task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
+task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3031/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
@@ -229,7 +235,7 @@ task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     ]
 }
 
-task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
+task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3032/tutorial-update".toString()
     fileExtensions = ['owl', 'ttl']
@@ -241,7 +247,7 @@ task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     ]
 }
 
-task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
+task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3033/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
@@ -253,7 +259,7 @@ task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     ]
 }
 
-task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [owlReason]) {
+task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
     catalogPath = file('build/owl/catalog.xml')
     endpointURL = "http://localhost:3034/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
@@ -264,6 +270,8 @@ task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
         "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
+
+task owlLoad(group:"owl", dependsOn: [owlLoad0, owlLoad1, owlLoad2, owlLoad3, owlLoad4]) {}
 
 /*
  * A task to run a set of SPARQL queries on a Fuseki dataset endpoint
@@ -271,37 +279,40 @@ task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
 task owlQuery0(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad0) {
     endpointURL = "http://localhost:3030/tutorial".toString()
     queryPath = file('src/sparql')
-    resultPath = file('build/results')
+    resultPath = file('build/results0')
     format = 'json'
 }
 
 task owlQuery1(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad1) {
     endpointURL = "http://localhost:3031/tutorial".toString()
     queryPath = file('src/sparql')
-    resultPath = file('build/results')
+    resultPath = file('build/results1')
     format = 'json'
 }
 
 task owlQuery2(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad2) {
     endpointURL = "http://localhost:3032/tutorial-query".toString()
     queryPath = file('src/sparql')
-    resultPath = file('build/results')
+    resultPath = file('build/results2')
     format = 'json'
 }
 
 task owlQuery3(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad3) {
     endpointURL = "http://localhost:3033/tutorial".toString()
     queryPath = file('src/sparql')
-    resultPath = file('build/results')
+    resultPath = file('build/results3')
     format = 'json'
 }
 
 task owlQuery4(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad4) {
     endpointURL = "http://localhost:3034/tutorial".toString()
     queryPath = file('src/sparql')
-    resultPath = file('build/results')
+    resultPath = file('build/results4')
     format = 'json'
 }
+
+task owlQuery(group:"owl", dependsOn: [owlQuery0, owlQuery1, owlQuery2, owlQuery3, owlQuery4]) {}
+
 /*
  * A task to build the project, which executes several tasks together
  */
