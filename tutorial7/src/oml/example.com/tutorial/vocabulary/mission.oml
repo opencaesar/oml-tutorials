@@ -16,8 +16,23 @@ vocabulary <http://example.com/tutorial/vocabulary/mission#> as mission {
 	@rdfs:comment "A Component is something that can be deployed in a mission."
 	concept Component < IdentifiedThing
 
+	@rdfs:comment "The has identifier property"
+	scalar property hasRating [
+		domain Component
+		range xsd:string
+		functional
+	]
+
 	ref concept Component [
 		key hasIdentifier
+	]
+
+	concept EMComponent < Component [
+		restricts hasRating to "EM"^^xsd:string
+	]
+
+	concept RadHardComponent < Component [
+		restricts hasRating to "RadHard"^^xsd:string
 	]
 
 	@rdfs:comment "An Interface represents a set of features that describe some Component's interaction with another Component."

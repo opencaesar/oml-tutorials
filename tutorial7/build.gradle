@@ -35,8 +35,11 @@ buildscript {
 ext.dataset = [
     // Name of dataset (matches one used in .fuseki.ttl file)
     name: 'tutorial',
-    // Root ontology IRI of the dataset
-    rootOntologyIri: 'http://example.com/tutorial/description/bundle',
+    // Root ontology IRI of the vocabulary bundle.
+    rootVocabularyBundleIri: 'http://example.com/tutorial/vocabulary/bundle',
+    // Root ontology IRI of the description bundle.
+    rootDescriptionBundleIri: 'http://example.com/tutorial/description/bundle',
+
 ]
 
 /*
@@ -87,12 +90,12 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", depends
     // OWL catalog
     catalogPath = file('build/owl/catalog.xml')
     // Input ontology IRI to reason on
-    inputOntologyIri = "$dataset.rootOntologyIri".toString()
+    inputOntologyIri = "$dataset.rootVocabularyBundleIri".toString()
     // Entailment statements to generate and the ontologies to persist them in
     specs = [
-        "$dataset.rootOntologyIri/classes = ALL_SUBCLASS".toString(),
-        "$dataset.rootOntologyIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
-        "$dataset.rootOntologyIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
+        "$dataset.rootVocabularyBundleIri/classes = ALL_SUBCLASS".toString(),
+        "$dataset.rootVocabularyBundleIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
     ]
     // Junit error report
     reportPath = file('build/reports/reasoning.xml')
@@ -207,9 +210,10 @@ task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     endpointURL = "http://localhost:3030/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri".toString(),
+        "$dataset.rootVocabularyBundleIri/classes".toString(),
+        "$dataset.rootVocabularyBundleIri/properties".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
 
@@ -218,9 +222,10 @@ task owlLoad1(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     endpointURL = "http://localhost:3031/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri".toString(),
+        "$dataset.rootVocabularyBundleIri/classes".toString(),
+        "$dataset.rootVocabularyBundleIri/properties".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
 
@@ -229,9 +234,10 @@ task owlLoad2(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     endpointURL = "http://localhost:3032/tutorial-update".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri".toString(),
+        "$dataset.rootVocabularyBundleIri/classes".toString(),
+        "$dataset.rootVocabularyBundleIri/properties".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
 
@@ -240,9 +246,10 @@ task owlLoad3(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     endpointURL = "http://localhost:3033/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri".toString(),
+        "$dataset.rootVocabularyBundleIri/classes".toString(),
+        "$dataset.rootVocabularyBundleIri/properties".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
 
@@ -251,9 +258,10 @@ task owlLoad4(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: [
     endpointURL = "http://localhost:3034/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri".toString(),
+        "$dataset.rootVocabularyBundleIri/classes".toString(),
+        "$dataset.rootVocabularyBundleIri/properties".toString(),
+        "$dataset.rootVocabularyBundleIri/individuals".toString()
     ]
 }
 

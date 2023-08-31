@@ -4,9 +4,10 @@ description <http://example.com/tutorial/description/una1#> as una1 {
 
     instance C1 : mission:Component [
         mission:hasIdentifier "C1"
+        mission:hasRating "EM"
     ]
 
-    instance C2 : mission:Component [
+    instance C2 : mission:RadHardComponent [
         mission:hasIdentifier "C2"
     ]
 

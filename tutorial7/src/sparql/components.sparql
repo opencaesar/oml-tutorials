@@ -1,10 +1,10 @@
 PREFIX mission:     <http://example.com/tutorial/vocabulary/mission#>
 
-SELECT DISTINCT ?i ?cid ?iid
+SELECT ?c ?i ?cid ?iid
 WHERE {
-	<http://example.com/tutorial/description/una1#C2> 
+	?c
 		mission:presents ?i ;
 		mission:hasIdentifier ?cid .
 	?i mission:hasIdentifier ?iid .
 }
-ORDER BY ?i
+ORDER BY ?c ?i

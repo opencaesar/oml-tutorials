@@ -1,0 +1,14 @@
+PREFIX mission:     <http://example.com/tutorial/vocabulary/mission#>
+
+SELECT ?g ?c ?t ?cid ?r
+WHERE {
+    GRAPH ?g {
+		?c a mission:Component ;
+			mission:hasIdentifier ?cid ;
+			a ?t .
+		OPTIONAL {
+			?c mission:hasRating ?r .
+		}
+	}
+}
+ORDER BY ?g ?c ?cid ?t
