@@ -162,8 +162,10 @@ task startFuseki3(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki"
     configurationPath = file('.fuseki3.ttl')
     outputFolderPath = file('.fuseki3')
     port = 3033
-    additionalClasspathDependencies = [
-        "com.github.galigator.openllet:openllet-jena:2.6.5"
+    additionalClasspathDependencies = []
+    additionalJVMArguments = [
+        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+        "-Dlog4j.configurationFile=file:../log4j2.properties"
     ]
     webUI = true
 }
@@ -175,6 +177,10 @@ task startFuseki4(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"fuseki"
     additionalClasspathDependencies = [
         "com.github.galigator.openllet:openllet-jena:2.6.5"
     ]
+    additionalJVMArguments = [
+        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+    ]
+    debug = true
     webUI = true
 }
 
@@ -234,14 +240,14 @@ startFuseki4.configure { mustRunAfter stopFuseki }
  * A task to load an OWL catalog to a Fuseki dataset endpoint
  */
 task owlLoad0(type:io.opencaesar.owl.load.OwlLoadTask, group:"owl", dependsOn: [owlReason]) {
-    catalogPath = file('build/owl-ventailments/catalog.xml')
+    catalogPath = file('build/owl-dentailments/catalog.xml')
     endpointURL = "http://localhost:3030/tutorial".toString()
     fileExtensions = ['owl', 'ttl']
     iris = [
         "$dataset.rootDescriptionBundleIri".toString(),
-        "$dataset.rootVocabularyBundleIri/classes".toString(),
-        "$dataset.rootVocabularyBundleIri/properties".toString(),
-        "$dataset.rootVocabularyBundleIri/individuals".toString()
+        "$dataset.rootDescriptionBundleIri/classes".toString(),
+        "$dataset.rootDescriptionBundleIri/properties".toString(),
+        "$dataset.rootDescriptionBundleIri/individuals".toString()
     ]
 }
 

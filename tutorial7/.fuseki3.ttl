@@ -4,6 +4,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
+PREFIX jr:      <http://jena.hpl.hp.com/2003/JenaReasoner#>
+PREFIX rr:      <http://jena.hpl.hp.com/2003/RuleReasoner#>
 
 PREFIX tdb:     <http://jena.hpl.hp.com/2008/tdb#>
 PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
@@ -38,8 +40,12 @@ PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
 :model_inf a ja:InfModel ;
     ja:baseModel :tdbGraph ;
     ja:reasoner [
-        ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
-    ] .
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+        rr:traceOn true ;
+        rr:derivationLogging true ;
+        ja:rulesFrom <file:src/rules/rules3.rules> ;
+    ] ;
+    .
 
 :tdbGraph rdf:type tdb2:GraphTDB2 ;
     tdb2:dataset :tdbDataset .
