@@ -15,7 +15,7 @@ By the end of this tutorial, readers will be able to:
 
 Note: The source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
 
-## Setup Git Rpository ## {#tutorial3-setup-git-repository}
+## Setup Git Repository ## {#tutorial3-setup-git-repository}
 
 In this step, we will create a new Github repo and push the OML project from [Tutorial 2](#tutorial2) to it using the [Git CLI](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 

@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="95f84afdd2c7c5a57e1c1da5508a55c965aae39f" name="document-revision">
+  <meta content="e1d743f7cd07402a7d90b6ec0006b7ef7789b1e5" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2327,7 +2327,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial3"><span class="secno">3</span> <span class="content">Tutorial 3: OML CI</span></a>
      <ol class="toc">
       <li><a href="#tutorial3-learning-objectives"><span class="secno">3.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial3-setup-git-repository"><span class="secno">3.2</span> <span class="content">Setup Git Rpository</span></a>
+      <li><a href="#tutorial3-setup-git-repository"><span class="secno">3.2</span> <span class="content">Setup Git Repository</span></a>
       <li><a href="#tutorial3-setup-ci-pipeline"><span class="secno">3.3</span> <span class="content">Setup CI Pipeline</span></a>
       <li><a href="#tutorial3-push-syntactic-error"><span class="secno">3.4</span> <span class="content">Detect Syntactic Error</span></a>
       <li><a href="#tutorial3-push-semantic-error"><span class="secno">3.5</span> <span class="content">Detect Semantic Error</span></a>
@@ -2354,13 +2354,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#tutorial5"><span class="secno">5</span> <span class="content">Tutorial 5: OML Sirius</span></a>
      <ol class="toc">
       <li><a href="#tutorial5-learning-objectives"><span class="secno">5.1</span> <span class="content">Learning Objectives</span></a>
-      <li><a href="#tutorial5-create-vocabulary"><span class="secno">5.2</span> <span class="content">Create Vocabulary</span></a>
-      <li><a href="#tutorial5-create-viewpoint"><span class="secno">5.3</span> <span class="content">Create Viewpoint</span></a>
-      <li><a href="#tutorial5-create-diagram-viewer"><span class="secno">5.4</span> <span class="content">Create Diagram Viewer</span></a>
-      <li><a href="#tutorial5-create-diagram-editor"><span class="secno">5.5</span> <span class="content">Create Diagram Editor</span></a>
-      <li><a href="#tutorial5-create-table-editor"><span class="secno">5.6</span> <span class="content">Create Table Editor</span></a>
-      <li><a href="#tutorial5-create-property-sheet"><span class="secno">5.7</span> <span class="content">Create Property Sheet</span></a>
-      <li><a href="#tutorial5-summary"><span class="secno">5.8</span> <span class="content">Summary</span></a>
+      <li><a href="#tutorial5-create-oml-vocabulary"><span class="secno">5.2</span> <span class="content">Create OML Vocabulary</span></a>
+      <li><a href="#tutorial5-create-oml-description"><span class="secno">5.3</span> <span class="content">Create OML Description</span></a>
+      <li><a href="#tutorial5-create-diagram-editor"><span class="secno">5.4</span> <span class="content">Create Diagram Editor</span></a>
+      <li><a href="#tutorial5-create-table-editor"><span class="secno">5.5</span> <span class="content">Create Table Editor</span></a>
+      <li><a href="#tutorial5-create-sparql-queries"><span class="secno">5.6</span> <span class="content">Create SPARQL Queries</span></a>
+      <li><a href="#tutorial5-summary"><span class="secno">5.7</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -3618,7 +3617,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>Use CI pipeline to detect OML semantic errors</p>
     </ol>
     <p class="note" role="note"><span class="marker">Note:</span> The source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/kepler16b-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
-    <h3 class="heading settled" data-level="3.2" id="tutorial3-setup-git-repository"><span class="secno">3.2. </span><span class="content">Setup Git Rpository</span><a class="self-link" href="#tutorial3-setup-git-repository"></a></h3>
+    <h3 class="heading settled" data-level="3.2" id="tutorial3-setup-git-repository"><span class="secno">3.2. </span><span class="content">Setup Git Repository</span><a class="self-link" href="#tutorial3-setup-git-repository"></a></h3>
     <p>In this step, we will create a new Github repo and push the OML project from <a href="#tutorial2">Tutorial 2</a> to it using the <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git CLI</a>.</p>
     <ol>
      <li data-md>
@@ -3937,20 +3936,26 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     <h2 class="heading settled" data-level="5" id="tutorial5"><span class="secno">5. </span><span class="content">Tutorial 5: OML Sirius</span><a class="self-link" href="#tutorial5"></a></h2>
     <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the project developed in <a href="#tutorial1">Tutorial 1</a>. Please do that first before proceeding.</p>
     <h3 class="heading settled" data-level="5.1" id="tutorial5-learning-objectives"><span class="secno">5.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial5-learning-objectives"></a></h3>
+    <p>In this tutorial, we will learn how the <a href="https://eclipse.dev/sirius/">Sirius</a> framework can be used to ease authoring OML models in the Rosetta workbench. This can effectively lower the bar for OML users, especially those who may prefer not to work with the OML textual syntax directly.</p>
+    <p>By the end of the tutorial, the user should be able to:</p>
+    <ol>
+     <li data-md>
+      <p>Use the built-in OML diagram editors as an alternative to the OML text editor to author OML models.</p>
+     <li data-md>
+      <p>Create custom editors to support user-friendly domain-specific authoring for OML description models.</p>
+    </ol>
+    <p class="note" role="note"><span class="marker">Note:</span> The tutorial also shows how the openCAESAR’s implementation of OML, which is built on top the Eclipse Modeling Framework (EMF), allows leveraging the huge EMF ecosystem of tools, while adding more rigourous and agile analysis capabilities to a DSL.</p>
+    <h3 class="heading settled" data-level="5.2" id="tutorial5-create-oml-vocabulary"><span class="secno">5.2. </span><span class="content">Create OML Vocabulary</span><a class="self-link" href="#tutorial5-create-oml-vocabulary"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="5.2" id="tutorial5-create-vocabulary"><span class="secno">5.2. </span><span class="content">Create Vocabulary</span><a class="self-link" href="#tutorial5-create-vocabulary"></a></h3>
+    <h3 class="heading settled" data-level="5.3" id="tutorial5-create-oml-description"><span class="secno">5.3. </span><span class="content">Create OML Description</span><a class="self-link" href="#tutorial5-create-oml-description"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="5.3" id="tutorial5-create-viewpoint"><span class="secno">5.3. </span><span class="content">Create Viewpoint</span><a class="self-link" href="#tutorial5-create-viewpoint"></a></h3>
+    <h3 class="heading settled" data-level="5.4" id="tutorial5-create-diagram-editor"><span class="secno">5.4. </span><span class="content">Create Diagram Editor</span><a class="self-link" href="#tutorial5-create-diagram-editor"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="5.4" id="tutorial5-create-diagram-viewer"><span class="secno">5.4. </span><span class="content">Create Diagram Viewer</span><a class="self-link" href="#tutorial5-create-diagram-viewer"></a></h3>
+    <h3 class="heading settled" data-level="5.5" id="tutorial5-create-table-editor"><span class="secno">5.5. </span><span class="content">Create Table Editor</span><a class="self-link" href="#tutorial5-create-table-editor"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="5.5" id="tutorial5-create-diagram-editor"><span class="secno">5.5. </span><span class="content">Create Diagram Editor</span><a class="self-link" href="#tutorial5-create-diagram-editor"></a></h3>
+    <h3 class="heading settled" data-level="5.6" id="tutorial5-create-sparql-queries"><span class="secno">5.6. </span><span class="content">Create SPARQL Queries</span><a class="self-link" href="#tutorial5-create-sparql-queries"></a></h3>
     <p>TBD</p>
-    <h3 class="heading settled" data-level="5.6" id="tutorial5-create-table-editor"><span class="secno">5.6. </span><span class="content">Create Table Editor</span><a class="self-link" href="#tutorial5-create-table-editor"></a></h3>
-    <p>TBD</p>
-    <h3 class="heading settled" data-level="5.7" id="tutorial5-create-property-sheet"><span class="secno">5.7. </span><span class="content">Create Property Sheet</span><a class="self-link" href="#tutorial5-create-property-sheet"></a></h3>
-    <p>TBD</p>
-    <h3 class="heading settled" data-level="5.8" id="tutorial5-summary"><span class="secno">5.8. </span><span class="content">Summary</span><a class="self-link" href="#tutorial5-summary"></a></h3>
+    <h3 class="heading settled" data-level="5.7" id="tutorial5-summary"><span class="secno">5.7. </span><span class="content">Summary</span><a class="self-link" href="#tutorial5-summary"></a></h3>
     <p>TBD</p>
    </div>
   </main>
