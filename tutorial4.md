@@ -28,15 +28,15 @@ Note: for best experience in this tutorial, switch VS Code to the `Light Modern`
 
 		<img src="assets/tutorial4/VS-Code.png" width="100%" style="border:1px groove black;"/>
 
-4. Select File -> Open Folder .. and select the folder of the project you created in [Tutorial 2](#tutorial2).
+4. Select File -> Open Folder... and select the folder of the project you created in [Tutorial 2](#tutorial2).
 
 	<img src="assets/tutorial4/Open-Folder.png" width="100%" style="border:1px groove black;"/>
 
-Note: Assuming you had also done `Tutorial 3`, this folder should be a clone of a git repository called `kepler16b-example`.`
+Note: Assuming you had also done `Tutorial 3`, this folder should be a clone of a git repository called `kepler16b-example`.
 
 ## Run SPARQL Queries ## {#tutorial4-run-sparql-queries}
 
-Recall from [Tutorial 2](#tutorial2) that an OML project can create SPARQL query files in some path and store results in some other path. The code below is an excerpt from the project's `./build.gradle` file showing a task called `owlQuery` that runs the SPARQL queries.
+Recall from [Tutorial 2](#tutorial2) that an OML project can create SPARQL query files in some path and store results in some other path. The code below is an excerpt from the project's `./build.gradle` file showing a task called owlQuery that runs the SPARQL queries.
 
 ```groovy
 task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad) {
@@ -62,7 +62,7 @@ BUILD SUCCESSFUL in 6s
 
 	<img src="assets/tutorial4/Run-Qwl-Query.png" width="100%" style="border:1px groove black;"/>
 
-2. Open the `.github/workflows/ci.yml` file (created in [Tutorial 3](#tutorial3)) and insert the following step right before the `Upload`` one:
+2. Open the `.github/workflows/ci.yml` file (created in [Tutorial 3](#tutorial3)) and insert the following step right before the `Upload` one:
 
 ```yaml
     - name: Query
@@ -73,7 +73,7 @@ BUILD SUCCESSFUL in 6s
 
 3. Click on the Source Control tab on the left; you should find the `ci.yml` file listed. Type a commit message and select `Commit & Push` button. Answer `Yes` in the next dialog box. Wait for the operation to finish.
 
-4. In a web browser, navigate to the `kepler16b-example` Github repo you created in [Tutorial 3](#tutorial3). Click on the Actons tab. Wait until the CI workflow succeeds.
+4. In a web browser, navigate to the `kepler16b-example` Github repo you created in [Tutorial 3](#tutorial3). Click on the Actions tab. Wait until the CI workflow succeeds.
 
 	<img src="assets/tutorial4/Owl-Query-CI-Succeeds.png" width="100%" style="border:1px groove black;"/>
 
@@ -83,7 +83,7 @@ In this step, we will add a new task of type `OwlDoc` to the `build.gradle` file
 
 Not: An [OwlDoc](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) task requires the Oml dataset to be converted first to Owl, which we get when we chain it to an [Oml2Owl](https://github.com/opencaesar/owl-adapter/blob/master/oml2owl/README.md) task.
 
-1. In VS Code, wwitch to the Explorer tab on the left. Open the `build.gradle` file. Find the `buildscript.dependencies` clause. Add a new dependency on the `owl-doc-gradle` tool on the top:
+1. In VS Code, switch to the Explorer tab on the left. Open the `build.gradle` file. Find the `buildscript.dependencies` clause. Add a new dependency on the `owl-doc-gradle` tool on the top:
 
 ```groovy
   classpath 'io.opencaesar.owl:owl-doc-gradle:2.+'
@@ -115,11 +115,11 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
 ```
 	<img src="assets/tutorial4/Add-Owl-Doc-Task.png" width="100%" style="border:1px groove black;"/>
 
-3. In Terminal, run `./gradlew generateDocs`. Inspect the `build/web/doc` folder. You will find the generatd HTML documentation. 
+3. In Terminal, run `./gradlew generateDocs`. Inspect the `build/web/doc` folder. You will find the generated HTML documentation. 
 
 	<img src="assets/tutorial4/Run-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
 
-4. Open the file `build/web/doc/index.html` in a web browser, and browse through the generated documentation.
+4. Open the file `build/web/doc/index.html` in a web browser and browse through the generated documentation.
 
 	<img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
 
@@ -158,7 +158,7 @@ In this step, we will create a simple Jupyter Notebook in the project and setup 
 
 	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
 
-3. In the top right cornder of the editor, click on the `Select Kernel` button, select `Python Environments`, and select one of the available Python 3 environments. Notice that now the name of the selected kernel shows up in the top right corner.
+3. In the top right corner of the editor, click on the `Select Kernel` button, select `Python Environments`, and select one of the available Python 3 environments. Notice that now the name of the selected kernel shows up in the top right corner.
 
 4. Hover over the first empty cell in the editor. A toolbar appears with a trash can. Click on the trash can to delete the cell.
 
@@ -173,7 +173,7 @@ The Kepler16b project is developing a hypothetical mission to an exoplanet that 
 
 	<img src="assets/tutorial4/Add-Notebook-Title.png" width="100%" style="border:1px groove black;"/>
 
-Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some depednencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.
+Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some dependencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.
 
 7. In VS Code Explorer, right click on the `ipynb` folder, choose New File, and name it `requirements.txt`. Insert the following text as its contents and save.
 
@@ -185,6 +185,7 @@ plantuml
 igraph
 cairocffi
 ```
+
 Note: A `requirements.txt` file is a typical Python mechanism to declare dependencies. In this case, the first two dependencies are the minimum required to enable executing and converting the notebook to HTML. The rest of the dependencies are libraries that will be used in the steps below to visualize the analysis results.
 
 	<img src="assets/tutorial4/Add-Requirements.png" width="100%" style="border:1px groove black;"/>
@@ -250,19 +251,19 @@ In this step, we will add to the notebook some cross references to the OML docum
 The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/tutorial2/description/missions/lander.html) and an [Orbiter Mission](doc/example.com/tutorial2/description/missions/orbiter.html), each of which pursues a number of objectives. For details, check the [full documentation](doc).
 ```
 
-9. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+9. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/Second-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
-10. Click on the three hyperlinks and verify that you can naigate to them fine. 
+10. Click on the three hyperlinks and verify that you can navigate to them fine. 
 
 ## P2: Visualize Missions ## {#tutorial4-visualize-missions}
 
-In this step, we will add the first visualization of SPARQL query results to the notebook. In this case, we will visualize data from the `build/results/missions.json` file, which holds the result of running the `missions.sparql` query, which matched missions and the objectives they pursue. We will use [d3.js](https://d3js.org/) to code this visualization, but to make this easier to present here, we will copy and paste a python file called `utilities.py` (that has helpful utilitiy functions) to the priject.
+In this step, we will add the first visualization of SPARQL query results to the notebook. In this case, we will visualize data from the `build/results/missions.json` file, which holds the result of running the `missions.sparql` query, which matched missions and the objectives they pursue. We will use [d3.js](https://d3js.org/) to code this visualization, but to make this easier to present here, we will copy and paste a python file called `utilities.py` (that has helpful utility functions) to the project.
 
 1. Navigate to the file [utilities.py](https://github.com/opencaesar/kepler16b-example/blob/main/src/ipynb/utilities.py) and copy its contents.
 
-2. In VS Code Explorere, right click on the `ipynb` folder, select New File, name it `utilities.py`, and paste the contents to it. Save.
+2. In VS Code Explorer, right click on the `ipynb` folder, select New File, name it `utilities.py`, and paste the contents to it. Save.
 
 	<img src="assets/tutorial4/Add-Utilities.png" width="100%" style="border:1px groove black;"/>
 
@@ -279,19 +280,19 @@ HTML(tree.safe_substitute(data=data))
 
 Note: Click on the circles to collapse/expand them
 
-4. Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+4. Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/Third-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
 ## P3: Visualize Objectives ## {#tutorial4-visualize-objectives}
 
-In this step, we will add a visualization for the data in the `build/results/objectives.json` file, which holds the result of running the `objectives.sparql` query, which matched the objective aggregation hierarchy. We will use the [plantuml](https://www.plantuml.com/) tool to code this visualization.
+In this step, we will add a visualization for the data in the `build/results/objectives.json` file, which holds the result of running the `objectives.sparql` query, which matched the objective aggregation hierarchy. We will use the [PlantUml](https://www.plantuml.com/) tool to code this visualization.
 
 1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
 
 ```markdown
 ## Objectives
-The Kepler16b missions' objectives aggregate other lower level objectives as depicted by the following diagram:
+The Kepler16b missions' objectives aggregate other lower-level objectives as depicted by the following diagram:
 ```
 
 2. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
@@ -307,13 +308,13 @@ diagram(objects(union(objectives1, objectives2), aggregations, 'o--', 'objective
 
 	<img src="assets/tutorial4/Add-Objectives-Viz.png" width="100%" style="border:1px groove black;"/>
 
-3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/Fourth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
 ## P4: Visualize Components ## {#tutorial4-visualize-components}
 
-In this step, we will add a visualization for the data in the `build/results/components.json` file, which holds the result of running the `components.sparql` query, which matched the component physical decomposition hierarchy. We will use the [plantuml](https://www.plantuml.com/) tool to code this visualization.
+In this step, we will add a visualization for the data in the `build/results/components.json` file, which holds the result of running the `components.sparql` query, which matched the component physical decomposition hierarchy. We will use the [PlantUml](https://www.plantuml.com/) tool to code this visualization.
 
 1. In the `src/ipynb/index.ipynb` editor, add a new *Markdown* cell, and type the following text in it. Click the `✓` icon to apply.
 
@@ -335,7 +336,7 @@ diagram('left to right direction\nskinparam nodesep 10\n'+objects(union(componen
 
 	<img src="assets/tutorial4/Add-Components-Viz.png" width="100%" style="border:1px groove black;"/>
 
-3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/Fifth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
@@ -368,7 +369,7 @@ style.format(precision=2).set_table_styles([dict(selector='th', props=[('text-al
 
 	<img src="assets/tutorial4/Add-Mass-Rollup-Viz.png" width="100%" style="border:1px groove black;"/>
 
-3. Using the Source Control tab, commit `index.ipynb`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/Sixth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
 
@@ -376,24 +377,24 @@ style.format(precision=2).set_table_styles([dict(selector='th', props=[('text-al
 
 Now that we have developed an interesting notebook as a report to share with stakeholders, we can now change the OML model and see the notebook getting updated automatically.
 
-1. In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/missions.oml` by adding a new objective to the `lander` mission. Save.
+1. In VS Code Exploer, edit the file `src/oml/example.com/tutorial2/description/missions.oml` by adding a new objective to the `lander` mission. Save.
 
 	<img src="assets/tutorial4/Make-Change-1.png" width="100%" style="border:1px groove black;"/>
 
-2. Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
+2. Using the Source Control tab, commit `mission.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
 	<img src="assets/tutorial4/View-Change-1.png" width="100%" style="border:1px groove black;"/>
 
-3. In VS Code Exploere, edit the file `src/oml/example.com/tutorial2/description/masses.oml` by changing the mass of `components:orbiter-propulsion-subsystem` from 6 to 106.
+3. In VS Code Exploer, edit the file `src/oml/example.com/tutorial2/description/masses.oml` by changing the mass of `components:orbiter-propulsion-subsystem` from 6 to 106.
 
 	<img src="assets/tutorial4/Make-Change-2.png" width="100%" style="border:1px groove black;"/>
 
-4. Using the Source Control tab, commit `mission.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Notice the new mass for `C.02.09` and changed mass of the composing component `C.02` now 100 higher than before.
+4. Using the Source Control tab, commit `mission.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Notice the new mass for `C.02.09` and changed mass of the composing component `C.02` now 100 higher than before.
 
 	<img src="assets/tutorial4/View-Change-2.png" width="100%" style="border:1px groove black;"/>
 
-5. In VS Code Explorer, tevert the changes you made to the two OML files above. Using the Source Control tab, commit `mission.oml` and `masses.oml`. In the repositories website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Verify that the page returns to the original contents before the changes.
+5. In VS Code Explorer, revert the changes you made to the two OML files above. Using the Source Control tab, commit `mission.oml` and `masses.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Verify that the page returns to the original contents before the changes.
 
 ## Summary ## {#tutorial4-summary}
 
-This tutorial serves as a comprehensive guide, outlining the step-by-step process of utilizing Jupyter Notebook and GitHub Pages to visualize the results derived from querying OML datasets. Through clear and concise instructions, learners will gain practical insights into the seamless integration of these tools for efficient data exploration, analysis, and collaborative review. By employing automation techniques, the tutorial demonstrates how the generated notebook content and OML documentation can be effortlessly deployed onto GitHub Pages, facilitating real-time impact assessment and fostering a collaborative environment for informed decision-making. This tutorial proves particularly valuable for professionals seeking enhanced methods of data visualization and streamlined peer review processes within the context of OML datasets.
+This tutorial serves as a comprehensive guide, outlining the step-by-step process of utilizing Jupyter Notebook and GitHub Pages to visualize the results derived from querying OML datasets. Through clear and concise instructions, learners will gain practical insights into the seamless integration of these tools for efficient data exploration, analysis, and collaborative review. By employing automation techniques, the tutorial demonstrates how the generated notebook content and OML documentation can be effortlessly deployed onto GitHub Pages, facilitating real-time impact assessment, and fostering a collaborative environment for informed decision-making. This tutorial proves particularly valuable for professionals seeking enhanced methods of data visualization and streamlined peer review processes within the context of OML datasets.

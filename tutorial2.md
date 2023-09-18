@@ -3,7 +3,7 @@
 Note: This tutorial builds on [Tutorial 1](#tutorial1). Please do that first before proceeding.
 
 ## Learning Objectives ## {#tutorial2-learning-objectives}
-This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology, and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16 .. approximately 245 light-years from Earth.
+This tutorial demonstrates the process of developing a methodology for capturing knowledge in a given business domain with OML. The methodology will be developed as a series of patterns, each of which represents a small step in the methodology and is encoded by some new vocabulary. As an example, we will develop a simple systems engineering methodology. The tutorial also demonstrates describing knowledge using instances of those patterns and organizing them into modules that capture related concerns. As an example, we will describe a fanciful space mission called Kepler16b, which is an exoplanet orbiting a binary star system called Kepler16—approximately 245 light-years from Earth.
 
 Note: the source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/kepler16b-example), but we encourage the reader to recreate them by following the instructions below.
 
@@ -17,7 +17,7 @@ We will start by creating an OML project that has a vocabulary bundle and a desc
 
     <img src="assets/tutorial2/Create-OML-Project.png" width="100%"/>
 
-1. In the [=Model Explorer view=], double click on the build.gradle file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.
+1. In the [=Model Explorer view=], double click on the `build.gradle` file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.
 
    <video width="100%" style="border:1px groove black;" controls>
      <source src="assets/tutorial2/Modify-Gradle-Build.mov"/>
@@ -46,7 +46,7 @@ Note: you should now be ready to create the patterns below. For each pattern, we
 
 **Pattern Synopsis**
 
-A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship *aggregates*, which could be important for planning a campaign of pursuit. Aggregates is a general relationship, broader than objectives, but is homomeric, meaning that parts and whole are of the same type. We say an Objective is an AggregatedThing, meaning it can aggregate or be aggregated. We further say an Objective aggregates only Objectives and is aggregated in only *Objectives* (this is called a restriction in OML).
+A systems engineering endeavor begins with objectives to be achieved. Objectives are not requirements; they are desires. They may be in conflict. They may not be achievable in principle. They may not be feasible. They may be related such that achieving one objective helps to achieve another. We call this relationship *aggregates*, which could be important for planning a campaign of pursuit. *Aggregates* is a general relationship, broader than *objectives*, but is homomeric, meaning that parts and whole are of the same type. We say an *Objective* is an *AggregatedThing*, meaning it can aggregate or be aggregated. We further say an *Objective* *aggregates* only *Objectives* and is aggregated in only *Objectives* (this is called a restriction in OML).
 
 **New Vocabulary**
 
@@ -81,7 +81,7 @@ vocabulary bundle <http://example.com/tutorial2/vocabulary/bundle#> as ^bundle {
 }
 ```
 
-Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to the bundle. This is because in OML, import statements (like `includes`, `extends`, and `uses`) are transitive. Since `mission` already imports (extends) `base`, the bundle would transitively include `base` as well. But, It would not be wrong to explicitly include `base` in the bundle too.
+Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to the bundle. This is because in OML, import statements (like `includes`, `extends`, and `uses`) are transitive. Since `mission` already imports (extends) `base`, the bundle would transitively include `base` as well. But It would not be wrong to explicitly include `base` in the bundle too.
 
 4. if you did all the previous steps correctly, the following should be the contents of all files so far.
 
@@ -130,7 +130,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
 Note: the syntax used for annotations on ontology members above (e.g., `@rdfs:comment "value"` used to put a comment on a vocabulary member). What comes after the `@` is the IRI of an annotation property (declared in some vocabulary) followed by a (literal or IRI) value.
 
-Note: the `key` axiom in the IdentifiedThing aspect. It says that instances of this type must have unique values for their `hasIdentifier` property (which is similar to the concept of primary key in relational schemas). For this to work as expected, properties that are part of a key needs to be defined as `functional`, meaning that may have a maximum of one value. Otherwise, two instances with different values for `hasIdentifier` may still be inferred as aliases to the same instance with twos values for the key property.
+Note: the `key` axiom in the `IdentifiedThing` aspect. It says that instances of this type must have unique values for their `hasIdentifier` property (which is similar to the concept of primary key in relational schemas). For this to work as expected, properties that are part of a key needs to be defined as `functional`, meaning that may have a maximum of one value. Otherwise, two instances with different values for `hasIdentifier` may still be inferred as aliases to the same instance with twos values for the key property.
 
 6. In the `vocabulary/mission` ontology, append the following OML code to its body:
 
@@ -298,7 +298,7 @@ Note: the visualization code is not part of this tutorial
 
 **Pattern Synopsis**
 
-We undertake missions to pursue objectives. Again, objectives are not requirements. Part of the job of a mission is to negotiate an achievable set of objectives. Every mission pursues zero or more objectives. The lower bound is zero in the vocabulary because one-or-more is really a life-cycle completeness constraint. The notion of mission makes sense even if we don’t know what its objectives are. Every objective may be pursued by zero or more missions
+We undertake missions to pursue objectives. Again, objectives are not requirements. Part of the job of a mission is to negotiate an achievable set of objectives. Every mission pursues zero or more objectives. The lower bound is zero in the vocabulary because one-or-more is really a life-cycle completeness constraint. The notion of mission makes sense even if we don’t know what its objectives are. Every objective may be pursued by zero or more missions.
 
 **New Vocabulary**
 
@@ -641,7 +641,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
 
 **Pattern Synopsis**
 
-We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc.  Deploys is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.
+We say a mission deploys components, which are typically the major systems  of the mission. In our case, these are Launch System, Spacecraft, etc.  *Deploys* is a whole-part relationship, but allows more than one mission to deploy the same component, as in for example, a shared mission operates a system for coordinated ops.
 
 **New Vocabularies**
 
@@ -802,7 +802,7 @@ Note: No new queries for this pattern. We will incorporate it with another patte
 
 **Pattern Synopsis**
 
-Contains is another whole-part relationship, but unlike Deploys, a part can be contained in at most one whole. Like Aggregates, Contains is homomeric, meaning parts and whole are of the same type. We say a Component is a ContainedThing, meaning it can contain or be contained. We further say a Component contains only Components and is contained in only a Component.
+*Contains* is another whole-part relationship, but unlike *Deploys*, a part can be contained in at most one whole. Like *Aggregates*, *Contains* is homomeric, meaning parts and whole are of the same type. We say a *Component* is a *ContainedThing*, meaning it can contain or be contained. We further say a *Component* contains only *Components* and is contained in only a *Component*.
 
 **New Vocabularies**
 
@@ -836,7 +836,7 @@ Note: You have seen so far that some entities are modeled as `concept` while oth
 	]
 ```
 
-Note: that we used the `ref` keyword here to add more statements to the concept `Component` defined earlier. Again, we could have added these statements to the original definition, but chose this style to separate concerns.
+Note: that we used the `ref` keyword here to add more statements to the concept `Component` defined earlier. Again, we could have added these statements to the original definition but chose this style to separate concerns.
 
 3. The following is a visualization of the (modified) `base` and `mission` vocabularies so far:
 
@@ -1137,7 +1137,7 @@ Note: that in the second visualization above, each node in the tree rolls up the
 
 **Pattern Synopsis**
 
-Components contain other components. These subcomponents interact in ways that lead to emergent behavior. The interactions are sometimes the result of purposeful interconnection. Components may be designed with specific features to allow or enact interconnection. These features we call Interfaces. We say Components present Interfaces. Note that an interface is on one side or the other; it’s not the connection itself.
+*Components* contain other components. These subcomponents interact in ways that lead to emergent behavior. The interactions are sometimes the result of purposeful interconnection. Components may be designed with specific features to allow or enact interconnection. These features we call *Interfaces*. We say Components present Interfaces. Note that an interface is on one side or the other; it’s not the connection itself.
 
 **New Vocabularies**
 
@@ -1238,7 +1238,7 @@ Note: No new queries for this pattern. We will incorporate it with another patte
 
 **Pattern Synopsis**
 
-Requirements specify conditions that must be true of the system. One thing a requirement may specify is that some component presents an interface of a certain type or with certain properties. We say this with the reification pattern: (Requirement specifies (Component presents Interface)), in which (Component presents Interface) is reified with a member of class Presents (as seen above in P6).
+*Requirements* specify conditions that must be true of the system. One thing a requirement may specify is that some component presents an interface of a certain type or with certain properties. We say this with the reification pattern: (*Requirement specifies (Component presents Interface)*), in which (*Component presents Interface*) is reified with a member of class *Presents* (as seen above in P6).
 
 **New Vocabulary**
 
@@ -1370,7 +1370,7 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
 
 **Pattern Synopsis**
 
-Junctions represent actual connections between Interfaces presented by Components. When a component has an interface that joins an interface of another component, we infer that there is a Connection between these components.
+*Junctions* represent actual connections between *Interfaces* presented by *Components*. When a component has an interface that joins an interface of another component, we infer that there is a Connection between these components.
 
 **New Vocabulary**
 

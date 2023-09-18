@@ -430,7 +430,7 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
 1. Click on the `restaurant.oml` editor to bring it in focus.
 
-1. In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become similar to the value of `hasId` of instance `pizza1` (in line 16). Save the editor.
+1. In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become like the value of `hasId` of instance `pizza1` (in line 16). Save the editor.
 
     <img src="assets/tutorial1/Change-Pizza2-Id.png" width="100%"/>
 
@@ -444,7 +444,7 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
     <img src="assets/tutorial1/Failure-Dialog.png" width="100%"/>
 
-1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left), and providing an explanation for it (on the right).
+1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to file `orial1/build/reports/reasoning.xml` and double click on it. The file opens in the `Junit` view showing the problem as an inconsistency (on the left) and providing an explanation for it (on the right).
 
    <video width="100%" style="border:1px groove black;" controls>
      <source src="assets/tutorial1/Inspect-Inconsistency.mov"/>
@@ -499,7 +499,7 @@ scalar property hasId [
 ]   
 ```
 
-In light of the above, and having established previously that property `hasBase` is *functional*, it follows logically that `base1` and `base2` must be two names of the same base individual. But, wait, we asserted in the restaurant description that those instances are typed by concepts `DeepPanBase` and `ThinAndCrispyBase`, respectively. This means now that the same base instance is typed by both these types. 
+In light of the above, and having established previously that property `hasBase` is *functional*, it follows logically that `base1` and `base2` must be two names of the same base individual. But wait, we asserted in the restaurant description that those instances are typed by concepts `DeepPanBase` and `ThinAndCrispyBase`, respectively. This means now that the same base instance is typed by both these types. 
 
 However, the explanation also says that these two types are in fact disjoint. Where did it get this from? It turns out to be a generated assertion in the `pizza-bundle` vocabulary bundle. Such assertion is generated since the two types do not have a common subtype in the `pizza` vocabulary (included in the vocabulary bundle). Such closed-world semantics is a benefit of using a vocabulary bundle.
 

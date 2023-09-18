@@ -106,7 +106,7 @@ jobs:
         path: build/
 ```
 
-The CI workflow above has a single job called `build` with 5 named: Check, Setup JDK, Setup Gradle, Build (runs the DL reasoner) and Upload (uploads the `build`` folder as an artifact for later inspection in case of error).
+The CI workflow above has a single job called `build` with 5 named: Check, Setup JDK, Setup Gradle, Build (runs the DL reasoner) and Upload (uploads the `build` folder as an artifact for later inspection in case of error).
 
 5. Push the `cy.yml` file to the repo and watch the first workflow run complete successfully.
 
@@ -120,7 +120,7 @@ Note: this last step is needed to refresh the local clone of the repo with the c
 
 ## Detect Syntactic Error ## {#tutorial3-push-syntactic-error}
 
-In OML Rosetta, Create a new branch, add a syntactic error (an invalid cross-reference) to the OML files, and push it. Watch how the CI workflow detects the error. Then, undo the change and push to watch how the workflow succeeds again.
+In OML Rosetta, create a new branch, add a syntactic error (an invalid cross-reference) to the OML files, and push it. Watch how the CI workflow detects the error. Then, undo the change and push to watch how the workflow succeeds again.
 
 	<video width="100%" style="border:1px groove black;" controls>
 		<source src="assets/tutorial3/Second-CI-Build.mp4"/>
