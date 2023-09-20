@@ -569,7 +569,7 @@ In this step, we will define a custom diagram editor for OML description models 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
     <b>General</b></b>:
     - <b>Name</b>: context
-    - <b>Label</b>: aql:container.getDescription()
+    - <b>Label</b>: aql:source.getDescription()
     </pre>
 
 24. Copy the `context` variable and paste it under the `source` variable. In the property sheet, change the following:
