@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="4c24d43fc2b15bf0de5b2d3719ec6c46a6fdb2e4" name="document-revision">
+  <meta content="ed09f61affd9f91fb316ba7e5eb951065833780e" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2675,10 +2675,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p><img src="assets/tutorial2/Create-OML-Project.png" width="100%"></p>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑦">Model Explorer view</a>, double click on the <code>build.gradle</code> file, and modify the declared dependency on <code>core-vocabulary</code> to <code>metrology-vocabulary</code> instead. Save the editor.</p>
+      <p><img src="assets/tutorial2/Modify-Gradle-Build.png" width="100%"></p>
     </ol>
-    <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/tutorial2/Modify-Gradle-Build.mov">
-    </video>
+    <p class="note" role="note"><span class="marker">Note:</span> specifying <code>+</code> as a dynamic version for <code>metrology-vocabularies</code> will result in downloding the latest version. However, a safer approach would be to pin the dependency to the current major revision (e.g., <code>7.+</code>) to protect the project against future incompatible major revisions of <code>metrology-vocabularies</code>. At the time of this writing, the major revision for that library was <code>7.+</code> but this could be different when you take the tutorial. Click <a href="https://github.com/opencaesar/metrology-vocabularies/releases">here</a> to check what the latest version at this time is.</p>
     <ol>
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view①⑧">Model Explorer view</a>, expand the <code>tutorial2</code> project, right-click on the <code>src/oml/example.com/tutorial2</code> folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.</p>
