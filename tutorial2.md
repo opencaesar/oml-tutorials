@@ -19,7 +19,7 @@ We will start by creating an OML project that has a vocabulary bundle and a desc
 
 1. In the [=Model Explorer view=], double click on the `build.gradle` file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.
 
-    <img src="assets/tutorial2/Modify-Gradle-Build.png" width="100%"/>
+	<img src="assets/tutorial2/Modify-Gradle-Build.png" width="100%" style="border:1px groove black;"/>
 
 Note: specifying `+` as a dynamic version for `metrology-vocabularies` will result in downloding the latest version. However, a safer approach would be to pin the dependency to the current major revision (e.g., `7.+`) to protect the project against future incompatible major revisions of `metrology-vocabularies`. At the time of this writing, the major revision for that library was `7.+` but this could be different when you take the tutorial. Click [here](https://github.com/opencaesar/metrology-vocabularies/releases) to check what the latest version at this time is.
 
