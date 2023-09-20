@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="2ca4b7e8a2af4666dae9a9fd5edd91c298ed8fb3" name="document-revision">
+  <meta content="4c24d43fc2b15bf0de5b2d3719ec6c46a6fdb2e4" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -4605,7 +4605,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <li data-md>
       <p>Right click on the <code>New Man</code> node and select New Operation -> Change Context. In the property sheet, change the following:</p>
 <pre no-line-numbers style="background: rgba(0, 0, 0, .03)"><b>General</b>:
-- <b>Browse Expression</b>: containerInstance
+- <b>Browse Expression</b>: aql:context.createConceptInstance('basicfamily:Man', containerInstance, 'basicfamily:members')
 </pre>
      <li data-md>
       <p>Right click on the last <code>Change Context</code> node and select New Operation -> Set. In the property sheet, change the following:</p>

@@ -865,7 +865,7 @@ In this step, we will define a custom table editor for OML description models th
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
     <b>General</b></b>:
-    - <b>Browse Expression</b>: containerInstance
+    - <b>Browse Expression</b>: aql:context.createConceptInstance('basicfamily:Man', containerInstance, 'basicfamily:members')
     </pre>
 
 15. Right click on the last `Change Context` node and select New Operation -> Set. In the property sheet, change the following:
