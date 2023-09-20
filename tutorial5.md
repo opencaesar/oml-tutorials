@@ -81,7 +81,7 @@ In the step, we will create a vocabulary called `basicfamily`, which is the OML 
 10. We will now use the Vocabulary diagram editor to author the vocabulary. Follow the steps in the video below and save the editor regularly to see the corresponding textual syntax.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Dock-Vocabulary-Diagram.mov"/>
+     <source src="assets/tutorial5/Create-Basicfamily-Vocabulary.mov"/>
    </video>
 
 11. If you have done the visual authoring all correct, you should end up with the following OML text in `basicfamily.oml`.
