@@ -399,7 +399,7 @@ In this step, we will define a custom diagram editor for OML description models 
     <b>General</b>:
     - <b>Id</b>: ManNode
     - <b>Domain Class</b>: oml.ConceptInstance
-    - <b>Precondition Expression</b>: aql:self.findIsKindOf('basicfamily:Family')
+    - <b>Semantic Candidates Expression</b>: aql:self.findTargetInstances('basicfamily:members')
     <b>Advanced</b>:
     - <b>Precondition Expression</b>: aql:self.findIsKindOf('basicfamily:Man')
     </pre>
