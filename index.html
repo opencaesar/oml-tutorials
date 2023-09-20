@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="08327ccae08ef1105833552ecbb96dcfea103871" name="document-revision">
+  <meta content="49af401434841fbf046d7b0bc9e90d1c20242831" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -4018,7 +4018,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>We will now use the Vocabulary diagram editor to author the vocabulary. Follow the steps in the video below and save the editor regularly to see the corresponding textual syntax.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
-     <source src="assets/tutorial5/Dock-Vocabulary-Diagram.mov">
+     <source src="assets/tutorial5/Create-Basicfamily-Vocabulary.mov">
     </video>
     <ol start="11">
      <li data-md>
@@ -4222,7 +4222,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
 <pre no-line-numbers style="background: rgba(0, 0, 0, .03)"><b>General</b>:
 - <b>Id</b>: ManNode
 - <b>Domain Class</b>: oml.ConceptInstance
-- <b>Precondition Expression</b>: aql:self.findIsKindOf('basicfamily:Family')
+- <b>Semantic Candidates Expression</b>: aql:self.findTargetInstances('basicfamily:members')
 <b>Advanced</b>:
 - <b>Precondition Expression</b>: aql:self.findIsKindOf('basicfamily:Man')
 </pre>
