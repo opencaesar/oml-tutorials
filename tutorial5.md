@@ -647,7 +647,7 @@ In this step, we will define a custom diagram editor for OML description models 
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
     <b>General</b></b>:
-    - <b>Browse Expression</b>: aql:self.recursiveDelete()
+    - <b>Browse Expression</b>: aql:self.cascadeDelete()
     </pre>
 
 > The `recursiveDelete` function used in the expression is not provided by the openCAEASR API. Instead, we need to implement it as a service in the viewpoint project itself.
