@@ -187,9 +187,9 @@ In this step, we will create an OML description model using the OML textual edit
 
 	<img src="assets/tutorial5/Create-Family1-Description.png" width="100%" style="border:1px groove black;"/>
 
-3. The `basicfamily` vocabulary will be created and its OML editor opens.
+3. The `family1` description will be created and its OML editor opens.
 
-	<img src="assets/tutorial5/BasicFamily-Vocabulary-Opens.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Family1-Description-Opens.png" width="100%" style="border:1px groove black;"/>
 
 > We will now use the text editor to create an OML description model defining `family1`, its men and women members, and their interrelationships.
 
@@ -341,9 +341,11 @@ In this step, we will use Sirius to develop a custom diagram for the `basicfamil
 
 9. Click the Add button again in the `Dependencies` tab and in the dialog search for `rosetta` and select the `io.opencaesar.rosetta.sirius.viewpoint` item and click Add. Save the `MANIFEST.MF` editor and close it.
 
+Note: The versions of the new dependencies you added will correspond to the version of Rosetta you installed (i.e., they do not have to match the picture).
+
 	<img src="assets/tutorial5/Add-Manifest-Dependencies.png" width="100%" style="border:1px groove black;"/>
 
-10. Back in the odesign editor, right click on the `defaultpackage.Services` node and select Copy. Then, right click on the `person1` node, and select Paste. Repeat the paste a total of 4 times. Now, click on each of the pasted services and edit them in the Property Sheet view to the following class names. Save the editor after.
+10. Back in the odesign editor, right click on the `defaultpackage.Services` node and select Copy. Then, right click on the `persons` node, and select Paste. Repeat the paste a total of 4 times. Now, click on each of the pasted services and edit them in the Property Sheet view to the following class names. Save the editor after.
 
 - io.opencaesar.oml.util.OmlRead
 - io.opencaesar.oml.util.OmlSearch

@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="49af401434841fbf046d7b0bc9e90d1c20242831" name="document-revision">
+  <meta content="87cdb7b202e0837eeda482e24ce78ff985287047" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -4061,8 +4061,8 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>Enter the details of the <code>family1</code> description as shown below. Press Finish.</p>
       <p><img src="assets/tutorial5/Create-Family1-Description.png" style="border:1px groove black;" width="100%"></p>
      <li data-md>
-      <p>The <code>basicfamily</code> vocabulary will be created and its OML editor opens.</p>
-      <p><img src="assets/tutorial5/BasicFamily-Vocabulary-Opens.png" style="border:1px groove black;" width="100%"></p>
+      <p>The <code>family1</code> description will be created and its OML editor opens.</p>
+      <p><img src="assets/tutorial5/Family1-Description-Opens.png" style="border:1px groove black;" width="100%"></p>
     </ol>
     <blockquote>
      <p>We will now use the text editor to create an OML description model defining <code>family1</code>, its men and women members, and their interrelationships.</p>
@@ -4156,9 +4156,12 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>Navigate in the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view③⑨">Model Explorer view</a> to the file <code>basicfamily-viewpoint/META-INF/MANIFEST.MF</code> and double click on it. In the open editor, switch to the <code>Dependencies</code> tab. Click the Add button. In the Plug-in Selection dialog, search for <code>oml</code> and select the <code>io.opencaesar.oml</code> item and click Add.</p>
      <li data-md>
       <p>Click the Add button again in the <code>Dependencies</code> tab and in the dialog search for <code>rosetta</code> and select the <code>io.opencaesar.rosetta.sirius.viewpoint</code> item and click Add. Save the <code>MANIFEST.MF</code> editor and close it.</p>
-      <p><img src="assets/tutorial5/Add-Manifest-Dependencies.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <p class="note" role="note"><span class="marker">Note:</span> The versions of the new dependencies you added will correspond to the version of Rosetta you installed (i.e., they do not have to match the picture).</p>
+    <p><img src="assets/tutorial5/Add-Manifest-Dependencies.png" style="border:1px groove black;" width="100%"></p>
+    <ol start="10">
      <li data-md>
-      <p>Back in the odesign editor, right click on the <code>defaultpackage.Services</code> node and select Copy. Then, right click on the <code>person1</code> node, and select Paste. Repeat the paste a total of 4 times. Now, click on each of the pasted services and edit them in the Property Sheet view to the following class names. Save the editor after.</p>
+      <p>Back in the odesign editor, right click on the <code>defaultpackage.Services</code> node and select Copy. Then, right click on the <code>persons</code> node, and select Paste. Repeat the paste a total of 4 times. Now, click on each of the pasted services and edit them in the Property Sheet view to the following class names. Save the editor after.</p>
     </ol>
     <ul>
      <li data-md>
