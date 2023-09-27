@@ -18,6 +18,34 @@ Note: Although the tutorial provides insights into leveraging federation for eff
 
 Note: The source files created in this tutorial are available for reference in this [repository](https://github.com/opencaesar/homesecurity-example), but we encourage the reader to recreate them by following the instructions below.
 
+## Creating Federated Projects ## {#tutorial6-creating-federated-projects}
+
+T/A
+
+## Defining Modeling Methodology ## {#tutorial6-defining-modeling-methodology}
+
+T/A
+
+## Defining System Architecture ## {#tutorial6-defining-system-architecture}
+
+T/A
+
+## Federating Component Realization ## {#tutorial6-federating-component-realization}
+
+T/A
+
+## Integrating Federated Components ## {#tutorial6-integrating-federated-components}
+
+T/A
+
+## Publishing with Semantic Versions ## {#tutorial6-publishing-with-semantic-versions}
+
+T/A
+
+## Performing Federated Analyses ## {#tutorial6-performing-federated-analyses}
+
+T/A
+
 ## Summary ## {#tutorial6-summary}
 
 T/A
