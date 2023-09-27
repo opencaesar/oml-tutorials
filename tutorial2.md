@@ -1331,22 +1331,23 @@ Let us now develop a query that extracts the requirements on components presenti
 PREFIX base:        <http://example.com/tutorial2/vocabulary/base#>
 PREFIX mission:     <http://example.com/tutorial2/vocabulary/mission#>
 PREFIX oml:     	<http://opencaesar.io/oml#>
+PREFIX rdfs:     	<http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?r_id ?c_id ?i_id
+SELECT DISTINCT ?r_id ?c_name ?i_name
 WHERE {
 	?r a mission:Requirement ;
 		base:hasIdentifier ?r_id ;
 		mission:specifies [
 			a mission:Presents ;
 			oml:hasSource [
-				base:hasIdentifier ?c_id
+				base:hasCanonicalName ?c_name
 			] ;
 			oml:hasTarget [
-				base:hasIdentifier ?i_id
+				base:hasCanonicalName ?i_name
 			]
 		]
 }
-ORDER BY ?r_id ?c_id ?i_id
+ORDER BY ?r_id ?c_name ?i_name
 ```
 
 10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
@@ -1384,7 +1385,7 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
 		forward joins
 		symmetric
 		irreflexive
-	]
+	] < base:IdentifiedThing
 
 	@rdfs:comment "A Component connects to zero or more components."
 	relation entity Connection [
