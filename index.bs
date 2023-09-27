@@ -30,6 +30,8 @@ Abstract: This set of tutorials introduces the ontological approach to systems m
 
 <pre class=include>path: tutorial5.md</pre>
 
+<pre class=include>path: tutorial6.md</pre>
+
 </div>
 <style>
 a[data-link-type=biblio] {

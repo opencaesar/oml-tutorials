@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="b48a8c4c484e363e9ffb1b61a1e4dd43455ca89a" name="document-revision">
+  <meta content="7a3013f66ee70f97ad1cd03d7a0362b7d54d1ee9" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2265,7 +2265,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.opencaesar.io/oml/"><img alt="OML Specification" height="48" src="https://opencaesar.github.io/oml/images/oml.svg"></a></p>
    <h1 class="p-name no-ref" id="title">OML Tutorials</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-09-18">18 September 2023</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-09-27">27 September 2023</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2365,6 +2365,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial5-create-table-editor"><span class="secno">5.7</span> <span class="content">Create Table Editor</span></a>
       <li><a href="#tutorial5-create-sparql-queries"><span class="secno">5.8</span> <span class="content">Create SPARQL Queries</span></a>
       <li><a href="#tutorial5-summary"><span class="secno">5.9</span> <span class="content">Summary</span></a>
+     </ol>
+    <li>
+     <a href="#tutorial6"><span class="secno">6</span> <span class="content">Tutorial 6: OML Federation</span></a>
+     <ol class="toc">
+      <li><a href="#tutorial6-learning-objectives"><span class="secno">6.1</span> <span class="content">Learning Objectives</span></a>
+      <li><a href="#tutorial6-summary"><span class="secno">6.2</span> <span class="content">Summary</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -4747,6 +4753,24 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     <p>In this comprehensive tutorial, we’ve delved into some captivating facets of OML. Firstly, while OML’s textual syntax offers a highly convenient means of working with the language, it’s important to note that it’s not the sole method available to OML modelers. OML Rosetta takes the experience a step further by furnishing ready-made graphical views (diagrams) for both authoring and viewing OML models. What’s truly remarkable is that these graphical and textual views remain in perfect harmony, allowing modelers to seamlessly switch between them without missing a beat.</p>
     <p>Furthermore, OML Rosetta empowers users with the ability to craft custom views, leveraging the robust <a href="https://eclipse.dev/sirius/">Sirius</a> framework. These custom views can encompass diagrams, tables, and more, all designed to enhance the user experience and make it more accessible. Imagine the potential here – not only can this feature be used to create specialized, methodology-specific views that guide users through systematically describing their systems, step by step (akin to the approach we outlined in <a href="#tutorial2">Tutorial 2</a>), but these views also stay impeccably synchronized since they stem from the same semantic models.</p>
     <p>Lastly, we revisited the remarkable analytical capabilities that OML brings to the table. While certain analyses can be effortlessly integrated into the authoring views – as exemplified by our demonstration of computing sibling counts within the table view using the OML Java API – OML’s true power lies in its capacity to infer axioms using OML rules and subsequently query these axioms with SPARQL queries. This not only grants methodologists unparalleled control over vocabulary expressiveness, dataset size, and analysis performance but also opens the door to more intricate and potent analyses. With OML, the potential for robust, insightful modeling and analysis knows no bounds.</p>
+    <h2 class="heading settled" data-level="6" id="tutorial6"><span class="secno">6. </span><span class="content">Tutorial 6: OML Federation</span><a class="self-link" href="#tutorial6"></a></h2>
+    <p class="note" role="note"><span class="marker">Note:</span> This tutorial builds on the skills learned in <a href="#tutorial2">Tutorial 2</a>. Please do that first before proceeding.</p>
+    <h3 class="heading settled" data-level="6.1" id="tutorial6-learning-objectives"><span class="secno">6.1. </span><span class="content">Learning Objectives</span><a class="self-link" href="#tutorial6-learning-objectives"></a></h3>
+    <p>This tutorial illustrates the utilization of OML in a federated approach for modeling and analyzing systems. In this context, <code>federation</code> entails the distribution of a model across distinct projects, which may reside in different repositories, encompass various concerns, and be overseen by different authorities. Within this federated framework, these projects establish dependencies on one another to import their artifacts, typically in the form of archives or models and analyses. This strategic approach not only facilitates the clear demarcation of concerns by defining well-defined boundaries but also enhances collaborative efforts. It enables concurrent work processes and allows for synchronized planning, fostering efficient teamwork.</p>
+    <p>Furthermore, we will employ a compelling real-world scenario to highlight the concept of federation support. Our illustrative scenario revolves around a home security system. Initially, an acquiring organization designs the system at an abstract level using a specific methodology. Subsequently, distinct components of this architectural design are entrusted to various suppliers for implementation with tangible, concrete components. Finally, the acquiring organization orchestrates the integration of these concrete components, utilizing the established architecture, and conducts a comprehensive analysis of this integrated system.</p>
+    <p>Upon completing this tutorial, you will gain the following essential skills:</p>
+    <ul>
+     <li data-md>
+      <p>Applying federation to distribute OML models across different projects (possibly in separate repositories) managed by different entities.</p>
+     <li data-md>
+      <p>Establishing dependencies between projects to import other projects' artifacts, fostering modularity and collaboration.</p>
+     <li data-md>
+      <p>Publishing artifacts from projects with semantic versions that communicate to downstream dependencies about the impact of change on those versions.</p>
+    </ul>
+    <p class="note" role="note"><span class="marker">Note:</span> Although the tutorial provides insights into leveraging federation for efficient modeling, collaboration, and system analysis in a representative project, it is not the intention of this tutorial to promote a particular federation strategy. This is a matter of methodology, which is an orthogonal concern.</p>
+    <p class="note" role="note"><span class="marker">Note:</span> The source files created in this tutorial are available for reference in this <a href="https://github.com/opencaesar/homesecurity-example">repository</a>, but we encourage the reader to recreate them by following the instructions below.</p>
+    <h3 class="heading settled" data-level="6.2" id="tutorial6-summary"><span class="secno">6.2. </span><span class="content">Summary</span><a class="self-link" href="#tutorial6-summary"></a></h3>
+    <p>T/A</p>
    </div>
   </main>
 <script>
