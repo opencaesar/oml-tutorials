@@ -20,32 +20,32 @@ Note: The source files created in this tutorial are available for reference in t
 
 ## Creating Federated Projects ## {#tutorial6-creating-federated-projects}
 
-T/A
+TBD
 
 ## Defining Modeling Methodology ## {#tutorial6-defining-modeling-methodology}
 
-T/A
+TBD
 
 ## Defining System Architecture ## {#tutorial6-defining-system-architecture}
 
-T/A
+TBD
 
 ## Federating Component Realization ## {#tutorial6-federating-component-realization}
 
-T/A
+TBD
 
 ## Integrating Federated Components ## {#tutorial6-integrating-federated-components}
 
-T/A
+TBD
 
 ## Publishing with Semantic Versions ## {#tutorial6-publishing-with-semantic-versions}
 
-T/A
+TBD
 
 ## Performing Federated Analyses ## {#tutorial6-performing-federated-analyses}
 
-T/A
+TBD
 
 ## Summary ## {#tutorial6-summary}
 
-T/A
+TBD
