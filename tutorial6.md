@@ -1154,8 +1154,6 @@ In this scenario, we make a breaking semantic change to the realization architec
     ```
 2. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error 
 
-Note: We observed that producing an explanation for the inconsistency in this specific case takes a long time. We are currently investigating this issue. Meanwhile, if this took more than 10 mins for you, please kill the task from the Gradle Execution view (press the red button).
-
 > The inconsistency in this case is a result of the prototype only containing two smoke sensors whereas the changed realization architecture calls for at least three.
 
 3. Undo the change in `SecureSystems/src/oml/example.com/secure/architecture.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
