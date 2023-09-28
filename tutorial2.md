@@ -38,7 +38,7 @@ description bundle <http://example.com/tutorial2/description/bundle#> as ^bundle
 
 Note: since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.
 
-6. From the [=Gradle Task view=], run the task `tutorial2/oml/startFuseki` and wait until it finishes execution in the [=Gradle Executions view=]. It should run successfully with no errors.
+6. From the [=Gradle Tasks view=], run the task `tutorial2/oml/startFuseki` and wait until it finishes execution in the [=Gradle Executions view=]. It should run successfully with no errors.
 
 Note: you should now be ready to create the patterns below. For each pattern, we give its synopsis, the new vocabulary required to support it, the new descriptions to use it, and finally the queries that we can analyze it.
 
@@ -156,7 +156,7 @@ Note: the `key` axiom in the `IdentifiedThing` aspect. It says that instances of
 		</tr>
 	</table>
 
-8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -224,7 +224,7 @@ description <http://example.com/tutorial2/description/objectives#> as objectives
 	includes <http://example.com/tutorial2/description/objectives#>
 ```
 
-12. Let us check that our ontologies are still good, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+12. Let us check that our ontologies are still good, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -249,7 +249,7 @@ WHERE {
 ORDER BY ?o1_id ?o2_id
 ```
 
-14. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+14. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Tasks view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
 
 15. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/objectives.json` and double click it to open its editor. You should see the following results in JSON.
 
@@ -327,7 +327,7 @@ Note: the semantic (logical) flags specified on the relation entity `Pursues`. T
 
     <img src="assets/tutorial2/P2-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -368,7 +368,7 @@ description <http://example.com/tutorial2/description/missions#> as missions {
 	includes <http://example.com/tutorial2/description/missions#>
 ```
 
-7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 *New Queries*
 
@@ -394,7 +394,7 @@ WHERE {
 ORDER BY ?m_id ?o_id
 ```
 
-9. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+9. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Tasks view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
 
 10. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/missions.json` and double click it to open its editor. You should see the following results in JSON.
 
@@ -666,7 +666,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
     <img src="assets/tutorial2/P3-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -792,7 +792,7 @@ Note: This should clear the errors from the previous step.
 	includes <http://example.com/tutorial2/description/components#>
 ```
 
-9. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+9. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -853,7 +853,7 @@ Note: that we used the `ref` keyword here to add more statements to the concept 
 		</tr>
 	</table>
 
-4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -879,7 +879,7 @@ Now, we will use the pattern to describe the physical composition (containment) 
 
     <img src="assets/tutorial2/P4-Components-Description.png" width="100%"/>
 	
-7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -929,7 +929,7 @@ Note: how concept `MassMagnitude` specializes `vim4:InherentUnitaryQuantityValue
 	includes <http://example.com/tutorial2/vocabulary/mechanical#>
 ```
 
-4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+4. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Descriptions**
 
@@ -1033,7 +1033,7 @@ Note: how the magnitude of each component is specified with a double literal. Th
 	includes <http://example.com/tutorial2/description/masses#>
 ```
 
-8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+8. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -1064,7 +1064,7 @@ WHERE {
 ORDER BY ?c1_id ?c2_id
 ```
 
-10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Tasks view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/components.json` and double click it to open its editor. You should see the following results in JSON.
 
@@ -1163,7 +1163,7 @@ Note: that in the second visualization above, each node in the tree rolls up the
 
 	<img src="assets/tutorial2/P6-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -1228,7 +1228,7 @@ Note: Creating a relation instance is an alternative to creating an unreified (s
 	includes <http://example.com/tutorial2/description/interfaces#>
 ```
 
-7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -1272,7 +1272,7 @@ Note: how we added aspect `SpecifiedThing` as another supertype to relation enti
 
 	<img src="assets/tutorial2/P7-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -1319,7 +1319,7 @@ description <http://example.com/tutorial2/description/requirements#> as requirem
 	includes <http://example.com/tutorial2/description/requirements#>
 ```
 
-7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -1350,7 +1350,7 @@ WHERE {
 ORDER BY ?r_id ?c_name ?i_name
 ```
 
-10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Tasks view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/requirements.json` and double click it to open its editor. You should see the following results in JSON.
 
@@ -1407,7 +1407,7 @@ Note: how the rule `Junction-infers-Connection` says that when a component prese
 
 	<img src="assets/tutorial2/P8-Mission-Vocabulary.png" width="100%"/>
 
-3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Description**
 
@@ -1448,7 +1448,7 @@ description <http://example.com/tutorial2/description/junctions#> as junctions {
 	includes <http://example.com/tutorial2/description/junctions#>
 ```
 
-7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Task view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
+7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
 **New Queries**
 
@@ -1471,7 +1471,7 @@ WHERE {
 ORDER BY ?c1_name ?c2_name
 ```
 
-10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Task view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
+10. Let's now run this query by running the task `tutorial2/oml/owlQuery` from the [=Gradle Tasks view=] and waiting for it to finish execution in the [=Gradle Executions view=]. It should run with no errors.
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/connections.json` and double click it to open its editor. You should see the following results in JSON.
 

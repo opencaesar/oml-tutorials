@@ -406,7 +406,7 @@ description bundle <http://example.com/tutorial1/description/bundle#> as ^bundle
 
 Now, it is time to run the Gradle `build` task of the project to verify whether the description bundle is logically consistent (and uses vocabulary bundles that have satisfiable classes). The OML code we have so far should pass this test.
 
-1. Click on the [=Gradle Task view=] and wait until the `tutorial1` project shows up there (keep an eye on the loading message in the status bar bottom-right).
+1. Click on the [=Gradle Tasks view=] and wait until the `tutorial1` project shows up there (keep an eye on the loading message in the status bar bottom-right).
 
     <img src="assets/tutorial1/Show-Gradle-Tasks.png" width="100%"/>
 
@@ -434,7 +434,7 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
     <img src="assets/tutorial1/Change-Pizza2-Id.png" width="100%"/>
 
-1. In the [=Gradle Task view=] double-click to rerun task `tutorial1/oml/build` again, and wait for it to finish running in the [=Gradle Executions view=].
+1. In the [=Gradle Tasks view=] double-click to rerun task `tutorial1/oml/build` again, and wait for it to finish running in the [=Gradle Executions view=].
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it now shows a failure (red icons) on task `owlReason`.
 
@@ -509,7 +509,7 @@ Now, let us put all those inferences together to understand the reported problem
 
 1. Let's now fix the problem by reverting the change we just did. Click on the `restaurant` editor again and navigate to line 30 and restore the original `hasId` property value of `pizza2` to "2". Save the editor.
 
-1. Click on the [=Gradle Task view=] and double-click to rerun the `tutorial1/oml/build` task again and wait for it to finish running in the [=Gradle Executions view=].
+1. Click on the [=Gradle Tasks view=] and double-click to rerun the `tutorial1/oml/build` task again and wait for it to finish running in the [=Gradle Executions view=].
 
 1. Inspect the build status in the [=Gradle Executions view=] and notice that it is back to showing green icons.
 
@@ -581,11 +581,11 @@ WHERE {
 
     <img src="assets/tutorial1/All-Three-SPARQL-Queries.png" width="100%"/>
 
-9. Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the [=Gradle Task view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
+9. Before we can run the queries, we need to have a database server with a query endpoint running. To do that, click on the [=Gradle Tasks view=] and navigate to the task `tutorial1/oml/startFuseki`. Double click the task and wait for it to finish running in the [=Gradle Executions view=]. 
 
 Note: A *Fuseki* server should now be running locally on your machine.
 
-10. In the [=Gradle Task view=], navigate to the task `tutorial1/oml/owlQuery` and double click to run it and wait for it to finish running in the [=Gradle Executions view=]. This task first loads the description bundle to the Fuseki server, then runs on it all the queries from the `sparql` folder.
+10. In the [=Gradle Tasks view=], navigate to the task `tutorial1/oml/owlQuery` and double click to run it and wait for it to finish running in the [=Gradle Executions view=]. This task first loads the description bundle to the Fuseki server, then runs on it all the queries from the `sparql` folder.
 
 1. In the [=Model Explorer view=], right click on the `tutorial1` project and choose *Refresh*. Then, navigate to folder `build/results` to see the JSON files resulting from running the queries. Each one is named after one query.
 
@@ -611,7 +611,7 @@ Note: A *Fuseki* server should now be running locally on your machine.
 
 >This query returned a table of one column named `pizza` which represents the pizzas (identified by their IRIs) that were considered *vegan* because none their toppings were non-vegetable.
 
-15. Now that we are done running queries, we can stop the *Fuseki* server by navigating to task `tutorial1/oml/stopFuseki` in the [=Gradle Task view=]. Double click to run the task and  wait for it to finish running in the [=Gradle Executions view=]. 
+15. Now that we are done running queries, we can stop the *Fuseki* server by navigating to task `tutorial1/oml/stopFuseki` in the [=Gradle Tasks view=]. Double click to run the task and  wait for it to finish running in the [=Gradle Executions view=]. 
 
 Note: This kills the *Fuseki* server process running on your machine.
 

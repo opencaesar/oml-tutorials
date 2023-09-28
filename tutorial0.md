@@ -51,7 +51,7 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
     1. <dfn>**Model Explorer view**</dfn> (top-left): shows your project files hierarchy.
     1. <dfn>**Properties view**</dfn> (bottom-right): shows detailed property sheet of the selection.
     1. <dfn>**Problems view**</dfn> (bottom-right): shows problems (errors, warnings) with your projects.
-    1. <dfn>**Gradle Task view**</dfn> (bottom-right): shows the list of Gradle tasks in your projects.
+    1. <dfn>**Gradle Tasks view**</dfn> (bottom-right): shows the list of Gradle tasks in your projects.
     1. <dfn>**Gradle Executions view**</dfn> (bottom-right): shows the details of execution of Gradle tasks.
     1. <dfn>**Console view**</dfn> (bottom-right): shows messages printed by Gradle tasks.
     1. <dfn>**Editors**</dfn> (top-right): this area shows the open editors (if any).

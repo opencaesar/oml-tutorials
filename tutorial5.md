@@ -955,7 +955,7 @@ GROUP BY ?person ?parent
 ORDER BY ?person
 ```
 
-4. Click in the [=Gradle Task view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
+4. Click in the [=Gradle Tasks view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
 
 5. Inspect the results by navigating in the [=Model Explorer view=] to the `basicfamily-model/build` folder. Right click on it and select Refresh. Navigate to the `basicfamily-model/build/results/silblings.json` file. Double-click to open it. You should see the following result:
 
@@ -1046,7 +1046,7 @@ GROUP BY ?person
 ORDER BY ?person
 ```
 
-8. Click in the [=Gradle Task view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
+8. Click in the [=Gradle Tasks view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
 
 9. Inspect the results by navigating in the [=Model Explorer view=] to the `basicfamily-model/build` folder. Right click on it and select Refresh. Navigate to the `basicfamily-model/build/results/cousins.json` file. Double-click to open it. You should see the following result:
 
@@ -1159,7 +1159,7 @@ ORDER BY ?person
 
 > Notice, how the pattern for matching `cousin` is now direct (one hop).
 
-14. Click in the [=Gradle Task view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
+14. Click in the [=Gradle Tasks view=] and double click on the task `basicfamily-model/oml/owlQuery`. Execution runs in the [=Gradle Executions view=].
 
 15. Inspect the results in the `basicfamily-model/build/results/cousins.json` file. You should see the following result:
 
