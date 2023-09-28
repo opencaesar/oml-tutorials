@@ -1490,7 +1490,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="51086a995cff5be7310376d4ac6de9d899908fae" name="document-revision">
+  <meta content="df61bece92843ab9637ce5f830096c6584fecabb" name="document-revision">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -2335,7 +2335,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#tutorial6-define-system-architecture"><span class="secno">6.5</span> <span class="content">Define System Architecture</span></a>
       <li><a href="#tutorial6-federate-component-realization"><span class="secno">6.6</span> <span class="content">Federate Component Realization</span></a>
       <li><a href="#tutorial6-integrate-federated-components"><span class="secno">6.7</span> <span class="content">Integrate Federated Components</span></a>
-      <li><a href="#tutorial6-perform-federated-analyses"><span class="secno">6.8</span> <span class="content">Experiment with Federation Scenarios</span></a>
+      <li><a href="#tutorial6-perform-federated-analyses"><span class="secno">6.8</span> <span class="content">Run Federation Scenarios</span></a>
       <li><a href="#tutorial6-publish-with-semantic-versions"><span class="secno">6.9</span> <span class="content">Publish with Semantic Versions</span></a>
       <li><a href="#tutorial6-summary"><span class="secno">6.10</span> <span class="content">Summary</span></a>
      </ol>
@@ -6279,7 +6279,7 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     <p>OML federation can be implemented in one of the following (incrementally-federated) styles:</p>
     <ol>
      <li data-md>
-      <p>OML sub projects of a common parent, depend on each each other directly, managed in a single repo.</p>
+      <p>OML sub projects of a common parent, depend on each other directly, managed in a single repo.</p>
      <li data-md>
       <p>OML sub projects of a common parent, depend on each other through Maven, managed in a single repo.</p>
      <li data-md>
@@ -6291,7 +6291,7 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     <p>The following specific OML projects will be created for the example:</p>
     <ol>
      <li data-md>
-      <p><strong>Parent</strong>: used to nest the sub projects and facilitate their direct inter-depenednecies.</p>
+      <p><strong>Parent</strong>: used to nest the sub projects and facilitate their direct inter-dependencies.</p>
      <li data-md>
       <p><strong>Methodology</strong>: used to define the vocabulary for the systems modeling methodology.</p>
      <li data-md>
@@ -6305,11 +6305,11 @@ The Kelper16 missions' components are characterized by their masses. Those masse
      <li data-md>
       <p><strong>Secure Systems</strong>: used to integrate realized components by the Secure acquirer (depends on 4, 5, 6).</p>
     </ol>
-    <p>The above dependencies reflect our federation strategy. First, we define the system modeling methodology we will use. After that, we use the methodology to define an architecture for a home security system at an abstract level identifying the main components and their characteristics, interrelations, and constraints. Then, we give each component to a supplier to realize it in a way that conforms to the abstract architecture. Finally, a system integrator/acquirer (e.g., an OEM, a solution provider) integrates the realized components into a realiztion architecture and analyzes its conformance to the abstract architecture.</p>
+    <p>The above dependencies reflect our federation strategy. First, we define the system modeling methodology we will use. After that, we use the methodology to define an architecture for a home security system at an abstract level identifying the main components and their characteristics, interrelations, and constraints. Then, we give each component to a supplier to realize it in a way that conforms to the abstract architecture. Finally, a system integrator/acquirer (e.g., an OEM, a solution provider) integrates the realized components into a realization architecture and analyzes its conformance to the abstract architecture.</p>
     <h3 class="heading settled" data-level="6.3" id="tutorial6-create-federated-projects"><span class="secno">6.3. </span><span class="content">Create Federated Projects</span><a class="self-link" href="#tutorial6-create-federated-projects"></a></h3>
     <p>In this step, we will create all the projects of the example and configure their inter-dependencies as specified above.</p>
     <blockquote>
-     <p>We will use the <code>Project Explorer</code> view as it supports project nesting better than the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑤⓪">Model Explorer view</a>. If not already visible, from the menu menu, select Window -> Show View -> Other ..., search for 'Project Explorer', select it and click Open.</p>
+     <p>We will use the <code>Project Explorer</code> view as it supports project nesting better than the <a data-link-type="dfn" href="#model-explorer-view" id="ref-for-model-explorer-view⑤⓪">Model Explorer view</a>. If not already visible, from the menu, select Window -> Show View -> Other ..., search for 'Project Explorer', select it and click Open.</p>
     </blockquote>
     <p><img src="assets/tutorial6/Project-Explorer.png" style="border:1px groove black;" width="100%"></p>
     <p><strong>Parent Project</strong></p>
@@ -6500,6 +6500,7 @@ Prefix: system
   <c- n>scalar</c-> <c- n>property</c-> <c- n>hasIdentifier</c-> <c- p>[</c->
     <c- n>domain</c-> <c- nc>IdentifiedElement</c->
     <c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+    <c- n>functional</c->
   <c- p>]</c->
 
   <c- n>relation</c-> <c- n>contains</c-> <c- p>[</c->
@@ -6548,14 +6549,14 @@ Prefix: system
     <c- n>to</c-> <c- nc>Message</c->
     <c- n>asymmetric</c->
     <c- n>irreflexive</c->
-  <c- p>]</c->
+  <c- p>]</c-> <c- o>&lt;</c-> <c- n>transfers</c->
 
   <c- n>relation</c-> <c- n>transfersOut</c-> <c- p>[</c->
     <c- n>from</c-> <c- nc>Interface</c->
     <c- n>to</c-> <c- nc>Message</c->
     <c- n>asymmetric</c->
     <c- n>irreflexive</c->
-  <c- p>]</c->
+  <c- p>]</c-> <c- o>&lt;</c-> <c- n>transfers</c->
 <c- p>}</c->
 </pre>
     </ol>
@@ -6822,7 +6823,7 @@ Prefix: prototype
 </pre>
     </ol>
     <blockquote>
-     <p>This prototype can be depicted as shown below. We used a custom viewpoit defined <a href="https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint">here</a>.</p>
+     <p>This prototype can be depicted as shown below. We used a custom viewpoint defined <a href="https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint">here</a>.</p>
     </blockquote>
     <p><img src="assets/tutorial6/HomeSecurity-Prototype.png" width="100%"></p>
     <blockquote>
@@ -6847,9 +6848,9 @@ Prefix: prototype
       <p>In the <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③③">Gradle Tasks view</a>, run the task <code>homesecurity-models/HomeSecurity/build/build</code>. The task should run successfully.</p>
     </ol>
     <h3 class="heading settled" data-level="6.6" id="tutorial6-federate-component-realization"><span class="secno">6.6. </span><span class="content">Federate Component Realization</span><a class="self-link" href="#tutorial6-federate-component-realization"></a></h3>
-    <p>In this step, we will enable three different suppliers (<code>Smart</code>, <code>Safe</code>, and <code>Supreme</code>) to realize the sub components (<code>Sensor</code>, <code>Alarm System</code>, <code>Monitoring System</code>) of the home security architecture. This means, each of them, in their respective project, will refresh their dependencies to download a read-only copy of the <code>architeture</code> vocabulary so they can import it in their respective realization vocabulary.</p>
+    <p>In this step, we will enable three different suppliers (<code>Smart</code>, <code>Safe</code>, and <code>Supreme</code>) to realize the subcomponents (<code>Sensor</code>, <code>Alarm System</code>, <code>Monitoring System</code>) of the home security architecture. This means, each of them, in their respective project, will refresh their dependencies to download a read-only copy of the <code>architceture</code> vocabulary so they can import it in their respective realization vocabulary.</p>
     <p><strong>Smart Sensors</strong></p>
-    <p>This supplier builds two kinds of sensors, a smoke sensor and a motion sensor. They will provide a <code>sensors</code> vocabulary that describes how their sensors comform to the home security abstract architecture.</p>
+    <p>This supplier builds two kinds of sensors, a smoke sensor and a motion sensor. They will provide a <code>sensors</code> vocabulary that describes how their sensors conform to the home security abstract architecture.</p>
     <blockquote>
      <p>Let us refresh the dependencies to get the latest copy of the architecture (and transitively the methodology).</p>
     </blockquote>
@@ -6981,7 +6982,7 @@ Prefix: safe
 </pre>
     </ol>
     <blockquote>
-     <p>The above vocabulary describes <code>AlarmSystem</code> as a concrete specialization of the abstract <code>AlarmSystem</code> concept. Notice how the concrete system present concrete interfaces that specialize the corresponding three interfaces of the abstract <code>Sensor</code>. In addition, it adds an additional interface I9 that transfers Sound out as an alarm. That interfce can be joined to a Speaker component they provide too.</p>
+     <p>The above vocabulary describes <code>AlarmSystem</code> as a concrete specialization of the abstract <code>AlarmSystem</code> concept. Notice how the concrete system present concrete interfaces that specialize the corresponding three interfaces of the abstract <code>Sensor</code>. In addition, it adds an additional interface I9 that transfers Sound out as an alarm. That interface can be joined to a Speaker component they provide too.</p>
     </blockquote>
     <p class="note" role="note"><span class="marker">Note:</span> that vocabulary was created using the built-in vocabulary editor seen in <a href="#tutorial5-create-oml-vocabulary">Tutorial 5</a>.</p>
     <p><img src="assets/tutorial6/Safe-Alarms.png" width="100%"></p>
@@ -7006,7 +7007,7 @@ Prefix: safe
      <li data-md>
       <p>In the <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③⑤">Gradle Tasks view</a>, run the task <code>homesecurity-models/SafeAlarms/build/build</code>. The task should run successfully.</p>
     </ol>
-    <p><strong>Superme Monitors</strong></p>
+    <p><strong>Supreme Monitors</strong></p>
     <p>This supplier builds a Monitoring System for a home security architecture. They provide an <code>monitors</code> vocabulary that describes how their system conforms to the architecture.</p>
     <blockquote>
      <p>Let us refresh the dependencies to get the latest copy of the architecture (and transitively the methodology).</p>
@@ -7078,14 +7079,14 @@ Prefix: supreme
      <li data-md>
       <p>In Project Explorer, right click on <code>homesecurity-models/SecureSystems</code> folder and choose Gradle -> Refresh Gradle Project.</p>
      <li data-md>
-      <p>Navigate to the folder <code>SecureSystems/build/oml/example.com</code> and verify it has nested folders: <code>methodology</code>, <code>homesecurity</code>, <code>smart</code>, <code>safe</code>, and ``supreme`.</p>
+      <p>Navigate to the folder <code>SecureSystems/build/oml/example.com</code> and verify it has nested folders: <code>methodology</code>, <code>homesecurity</code>, <code>smart</code>, <code>safe</code>, and <code>supreme</code>.</p>
     </ol>
     <blockquote>
-     <p>Now that the integrator has all the dpendencies it needs, it can proceed to describe the realization architecture.</p>
+     <p>Now that the integrator has all the dependencies it needs, it can proceed to describe the realization architecture.</p>
     </blockquote>
     <ol start="3">
      <li data-md>
-      <p>In Project Explorer, navigate to the folder `SecureSystems/src/oml/example.com/secure` and right click. Choose New -> OML Model. Specify the following:</p>
+      <p>In Project Explorer, navigate to the folder <code>SecureSystems/src/oml/example.com/secure</code> and right click. Choose New -> OML Model. Specify the following:</p>
 <pre>Ontology Kind: Vocabulary
 Namespace: http://example.com/secure/architecture#
 Prefix: secure
@@ -7149,7 +7150,7 @@ Prefix: secure
 </pre>
     </ol>
     <blockquote>
-     <p>The above vocabulary describes a concrete realization architecture for the abstract `SecuritySystem`. That concrete system uses `Smart` sensors (a minimum of 2 smoke senseors and one motion sensor), `a Safe` alarm system, and a `Supreme` monitoring system. In addition, it provides its own realization of the two `SecuritySystem` iterfaces and all the junctions that connect the various realized interfaces together based on the abstract architecture.</p>
+     <p>The above vocabulary describes a concrete realization architecture for the abstract <code>SecuritySystem</code>. That concrete system uses <code>Smart</code> sensors (a minimum of 2 smoke sensors and one motion sensor), <code>a Safe</code> alarm system, and a <code>Supreme</code> monitoring system. In addition, it provides its own realization of the two <code>SecuritySystem</code> interfaces and all the junctions that connect the various realized interfaces together based on the abstract architecture.</p>
     </blockquote>
     <p class="note" role="note"><span class="marker">Note:</span> that vocabulary was created using the built-in vocabulary editor seen in <a href="#tutorial5-create-oml-vocabulary">Tutorial 5</a>.</p>
     <p><img src="assets/tutorial6/Secure-Systems.png" width="100%"></p>
@@ -7158,13 +7159,13 @@ Prefix: secure
     </blockquote>
     <ol start="5">
      <li data-md>
-      <p>In Project Explorer, right click on `SecureSystems/src/oml/example.com/secure` and choose New -> OML Model. Specify the following:</p>
+      <p>In Project Explorer, right click on <code>SecureSystems/src/oml/example.com/secure</code> and choose New -> OML Model. Specify the following:</p>
 <pre>Ontology Kind: Vocabulary Bundle
 Namespace: http://example.com/secure/v-bundle#
 Prefix: bundle
 </pre>
      <li data-md>
-      <p>Replace content of `v-bundle.oml` by the following then save the editor.</p>
+      <p>Replace content of <code>v-bundle.oml</code> by the following then save the editor.</p>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/v-bundle#> as ^bundle {</c->
 
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/smart/bundle#>	</c->
@@ -7176,17 +7177,17 @@ Prefix: bundle
 </pre>
     </ol>
     <blockquote>
-     <p>Again, it would be helpful to define a prototype description (or more) to analyze this specific realization architecure.</p>
+     <p>Again, it would be helpful to define a prototype description (or more) to analyze this specific realization architecture.</p>
     </blockquote>
     <ol start="7">
      <li data-md>
-      <p>In Project Explorer, right click on `SecureSystems/src/oml/example.com/secure` and choose New -> OML Model. Specify the following:</p>
+      <p>In Project Explorer, right click on <code>SecureSystems/src/oml/example.com/secure</code> and choose New -> OML Model. Specify the following:</p>
 <pre>Ontology Kind: Description
 Namespace: http://example.com/secure/prototype#
 Prefix: prototype
 </pre>
      <li data-md>
-      <p>Replace content of `prototype.oml` by the following then save the editor.</p>
+      <p>Replace content of <code>prototype.oml</code> by the following then save the editor.</p>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/prototype#> as prototype {</c->
 
   <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/methodology/system#> as system</c->
@@ -7326,7 +7327,7 @@ Prefix: prototype
 </pre>
     </ol>
     <blockquote>
-     <p>This prototype can be depicted as shown below. We used a custom viewpoit defined <a href="https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint">here</a>.</p>
+     <p>This prototype can be depicted as shown below. We used a custom viewpoint defined <a href="https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint">here</a>.</p>
     </blockquote>
     <p><img src="assets/tutorial6/Secure-Prototype.png" width="100%"></p>
     <blockquote>
@@ -7334,7 +7335,7 @@ Prefix: prototype
     </blockquote>
     <ol start="9">
      <li data-md>
-      <p>In Project Explorer, navigate to the file `SecureSystems/src/oml/example.com/secure/bundle.oml` and double click to open it. Replace content by the following then save the editor.</p>
+      <p>In Project Explorer, navigate to the file <code>SecureSystems/src/oml/example.com/secure/bundle.oml</code> and double click to open it. Replace content by the following then save the editor.</p>
 <pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/bundle#> as ^bundle {</c->
 
   <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/v-bundle#>	</c->
@@ -7348,14 +7349,277 @@ Prefix: prototype
     </blockquote>
     <ol start="10">
      <li data-md>
-      <p>In the <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③⑦">Gradle Tasks view</a>, run the task `homesecurity-models/SecureSystems/build/build`. The task should run successfully.</p>
+      <p>In the <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③⑦">Gradle Tasks view</a>, run the task <code>homesecurity-models/SecureSystems/build/build</code>. The task should run successfully.</p>
     </ol>
-    <h3 class="heading settled" data-level="6.8" id="tutorial6-perform-federated-analyses"><span class="secno">6.8. </span><span class="content">Experiment with Federation Scenarios</span><a class="self-link" href="#tutorial6-perform-federated-analyses"></a></h3>
-    <p>TBD</p>
+    <p class="note" role="note"><span class="marker">Note:</span> the reference <a href="https://github.com/opencaesar/homesecurity-example">repository</a> contains the state of the models up to this point only.</p>
+    <h3 class="heading settled" data-level="6.8" id="tutorial6-perform-federated-analyses"><span class="secno">6.8. </span><span class="content">Run Federation Scenarios</span><a class="self-link" href="#tutorial6-perform-federated-analyses"></a></h3>
+    <p>So far, we have seen the happy path for federation where upstream dependencies do not change and downstream dependencies always conform. Notice that change can always safely occur in any of the federated projects without impact as long as their downstream dependencies do not refresh their upstream dependencies. This is a great benefit of federation which allows projects to control the rate of update for their dependencies.</p>
+    <p>In this step, we will run other common federation scenarios to see the ability of OML to handle them. We will always undo the changes at the end of each scenario.</p>
+    <p><strong>Scenario 1: Non-Breaking Methodology Change</strong></p>
+    <p>In this scenario, we make a non-breaking change to the <code>system</code> methodology vocabulary.</p>
+    <ol>
+     <li data-md>
+      <p>Open the file <code>Methodology/src/oml/example.com/methodology/system.oml</code> and change the <code>contains</code> relation by removing the <code>irreflexive</code> flag (a non-breaking change). Thew new relation looks like this:</p>
+<pre class="language-scala highlight"><c- n>relation</c-> <c- n>contains</c-> <c- p>[</c->
+  <c- n>from</c-> <c- nc>Component</c->
+  <c- n>to</c-> <c- nc>Component</c->
+  <c- n>reverse</c-> <c- n>isContainedIn</c->
+  <c- n>inverse</c-> <c- n>functional</c->
+  <c- n>asymmetric</c->
+<c- p>]</c->
+</pre>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project. (Note the progress of this operation in the bottom-right corner of the IDE.)</p>
+    </ol>
+    <blockquote>
+     <p>Since we ran the action on a parent project, it runs on every nested project recursively resulting in all projects refreshing their dependencies. Since we changed the <code>Methodology</code> project, which is the most upstream dependency, all the other projects should get an updated version of that <code>system</code> vocabulary.</p>
+    </blockquote>
+    <ol start="3">
+     <li data-md>
+      <p>Navigate to and open the read-only <code>SecureSystems/build/oml/example.com/methodology/system.oml</code>. Verify that the <code>contains</code> relation was modified.</p>
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③⑧">Gradle Tasks view</a>, run <code>homesecurity-models/SecureSystems/build/build</code> and verify that it still builds correctly.</p>
+     <li data-md>
+      <p>Undo the change in <code>Methodology/src/oml/example.com/methodology/system.oml</code> and right click on <code>homesecurity-models</code> and select Gradle -> Refresh Gradle Project.</p>
+    </ol>
+    <p><strong>Scenario 2: Breaking Methodology Change</strong></p>
+    <p>In this scenario, we make a breaking syntax change to the <code>system</code> methodology vocabulary.</p>
+    <ol>
+     <li data-md>
+      <p>Open the file <code>Methodology/src/oml/example.com/methodology/system.oml</code> and rename the <code>contains</code> relation to <code>composes</code> flag (a breaking change). Thew new relation looks like this:</p>
+<pre class="language-scala highlight"><c- n>relation</c-> <c- n>composes</c-> <c- p>[</c->
+    <c- n>from</c-> <c- nc>Component</c->
+    <c- n>to</c-> <c- nc>Component</c->
+    <c- n>reverse</c-> <c- n>isContainedIn</c->
+    <c- n>inverse</c-> <c- n>functional</c->
+    <c- n>asymmetric</c->
+    <c- n>irreflexive</c->
+  <c- p>]</c->
+</pre>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+    </ol>
+    <blockquote>
+     <p>Verify that all the other projects show compile errors. Inspect the Problem view and should see many errors.</p>
+    </blockquote>
+    <ol start="3">
+     <li data-md>
+      <p>Undo the change in <code>Methodology/src/oml/example.com/methodology/system.oml</code> and right click on <code>homesecurity-models</code> and select Gradle -> Refresh Gradle Project.</p>
+    </ol>
+    <blockquote>
+     <p>You should observe that the problems get resolved.</p>
+    </blockquote>
+    <p><strong>Scenario 3: Breaking Architectural Change</strong></p>
+    <p>In this scenario, we make a breaking semantic change to the abstract <code>architecture</code> vocabulary.</p>
+    <ol>
+     <li data-md>
+      <p>Open the file <code>HomeSecurity/src/oml/example.com/homesecurity/architecture.oml</code> and change the <code>SecuritySystem</code> concept to strenghten the restriction on the number of Sensors to be <code>exactly 1 Sensor</code> (a breaking change). Thew new concept looks like this:</p>
+<pre class="language-scala highlight"><c- n>concept</c-> <c- nc>SecuritySystem</c-> <c- o>&lt;</c-> <c- n>system</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I1</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I2</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>Sensor</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>AlarmSystem</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>MonitoringSystem</c->
+<c- p>]</c->
+</pre>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view③⑨">Gradle Tasks view</a>, run <code>homesecurity-models/SecureSystems/build/build</code> and verify that it gives an error.</p>
+     <li data-md>
+      <p>Double click to open the file <code>SecureSystems/build/reports/reasoning.xml</code>. You should see the following:</p>
+      <p><img src="assets/tutorial6/Reasoning-Error-1.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <blockquote>
+     <p>The error indicates that a max cardinality restriction is violated. This is nice because now the integrator <code>SecureSystems</code> gets alerted to the architectural change that calls for exactly 1 sensor, which is inconsistent with its realization architecture which calls for multiple sensors (see the code below).</p>
+    </blockquote>
+<pre class="language-scala highlight"><c- c1>// Realization SecuritySystem</c->
+<c- n>concept</c-> <c- nc>SecuritySystem</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>SecuritySystem</c-> <c- p>[</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I1</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I2</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>min</c-> <c- mi>2</c-> <c- n>smart</c-><c- p>:</c-><c- nc>SmokeSensor</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>min</c-> <c- mi>1</c-> <c- n>smart</c-><c- p>:</c-><c- nc>MotionSensor</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- n>safe</c-><c- p>:</c-><c- nc>AlarmSystem</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- n>supreme</c-><c- p>:</c-><c- nc>MonitoringSystem</c->
+<c- p>]</c->
+</pre>
+    <ol start="5">
+     <li data-md>
+      <p>Undo the change in <code>HomeSecurity/src/oml/example.com/homesecurity/architecture.oml</code> and right click on <code>homesecurity-models</code> and select Gradle -> Refresh Gradle Project.</p>
+    </ol>
+    <p><strong>Scenario 4: Breaking Component Realization</strong></p>
+    <p>In this scenario, we make a breaking semantic change in one of the realization components that gets detected at the integrated level.</p>
+    <ol>
+     <li data-md>
+      <p>Open the file <code>SafeAlarms/src/oml/example.com/safe/alarms.oml</code> and change the <code>AlarmSystem</code> concept by changing the restriction on the I9 interface (for sound) to <code>exactly 1</code>. Thew new concept looks like this:</p>
+<pre class="language-scala highlight"><c- n>concept</c-> <c- nc>AlarmSystem</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>AlarmSystem</c-> <c- p>[</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I4</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I5</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I6</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I9</c->
+<c- p>]</c->
+</pre>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view④⓪">Gradle Tasks view</a>, run <code>homesecurity-models/SecureSystems/build/build</code> and verify that it gives an error.</p>
+     <li data-md>
+      <p>Double click to open the file <code>SecureSystems/build/reports/reasoning.xml</code>. You should see the following:</p>
+      <p><img src="assets/tutorial6/Reasoning-Error-1.png" style="border:1px groove black;" width="100%"></p>
+    </ol>
+    <blockquote>
+     <p>The inconsistency in this case is a result of the prototype not incorporating the required sound interface. Note that such requirement is not called for in the abstract architecture but comes from the realization. This would be an opportunity for a conversation between all parties: the architect, the supplier, and the acquirer (the integrator).</p>
+    </blockquote>
+    <ol start="5">
+     <li data-md>
+      <p>Undo the change in <code>SafeAlarms/src/oml/example.com/safe/alarms.oml</code> and right click on <code>homesecurity-models</code> and select Gradle -> Refresh Gradle Project.</p>
+    </ol>
+    <p><strong>Scenario 5: Breaking Realization Prototype</strong></p>
+    <p>In this scenario, we make a breaking semantic change to the realization architecture which ends up breaking the realization prototype. Note that this is not a federation error per se, but it shows why having prototype(s) in addition to the realization architecture is interesting for catching some errors (note that the realization architecture itself is still consistent with the abstract one in this case).</p>
+    <ol>
+     <li data-md>
+      <p>Open the file <code>SecureSystems/src/oml/example.com/secure/architecture.oml</code> and change the <code>SecuritySystem</code> concept by increasing the number of required smoke sensors to 3 (a breaking change). Thew new instance looks like this:</p>
+<pre class="language-scala highlight"><c- n>concept</c-> <c- nc>SecuritySystem</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>SecuritySystem</c-> <c- p>[</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I1</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I2</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>min</c-> <c- mi>3</c-> <c- n>smart</c-><c- p>:</c-><c- nc>SmokeSensor</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>min</c-> <c- mi>1</c-> <c- n>smart</c-><c- p>:</c-><c- nc>MotionSensor</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- n>safe</c-><c- p>:</c-><c- nc>AlarmSystem</c->
+  <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- n>supreme</c-><c- p>:</c-><c- nc>MonitoringSystem</c->
+<c- p>]</c->
+</pre>
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view④①">Gradle Tasks view</a>, run <code>homesecurity-models/SecureSystems/build/build</code> and verify that it gives an error</p>
+    </ol>
+    <p class="note" role="note"><span class="marker">Note:</span> We observed that producing an explanation for the inconsistency in this specific case takes a long time. We are currently investigating this issue. Meanwhile, if this took more than 10 mins for you, please kill the task from the Gradle Execution view (press the red button).</p>
+    <blockquote>
+     <p>The inconsistency in this case is a result of the prototype only containing two smoke sensors whereas the changed realization architecture calls for at least three.</p>
+    </blockquote>
+    <ol start="3">
+     <li data-md>
+      <p>Undo the change in <code>SecureSystems/src/oml/example.com/secure/architecture.oml</code> and right click on <code>homesecurity-models</code> and select Gradle -> Refresh Gradle Project.</p>
+    </ol>
     <h3 class="heading settled" data-level="6.9" id="tutorial6-publish-with-semantic-versions"><span class="secno">6.9. </span><span class="content">Publish with Semantic Versions</span><a class="self-link" href="#tutorial6-publish-with-semantic-versions"></a></h3>
-    <p>TBD</p>
+    <p>We hope that the previous section convinced you that having proper support for federation is paramount. This is especially true in change scenarios. Controlling when to adopt a breaking change in your upstream dependencies gives you time to plan for the impact (the needed changes). But how can you tell if the change is breaking or not. The software industry has developed a very smart convention for this problem called semantic versions (for software libraries), where a major revision for indicates large breaking change, a minor revision indicates large non-breaking changes, and a patch revision indicates minor changes and/or bug fixes. In openCAESAR, we adopt the same approach of publishing OML models with semantic versions. This works really nice with the way OML projects declare their dependencies as <a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">Maven</a> dependencies.</p>
+    <p>In this step, we will first publish all the projects to Maven Local (on the local machine). Then, we will convert one of the direct dependencies we declared before into a Maven-based one with a semantic version. This will be the dependency of the <code>SecureSystems</code> project on the <code>SafeAlarm</code> project.</p>
+    <blockquote>
+     <p>Maven Local is a convenient playground for publishing Maven dependencies since it is only visible on that machine. Once a version is good and needs to be published more widely, it could be pushed to a remote accessible Maven repository (like Maven Central or an enterprise Maven repository).</p>
+    </blockquote>
+    <ol>
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view④②">Gradle Tasks view</a>, run <code>homesecurity-models/publishing/publishToMavenLocal</code> and verify that it runs successfully.</p>
+    </ol>
+    <blockquote>
+     <p>Now, all the projects have published their OML models to Maven Local using the default 1.0.0 version.</p>
+    </blockquote>
+    <ol start="2">
+     <li data-md>
+      <p>On your computer, navigate to your <a href="https://www.baeldung.com/maven-local-repository">local Maven repository</a> typically named <code>.m2</code>. Expand the nested path <code>repository/com/example</code> and you should see all the 1.0.0 project artifacts published there.</p>
+      <p><img src="assets/tutorial6/Maven-Local.png" style="border:1px groove black;" width="25%"></p>
+     <li data-md>
+      <p>Back in Rosetta, open the file <code>SecureSystems/build.gradle</code> and navigate to the dependencies section and change it as follows:</p>
+<pre>/*
+* The OML dependencies
+*/
+dependencies {
+    oml project(':SmartSensors')
+    //oml project(':SafeAlarms')
+    oml "com.example:SafeAlarms:1.0.0"
+    oml project(':SupremeMonitors')
+}
+</pre>
+    </ol>
+    <blockquote>
+     <p>This pins the version of <code>SafeAlarms</code> that the integrator <code>SecureSystems</code> downloads to exactly 1.0.0. This means any future version of <code>SafeAlarms</code> will not be downloaded. Let’s test this.</p>
+    </blockquote>
+    <ol start="4">
+     <li data-md>
+      <p>Open the file <code>SafeAlarms/src/oml/example.com/safe/alarms.oml</code>, find the concept <code>AlarmSystem</code> and change the I9 restriction to <code>max 2 I9</code>, which is a non-breaking change.</p>
+    </ol>
+    <blockquote>
+     <p>Since it created a non-breaking small change, <code>SafeAlarm</code> decided to change its version to <code>1.0.1</code> i.e, create a patch revision.</p>
+    </blockquote>
+    <ol start="5">
+     <li data-md>
+      <p>Open the file <code>SafeAlarms/build.gradle</code> and change the version at the top from <code>1.0.0</code> to <code>1.0.1</code>. Save the editor.</p>
+    </ol>
+    <blockquote>
+     <p>Now we need to publish the new revision to Maven Local again.</p>
+    </blockquote>
+    <ol start="6">
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view④③">Gradle Tasks view</a>, run <code>homesecurity-models/publishing/publishToMavenLocal</code> and verify that it runs successfully.</p>
+    </ol>
+    <blockquote>
+     <p>Inspect the new version in your Maven Local folder just to double check.</p>
+    </blockquote>
+    <p><img src="assets/tutorial6/Maven-Local-2.png" style="border:1px groove black;" width="25%"></p>
+    <ol start="5">
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+    </ol>
+    <blockquote>
+     <p>Since <code>SecureSystems</code> pinned the version of its dependency to <code>1.0.0</code> it will not get this revision.</p>
+    </blockquote>
+    <ol start="6">
+     <li data-md>
+      <p>Open the file <code>SecureSystems/build/oml/example.com/safe/alarms.oml</code> and verify that the I9 restriction is still <code>max 1 I9</code>.</p>
+    </ol>
+    <blockquote>
+     <p>This is unfortunate since <code>SecureSystems</code> should really get those patch revisions regularly because they may contain important bug fixes from <code>SafeAlarm</code>. Let’s relax their semantic version dependency to <code>1.0.+</code> instead. Note that <code>+</code> is a dynamic version that means the latest. So this will still pin the major.minor versions to <code>1.0</code> but will get the latest patch version.</p>
+    </blockquote>
+    <ol start="7">
+     <li data-md>
+      <p>Oen the file <code>SecureSystems/build.gradle</code> and change the version of <code>SafeAlarms</code> to <code>oml "com.example:SafeAlarms:1.0.+"</code>.</p>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+     <li data-md>
+      <p>Open the file <code>SecureSystems/build/oml/example.com/safe/alarms.oml</code> again and verify that the I9 restriction is now <code>max 2 I9</code>. Yay!</p>
+    </ol>
+    <blockquote>
+     <p>In fact, <code>SecureSystems</code> may want to pin the version to <code>1.+</code> instead, i.e. fix the major revision but adopt the latest minor/patch revisions. This may be reasonable to protect against breaking changes but still allow non-breaking changes to be retrieved. Let’s test that.</p>
+    </blockquote>
+    <ol start="10">
+     <li data-md>
+      <p>Oen the file <code>SecureSystems/build.gradle</code> and change the version of <code>SafeAlarms</code> to <code>oml "com.example:SafeAlarms:1.+"</code>.</p>
+     <li data-md>
+      <p>Open the file <code>SafeAlarms/src/oml/example.com/safe/alarms.oml</code>, find the concept <code>AlarmSystem</code> and change the I9 restriction to <code>min 2 I9</code>, which is a breaking change.</p>
+    </ol>
+    <blockquote>
+     <p>Since it created a breaking change, <code>SafeAlarm</code> changes its version to <code>2.0.0</code> i.e, create a major revision.</p>
+    </blockquote>
+    <ol start="12">
+     <li data-md>
+      <p>Open the file <code>SafeAlarms/build.gradle</code> and change the version at the top from <code>1.0.0</code> to <code>2.0.0</code>. Save the editor.</p>
+    </ol>
+    <blockquote>
+     <p>Now we need to publish the new revision to Maven Local again.</p>
+    </blockquote>
+    <ol start="13">
+     <li data-md>
+      <p>In <a data-link-type="dfn" href="#gradle-tasks-view" id="ref-for-gradle-tasks-view④④">Gradle Tasks view</a>, run <code>homesecurity-models/publishing/publishToMavenLocal</code> and verify that it runs successfully.</p>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+     <li data-md>
+      <p>Open the file <code>SecureSystems/build/oml/example.com/safe/alarms.oml</code> and verify that the I9 restriction is still <code>max 2 I9</code>.</p>
+    </ol>
+    <blockquote>
+     <p>This is great since <code>SecureSystems</code> did not get the new <code>2.0.0</code> revision of <code>SafeAlarm</code> as this would have broken their architecture possibly at an inconvenient time. Later, when they have more time in their schedule to deal with this major revision, they can explicitly specify that in their dependencies.</p>
+    </blockquote>
+    <ol start="16">
+     <li data-md>
+      <p>Open the file <code>SecureSystems/build.gradle</code> and change the version of <code>SafeAlarms</code> to <code>oml "com.example:SafeAlarms:2.+"</code>.</p>
+     <li data-md>
+      <p>Right click on the project <code>homesecurity-models</code> and select Grade -> Refresh Grade Project.</p>
+     <li data-md>
+      <p>Open the file <code>SecureSystems/build/oml/example.com/safe/alarms.oml</code> and verify that the I9 restriction is now <code>min 1 I9</code>. Awesome!</p>
+    </ol>
+    <p>In conclusion, the discussion above showed how semantic versions can be a powerful tool to enable more control over change propagation in a federation scenario. This is especially important when the two sub projects are not working closely together. When projects collaborate closely (federation style 1), they can simply use the version-less sub project dependencies, which will always retrieve the latest. If they decide go with any other federation style but still like to synchronize closely, they can specify a semantic version of <code>+</code> which literally means the latest.</p>
     <h3 class="heading settled" data-level="6.10" id="tutorial6-summary"><span class="secno">6.10. </span><span class="content">Summary</span><a class="self-link" href="#tutorial6-summary"></a></h3>
-    <p>TBD</p>
+    <p>This tutorial comprehensively introduced and showcased the robust federation support provided by openCAESAR for OML models. It not only introduced the concept but also delved into various federation styles that are supported. Furthermore, it provided a step-by-step walkthrough on configuring a federation of OML models across different projects.</p>
+    <p>To illustrate the power of this federation support, the tutorial utilized a motivating example, depicting an abstract home security system architecture. This abstraction allows multiple suppliers to contribute to its realization. Subsequently, an integrator (acquirer) assembles this realized architecture from various components and conducts a comprehensive compliance analysis against the original abstract architecture.</p>
+    <p>Additionally, the tutorial highlighted several common scenarios where federation proves invaluable, showcasing how the openCAESAR platform adeptly caters to these requirements. Notably, it demonstrated the control mechanism for change propagation within a federation using semantic versions. It’s important to note that this control relies on sub-projects within the federation correctly classifying their revisions. This level of precision empowers downstream dependencies to determine when to adopt various types of upstream changes.</p>
+    <p>With openCAESAR’s robust support for OML federation, modeling becomes a truly scalable enterprise-level endeavor, fostering collaboration and efficiency in complex projects.</p>
    </div>
   </main>
 <script>
@@ -7655,7 +7919,7 @@ Prefix: prototype
 <script>/* Boilerplate: script-dfn-panel-json */
 window.dfnpanelData = {};
 window.dfnpanelData['model-explorer-view'] = {"dfnID": "model-explorer-view", "url": "#model-explorer-view", "dfnText": "Model Explorer view", "refSections": [{"refs": [{"id": "ref-for-model-explorer-view"}, {"id": "ref-for-model-explorer-view\u2460"}, {"id": "ref-for-model-explorer-view\u2461"}], "title": "1.2. Create OML Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462"}], "title": "1.3. Create OML Vocabulary"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463"}], "title": "1.4. Create OML Vocabulary Bundle"}, {"refs": [{"id": "ref-for-model-explorer-view\u2464"}], "title": "1.5. Create OML Description"}, {"refs": [{"id": "ref-for-model-explorer-view\u2465"}], "title": "1.6. Edit OML Description Bundle"}, {"refs": [{"id": "ref-for-model-explorer-view\u2466"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-model-explorer-view\u2467"}, {"id": "ref-for-model-explorer-view\u2468"}, {"id": "ref-for-model-explorer-view\u2460\u24ea"}, {"id": "ref-for-model-explorer-view\u2460\u2460"}, {"id": "ref-for-model-explorer-view\u2460\u2461"}, {"id": "ref-for-model-explorer-view\u2460\u2462"}, {"id": "ref-for-model-explorer-view\u2460\u2463"}, {"id": "ref-for-model-explorer-view\u2460\u2464"}, {"id": "ref-for-model-explorer-view\u2460\u2465"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-model-explorer-view\u2460\u2466"}, {"id": "ref-for-model-explorer-view\u2460\u2467"}, {"id": "ref-for-model-explorer-view\u2460\u2468"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u24ea"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2460"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2461"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2462"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2463"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2464"}, {"id": "ref-for-model-explorer-view\u2461\u2465"}, {"id": "ref-for-model-explorer-view\u2461\u2466"}], "title": "5.2. Create OML Model Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2467"}, {"id": "ref-for-model-explorer-view\u2461\u2468"}, {"id": "ref-for-model-explorer-view\u2462\u24ea"}, {"id": "ref-for-model-explorer-view\u2462\u2460"}, {"id": "ref-for-model-explorer-view\u2462\u2461"}], "title": "5.3. Create OML Vocabulary"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462\u2462"}, {"id": "ref-for-model-explorer-view\u2462\u2463"}, {"id": "ref-for-model-explorer-view\u2462\u2464"}, {"id": "ref-for-model-explorer-view\u2462\u2465"}], "title": "5.4. Create OML Description"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462\u2466"}, {"id": "ref-for-model-explorer-view\u2462\u2467"}, {"id": "ref-for-model-explorer-view\u2462\u2468"}, {"id": "ref-for-model-explorer-view\u2463\u24ea"}], "title": "5.5. Create Sirius Viewpoint Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2460"}], "title": "5.6. Create Diagram Editor"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2461"}], "title": "5.7. Create Table Editor"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2462"}, {"id": "ref-for-model-explorer-view\u2463\u2463"}, {"id": "ref-for-model-explorer-view\u2463\u2464"}, {"id": "ref-for-model-explorer-view\u2463\u2465"}, {"id": "ref-for-model-explorer-view\u2463\u2466"}, {"id": "ref-for-model-explorer-view\u2463\u2467"}, {"id": "ref-for-model-explorer-view\u2463\u2468"}], "title": "5.8. Create SPARQL Queries"}, {"refs": [{"id": "ref-for-model-explorer-view\u2464\u24ea"}], "title": "6.3. Create Federated Projects"}], "external": false};
-window.dfnpanelData['gradle-tasks-view'] = {"dfnID": "gradle-tasks-view", "url": "#gradle-tasks-view", "dfnText": "Gradle Tasks view", "refSections": [{"refs": [{"id": "ref-for-gradle-tasks-view"}], "title": "1.7. Run Build Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460"}, {"id": "ref-for-gradle-tasks-view\u2461"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462"}, {"id": "ref-for-gradle-tasks-view\u2463"}, {"id": "ref-for-gradle-tasks-view\u2464"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2465"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2466"}, {"id": "ref-for-gradle-tasks-view\u2467"}, {"id": "ref-for-gradle-tasks-view\u2468"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2460\u2460"}, {"id": "ref-for-gradle-tasks-view\u2460\u2461"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2462"}, {"id": "ref-for-gradle-tasks-view\u2460\u2463"}], "title": "2.5. P3: Mission deploys Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2464"}, {"id": "ref-for-gradle-tasks-view\u2460\u2465"}], "title": "2.6. P4: Component contains Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2466"}, {"id": "ref-for-gradle-tasks-view\u2460\u2467"}, {"id": "ref-for-gradle-tasks-view\u2460\u2468"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2461\u2460"}], "title": "2.8. P6: Component presents Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2461"}, {"id": "ref-for-gradle-tasks-view\u2461\u2462"}, {"id": "ref-for-gradle-tasks-view\u2461\u2463"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2464"}, {"id": "ref-for-gradle-tasks-view\u2461\u2465"}, {"id": "ref-for-gradle-tasks-view\u2461\u2466"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2467"}, {"id": "ref-for-gradle-tasks-view\u2461\u2468"}, {"id": "ref-for-gradle-tasks-view\u2462\u24ea"}], "title": "5.8. Create SPARQL Queries"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2460"}], "title": "6.4. Define Modeling Methodology"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2461"}, {"id": "ref-for-gradle-tasks-view\u2462\u2462"}], "title": "6.5. Define System Architecture"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2463"}, {"id": "ref-for-gradle-tasks-view\u2462\u2464"}, {"id": "ref-for-gradle-tasks-view\u2462\u2465"}], "title": "6.6. Federate Component Realization"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2466"}], "title": "6.7. Integrate Federated Components"}], "external": false};
+window.dfnpanelData['gradle-tasks-view'] = {"dfnID": "gradle-tasks-view", "url": "#gradle-tasks-view", "dfnText": "Gradle Tasks view", "refSections": [{"refs": [{"id": "ref-for-gradle-tasks-view"}], "title": "1.7. Run Build Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460"}, {"id": "ref-for-gradle-tasks-view\u2461"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462"}, {"id": "ref-for-gradle-tasks-view\u2463"}, {"id": "ref-for-gradle-tasks-view\u2464"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2465"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2466"}, {"id": "ref-for-gradle-tasks-view\u2467"}, {"id": "ref-for-gradle-tasks-view\u2468"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2460\u2460"}, {"id": "ref-for-gradle-tasks-view\u2460\u2461"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2462"}, {"id": "ref-for-gradle-tasks-view\u2460\u2463"}], "title": "2.5. P3: Mission deploys Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2464"}, {"id": "ref-for-gradle-tasks-view\u2460\u2465"}], "title": "2.6. P4: Component contains Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2466"}, {"id": "ref-for-gradle-tasks-view\u2460\u2467"}, {"id": "ref-for-gradle-tasks-view\u2460\u2468"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2461\u2460"}], "title": "2.8. P6: Component presents Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2461"}, {"id": "ref-for-gradle-tasks-view\u2461\u2462"}, {"id": "ref-for-gradle-tasks-view\u2461\u2463"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2464"}, {"id": "ref-for-gradle-tasks-view\u2461\u2465"}, {"id": "ref-for-gradle-tasks-view\u2461\u2466"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2467"}, {"id": "ref-for-gradle-tasks-view\u2461\u2468"}, {"id": "ref-for-gradle-tasks-view\u2462\u24ea"}], "title": "5.8. Create SPARQL Queries"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2460"}], "title": "6.4. Define Modeling Methodology"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2461"}, {"id": "ref-for-gradle-tasks-view\u2462\u2462"}], "title": "6.5. Define System Architecture"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2463"}, {"id": "ref-for-gradle-tasks-view\u2462\u2464"}, {"id": "ref-for-gradle-tasks-view\u2462\u2465"}], "title": "6.6. Federate Component Realization"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2466"}], "title": "6.7. Integrate Federated Components"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2467"}, {"id": "ref-for-gradle-tasks-view\u2462\u2468"}, {"id": "ref-for-gradle-tasks-view\u2463\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2463\u2460"}], "title": "6.8. Run Federation Scenarios"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2463\u2461"}, {"id": "ref-for-gradle-tasks-view\u2463\u2462"}, {"id": "ref-for-gradle-tasks-view\u2463\u2463"}], "title": "6.9. Publish with Semantic Versions"}], "external": false};
 window.dfnpanelData['gradle-executions-view'] = {"dfnID": "gradle-executions-view", "url": "#gradle-executions-view", "dfnText": "Gradle Executions view", "refSections": [{"refs": [{"id": "ref-for-gradle-executions-view"}, {"id": "ref-for-gradle-executions-view\u2460"}], "title": "1.7. Run Build Task"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461"}, {"id": "ref-for-gradle-executions-view\u2462"}, {"id": "ref-for-gradle-executions-view\u2463"}, {"id": "ref-for-gradle-executions-view\u2464"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2465"}, {"id": "ref-for-gradle-executions-view\u2466"}, {"id": "ref-for-gradle-executions-view\u2467"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2468"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u24ea"}, {"id": "ref-for-gradle-executions-view\u2460\u2460"}, {"id": "ref-for-gradle-executions-view\u2460\u2461"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2462"}, {"id": "ref-for-gradle-executions-view\u2460\u2463"}, {"id": "ref-for-gradle-executions-view\u2460\u2464"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2465"}, {"id": "ref-for-gradle-executions-view\u2460\u2466"}], "title": "2.5. P3: Mission deploys Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2467"}, {"id": "ref-for-gradle-executions-view\u2460\u2468"}], "title": "2.6. P4: Component contains Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u24ea"}, {"id": "ref-for-gradle-executions-view\u2461\u2460"}, {"id": "ref-for-gradle-executions-view\u2461\u2461"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2462"}, {"id": "ref-for-gradle-executions-view\u2461\u2463"}], "title": "2.8. P6: Component presents Interface"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2464"}, {"id": "ref-for-gradle-executions-view\u2461\u2465"}, {"id": "ref-for-gradle-executions-view\u2461\u2466"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2467"}, {"id": "ref-for-gradle-executions-view\u2461\u2468"}, {"id": "ref-for-gradle-executions-view\u2462\u24ea"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2462\u2460"}, {"id": "ref-for-gradle-executions-view\u2462\u2461"}, {"id": "ref-for-gradle-executions-view\u2462\u2462"}], "title": "5.8. Create SPARQL Queries"}], "external": false};
 </script>
 <script>/* Boilerplate: script-dom-helper */

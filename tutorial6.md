@@ -22,7 +22,7 @@ Note: The source files created in this tutorial are available for reference in t
 
 OML federation can be implemented in one of the following (incrementally-federated) styles:
 
-1. OML sub projects of a common parent, depend on each each other directly, managed in a single repo.
+1. OML sub projects of a common parent, depend on each other directly, managed in a single repo.
 2. OML sub projects of a common parent, depend on each other through Maven, managed in a single repo.
 3. OML projects are all root, depend on each other through Maven, managed in a single repo.
 4. OML projects are all root, depend on each other through Maven, managed in different repos.
@@ -31,7 +31,7 @@ We will primarily follow style 1 in our demonstration of the home security examp
 
 The following specific OML projects will be created for the example:
 
-1. **Parent**: used to nest the sub projects and facilitate their direct inter-depenednecies.
+1. **Parent**: used to nest the sub projects and facilitate their direct inter-dependencies.
 2. **Methodology**: used to define the vocabulary for the systems modeling methodology.
 3. **Home Security**: used to define an abstract security system architecture (depends on 2).
 4. **Smart Sensors**: used to realize the sensor components by the Smart supplier (depends on 3).
@@ -39,13 +39,13 @@ The following specific OML projects will be created for the example:
 6. **Supreme Monitors**: used to realize the monitoring system by the Supreme supplier (depends on 3).
 7. **Secure Systems**: used to integrate realized components by the Secure acquirer (depends on 4, 5, 6).
 
-The above dependencies reflect our federation strategy. First, we define the system modeling methodology we will use. After that, we use the methodology to define an architecture for a home security system at an abstract level identifying the main components and their characteristics, interrelations, and constraints. Then, we give each component to a supplier to realize it in a way that conforms to the abstract architecture. Finally, a system integrator/acquirer (e.g., an OEM, a solution provider) integrates the realized components into a realiztion architecture and analyzes its conformance to the abstract architecture.
+The above dependencies reflect our federation strategy. First, we define the system modeling methodology we will use. After that, we use the methodology to define an architecture for a home security system at an abstract level identifying the main components and their characteristics, interrelations, and constraints. Then, we give each component to a supplier to realize it in a way that conforms to the abstract architecture. Finally, a system integrator/acquirer (e.g., an OEM, a solution provider) integrates the realized components into a realization architecture and analyzes its conformance to the abstract architecture.
 
 ## Create Federated Projects ## {#tutorial6-create-federated-projects}
 
 In this step, we will create all the projects of the example and configure their inter-dependencies as specified above.
 
-> We will use the `Project Explorer` view as it supports project nesting better than the [=Model Explorer view=]. If not already visible, from the menu menu, select Window -> Show View -> Other ..., search for 'Project Explorer', select it and click Open.
+> We will use the `Project Explorer` view as it supports project nesting better than the [=Model Explorer view=]. If not already visible, from the menu, select Window -> Show View -> Other ..., search for 'Project Explorer', select it and click Open.
 
 	<img src="assets/tutorial6/Project-Explorer.png" width="100%" style="border:1px groove black;"/>
 
@@ -210,6 +210,7 @@ In this tep, we define a very simple system modeling vocabulary that is a subset
       scalar property hasIdentifier [
         domain IdentifiedElement
         range xsd:string
+        functional
       ]
 
       relation contains [
@@ -258,14 +259,14 @@ In this tep, we define a very simple system modeling vocabulary that is a subset
         to Message
         asymmetric
         irreflexive
-      ]
+      ] < transfers
 
       relation transfersOut [
         from Interface
         to Message
         asymmetric
         irreflexive
-      ]
+      ] < transfers
     }
     ```
 
@@ -520,7 +521,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
     }
     ```
 
-> This prototype can be depicted as shown below. We used a custom viewpoit defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
+> This prototype can be depicted as shown below. We used a custom viewpoint defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
 
 	<img src="assets/tutorial6/HomeSecurity-Prototype.png" width="100%" />
 
@@ -542,11 +543,11 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
 
 ## Federate Component Realization ## {#tutorial6-federate-component-realization}
 
-In this step, we will enable three different suppliers (`Smart`, `Safe`, and `Supreme`) to realize the sub components (`Sensor`, `Alarm System`, `Monitoring System`) of the home security architecture. This means, each of them, in their respective project, will refresh their dependencies to download a read-only copy of the `architeture` vocabulary so they can import it in their respective realization vocabulary.
+In this step, we will enable three different suppliers (`Smart`, `Safe`, and `Supreme`) to realize the subcomponents (`Sensor`, `Alarm System`, `Monitoring System`) of the home security architecture. This means, each of them, in their respective project, will refresh their dependencies to download a read-only copy of the `architceture` vocabulary so they can import it in their respective realization vocabulary.
 
 **Smart Sensors**
 
-This supplier builds two kinds of sensors, a smoke sensor and a motion sensor. They will provide a `sensors` vocabulary that describes how their sensors comform to the home security abstract architecture.
+This supplier builds two kinds of sensors, a smoke sensor and a motion sensor. They will provide a `sensors` vocabulary that describes how their sensors conform to the home security abstract architecture.
 
 > Let us refresh the dependencies to get the latest copy of the architecture (and transitively the methodology).
 
@@ -672,7 +673,7 @@ This supplier builds an Alarm System for a home security architecture. They will
     }
     ```
 
-> The above vocabulary describes `AlarmSystem` as a concrete specialization of the abstract `AlarmSystem` concept. Notice how the concrete system present concrete interfaces that specialize the corresponding three interfaces of the abstract `Sensor`. In addition, it adds an additional interface I9 that transfers Sound out as an alarm. That interfce can be joined to a Speaker component they provide too.
+> The above vocabulary describes `AlarmSystem` as a concrete specialization of the abstract `AlarmSystem` concept. Notice how the concrete system present concrete interfaces that specialize the corresponding three interfaces of the abstract `Sensor`. In addition, it adds an additional interface I9 that transfers Sound out as an alarm. That interface can be joined to a Speaker component they provide too.
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
@@ -694,7 +695,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
 
 12. In the [=Gradle Tasks view=], run the task `homesecurity-models/SafeAlarms/build/build`. The task should run successfully.
 
-**Superme Monitors**
+**Supreme Monitors**
 
 This supplier builds a Monitoring System for a home security architecture. They provide an `monitors` vocabulary that describes how their system conforms to the architecture.
 
@@ -761,9 +762,9 @@ In this step, we will enable a system integrator (`SecureSystems`), who is also 
 > Let us refresh the dependencies to get the latest copy of the realized components (and transitively the architecture and the methodology).
 
 1. In Project Explorer, right click on `homesecurity-models/SecureSystems` folder and choose Gradle -> Refresh Gradle Project.
-2. Navigate to the folder `SecureSystems/build/oml/example.com` and verify it has nested folders: `methodology`, `homesecurity`, `smart`, `safe`, and ``supreme`.
+2. Navigate to the folder `SecureSystems/build/oml/example.com` and verify it has nested folders: `methodology`, `homesecurity`, `smart`, `safe`, and `supreme`.
 
-> Now that the integrator has all the dpendencies it needs, it can proceed to describe the realization architecture.
+> Now that the integrator has all the dependencies it needs, it can proceed to describe the realization architecture.
 
 3. In Project Explorer, navigate to the folder `SecureSystems/src/oml/example.com/secure` and right click. Choose New -> OML Model. Specify the following:
     ```
@@ -829,7 +830,7 @@ In this step, we will enable a system integrator (`SecureSystems`), who is also 
     }
     ```
 
-> The above vocabulary describes a concrete realization architecture for the abstract `SecuritySystem`. That concrete system uses `Smart` sensors (a minimum of 2 smoke senseors and one motion sensor), `a Safe` alarm system, and a `Supreme` monitoring system. In addition, it provides its own realization of the two `SecuritySystem` iterfaces and all the junctions that connect the various realized interfaces together based on the abstract architecture.
+> The above vocabulary describes a concrete realization architecture for the abstract `SecuritySystem`. That concrete system uses `Smart` sensors (a minimum of 2 smoke sensors and one motion sensor), `a Safe` alarm system, and a `Supreme` monitoring system. In addition, it provides its own realization of the two `SecuritySystem` interfaces and all the junctions that connect the various realized interfaces together based on the abstract architecture.
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
@@ -856,7 +857,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
     }
     ```
 
-> Again, it would be helpful to define a prototype description (or more) to analyze this specific realization architecure.
+> Again, it would be helpful to define a prototype description (or more) to analyze this specific realization architecture.
 
 7. In Project Explorer, right click on `SecureSystems/src/oml/example.com/secure` and choose New -> OML Model. Specify the following:
     ```
@@ -1005,7 +1006,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
     }
     ```
 
-> This prototype can be depicted as shown below. We used a custom viewpoit defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
+> This prototype can be depicted as shown below. We used a custom viewpoint defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
 
 	<img src="assets/tutorial6/Secure-Prototype.png" width="100%" />
 
@@ -1025,14 +1026,227 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
 
 10. In the [=Gradle Tasks view=], run the task `homesecurity-models/SecureSystems/build/build`. The task should run successfully.
 
-## Experiment with Federation Scenarios ## {#tutorial6-perform-federated-analyses}
+Note: the reference [repository](https://github.com/opencaesar/homesecurity-example) contains the state of the models up to this point only.
 
-TBD
+## Run Federation Scenarios ## {#tutorial6-perform-federated-analyses}
+
+So far, we have seen the happy path for federation where upstream dependencies do not change and downstream dependencies always conform. Notice that change can always safely occur in any of the federated projects without impact as long as their downstream dependencies do not refresh their upstream dependencies. This is a great benefit of federation which allows projects to control the rate of update for their dependencies.
+
+In this step, we will run other common federation scenarios to see the ability of OML to handle them. We will always undo the changes at the end of each scenario.
+
+**Scenario 1: Non-Breaking Methodology Change**
+
+In this scenario, we make a non-breaking change to the `system` methodology vocabulary.
+
+1. Open the file `Methodology/src/oml/example.com/methodology/system.oml` and change the `contains` relation by removing the `irreflexive` flag (a non-breaking change). Thew new relation looks like this:
+    ```scala
+    relation contains [
+      from Component
+      to Component
+      reverse isContainedIn
+      inverse functional
+      asymmetric
+    ]
+    ```
+2. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project. (Note the progress of this operation in the bottom-right corner of the IDE.)
+
+> Since we ran the action on a parent project, it runs on every nested project recursively resulting in all projects refreshing their dependencies. Since we changed the `Methodology` project, which is the most upstream dependency, all the other projects should get an updated version of that `system` vocabulary.
+
+3. Navigate to and open the read-only `SecureSystems/build/oml/example.com/methodology/system.oml`. Verify that the `contains` relation was modified.
+4. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it still builds correctly.
+5. Undo the change in `Methodology/src/oml/example.com/methodology/system.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
+
+**Scenario 2: Breaking Methodology Change**
+
+In this scenario, we make a breaking syntax change to the `system` methodology vocabulary.
+
+1. Open the file `Methodology/src/oml/example.com/methodology/system.oml` and rename the `contains` relation to `composes` flag (a breaking change). Thew new relation looks like this:
+    ```scala
+    relation composes [
+        from Component
+        to Component
+        reverse isContainedIn
+        inverse functional
+        asymmetric
+        irreflexive
+      ]
+    ```
+2. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+
+> Verify that all the other projects show compile errors. Inspect the Problem view and should see many errors.
+
+3. Undo the change in `Methodology/src/oml/example.com/methodology/system.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
+
+> You should observe that the problems get resolved.
+
+**Scenario 3: Breaking Architectural Change**
+
+In this scenario, we make a breaking semantic change to the abstract `architecture` vocabulary.
+
+1. Open the file `HomeSecurity/src/oml/example.com/homesecurity/architecture.oml` and change the `SecuritySystem` concept to strenghten the restriction on the number of Sensors to be `exactly 1 Sensor` (a breaking change). Thew new concept looks like this:
+    ```scala
+    concept SecuritySystem < system:Component [
+      restricts system:presents to exactly 1 I1
+      restricts system:presents to exactly 1 I2
+      restricts system:contains to exactly 1 Sensor
+      restricts system:contains to exactly 1 AlarmSystem
+      restricts system:contains to exactly 1 MonitoringSystem
+    ]
+    ```
+2. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+3. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error.
+4. Double click to open the file `SecureSystems/build/reports/reasoning.xml`. You should see the following:
+
+	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;"/>
+
+> The error indicates that a max cardinality restriction is violated. This is nice because now the integrator `SecureSystems` gets alerted to the architectural change that calls for exactly 1 sensor, which is inconsistent with its realization architecture which calls for multiple sensors (see the code below).
+    ```scala
+    // Realization SecuritySystem
+    concept SecuritySystem < hsa:SecuritySystem [
+      restricts system:presents to exactly 1 I1
+      restricts system:presents to exactly 1 I2
+      restricts system:contains to min 2 smart:SmokeSensor
+      restricts system:contains to min 1 smart:MotionSensor
+      restricts system:contains to exactly 1 safe:AlarmSystem
+      restricts system:contains to exactly 1 supreme:MonitoringSystem
+    ]
+    ```
+
+5. Undo the change in `HomeSecurity/src/oml/example.com/homesecurity/architecture.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
+
+**Scenario 4: Breaking Component Realization**
+
+In this scenario, we make a breaking semantic change in one of the realization components that gets detected at the integrated level.
+
+1. Open the file `SafeAlarms/src/oml/example.com/safe/alarms.oml` and change the `AlarmSystem` concept by changing the restriction on the I9 interface (for sound) to `exactly 1`. Thew new concept looks like this:
+    ```scala
+      concept AlarmSystem < hsa:AlarmSystem [
+        restricts system:presents to exactly 1 I4
+        restricts system:presents to exactly 1 I5
+        restricts system:presents to exactly 1 I6
+        restricts system:presents to exactly 1 I9
+      ]
+    ```
+2. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+3. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error.
+4. Double click to open the file `SecureSystems/build/reports/reasoning.xml`. You should see the following:
+
+	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;"/>
+
+> The inconsistency in this case is a result of the prototype not incorporating the required sound interface. Note that such requirement is not called for in the abstract architecture but comes from the realization. This would be an opportunity for a conversation between all parties: the architect, the supplier, and the acquirer (the integrator).
+
+5. Undo the change in `SafeAlarms/src/oml/example.com/safe/alarms.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
+
+**Scenario 5: Breaking Realization Prototype**
+
+In this scenario, we make a breaking semantic change to the realization architecture which ends up breaking the realization prototype. Note that this is not a federation error per se, but it shows why having prototype(s) in addition to the realization architecture is interesting for catching some errors (note that the realization architecture itself is still consistent with the abstract one in this case).
+
+1. Open the file `SecureSystems/src/oml/example.com/secure/architecture.oml` and change the `SecuritySystem` concept by increasing the number of required smoke sensors to 3 (a breaking change). Thew new instance looks like this:
+    ```scala
+    concept SecuritySystem < hsa:SecuritySystem [
+      restricts system:presents to exactly 1 I1
+      restricts system:presents to exactly 1 I2
+      restricts system:contains to min 3 smart:SmokeSensor
+      restricts system:contains to min 1 smart:MotionSensor
+      restricts system:contains to exactly 1 safe:AlarmSystem
+      restricts system:contains to exactly 1 supreme:MonitoringSystem
+    ]
+    ```
+2. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error 
+
+Note: We observed that producing an explanation for the inconsistency in this specific case takes a long time. We are currently investigating this issue. Meanwhile, if this took more than 10 mins for you, please kill the task from the Gradle Execution view (press the red button).
+
+> The inconsistency in this case is a result of the prototype only containing two smoke sensors whereas the changed realization architecture calls for at least three.
+
+3. Undo the change in `SecureSystems/src/oml/example.com/secure/architecture.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
 
 ## Publish with Semantic Versions ## {#tutorial6-publish-with-semantic-versions}
 
-TBD
+We hope that the previous section convinced you that having proper support for federation is paramount. This is especially true in change scenarios. Controlling when to adopt a breaking change in your upstream dependencies gives you time to plan for the impact (the needed changes). But how can you tell if the change is breaking or not. The software industry has developed a very smart convention for this problem called semantic versions (for software libraries), where a major revision for indicates large breaking change, a minor revision indicates large non-breaking changes, and a patch revision indicates minor changes and/or bug fixes. In openCAESAR, we adopt the same approach of publishing OML models with semantic versions. This works really nice with the way OML projects declare their dependencies as [Maven](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) dependencies.
+
+In this step, we will first publish all the projects to Maven Local (on the local machine). Then, we will convert one of the direct dependencies we declared before into a Maven-based one with a semantic version. This will be the dependency of the `SecureSystems` project on the `SafeAlarm` project.
+
+> Maven Local is a convenient playground for publishing Maven dependencies since it is only visible on that machine. Once a version is good and needs to be published more widely, it could be pushed to a remote accessible Maven repository (like Maven Central or an enterprise Maven repository).
+
+1. In [=Gradle Tasks view=], run `homesecurity-models/publishing/publishToMavenLocal` and verify that it runs successfully. 
+
+> Now, all the projects have published their OML models to Maven Local using the default 1.0.0 version.
+
+2. On your computer, navigate to your [local Maven repository](https://www.baeldung.com/maven-local-repository) typically named `.m2`. Expand the nested path `repository/com/example` and you should see all the 1.0.0 project artifacts published there.
+
+	<img src="assets/tutorial6/Maven-Local.png" width="25%" style="border:1px groove black;"/>
+
+3. Back in Rosetta, open the file `SecureSystems/build.gradle` and navigate to the dependencies section and change it as follows:
+    ```
+    /*
+    * The OML dependencies
+    */
+    dependencies {
+        oml project(':SmartSensors')
+        //oml project(':SafeAlarms')
+        oml "com.example:SafeAlarms:1.0.0"
+        oml project(':SupremeMonitors')
+    }
+    ```
+    
+> This pins the version of `SafeAlarms` that the integrator `SecureSystems` downloads to exactly 1.0.0. This means any future version of `SafeAlarms` will not be downloaded. Let's test this.
+
+4. Open the file `SafeAlarms/src/oml/example.com/safe/alarms.oml`, find the concept `AlarmSystem` and change the I9 restriction to `max 2 I9`, which is a non-breaking change.
+
+> Since it created a non-breaking small change, `SafeAlarm` decided to change its version to `1.0.1` i.e, create a patch revision.
+
+5. Open the file `SafeAlarms/build.gradle` and change the version at the top from `1.0.0` to `1.0.1`. Save the editor.
+
+> Now we need to publish the new revision to Maven Local again.
+
+6. In [=Gradle Tasks view=], run `homesecurity-models/publishing/publishToMavenLocal` and verify that it runs successfully. 
+
+> Inspect the new version in your Maven Local folder just to double check.
+
+	<img src="assets/tutorial6/Maven-Local-2.png" width="25%" style="border:1px groove black;"/>
+
+5. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+
+> Since `SecureSystems` pinned the version of its dependency to `1.0.0` it will not get this revision.
+
+6. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is still `max 1 I9`.
+
+> This is unfortunate since `SecureSystems` should really get those patch revisions regularly because they may contain important bug fixes from `SafeAlarm`. Let's relax their semantic version dependency to `1.0.+` instead. Note that `+` is a dynamic version that means the latest. So this will still pin the major.minor versions to `1.0` but will get the latest patch version.
+
+7. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:1.0.+"`.
+8. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+9. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` again and verify that the I9 restriction is now `max 2 I9`. Yay!
+
+> In fact, `SecureSystems` may want to pin the version to `1.+` instead, i.e. fix the major revision but adopt the latest minor/patch revisions. This may be reasonable to protect against breaking changes but still allow non-breaking changes to be retrieved. Let's test that.
+
+10. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:1.+"`.
+
+11. Open the file `SafeAlarms/src/oml/example.com/safe/alarms.oml`, find the concept `AlarmSystem` and change the I9 restriction to `min 2 I9`, which is a breaking change.
+
+> Since it created a breaking change, `SafeAlarm` changes its version to `2.0.0` i.e, create a major revision.
+
+12. Open the file `SafeAlarms/build.gradle` and change the version at the top from `1.0.0` to `2.0.0`. Save the editor.
+
+> Now we need to publish the new revision to Maven Local again.
+
+13. In [=Gradle Tasks view=], run `homesecurity-models/publishing/publishToMavenLocal` and verify that it runs successfully. 
+14. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+15. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is still `max 2 I9`.
+
+> This is great since `SecureSystems` did not get the new `2.0.0` revision of `SafeAlarm` as this would have broken their architecture possibly at an inconvenient time. Later, when they have more time in their schedule to deal with this major revision, they can explicitly specify that in their dependencies.
+
+16. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:2.+"`.
+17. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
+18. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is now `min 1 I9`. Awesome!
+
+In conclusion, the discussion above showed how semantic versions can be a powerful tool to enable more control over change propagation in a federation scenario. This is especially important when the two sub projects are not working closely together. When projects collaborate closely (federation style 1), they can simply use the version-less sub project dependencies, which will always retrieve the latest. If they decide go with any other federation style but still like to synchronize closely, they can specify a semantic version of `+` which literally means the latest.
 
 ## Summary ## {#tutorial6-summary}
 
-TBD
+This tutorial comprehensively introduced and showcased the robust federation support provided by openCAESAR for OML models. It not only introduced the concept but also delved into various federation styles that are supported. Furthermore, it provided a step-by-step walkthrough on configuring a federation of OML models across different projects.
+
+To illustrate the power of this federation support, the tutorial utilized a motivating example, depicting an abstract home security system architecture. This abstraction allows multiple suppliers to contribute to its realization. Subsequently, an integrator (acquirer) assembles this realized architecture from various components and conducts a comprehensive compliance analysis against the original abstract architecture.
+
+Additionally, the tutorial highlighted several common scenarios where federation proves invaluable, showcasing how the openCAESAR platform adeptly caters to these requirements. Notably, it demonstrated the control mechanism for change propagation within a federation using semantic versions. It's important to note that this control relies on sub-projects within the federation correctly classifying their revisions. This level of precision empowers downstream dependencies to determine when to adopt various types of upstream changes.
+
+With openCAESAR's robust support for OML federation, modeling becomes a truly scalable enterprise-level endeavor, fostering collaboration and efficiency in complex projects.
