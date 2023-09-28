@@ -1213,13 +1213,13 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 
 > This is unfortunate since `SecureSystems` should really get those patch revisions regularly because they may contain important bug fixes from `SafeAlarm`. Let's relax their semantic version dependency to `1.0.+` instead. Note that `+` is a dynamic version that means the latest. So this will still pin the major.minor versions to `1.0` but will get the latest patch version.
 
-7. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:1.0.+"`.
+7. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `1.0.+`.
 8. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
 9. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` again and verify that the I9 restriction is now `max 2 I9`. Yay!
 
 > In fact, `SecureSystems` may want to pin the version to `1.+` instead, i.e. fix the major revision but adopt the latest minor/patch revisions. This may be reasonable to protect against breaking changes but still allow non-breaking changes to be retrieved. Let's test that.
 
-10. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:1.+"`.
+10. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `1.+`.
 
 11. Open the file `SafeAlarms/src/oml/example.com/safe/alarms.oml`, find the concept `AlarmSystem` and change the I9 restriction to `min 2 I9`, which is a breaking change.
 
@@ -1235,7 +1235,7 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 
 > This is great since `SecureSystems` did not get the new `2.0.0` revision of `SafeAlarm` as this would have broken their architecture possibly at an inconvenient time. Later, when they have more time in their schedule to deal with this major revision, they can explicitly specify that in their dependencies.
 
-16. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `oml "com.example:SafeAlarms:2.+"`.
+16. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `2.+`.
 17. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
 18. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is now `min 1 I9`. Awesome!
 
