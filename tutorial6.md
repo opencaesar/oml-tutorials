@@ -168,7 +168,7 @@ Note: If you get a *Problem Occurred* message box, it's a known issue. Click on 
     ```
     oml project(':SmartSensors')
     oml project(':SafeAlarms')
-    oml project(':SupermeMonitors')
+    oml project(':SupremeMonitors')
     ```
 
 > We will now do one last step, which is a workaround for a temporary issue with the Gradle plugin in Eclipse.
@@ -1137,27 +1137,6 @@ In this scenario, we make a breaking semantic change in one of the realization c
 
 5. Undo the change in `SafeAlarms/src/oml/example.com/safe/alarms.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
 
-**Scenario 5: Breaking Realization Prototype**
-
-In this scenario, we make a breaking semantic change to the realization architecture which ends up breaking the realization prototype. Note that this is not a federation error per se, but it shows why having prototype(s) in addition to the realization architecture is interesting for catching some errors (note that the realization architecture itself is still consistent with the abstract one in this case).
-
-1. Open the file `SecureSystems/src/oml/example.com/secure/architecture.oml` and change the `SecuritySystem` concept by increasing the number of required smoke sensors to 3 (a breaking change). Thew new instance looks like this:
-    ```scala
-    concept SecuritySystem < hsa:SecuritySystem [
-      restricts system:presents to exactly 1 I1
-      restricts system:presents to exactly 1 I2
-      restricts system:contains to min 3 smart:SmokeSensor
-      restricts system:contains to min 1 smart:MotionSensor
-      restricts system:contains to exactly 1 safe:AlarmSystem
-      restricts system:contains to exactly 1 supreme:MonitoringSystem
-    ]
-    ```
-2. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error 
-
-> The inconsistency in this case is a result of the prototype only containing two smoke sensors whereas the changed realization architecture calls for at least three.
-
-3. Undo the change in `SecureSystems/src/oml/example.com/secure/architecture.oml` and right click on `homesecurity-models` and select Gradle -> Refresh Gradle Project.
-
 ## Publish with Semantic Versions ## {#tutorial6-publish-with-semantic-versions}
 
 We hope that the previous section convinced you that having proper support for federation is paramount. This is especially true in change scenarios. Controlling when to adopt a breaking change in your upstream dependencies gives you time to plan for the impact (the needed changes). But how can you tell if the change is breaking or not. The software industry has developed a very smart convention for this problem called semantic versions (for software libraries), where a major revision for indicates large breaking change, a minor revision indicates large non-breaking changes, and a patch revision indicates minor changes and/or bug fixes. In openCAESAR, we adopt the same approach of publishing OML models with semantic versions. This works really nice with the way OML projects declare their dependencies as [Maven](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) dependencies.
@@ -1217,7 +1196,7 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 
 > In fact, `SecureSystems` may want to pin the version to `1.+` instead, i.e. fix the major revision but adopt the latest minor/patch revisions. This may be reasonable to protect against breaking changes but still allow non-breaking changes to be retrieved. Let's test that.
 
-10. Oen the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `1.+`.
+10. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `1.+`.
 
 11. Open the file `SafeAlarms/src/oml/example.com/safe/alarms.oml`, find the concept `AlarmSystem` and change the I9 restriction to `min 2 I9`, which is a breaking change.
 
@@ -1231,11 +1210,11 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 14. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
 15. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is still `max 2 I9`.
 
-> This is great since `SecureSystems` did not get the new `2.0.0` revision of `SafeAlarm` as this would have broken their architecture possibly at an inconvenient time. Later, when they have more time in their schedule to deal with this major revision, they can explicitly specify that in their dependencies.
+> It is great that `SecureSystems` did not get the new `2.0.0` revision of `SafeAlarm` as this would have broken their architecture possibly at an inconvenient time. Later, when they have more time in their schedule to deal with this major revision, they can explicitly specify that in their dependencies. Let's test that.
 
-16. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` to `2.+`.
+16. Open the file `SecureSystems/build.gradle` and change the version of `SafeAlarms` dependency to `2.+`.
 17. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
-18. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is now `min 1 I9`. Awesome!
+18. Open the file `SecureSystems/build/oml/example.com/safe/alarms.oml` and verify that the I9 restriction is now `min 2 I9` (the breaking change). Awesome!
 
 In conclusion, the discussion above showed how semantic versions can be a powerful tool to enable more control over change propagation in a federation scenario. This is especially important when the two sub projects are not working closely together. When projects collaborate closely (federation style 1), they can simply use the version-less sub project dependencies, which will always retrieve the latest. If they decide go with any other federation style but still like to synchronize closely, they can specify a semantic version of `+` which literally means the latest.
 

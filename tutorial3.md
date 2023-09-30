@@ -53,6 +53,10 @@ $ git push --set-upstream origin main -f
 
 	<img src="assets/tutorial3/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
 
+  > Your project should now show as being managed in the github repo.
+
+	<img src="assets/tutorial3/Post-Refresh-Project.png" width="50%" style="border:1px groove black;"/>
+
 ## Setup CI Pipeline ## {#tutorial3-setup-ci-pipeline}
 
 In this step, we will create a CI pipeline for the repository using Github Actions. The pipeline (called a workflow in Github Actions) will build the project on every commit.
