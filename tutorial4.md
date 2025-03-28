@@ -26,11 +26,11 @@ Jupyter is an open-source project that lets you easily combine Markdown text and
 
 Note: for best experience in this tutorial, switch VS Code to the `Light Modern` [color theme](https://code.visualstudio.com/docs/getstarted/themes).
 
-		<img src="assets/tutorial4/VS-Code.png" width="100%" style="border:1px groove black;"/>
+		<img src="assets/tutorial4/VS-Code.png" width="100%" style="border:1px groove black;">
 
 4. Select File -> Open Folder... and select the folder of the project you created in [Tutorial 2](#tutorial2).
 
-	<img src="assets/tutorial4/Open-Folder.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Open-Folder.png" width="100%" style="border:1px groove black;">
 
 Note: Assuming you had also done `Tutorial 3`, this folder should be a clone of a git repository called `kepler16b-example`.
 
@@ -60,7 +60,7 @@ BUILD SUCCESSFUL in 6s
 6 actionable tasks: 3 executed, 3 up-to-date
 ```
 
-	<img src="assets/tutorial4/Run-Qwl-Query.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Run-Qwl-Query.png" width="100%" style="border:1px groove black;">
 
 2. Open the `.github/workflows/ci.yml` file (created in [Tutorial 3](#tutorial3)) and insert the following step right before the `Upload` one:
 
@@ -69,13 +69,13 @@ BUILD SUCCESSFUL in 6s
       run: ./gradlew owlQuery
 ```
 
-	<img src="assets/tutorial4/Add-Owl-Query-To-CI.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Owl-Query-To-CI.png" width="100%" style="border:1px groove black;">
 
 3. Click on the Source Control tab on the left; you should find the `ci.yml` file listed. Type a commit message and select `Commit & Push` button. Answer `Yes` in the next dialog box. Wait for the operation to finish.
 
 4. In a web browser, navigate to the `kepler16b-example` Github repo you created in [Tutorial 3](#tutorial3). Click on the Actions tab. Wait until the CI workflow succeeds.
 
-	<img src="assets/tutorial4/Owl-Query-CI-Succeeds.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Owl-Query-CI-Succeeds.png" width="100%" style="border:1px groove black;">
 
 ## Generate OML Doc ## {#tutorial4-generate-oml-doc}
 
@@ -89,7 +89,7 @@ Not: An [OwlDoc](https://github.com/opencaesar/owl-tools/tree/master/owl-doc) ta
   classpath 'io.opencaesar.owl:owl-doc-gradle:2.+'
 ```
 
-	<img src="assets/tutorial4/Add-Owl-Doc-Dependency.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Owl-Doc-Dependency.png" width="100%" style="border:1px groove black;">
 
 2. In the `build.gradle` file, insert the following `generateDocs` task right before the `startFuseki` task. Save.
 
@@ -113,15 +113,15 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
     outputCaseSensitive = org.gradle.internal.os.OperatingSystem.current().isLinux()
 }
 ```
-	<img src="assets/tutorial4/Add-Owl-Doc-Task.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Owl-Doc-Task.png" width="100%" style="border:1px groove black;">
 
 3. In Terminal, run `./gradlew generateDocs`. Inspect the `build/web/doc` folder. You will find the generated HTML documentation. 
 
-	<img src="assets/tutorial4/Run-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Run-Owl-Doc.png" width="100%" style="border:1px groove black;">
 
 4. Open the file `build/web/doc/index.html` in a web browser and browse through the generated documentation.
 
-	<img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Browse-Generated-Owl-Doc.png" width="100%" style="border:1px groove black;">
 
 5. Open the `.github/workflows/ci.yml` file and add the following step right after the `Upload` step.
 
@@ -130,7 +130,7 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
       run: ./gradlew generateDocs
 ```
 
-	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;">
 
 6. Using the Source Control tab, commit and push both `build.gradle` and `ci.yml` files. Check that the CI workflow succeeded on the repository's Actions tab.
 
@@ -144,7 +144,7 @@ A convenient choice here is to deploy to the repository's [Github Pages](https:/
 
 - In the `Build and Deployment` section, click on the `Source` combo box, and select `Github Actions`.
 
-	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;">
 
   Note: This choice means that the content of Pages will be published by a Github Actions workflow. As we will see below, this will allow the repository's CI script to publish it,
 
@@ -156,7 +156,7 @@ In this step, we will create a simple Jupyter Notebook in the project and setup 
 
 2. Right click on the `ipynb` folder, select New File, and call it `index.ipynb`. This opens a Jupiter Notebook editor with a single empty cell.
 
-	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Setup-Github-Pages.png" width="100%" style="border:1px groove black;">
 
 3. In the top right corner of the editor, click on the `Select Kernel` button, select `Python Environments`, and select one of the available Python 3 environments. Notice that now the name of the selected kernel shows up in the top right corner.
 
@@ -171,7 +171,7 @@ In this step, we will create a simple Jupyter Notebook in the project and setup 
 The Kepler16b project is developing a hypothetical mission to an exoplanet that is millions of light years away.
 ```
 
-	<img src="assets/tutorial4/Add-Notebook-Title.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Notebook-Title.png" width="100%" style="border:1px groove black;">
 
 Before we go further, let us setup the CI script to publish this simple Notebook. This involves setting up a Python environment, installing some dependencies, running a couple of python tools to execute the notebook and convert it to HTML, then finally deploying that HTML to Github Pages.
 
@@ -188,7 +188,7 @@ cairocffi
 
 Note: A `requirements.txt` file is a typical Python mechanism to declare dependencies. In this case, the first two dependencies are the minimum required to enable executing and converting the notebook to HTML. The rest of the dependencies are libraries that will be used in the steps below to visualize the analysis results.
 
-	<img src="assets/tutorial4/Add-Requirements.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Requirements.png" width="100%" style="border:1px groove black;">
 
 8. In VS Code Terminal, activate the python environment used by the notebook's kernel, then run the following command to install the dependencies locally:
 
@@ -228,17 +228,17 @@ pip install -r src/ipynb/requirements.txt
         id: deployment
         uses: actions/deploy-pages@v1
 ```
-	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" width="100%" style="border:1px groove black;">
 
 Note: The first set of steps are added to the `build` job. They setup a Python 3 environment, install the dependencies, run the notebook, convert it to HTML in the `build/web` folder, then upload the folder as a Pages artifact. Then, a new job named `deploy` is added. This job runs after `build` is done and deploys the Pages artifact to the web server.
 
 10. Using the Source Control tab, commit and push all the three files `index.ipynb`, `requirements.txt` and `ci.yml`. Check that the CI workflow succeeded on the repository's Actions tab. You should see the following page in your browser:
 
-	<img src="assets/tutorial4/First-Noetbook-CI-Build.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/First-Noetbook-CI-Build.png" width="100%" style="border:1px groove black;">
 
 11. Click on the hyperlink in the `deploy` box to navigate the deployed Github Pages of the repository. This should open up a new page that looks like this:
 
-	<img src="assets/tutorial4/First-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/First-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 ## P1: Reference Documentation ## {#tutorial4-reference-documentation}
 
@@ -253,7 +253,7 @@ The Kepler16b project delivers two missions: [a Lander Mission](doc/example.com/
 
 9. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/Second-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Second-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 10. Click on the three hyperlinks and verify that you can navigate to them fine. 
 
@@ -265,7 +265,7 @@ In this step, we will add the first visualization of SPARQL query results to the
 
 2. In VS Code Explorer, right click on the `ipynb` folder, select New File, name it `utilities.py`, and paste the contents to it. Save.
 
-	<img src="assets/tutorial4/Add-Utilities.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Utilities.png" width="100%" style="border:1px groove black;">
 
 3. In the `src/ipynb/index.ipynb` editor, add a new *Code* cell, and type the following code in it. Click on the execute button on the cell's left side  to run.
 
@@ -276,13 +276,13 @@ data = df.to_json(orient = "records")
 HTML(tree.safe_substitute(data=data))
 ```
 
-	<img src="assets/tutorial4/Add-Missions-Viz.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Missions-Viz.png" width="100%" style="border:1px groove black;">
 
 Note: Click on the circles to collapse/expand them
 
 4. Using the Source Control tab, commit `index.ipynb` and `utilities.py`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/Third-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Third-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 ## P3: Visualize Objectives ## {#tutorial4-visualize-objectives}
 
@@ -306,11 +306,11 @@ aggregations = tolists(df, 'o1_id', 'o2_id')
 diagram(objects(union(objectives1, objectives2), aggregations, 'o--', 'objective'))
 ```
 
-	<img src="assets/tutorial4/Add-Objectives-Viz.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Objectives-Viz.png" width="100%" style="border:1px groove black;">
 
 3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/Fourth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Fourth-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 ## P4: Visualize Components ## {#tutorial4-visualize-components}
 
@@ -334,11 +334,11 @@ compositions = tolists(df, 'c2_id', 'c1_id')
 diagram('left to right direction\nskinparam nodesep 10\n'+objects(union(components1, components2), compositions, '*--', 'component'))
 ```
 
-	<img src="assets/tutorial4/Add-Components-Viz.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Components-Viz.png" width="100%" style="border:1px groove black;">
 
 3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/Fifth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Fifth-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 ## P5: Visualize Mass Rollup ## {#tutorial4-visualize-mass-rollup}
 
@@ -367,11 +367,11 @@ style = df.style.hide(axis="index").set_properties(**{'text-align': 'left', 'fon
 style.format(precision=2).set_table_styles([dict(selector='th', props=[('text-align', 'left')])])
 ```
 
-	<img src="assets/tutorial4/Add-Mass-Rollup-Viz.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Add-Mass-Rollup-Viz.png" width="100%" style="border:1px groove black;">
 
 3. Using the Source Control tab, commit `index.ipynb`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/Sixth-Notebook-Publish.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Sixth-Notebook-Publish.png" width="100%" style="border:1px groove black;">
 
 ## Change the Model ## {#tutorial4-change-the-model}
 
@@ -379,19 +379,19 @@ Now that we have developed an interesting notebook as a report to share with sta
 
 1. In VS Code Exploer, edit the file `src/oml/example.com/tutorial2/description/missions.oml` by adding a new objective to the `lander` mission. Save.
 
-	<img src="assets/tutorial4/Make-Change-1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Make-Change-1.png" width="100%" style="border:1px groove black;">
 
 2. Using the Source Control tab, commit `mission.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page.
 
-	<img src="assets/tutorial4/View-Change-1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/View-Change-1.png" width="100%" style="border:1px groove black;">
 
 3. In VS Code Exploer, edit the file `src/oml/example.com/tutorial2/description/masses.oml` by changing the mass of `components:orbiter-propulsion-subsystem` from 6 to 106.
 
-	<img src="assets/tutorial4/Make-Change-2.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/Make-Change-2.png" width="100%" style="border:1px groove black;">
 
 4. Using the Source Control tab, commit `mission.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Notice the new mass for `C.02.09` and changed mass of the composing component `C.02` now 100 higher than before.
 
-	<img src="assets/tutorial4/View-Change-2.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial4/View-Change-2.png" width="100%" style="border:1px groove black;">
 
 5. In VS Code Explorer, revert the changes you made to the two OML files above. Using the Source Control tab, commit `mission.oml` and `masses.oml`. In the repository's website, wait until the CI workflow succeeds, navigate to the Pages link and refresh the page. Verify that the page returns to the original contents before the changes.
 

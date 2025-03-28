@@ -15,17 +15,17 @@ We will start by creating an OML project that has a vocabulary bundle and a desc
 1. Name the project `tutorial2`. Click Next.
 1. Fill the OML project details as seen below. Click Finish.
 
-    <img src="assets/tutorial2/Create-OML-Project.png" width="100%"/>
+    <img src="assets/tutorial2/Create-OML-Project.png" width="100%">
 
 1. In the [=Model Explorer view=], double click on the `build.gradle` file, and modify the declared dependency on `core-vocabulary` to `metrology-vocabulary` instead. Save the editor.
 
-	<img src="assets/tutorial2/Modify-Gradle-Build.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial2/Modify-Gradle-Build.png" width="100%" style="border:1px groove black;">
 
 Note: specifying `+` as a dynamic version for `metrology-vocabularies` will result in downloding the latest version. However, a safer approach would be to pin the dependency to the current major revision (e.g., `7.+`) to protect the project against future incompatible major revisions of `metrology-vocabularies`. At the time of this writing, the major revision for that library was `7.+` but this could be different when you take the tutorial. Click [here](https://github.com/opencaesar/metrology-vocabularies/releases) to check what the latest version at this time is.
 
 1. In the [=Model Explorer view=], expand the `tutorial2` project, right-click on the `src/oml/example.com/tutorial2` folder, choose New -> OML Model and fill the OML model details as shown below. Click Finish.
 
-    <img src="assets/tutorial2/Create-Vocabulary-Bundle.png" width="100%"/>
+    <img src="assets/tutorial2/Create-Vocabulary-Bundle.png" width="100%">
 
 1. In the [=Model Explorer view=], double click on the file `src/oml/example.com/tutorial2/description/bundle.oml` to open its editor. Paste the following OML code as the contents of the file.
 
@@ -85,7 +85,7 @@ Note: how we only added the `mission` vocabulary, not the `base` vocabulary, to 
 
 4. if you did all the previous steps correctly, the following should be the contents of all files so far.
 
-    <img src="assets/tutorial2/P1-Initial-Ontologies.png" width="100%"/>
+    <img src="assets/tutorial2/P1-Initial-Ontologies.png" width="100%">
 
 1. In the `vocabulary/base` ontology, append the following OML code to its body (i.e., insert it before the closing `}` bracket):
 
@@ -147,8 +147,8 @@ Note: the `key` axiom in the `IdentifiedThing` aspect. It says that instances of
 
 	<table>
 		<tr>
-			<td><img src="assets/tutorial2/P1-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
-			<td><img src="assets/tutorial2/P1-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P1-Base-Vocabulary.png" width="100%" style="border:1px groove black;"></td>
+			<td><img src="assets/tutorial2/P1-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"></td>
 		</tr>
 		<tr>
 			<td>Base Vocabulary</td>
@@ -211,7 +211,7 @@ description <http://example.com/tutorial2/description/objectives#> as objectives
 
 	<table>
 		<tr>
-			<td><img src="assets/tutorial2/P1-Objectives-Description.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P1-Objectives-Description.png" width="100%" style="border:1px groove black;"></td>
 		</tr>
 		<tr>
 			<td>Objectives Desrciption</td>
@@ -253,7 +253,7 @@ ORDER BY ?o1_id ?o2_id
 
 15. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/objectives.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/tutorial2/P1-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P1-Query-Results.png" width="100%">
 
 16. With this JSON results, one could develop a visualization like the following:
 
@@ -325,7 +325,7 @@ Note: the semantic (logical) flags specified on the relation entity `Pursues`. T
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-    <img src="assets/tutorial2/P2-Mission-Vocabulary.png" width="100%"/>
+    <img src="assets/tutorial2/P2-Mission-Vocabulary.png" width="100%">
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -360,7 +360,7 @@ description <http://example.com/tutorial2/description/missions#> as missions {
 
 5. The following is a visualization of the `missions` description we just created.
 
-    <img src="assets/tutorial2/P2-Missions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P2-Missions-Description.png" width="100%">
 
 6. Append the following OML code to the body of `description/bundle` to include the new `missions` ontology. Save the editor.
 
@@ -398,7 +398,7 @@ ORDER BY ?m_id ?o_id
 
 10. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/missions.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/tutorial2/P2-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P2-Query-Results.png" width="100%">
 
 11. With this JSON results, one could develop visualizations like the following:
 
@@ -664,7 +664,7 @@ We say a mission deploys components, which are typically the major systems  of t
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-    <img src="assets/tutorial2/P3-Mission-Vocabulary.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Mission-Vocabulary.png" width="100%">
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -702,7 +702,7 @@ description <http://example.com/tutorial2/description/components#> as components
 	]
 	instance orbiter-command-and-data-handling-subsystem : mission:Component [
 		base:hasIdentifier "C.02.04"
-		base:hasCanonicalName "Orbiter C&DH Subsystem"
+		base:hasCanonicalName "Orbiter CDH Subsystem"
 	]
 	instance orbiter-telecom-subsystem : mission:Component [
 		base:hasIdentifier "C.02.05"
@@ -710,7 +710,7 @@ description <http://example.com/tutorial2/description/components#> as components
 	]
 	instance orbiter-guidance-navigation-control-subsystem : mission:Component [
 		base:hasIdentifier "C.02.06"
-		base:hasCanonicalName "Orbiter GN&C Subsystem"
+		base:hasCanonicalName "Orbiter GNC Subsystem"
 	]
 	instance orbiter-mechanical-subsystem : mission:Component [
 		base:hasIdentifier "C.02.07"
@@ -778,11 +778,11 @@ Note: This should clear the errors from the previous step.
 
 7. The following is a visualization of the `components` and `missions` descriptions so far:
 
-    <img src="assets/tutorial2/P3-Components-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Components-Description.png" width="100%">
 
 	Components
 
-    <img src="assets/tutorial2/P3-Missions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P3-Missions-Description.png" width="100%">
 
 	Missions
 
@@ -844,8 +844,8 @@ Note: that we used the `ref` keyword here to add more statements to the concept 
 		<col style="width:40%">
 		<col style="width:60%">
 		<tr>
-			<td><img src="assets/tutorial2/P4-Base-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
-			<td><img src="assets/tutorial2/P4-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"/></td>
+			<td><img src="assets/tutorial2/P4-Base-Vocabulary.png" width="100%" style="border:1px groove black;"></td>
+			<td><img src="assets/tutorial2/P4-Mission-Vocabulary.png" width="100%" style="border:1px groove black;"></td>
 		</tr>
 		<tr>
 			<td>Base Vocabulary</td>
@@ -877,7 +877,7 @@ Now, we will use the pattern to describe the physical composition (containment) 
 
 6. The following is a visualization of the `components` description so far:
 
-    <img src="assets/tutorial2/P4-Components-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P4-Components-Description.png" width="100%">
 	
 7. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -921,7 +921,7 @@ Note: how concept `MassMagnitude` specializes `vim4:InherentUnitaryQuantityValue
 
 2. The following is a visualization of the `mechanical` vocabulary:
 
-	<img src="assets/tutorial2/P5-Mechanical-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P5-Mechanical-Vocabulary.png" width="100%">
 
 7. Append the following OML code to the body of `vocabulary/bundle` to include the new `mechanical` ontology. Save the editor.
 
@@ -1025,7 +1025,7 @@ Note: how the magnitude of each component is specified with a double literal. Th
 
 6. The following is a visualization of the `masses` description:
 
-    <img src="assets/tutorial2/P5-Masses-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P5-Masses-Description.png" width="100%">
 
 8. Append the following OML code to the body of `description/bundle` to include the new `masses` ontology. Save the editor.
 
@@ -1068,7 +1068,7 @@ ORDER BY ?c1_id ?c2_id
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/components.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/tutorial2/P5-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P5-Query-Results.png" width="100%">
 
 12. With this JSON results, one could develop visualizations like the following:
 
@@ -1125,9 +1125,9 @@ Note: the visualization code is not part of this tutorial
 </style>
 </head>
 <body>
-<table id="table3"><thead><tr><th>c1_name</th><th>c1_id</th><th>c1_mass</th><th>c2_name</th><th>c2_id</th></tr></thead><tbody><tr><td>Orbiter Launch System</td><td>C.01</td><td>2000.0</td><td></td><td></td></tr><tr><td>Orbiter Spacecraft</td><td>C.02</td><td></td><td></td><td></td></tr><tr><td>Orbiter Power Subsystem</td><td>C.02.01</td><td>297.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Harness</td><td>C.02.02</td><td>138.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Thermal Subsystem</td><td>C.02.03</td><td>307.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter C&DH subsystem</td><td>C.02.04</td><td>147.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Telecom Subsystem</td><td>C.02.05</td><td>316.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter GN&C subsystem</td><td>C.02.06</td><td>156.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Mechanical Subsystem</td><td>C.02.07</td><td>325.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Spacraft Flight Software</td><td>C.02.08</td><td>165.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Propulsion Subsystem</td><td>C.02.09</td><td>6.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Ground Data System</td><td>C.03</td><td></td><td></td><td></td></tr><tr><td>Mission Operations System</td><td>C.04</td><td></td><td></td><td></td></tr><tr><td>Lander Launch System</td><td>C.05</td><td>3500.0</td><td></td><td></td></tr><tr><td>Lander Spacecraft</td><td>C.06</td><td>1200.0</td><td></td><td></td></tr><tr><td>Lander Ground Data System</td><td>C.07</td><td></td><td></td><td></td></tr></tbody></table>
+<table id="table3"><thead><tr><th>c1_name</th><th>c1_id</th><th>c1_mass</th><th>c2_name</th><th>c2_id</th></tr></thead><tbody><tr><td>Orbiter Launch System</td><td>C.01</td><td>2000.0</td><td></td><td></td></tr><tr><td>Orbiter Spacecraft</td><td>C.02</td><td></td><td></td><td></td></tr><tr><td>Orbiter Power Subsystem</td><td>C.02.01</td><td>297.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Harness</td><td>C.02.02</td><td>138.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Thermal Subsystem</td><td>C.02.03</td><td>307.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter CDH subsystem</td><td>C.02.04</td><td>147.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Telecom Subsystem</td><td>C.02.05</td><td>316.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter GNC subsystem</td><td>C.02.06</td><td>156.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Mechanical Subsystem</td><td>C.02.07</td><td>325.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Spacraft Flight Software</td><td>C.02.08</td><td>165.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Propulsion Subsystem</td><td>C.02.09</td><td>6.0</td><td>Orbiter Spacecraft</td><td>C.02</td></tr><tr><td>Orbiter Ground Data System</td><td>C.03</td><td></td><td></td><td></td></tr><tr><td>Mission Operations System</td><td>C.04</td><td></td><td></td><td></td></tr><tr><td>Lander Launch System</td><td>C.05</td><td>3500.0</td><td></td><td></td></tr><tr><td>Lander Spacecraft</td><td>C.06</td><td>1200.0</td><td></td><td></td></tr><tr><td>Lander Ground Data System</td><td>C.07</td><td></td><td></td><td></td></tr></tbody></table>
 <p></p>
-<svg width="960" height="500"><g transform="translate(120,20)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,127.77777777777779,180,127.77777777777779"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,178.8888888888889,180,178.8888888888889"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,230,180,230"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,281.11111111111114,180,281.11111111111114"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,332.22222222222223,180,332.22222222222223"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,383.33333333333337,180,383.33333333333337"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,434.44444444444446,180,434.44444444444446"></path><path class="link" d="M180,230C270,230,270,25.555555555555557,360,25.555555555555557"></path><path class="link" d="M180,230C270,230,270,76.66666666666667,360,76.66666666666667"></path><path class="link" d="M180,230C270,230,270,127.77777777777779,360,127.77777777777779"></path><path class="link" d="M180,230C270,230,270,178.8888888888889,360,178.8888888888889"></path><path class="link" d="M180,230C270,230,270,230,360,230"></path><path class="link" d="M180,230C270,230,270,281.11111111111114,360,281.11111111111114"></path><path class="link" d="M180,230C270,230,270,332.22222222222223,360,332.22222222222223"></path><path class="link" d="M180,230C270,230,270,383.33333333333337,360,383.33333333333337"></path><path class="link" d="M180,230C270,230,270,434.44444444444446,360,434.44444444444446"></path></g><g transform="translate(360, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Propulsion Subsystem(6)</text></g><g transform="translate(360, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Harness(138)</text></g><g transform="translate(360, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter C&DH Subsystem(147)</text></g><g transform="translate(360, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter GN&C Subsystem(156)</text></g><g transform="translate(360, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Spacraft Flight Software(165)</text></g><g transform="translate(360, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Power Subsystem(297)</text></g><g transform="translate(360, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Thermal Subsystem(307)</text></g><g transform="translate(360, 76.66666412353516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Telecom Subsystem(316)</text></g><g transform="translate(360, 25.55555534362793)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-mechanical-subsystem(325)</text></g><g transform="translate(180, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Ground Data System(0)</text></g><g transform="translate(180, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Mission Operations System(0)</text></g><g transform="translate(180, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Ground Data System(0)</text></g><g transform="translate(180, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Spacecraft(1200)</text></g><g transform="translate(180, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Orbiter Spacecraft(1857)</text></g><g transform="translate(180, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Launch System(2000)</text></g><g transform="translate(180, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Launch System(3500)</text></g><g transform="translate(0, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Root</text></g></g></svg>
+<svg width="960" height="500"><g transform="translate(120,20)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,127.77777777777779,180,127.77777777777779"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,178.8888888888889,180,178.8888888888889"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,230,180,230"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,281.11111111111114,180,281.11111111111114"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,332.22222222222223,180,332.22222222222223"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,383.33333333333337,180,383.33333333333337"></path><path class="link" d="M0,281.11111111111114C90,281.11111111111114,90,434.44444444444446,180,434.44444444444446"></path><path class="link" d="M180,230C270,230,270,25.555555555555557,360,25.555555555555557"></path><path class="link" d="M180,230C270,230,270,76.66666666666667,360,76.66666666666667"></path><path class="link" d="M180,230C270,230,270,127.77777777777779,360,127.77777777777779"></path><path class="link" d="M180,230C270,230,270,178.8888888888889,360,178.8888888888889"></path><path class="link" d="M180,230C270,230,270,230,360,230"></path><path class="link" d="M180,230C270,230,270,281.11111111111114,360,281.11111111111114"></path><path class="link" d="M180,230C270,230,270,332.22222222222223,360,332.22222222222223"></path><path class="link" d="M180,230C270,230,270,383.33333333333337,360,383.33333333333337"></path><path class="link" d="M180,230C270,230,270,434.44444444444446,360,434.44444444444446"></path></g><g transform="translate(360, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Propulsion Subsystem(6)</text></g><g transform="translate(360, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Harness(138)</text></g><g transform="translate(360, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter CDH Subsystem(147)</text></g><g transform="translate(360, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter GNC Subsystem(156)</text></g><g transform="translate(360, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Spacraft Flight Software(165)</text></g><g transform="translate(360, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Power Subsystem(297)</text></g><g transform="translate(360, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Thermal Subsystem(307)</text></g><g transform="translate(360, 76.66666412353516)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Telecom Subsystem(316)</text></g><g transform="translate(360, 25.55555534362793)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">orbiter-mechanical-subsystem(325)</text></g><g transform="translate(180, 434.4444580078125)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Ground Data System(0)</text></g><g transform="translate(180, 383.3333435058594)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Mission Operations System(0)</text></g><g transform="translate(180, 332.22222900390625)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Ground Data System(0)</text></g><g transform="translate(180, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Spacecraft(1200)</text></g><g transform="translate(180, 230)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Orbiter Spacecraft(1857)</text></g><g transform="translate(180, 178.88888549804688)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Orbiter Launch System(2000)</text></g><g transform="translate(180, 127.77777862548828)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="13" text-anchor="start">Lander Launch System(3500)</text></g><g transform="translate(0, 281.1111145019531)" class="node"><circle r="10" style="fill: rgb(255, 255, 255);"></circle><text dy="0.35em" x="-13" text-anchor="end">Root</text></g></g></svg>
 </body>
 </html>
 
@@ -1161,7 +1161,7 @@ Note: that in the second visualization above, each node in the tree rolls up the
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/tutorial2/P6-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P6-Mission-Vocabulary.png" width="100%">
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1220,7 +1220,7 @@ Note: Creating a relation instance is an alternative to creating an unreified (s
 
 5. The following is a visualization of the `interfaces` description:
 
-    <img src="assets/tutorial2/P6-Interfaces-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P6-Interfaces-Description.png" width="100%">
 
 6. Append the following OML code to the body of `description/bundle` to include the new `interfaces` ontology. Save the editor.
 
@@ -1270,7 +1270,7 @@ Note: how we added aspect `SpecifiedThing` as another supertype to relation enti
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/tutorial2/P7-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P7-Mission-Vocabulary.png" width="100%">
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1311,7 +1311,7 @@ description <http://example.com/tutorial2/description/requirements#> as requirem
 
 5. The following is a visualization of the `requirements` description:
 
-    <img src="assets/tutorial2/P7-Requirements-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P7-Requirements-Description.png" width="100%">
 
 6. Append the following OML code to the body of `description/bundle` to include the new `requirements` ontology. Save the editor.
 
@@ -1354,7 +1354,7 @@ ORDER BY ?r_id ?c_name ?i_name
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/requirements.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/tutorial2/P7-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P7-Query-Results.png" width="100%">
 
 12. With this JSON results, one could develop a requirement doc generator that would generate the following:
 
@@ -1405,7 +1405,7 @@ Note: how the rule `Junction-infers-Connection` says that when a component prese
 
 2. The following is a visualization of the `mission` vocabulary so far:
 
-	<img src="assets/tutorial2/P8-Mission-Vocabulary.png" width="100%"/>
+	<img src="assets/tutorial2/P8-Mission-Vocabulary.png" width="100%">
 
 3. Let us check that our ontologies are good so far, by running the task `tutorial2/oml/build` from the [=Gradle Tasks view=], and waiting for it to finish running in the [=Gradle Executions view=]. This should run with no errors.
 
@@ -1440,7 +1440,7 @@ description <http://example.com/tutorial2/description/junctions#> as junctions {
 
 5. The following is a visualization of the `junctions` description:
 
-    <img src="assets/tutorial2/P8-Junctions-Description.png" width="100%"/>
+    <img src="assets/tutorial2/P8-Junctions-Description.png" width="100%">
 
 6. Append the following OML code to the body of `description/bundle` to include the new `junctions` ontology. Save the editor.
 
@@ -1475,7 +1475,7 @@ ORDER BY ?c1_name ?c2_name
 
 11. Right click on the project in the [=Model Explorer view=] and select `Refresh`. Navigate to the file `build/results/connections.json` and double click it to open its editor. You should see the following results in JSON.
 
-	<img src="assets/tutorial2/P8-Query-Results.png" width="100%"/>
+	<img src="assets/tutorial2/P8-Query-Results.png" width="100%">
 
 Note: how the entailments generated by the DL reasoner allowed us to write concise queries that would otherwise have had to encode all the logical semantics.
 

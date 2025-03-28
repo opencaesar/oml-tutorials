@@ -10,7 +10,7 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
 
 1. Download the latest release of OML Rosetta archive that matches your OS from [oml-rosetta](https://github.com/opencaesar/oml-rosetta/releases/latest).
 
-    <img src="assets/tutorial0/Rosetta-Download.png" width="100%" style="border:1px groove black;"/>
+    <img src="assets/tutorial0/Rosetta-Download.png" width="100%" style="border:1px groove black;">
 
 1. Unzip the archive to some folder on your local drive to get the Rosetta app.
     
@@ -22,29 +22,29 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
 
 1. Navigate to the Rosetta app icon and double click to run it.
 
-    <img src="assets/tutorial0/splash.bmp" width="100%"/>
+    <img src="assets/tutorial0/splash.bmp" width="100%">
 
 1. When prompted to choose a workspace, create a new one in your local file system.
 
-    <img src="assets/tutorial0/Rosetta-Launcher.png" width="100%"/>
+    <img src="assets/tutorial0/Rosetta-Launcher.png" width="100%">
 
 ## Run OML Rosetta ## {#run-oml-rosetta}
 
 1. Once Rosetta opens with the workspace, switch to the Modeling Perspective.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial0/Switch-to-Modeling-Perspective.mov"/>
+     <source src="assets/tutorial0/Switch-to-Modeling-Perspective.mov">
    </video>
 
 1. Once the Modeling Perspective opens, make some extra views visible.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial0/Show-Views.mov"/>
+     <source src="assets/tutorial0/Show-Views.mov">
    </video>
 
 1. This is how the Modeling Perspective should look like now.
 
-   <img src="assets/tutorial0/Final-Modeling-Perspective.png" width="100%"/>
+   <img src="assets/tutorial0/Final-Modeling-Perspective.png" width="100%">
 
     Notice the following components of the Modeling Perspective above:
 
@@ -59,6 +59,6 @@ Furthermore, OML projects created by openCAESAR are Gradle projects that have OM
 
     1. Turn on the Show line number preference by navigating to the Preferences dialog in the main menu bar (on a Mac, you will find it under the `Rosetta` menu; on Windows, you will find it under the `Windows` menu).
 
-       <video width="100%" style="border:1px groove black;" controls>
-         <source src="assets/tutorial0/Enable-Line-Numbers.mov"/>
-        </video>
+      <video width="100%" style="border:1px groove black;" controls>
+         <source src="assets/tutorial0/Enable-Line-Numbers.mov">
+      </video>

@@ -47,7 +47,7 @@ In this step, we will create all the projects of the example and configure their
 
 > We will use the `Project Explorer` view as it supports project nesting better than the [=Model Explorer view=]. If not already visible, from the menu, select Window -> Show View -> Other ..., search for 'Project Explorer', select it and click Open.
 
-	<img src="assets/tutorial6/Project-Explorer.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Project-Explorer.png" width="100%" style="border:1px groove black;">
 
 **Parent Project**
 
@@ -66,7 +66,7 @@ In this step, we will create all the projects of the example and configure their
     include 'SupremeMonitors'
     include 'SecureSystems'
     ```
-	<img src="assets/tutorial6/Parent-Project.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Parent-Project.png" width="100%" style="border:1px groove black;">
 
 **Methodology Project**
 
@@ -100,7 +100,7 @@ Note: If you get a *Problem Occurred* message box, it's a known issue. Click on 
 11. Expand the new `HomeSecurity` project and double click to open `build.gradle` file. 
 12. Navigate to the `dependencies` section (right above `downloadDependencies` task), replace the default dependency with `oml project(':Methodology')`.
 
-	<img src="assets/tutorial6/Subproject-Dependencies.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Subproject-Dependencies.png" width="100%" style="border:1px groove black;">
 
 **SmartSensors Project**
 
@@ -149,7 +149,7 @@ Note: If you get a *Problem Occurred* message box, it's a known issue. Click on 
 
 > This is how the Project Explorer should look like now:
 
-	<img src="assets/tutorial6/Final-Projects.png" width="50%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Final-Projects.png" width="50%" style="border:1px groove black;">
 
 **SecureSystems Project**
 
@@ -274,7 +274,7 @@ In this tep, we define a very simple system modeling vocabulary that is a subset
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/Methodology-Vocabulary.png" width="75%"/>
+	<img src="assets/tutorial6/Methodology-Vocabulary.png" width="75%">
 
 > We will now add the vocabulary to the project's vocabulary bundle.
 
@@ -413,8 +413,8 @@ Note: An alternative is to run the `oml/downloadDependencies` task from the [=Gr
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/HomeSecurity-Architecture-1.png" width="100%" />
-	<img src="assets/tutorial6/HomeSecurity-Architecture-2.png" width="100%" />
+	<img src="assets/tutorial6/HomeSecurity-Architecture-1.png" width="100%" >
+	<img src="assets/tutorial6/HomeSecurity-Architecture-2.png" width="100%" >
 
 > We will now create a vocabulary bundle and add the vocabulary to it.
 
@@ -523,7 +523,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
 
 > This prototype can be depicted as shown below. We used a custom viewpoint defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
 
-	<img src="assets/tutorial6/HomeSecurity-Prototype.png" width="100%" />
+	<img src="assets/tutorial6/HomeSecurity-Prototype.png" width="100%" >
 
 > We will now add the prototype to the project's description bundle.
 
@@ -595,7 +595,7 @@ This supplier builds two kinds of sensors, a smoke sensor and a motion sensor. T
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/Smart-Sensors.png" width="50%" />
+	<img src="assets/tutorial6/Smart-Sensors.png" width="50%" >
 
 > We will now add the prototype to the project's vocabulary bundle.
 
@@ -677,7 +677,7 @@ This supplier builds an Alarm System for a home security architecture. They will
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/Safe-Alarms.png" width="100%" />
+	<img src="assets/tutorial6/Safe-Alarms.png" width="100%" >
 
 > We will now add the prototype to the project's vocabulary bundle.
 
@@ -735,7 +735,7 @@ This supplier builds a Monitoring System for a home security architecture. They 
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/Supreme-Monitors.png" width="50%" />
+	<img src="assets/tutorial6/Supreme-Monitors.png" width="50%" >
 
 > We will now add the prototype to the project's vocabulary bundle.
 
@@ -834,7 +834,7 @@ In this step, we will enable a system integrator (`SecureSystems`), who is also 
 
 Note: that vocabulary was created using the built-in vocabulary editor seen in [Tutorial 5](#tutorial5-create-oml-vocabulary).
 
-	<img src="assets/tutorial6/Secure-Systems.png" width="100%" />
+	<img src="assets/tutorial6/Secure-Systems.png" width="100%" >
 
 > We will now create a vocabulary bundle and add the vocabulary to it.
 
@@ -1008,7 +1008,7 @@ Note: that vocabulary was created using the built-in vocabulary editor seen in [
 
 > This prototype can be depicted as shown below. We used a custom viewpoint defined [here](https://github.com/opencaesar/homesecurity-example/tree/master/homesecurity-viewpoint).
 
-	<img src="assets/tutorial6/Secure-Prototype.png" width="100%" />
+	<img src="assets/tutorial6/Secure-Prototype.png" width="100%" >
 
 > We will now add the prototype to the project's description bundle.
 
@@ -1097,7 +1097,7 @@ In this scenario, we make a breaking semantic change to the abstract `architectu
 3. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error.
 4. Double click to open the file `SecureSystems/build/reports/reasoning.xml`. You should see the following:
 
-	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;">
 
 > The error indicates that a max cardinality restriction is violated. This is nice because now the integrator `SecureSystems` gets alerted to the architectural change that calls for exactly 1 sensor, which is inconsistent with its realization architecture which calls for multiple sensors (see the code below).
     ```scala
@@ -1131,7 +1131,7 @@ In this scenario, we make a breaking semantic change in one of the realization c
 3. In [=Gradle Tasks view=], run `homesecurity-models/SecureSystems/build/build` and verify that it gives an error.
 4. Double click to open the file `SecureSystems/build/reports/reasoning.xml`. You should see the following:
 
-	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Reasoning-Error-1.png" width="100%" style="border:1px groove black;">
 
 > The inconsistency in this case is a result of the prototype not incorporating the required sound interface. Note that such requirement is not called for in the abstract architecture but comes from the realization. This would be an opportunity for a conversation between all parties: the architect, the supplier, and the acquirer (the integrator).
 
@@ -1151,7 +1151,7 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 
 2. On your computer, navigate to your [local Maven repository](https://www.baeldung.com/maven-local-repository) typically named `.m2`. Expand the nested path `repository/com/example` and you should see all the 1.0.0 project artifacts published there.
 
-	<img src="assets/tutorial6/Maven-Local.png" width="25%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Maven-Local.png" width="25%" style="border:1px groove black;">
 
 3. Back in Rosetta, open the file `SecureSystems/build.gradle` and navigate to the dependencies section and change it as follows:
     ```
@@ -1180,7 +1180,7 @@ In this step, we will first publish all the projects to Maven Local (on the loca
 
 > Inspect the new version in your Maven Local folder just to double check.
 
-	<img src="assets/tutorial6/Maven-Local-2.png" width="25%" style="border:1px groove black;"/>
+	<img src="assets/tutorial6/Maven-Local-2.png" width="25%" style="border:1px groove black;">
 
 5. Right click on the project `homesecurity-models` and select Grade -> Refresh Grade Project.
 

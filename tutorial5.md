@@ -24,13 +24,13 @@ In this step, we will create a new OML project called `basicfamily-model` in the
 2. Enter the project name as `basicfamily-model`. Press Next.
 3. Enter the project details as shown below. Press Finish.
 
-	<img src="assets/tutorial5/Create-OML-Project.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-OML-Project.png" width="75%" style="border:1px groove black;">
 
 4. The `basicfamily-model` project should now be visible in the [=Model Explorer view=].
 
 5. Expand the `basicfamily-model` project node in the [=Model Explorer view=] as shown in the image below.
 
-	<img src="assets/tutorial5/Expanded-Project.png" width="50%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Expanded-Project.png" width="50%" style="border:1px groove black;">
 
 ## Create OML Vocabulary ## {#tutorial5-create-oml-vocabulary}
 
@@ -40,48 +40,48 @@ In the step, we will create a vocabulary called `basicfamily`, which is the OML 
 
 2. Enter the details of the `basicfamily` vocabulary as shown below. Press Finish.
 
-	<img src="assets/tutorial5/Create-BasicFamily-Vocabulary.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-BasicFamily-Vocabulary.png" width="100%" style="border:1px groove black;">
 
 3. The `basicfamily` vocabulary will be created and its OML editor opens.
 
-	<img src="assets/tutorial5/BasicFamily-Vocabulary-Opens.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/BasicFamily-Vocabulary-Opens.png" width="100%" style="border:1px groove black;">
 
 > Before we can use any Sirius-based viewpoints, we need to convert the project to what Sirius calls a `Modeling Project`.
 
 4. Right-click on the `basicfamily-model` project in the [=Model Explorer view=] and select "Configure -> Convert to Modeling Project".
 
-	<img src="assets/tutorial5/Convert-To-Modeling-Project.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Convert-To-Modeling-Project.png" width="75%" style="border:1px groove black;">
 
 > Before we can use the built-in Vocabulary viewpoint, which provides the vocabulary diagram editor, we need to enable the viewpoint on the project.
 
 5. Right-click on the on the `basicfamily-model` project in the [=Model Explorer view=] and select "Viewpoints Selection".
 
-	<img src="assets/tutorial5/Viewpoints-Selection.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Viewpoints-Selection.png" width="75%" style="border:1px groove black;">
 
 6. Check the "Vocabularies" box and click OK. This activates the ability to create vocabulary diagrams in the project.
 
-	<img src="assets/tutorial5/Select-Vocabularies-Viewpoint.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Select-Vocabularies-Viewpoint.png" width="75%" style="border:1px groove black;">
 
 > Now, we are ready to create a vocabulary diagram for `basicfamily` vocabulary to use it as an alternative editor to the OML text editor.
 
 7. Navigate to the `basicfamily.oml` file in the [=Model Explorer view=] and expand it to show the root vocabulary element. Right-click on the element and select "New Representation -> Basicfamily Editor".
 
-	<img src="assets/tutorial5/Create-Basicfamily-Diagram.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Basicfamily-Diagram.png" width="100%" style="border:1px groove black;">
 
 8. The New Vocabulary Editor dialog opens up to allow you to customize the diagram name. In this case, we will keep the default name and click OK.
 
-	<img src="assets/tutorial5/Initial-Vocabulary-Diagram.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Initial-Vocabulary-Diagram.png" width="100%" style="border:1px groove black;">
 
 9. In order to observe how the graphical syntax is synchronized with the textual syntax, drag the diagram editor using its title bar and dock it to the right of the text editor.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Dock-Vocabulary-Diagram.mov"/>
+     <source src="assets/tutorial5/Dock-Vocabulary-Diagram.mov">
    </video>
 
 10. We will now use the Vocabulary diagram editor to author the vocabulary. Follow the steps in the video below and save the editor regularly to see the corresponding textual syntax.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Create-Basicfamily-Vocabulary.mov"/>
+     <source src="assets/tutorial5/Create-Basicfamily-Vocabulary.mov">
    </video>
 
 11. If you have done the visual authoring all correct, you should end up with the following OML text in `basicfamily.oml`.
@@ -158,11 +158,11 @@ vocabulary <http://example.com/vocabulary/basicfamily#> as basicfamily {
 
 13. The `basicfamily` vocabulary diagram now looks like this (notice the `{subsets parents}` on relation `mother` and `father`).
 
-	<img src="assets/tutorial5/Basicfamily-Diagram-1.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Basicfamily-Diagram-1.png" width="75%" style="border:1px groove black;">
 
 14. Right-click on the `src/oml/example.com/vocabulary` folder in [=Model Explorer view=] and select New -> OML Model. Fill in the diagram like in the picture. Click Finish.
 
-	<img src="assets/tutorial5/Create-Vocabulary-Bundle.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Vocabulary-Bundle.png" width="75%" style="border:1px groove black;">
 
 15. In the open editor for `bundle.oml`, add an include statement for `basicfamily` like this:
 
@@ -185,11 +185,11 @@ In this step, we will create an OML description model using the OML textual edit
 
 2. Enter the details of the `family1` description as shown below. Press Finish.
 
-	<img src="assets/tutorial5/Create-Family1-Description.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Family1-Description.png" width="100%" style="border:1px groove black;">
 
 3. The `family1` description will be created and its OML editor opens.
 
-	<img src="assets/tutorial5/Family1-Description-Opens.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Family1-Description-Opens.png" width="100%" style="border:1px groove black;">
 
 > We will now use the text editor to create an OML description model defining `family1`, its men and women members, and their interrelationships.
 
@@ -269,25 +269,25 @@ description <http://example.com/description/family1#> as family1 {
 
 5. Right-click on the `basicfamily-model` project in the [=Model Explorer view=] and select "Viewpoints Selection". In the dialog, check the "Descriptions" box and click OK.
 
-	<img src="assets/tutorial5/Select-Description-Viewpoint.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Select-Description-Viewpoint.png" width="100%" style="border:1px groove black;">
 
 > Now, we are ready to create a description diagram for `family1.oml`.
 
 6. Navigate to `family1.oml` in the [=Model Explorer view=] and expand it to reveal the root description. Right-click on the description and select "New Representation -> Family1 Viewer". In the opened dialog, leave the default name and click OK.
 
-	<img src="assets/tutorial5/Create-Family1-Diagram1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Family1-Diagram1.png" width="100%" style="border:1px groove black;">
 
 > The `Family1 Viewer` diagram opens with visualization of the model content. You will notice that the diagram is a bit busy since the `family1` instance, which is related to all family members using the `members` relation is visualized. Deleting this node from the diagram and rearranging the remaining nodes improves the layout.
 
 7. Follow the few steps in the video below to improve the layout of the diagram.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Create-Family1-Diagram1.mov"/>
+     <source src="assets/tutorial5/Create-Family1-Diagram1.mov">
    </video>
 
 8. The final diagram should look like this now.
 
-	<img src="assets/tutorial5/Final-Family1-Diagram1.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Final-Family1-Diagram1.png" width="100%" style="border:1px groove black;">
 
 > Notice that although the diagram looks reasonable is still hard to read. Also, while you can make notational/stylistic changes to the diagram, you cannot use it to edit the description model. In the next section, we will develop a custom diagram to improve both aspects.
 
@@ -321,17 +321,17 @@ In this step, we will use Sirius to develop a custom diagram for the `basicfamil
 
 4. Drag and dock it to the right of the working area. Your screen should now look like this.
 
-	<img src="assets/tutorial5/Initial-Viewpoint-Editor.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Initial-Viewpoint-Editor.png" width="100%" style="border:1px groove black;">
 
 5. In the odesign editor, expand the tree to reveal a viewpoint node called `MyViewpoint`. Select it and then in the Property Sheet view, rename it to `persons`. Also set the "Model File Extension" field to `oml`.
 
-	<img src="assets/tutorial5/Rename-Persons-Viewpoint.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Rename-Persons-Viewpoint.png" width="100%" style="border:1px groove black;">
 
 6. Under the `persons` node, you see another node for a Java service. Select it and edit it its text to `defaultpackage.Services`. 
 
 > This step is only needed since we chose the name of the project to be `basicfamily-viewpoint`, which contains an invalid Java character `-`. Eclipse could not use that name for the root package and instead named it `defaultpackage`.
 
-	<img src="assets/tutorial5/Rename-Default-Services.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Rename-Default-Services.png" width="100%" style="border:1px groove black;">
 
 7. Double click the `defaultpackage.Services` node in the tree. It should open a Java editor for the Services class. This is how you know you have configured this correctly. Close the Java editor.
 
@@ -343,7 +343,7 @@ In this step, we will use Sirius to develop a custom diagram for the `basicfamil
 
 Note: The versions of the new dependencies you added will correspond to the version of Rosetta you installed (i.e., they do not have to match the picture).
 
-	<img src="assets/tutorial5/Add-Manifest-Dependencies.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Add-Manifest-Dependencies.png" width="100%" style="border:1px groove black;">
 
 10. Back in the odesign editor, right click on the `defaultpackage.Services` node and select Copy. Then, right click on the `persons` node, and select Paste. Repeat the paste a total of 4 times. Now, click on each of the pasted services and edit them in the Property Sheet view to the following class names. Save the editor after.
 
@@ -352,19 +352,19 @@ Note: The versions of the new dependencies you added will correspond to the vers
 - io.opencaesar.oml.util.OmlDelete
 - io.opencaesar.rosetta.sirius.viewpoint.OmlServices
 
-	<img src="assets/tutorial5/Add-Java-Services.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Add-Java-Services.png" width="100%" style="border:1px groove black;">
 
 > We need to copy some icons to the `basicfamily-viewpoint` project, so we use them in the definition of the viewpoint.
 
 11. Download [icons.zip](assets/tutorial5/icons.zip) and unzip it. Move the `icons` folder to the root of the `basicfamily-viewpoint` project. 
 
-	<img src="assets/tutorial5/Copy-Icons.png" width="75%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Copy-Icons.png" width="75%" style="border:1px groove black;">
 
 > Finally, we need to activate the new `persons` viewpoint on the `basicfamily-model` project.
 
 12. Right click on the `basicfamily-model` project in the [=Model Explorer view=] and select Viewpoint Selection. Check the `persons` box in the dialog and click OK.
 
-	<img src="assets/tutorial5/Activate-Custom-Viewpoint.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Activate-Custom-Viewpoint.png" width="100%" style="border:1px groove black;">
 
 > Now, all the editors we will define in the `persons` viewpoint can be used in the `basicfamily-model` project.
 
@@ -374,11 +374,11 @@ In this step, we will define a custom diagram editor for OML description models 
 
 1. In the `basicfamily.odesign` editor, right click on the `persons` viewpoint and select New Representation -> Diagram Description.
 
-	<img src="assets/tutorial5/Create-Diagram-Editor.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Diagram-Editor.png" width="100%" style="border:1px groove black;">
 
 2. Select the newly created diagram node in the editor then click on the Property Sheet view to edit its properties. Switch first on the *Metamodels* tab, click on `Add from registry` button (on the right), type `oml` in the edit box, and select the `http://opencaesar.io/oml` item and click OK.
 
-	<img src="assets/tutorial5/Add-Metamodel-to-Diagram.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Add-Metamodel-to-Diagram.png" width="100%" style="border:1px groove black;">
 
 > Now, we will specify that this diagram can be created for a `oml.ConceptInstance` that is typed by the `basicfamily:Family` concept from the vocabulary.
 
@@ -391,7 +391,7 @@ In this step, we will define a custom diagram editor for OML description models 
     - <b>Precondition Expression</b>: aql:self.findIsKindOf('basicfamily:Family')
     </pre>
 
-	<img src="assets/tutorial5/Add-Diagram-Details.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Add-Diagram-Details.png" width="100%" style="border:1px groove black;">
 
 > We will now create two kinds of nodes within the diagram, one for a Man and one for a Woman (the two kind of Person from the vocabulary).
 
@@ -469,11 +469,11 @@ In this step, we will define a custom diagram editor for OML description models 
 
 11. In the [=Model Explorer view=], navigate to the file `basicfamily-model/src/oml/example.com/description/family1.oml`. Expand the file's node to reveal the root `description` node. Right click the nested `family1` node and select New Representation -> new Persons diagram. Rename the diagram to `Persons diagram`. Click OK.
 
-	<img src="assets/tutorial5/Create-Family1-Diagram2.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Family1-Diagram2.png" width="100%" style="border:1px groove black;">
 
 12. The new diagram editor opens. Drag it and dock it to the right editor stack. It should look like this:
 
-	<img src="assets/tutorial5/Initial-Family1-Diagram2.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Initial-Family1-Diagram2.png" width="100%" style="border:1px groove black;">
 
 > When compared to the built-in description diagram, the new custom diagram is much more concise and readable. So far, this is a viewer only, now we will turn it into an editor. We will start by adding tools to create Man and Woman nodes.
 
@@ -687,7 +687,7 @@ public class Services {
 34. In the `family1` diagram, click the palette arrow on the right-hand-side to reveal the node/edge creation tools. Then use the tools to create a `man` and a `woman` that are father and mother of another `man`.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Use-Diagram-Tools.mov"/>
+     <source src="assets/tutorial5/Use-Diagram-Tools.mov">
    </video>
 
 35. Save the diagram and inspect the `family1.oml` file with the OML text editor. It should have the following at the end:
@@ -706,7 +706,7 @@ public class Services {
 36. Select the family1 diagram editor again, and from the main menu run Undo a few times until the new changes are all undone. Save the editor. Look at the `family1.oml` text editor and observe how the new statements got deleted.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Undo-Basicfamily-Diagram.mov"/>
+     <source src="assets/tutorial5/Undo-Basicfamily-Diagram.mov">
    </video>
 
 > Now, we will try the delete tools.
@@ -714,13 +714,13 @@ public class Services {
 37. In the `family1` diagram, select `Paul` and from the diagram's toolbar select the Delete from Model button. This invokes the Recursive delete tool. After this, undo the delete.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Recursive-Delete-Paul.mov"/>
+     <source src="assets/tutorial5/Recursive-Delete-Paul.mov">
    </video>
 
-38. Select `Paul` again and this time right click on it and select Cascade Delete action in the menu. This invokes the Cascade delete tool where it deletes Paul and his offspring. Aftr this, undo the delete. Save the editor.
+38. Select `Paul` again and this time right click on it and select Cascade Delete action in the menu. This invokes the Cascade delete tool where it deletes Paul and his offspring. After this, undo the delete. Save the editor.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Cascade-Delete-Paul.mov"/>
+     <source src="assets/tutorial5/Cascade-Delete-Paul.mov">
    </video>
 
 ## Create Table Editor ## {#tutorial5-create-table-editor}
@@ -791,7 +791,7 @@ In this step, we will define a custom table editor for OML description models th
     - <b>Feature Name</b>: *
     <b>Label</b>:
     - <b>Header Label Expression</b>: Children
-    - <b>Label Expression</b>: aql:self.findTargetInstances('basicfamily:children')->size()
+    - <b>Label Expression</b>: aql:self.findSourceInstances('basicfamily:parents')->size()
     </pre>
 
 7. Right click on the `Persons table` node and select New Table Element -> Feature Column. In the property sheet, change the following:
@@ -815,7 +815,7 @@ In this step, we will define a custom table editor for OML description models th
 
     	var parents = OmlServices.findTargetInstances(self, "basicfamily:parents");
     	for (var parent : parents) {
-    		siblings.addAll(OmlServices.findTargetInstances(parent, "basicfamily:children"));
+    		siblings.addAll(OmlServices.findSourceInstances(parent, "basicfamily:parents"));
     	}
     	
     	siblings.remove(self);
@@ -824,13 +824,13 @@ In this step, we will define a custom table editor for OML description models th
     }
 ```
 
-> Now, we are not ready to create an instance of the table for the `family1` instance.
+> Now, we are now ready to create an instance of the table for the `family1` instance.
 
 9. In the [=Model Explorer view=], navigate to the file `basicfamily-model/src/oml/example.com/description/family1.oml`. Expand the file's node to reveal the root `description` node. Right click the nested `family1` node and select New Representation -> new Persons table. Rename the diagram to `Persons table`. Click OK.
 
 10. The new table editor opens. Drag it and dock it to the right editor stack while docking the diagram to the left stack. Compare the info presented in both the table and the diagram to verify they are in sync.
 
-	<img src="assets/tutorial5/Create-Basicfamily-Table.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Create-Basicfamily-Table.png" width="100%" style="border:1px groove black;">
 
 > So far, this table is a viewer only, now we will turn it into an editor. We will start by adding tools to create Man and Woman nodes.
 
@@ -920,13 +920,13 @@ In this step, we will define a custom table editor for OML description models th
 21. In the `Persons table`, right click on any row and select from the popup menu New Man. Notice that a new row gets added to the end of the table and on the diagram in the same time. Repeat the step creating a New Woman this time. Finally select both new rows, right click and choose Delete Line.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Edit-Basicfamily-Table1.mov"/>
+     <source src="assets/tutorial5/Edit-Basicfamily-Table1.mov">
    </video>
 
 22. Similarly, in the `Persons diagram`, use the pallette tools to create a man and a woman. Observe how the table stays in sync and shows new rows. Then, use the delete tool on the diagram to delete them and observe them being deleted from the table. Save the editor after.
 
    <video width="100%" style="border:1px groove black;" controls>
-     <source src="assets/tutorial5/Edit-Basicfamily-Table2.mov"/>
+     <source src="assets/tutorial5/Edit-Basicfamily-Table2.mov">
    </video>
 
 ## Create SPARQL Queries ## {#tutorial5-create-sparql-queries}
@@ -1115,7 +1115,7 @@ ORDER BY ?person
 
 10. Verify this result against the info in the `Persons diagram`.
 
-	<img src="assets/tutorial5/Cousins-Diagram.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial5/Cousins-Diagram.png" width="100%" style="border:1px groove black;">
 
 > Notice that the `cousin` relation is not asserted in the model but is derived by query. This suggests that every query that needs to match cousins would need to incorporate the same derivation logic, which could potentially make them both complex to write and costly to run. Besides, if this relation matters for logical reasoning (e.g., if you want to consider cousins marrying to be inconsistent), then you may want to add it to the vocabulary explicitly but still derive it by a rule.
 

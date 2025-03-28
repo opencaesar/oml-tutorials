@@ -21,11 +21,11 @@ In this step, we will create a new Github repo and push the OML project from [Tu
 
 1. Open a web browser. navigate to your favorite Github organization and select the `New Repository` button. Set the name of the repo to `kepler16b-example` and the other settings as shown below. Finally, click the `Create Repository` button.
 
-	<img src="assets/tutorial3/Create-New-Repo.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Create-New-Repo.png" width="100%" style="border:1px groove black;">
 
 2. In your OML Rosetta workspace, right-click on the `tutorial2` project, select Proprties action, and note the `Location` path.
 
-	<img src="assets/tutorial3/Select-Project-Properties.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Select-Project-Properties.png" width="100%" style="border:1px groove black;">
 
 3. Open the `Terminal` application on your machine, navigate to the project's path, and initialize the repo using the following commands:
 
@@ -47,15 +47,15 @@ $ git push --set-upstream origin main -f
 
 5. In your web browser, refresh the repo's page. You should now see the repository looking like this:
 
-	<img src="assets/tutorial3/Refresh-Repository.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Refresh-Repository.png" width="100%" style="border:1px groove black;">
 
 6. In the OML Rosetta workspace, right click on the project and choose Refresh.
 
-	<img src="assets/tutorial3/Refresh-Project.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Refresh-Project.png" width="100%" style="border:1px groove black;">
 
   > Your project should now show as being managed in the github repo.
 
-	<img src="assets/tutorial3/Post-Refresh-Project.png" width="50%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Post-Refresh-Project.png" width="50%" style="border:1px groove black;">
 
 ## Setup CI Pipeline ## {#tutorial3-setup-ci-pipeline}
 
@@ -63,15 +63,15 @@ In this step, we will create a CI pipeline for the repository using Github Actio
 
 1. In a web browser, navigate to your repo's web page, and click on the Actions tab.
 
-	<img src="assets/tutorial3/Select-Actions.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Select-Actions.png" width="100%" style="border:1px groove black;">
 
 2. In the Actions page, click on the `Configure` button of the `Simple workflow`.
 
-	<img src="assets/tutorial3/Select-Simple-Worflow.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Select-Simple-Worflow.png" width="100%" style="border:1px groove black;">
 
 3. In the path, rename the file to `ci.yml`.
 
-	<img src="assets/tutorial3/Rename-Workflow.png" width="100%" style="border:1px groove black;"/>
+	<img src="assets/tutorial3/Rename-Workflow.png" width="100%" style="border:1px groove black;">
 
 4. Replace the file contents by the following code:
 
@@ -115,7 +115,7 @@ The CI workflow above has a single job called `build` with 5 named: Check, Setup
 5. Push the `cy.yml` file to the repo and watch the first workflow run complete successfully.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial3/First-CI-Build.mp4"/>
+		<source src="assets/tutorial3/First-CI-Build.mp4">
 	</video>
 
 3. Back in OML Rosetta,  Right click on the project and select Team -> Pull. A pull results dialog will open. Press the button to close it.
@@ -127,7 +127,7 @@ Note: this last step is needed to refresh the local clone of the repo with the c
 In OML Rosetta, create a new branch, add a syntactic error (an invalid cross-reference) to the OML files, and push it. Watch how the CI workflow detects the error. Then, undo the change and push to watch how the workflow succeeds again.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial3/Second-CI-Build.mp4"/>
+		<source src="assets/tutorial3/Second-CI-Build.mp4">
 	</video>
 
 ## Detect Semantic Error ## {#tutorial3-push-semantic-error}
@@ -135,7 +135,7 @@ In OML Rosetta, create a new branch, add a syntactic error (an invalid cross-ref
 In OML Rosetta, in the same branch (created in the previous step), add a semantic error (an assembly contained by two assemblies which is a violation of the `base:contains` relation being inverse functional) to the OML files to see how the CI workflow detects the error. Then, undo the change and push to watch how the workflow succeeds again.
 
 	<video width="100%" style="border:1px groove black;" controls>
-		<source src="assets/tutorial3/Third-CI-Build.mp4"/>
+		<source src="assets/tutorial3/Third-CI-Build.mp4">
 	</video>
 
 ## Summary ## {#tutorial3-summary}

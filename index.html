@@ -1488,9 +1488,10 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
+  <meta content="Bikeshed version 742f3d674, updated Mon Nov 4 14:56:54 2024 -0800" name="generator">
   <link href="http://www.opencaesar.io/oml-tutorials/" rel="canonical">
-  <meta content="542c18296ff4a6ac66571c1e76a69939e51fc37d" name="document-revision">
+  <meta content="0fafb3d1989cc40041a3073a8cd7123115249335" name="revision">
+  <meta content="dark light" name="color-scheme">
 <style>
 #table1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -1669,7 +1670,6 @@ pre .property::before, pre .property::after {
 }
 </style>
 <style>/* Boilerplate: style-colors */
-
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
     color-scheme: light dark;
@@ -1923,11 +1923,15 @@ figcaption:not(.no-marker)::before {
 :root {
     --dfnpanel-bg: #ddd;
     --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
     }
 }
 .dfn-panel {
@@ -1950,11 +1954,13 @@ figcaption:not(.no-marker)::before {
 .dfn-panel > b { display: block; }
 .dfn-panel a { color: var(--dfnpanel-text); }
 .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
 .dfn-panel > b + b { margin-top: 0.25em; }
 .dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
 .dfn-panel li a {
-    white-space: pre;
-    display: inline-block;
     max-width: calc(300px - 1.5em - 1em);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1963,14 +1969,79 @@ figcaption:not(.no-marker)::before {
 .dfn-panel.activated {
     display: inline-block;
     position: fixed;
-    left: .5em;
+    left: 8px;
     bottom: 2em;
     margin: 0 auto;
     max-width: calc(100vw - 1.5em - .4em - .5em);
     max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
 }
 
-.dfn-paneled[role="button"] { cursor: pointer; }
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
 </style>
 <style>/* Boilerplate: style-issues */
 a[href].issue-return {
@@ -1982,7 +2053,6 @@ a[href].issue-return {
 }
 </style>
 <style>/* Boilerplate: style-line-highlighting */
-
 :root {
     --highlight-hover-bg: rgba(0, 0, 0, .05);
 }
@@ -2020,7 +2090,6 @@ a[href].issue-return {
     content: attr(data-line-end);
 }
 
-
 @media (prefers-color-scheme: dark) {
     :root {
         --highlight-hover-bg: rgba(255, 255, 255, .05);
@@ -2037,8 +2106,40 @@ a[href].issue-return {
     margin-bottom: 0;
 }
 </style>
-<style>/* Boilerplate: style-selflinks */
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
 
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
+<style>/* Boilerplate: style-selflinks */
 :root {
     --selflink-text: white;
     --selflink-bg: gray;
@@ -2098,7 +2199,6 @@ a.self-link::before            { content: "¶"; }
 dfn > a.self-link::before      { content: "#"; }
 </style>
 <style>/* Boilerplate: style-syntax-highlighting */
-
 code.highlight { padding: .1em; border-radius: .3em; }
 pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
 
@@ -2155,7 +2255,6 @@ c-[vc] { color: #0077aa } /* Name.Variable.Class */
 c-[vg] { color: #0077aa } /* Name.Variable.Global */
 c-[vi] { color: #0077aa } /* Name.Variable.Instance */
 c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
-
 
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
@@ -2224,7 +2323,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.opencaesar.io/oml/"><img alt="OML Specification" height="48" src="https://opencaesar.github.io/oml/images/oml.svg"></a></p>
    <h1 class="p-name no-ref" id="title">OML Tutorials</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-09-27">27 September 2023</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2025-03-27">27 March 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2394,19 +2493,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="model-explorer-view"><strong>Model Explorer view</strong></dfn> (top-left): shows your project files hierarchy.</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="properties-view"><strong>Properties view</strong><a class="self-link" href="#properties-view"></a></dfn> (bottom-right): shows detailed property sheet of the selection.</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="properties-view"><strong>Properties view</strong></dfn> (bottom-right): shows detailed property sheet of the selection.</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="problems-view"><strong>Problems view</strong><a class="self-link" href="#problems-view"></a></dfn> (bottom-right): shows problems (errors, warnings) with your projects.</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="problems-view"><strong>Problems view</strong></dfn> (bottom-right): shows problems (errors, warnings) with your projects.</p>
      <li data-md>
       <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="gradle-tasks-view"><strong>Gradle Tasks view</strong></dfn> (bottom-right): shows the list of Gradle tasks in your projects.</p>
      <li data-md>
       <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="gradle-executions-view"><strong>Gradle Executions view</strong></dfn> (bottom-right): shows the details of execution of Gradle tasks.</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="console-view"><strong>Console view</strong><a class="self-link" href="#console-view"></a></dfn> (bottom-right): shows messages printed by Gradle tasks.</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="console-view"><strong>Console view</strong></dfn> (bottom-right): shows messages printed by Gradle tasks.</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="editors"><strong>Editors</strong><a class="self-link" href="#editors"></a></dfn> (top-right): this area shows the open editors (if any).</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="editors"><strong>Editors</strong></dfn> (top-right): this area shows the open editors (if any).</p>
      <li data-md>
-      <p><dfn data-dfn-type="dfn" data-export id="outline-view"><strong>Outline view</strong><a class="self-link" href="#outline-view"></a></dfn> (bottom-left): shows the outline of content in the active editor.</p>
+      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="outline-view"><strong>Outline view</strong></dfn> (bottom-left): shows the outline of content in the active editor.</p>
      <li data-md>
       <p>Turn on the Show line number preference by navigating to the Preferences dialog in the main menu bar (on a Mac, you will find it under the <code>Rosetta</code> menu; on Windows, you will find it under the <code>Windows</code> menu).</p>
     </ol>
@@ -3026,7 +3125,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/bundle#> as ^bundle {</c->
 	
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#></c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#></c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> since we be running SPARQL queries for every pattern, we will run a Fuseki server once now, and keep it running till the end of the tutorial when we will stop it.</p>
@@ -3046,8 +3145,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base {</c->
 
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
 <c- p>}</c->
 </pre>
     <ol start="2">
@@ -3056,8 +3155,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission {</c->
 	
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
 <c- p>}</c->
 </pre>
     <ol start="3">
@@ -3066,7 +3165,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/bundle#> as ^bundle {</c->
 	
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
+  <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> how we only added the <code>mission</code> vocabulary, not the <code>base</code> vocabulary, to the bundle. This is because in OML, import statements (like <code>includes</code>, <code>extends</code>, and <code>uses</code>) are transitive. Since <code>mission</code> already imports (extends) <code>base</code>, the bundle would transitively include <code>base</code> as well. But It would not be wrong to explicitly include <code>base</code> in the bundle too.</p>
@@ -3087,8 +3186,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Objective represents a specific interest </c->
 <c- s>that one or more stakeholders have in the successful execution of a mission."</c->
 <c- n>concept</c-> <c- nc>Objective</c-> <c- o>&lt;</c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c-><c- p>,</c-> <c- n>base</c-><c- p>:</c-><c- nc>AggregatedThing</c-> <c- p>[</c->
-	<c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>to</c-> <c- nc>Objective</c->
-	<c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>isAggregatedIn</c-> <c- n>to</c-> <c- nc>Objective</c->
+  <c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>to</c-> <c- nc>Objective</c->
+  <c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>isAggregatedIn</c-> <c- n>to</c-> <c- nc>Objective</c->
 <c- p>]</c->
 </pre>
     <ol start="7">
@@ -3114,43 +3213,43 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#> as objectives {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
 
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the atmosphere of Kepler 16b"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the liquid ocean of Kepler 16b"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.03"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the gravitational field of Kepler 16b"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.04"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the rocky core of Kepler 16b"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.05"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core density of Kepler 16b"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.06"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core shape of Kepler 16b"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>environment</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.07"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the energetic particule environment of the Kepler 16b binary star system"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the atmosphere of Kepler 16b"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the liquid ocean of Kepler 16b"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.03"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the gravitational field of Kepler 16b"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.04"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the rocky core of Kepler 16b"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>density</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.05"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core density of Kepler 16b"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>rocky</c-><c- o>-</c-><c- n>core</c-><c- o>-</c-><c- n>shape</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.06"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the core shape of Kepler 16b"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>characterize</c-><c- o>-</c-><c- n>environment</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"O.07"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Characterize the energetic particule environment of the Kepler 16b binary star system"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- n>characterize</c-><c- o>-</c-><c- n>liquid</c-><c- o>-</c-><c- n>ocean</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <ol start="10">
@@ -3184,12 +3283,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o1_name</c-> <c- o>?</c-><c- n>o2_id</c-> <c- o>?</c-><c- n>o2_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
     <c- o>?</c-><c- n>o1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o1_id</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o1_name</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- p>[</c->
-			<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o2_id</c-> <c- p>;</c->
-			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o2_name</c->
-		<c- p>]</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o1_id</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o1_name</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>aggregates</c-> <c- p>[</c->
+      <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o2_id</c-> <c- p>;</c->
+      <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o2_name</c->
+    <c- p>]</c->
 <c- p>}</c->
 <c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>o1_id</c-> <c- o>?</c-><c- n>o2_id</c->
 </pre>
@@ -3255,12 +3354,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission pursues zero or more Objectives."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Pursues</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Mission</c->
-	<c- n>to</c-> <c- nc>Objective</c->
-	<c- n>forward</c-> <c- n>pursues</c->
-	<c- n>reverse</c-> <c- n>isPursuedBy</c->
-	<c- n>asymmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>Mission</c->
+  <c- n>to</c-> <c- nc>Objective</c->
+  <c- n>forward</c-> <c- n>pursues</c->
+  <c- n>reverse</c-> <c- n>isPursuedBy</c->
+  <c- n>asymmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> that relation entity <code>Purses</code> is a reified relation (i.e., a class of relation instances), where its forward <code>purses</code> and its reverse <code>isPursedBy</code> are unreified relations (i.e., simple references). In a description model, either a reified or an unreified version of the relation can be used. The former is useful when it is desired to give the link a name and other characterizations.</p>
@@ -3280,23 +3379,23 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/missions#> as missions {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#> as objectives</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/objectives#> as objectives</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mission"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>lander</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Mission"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mission"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>gravitational</c-><c- o>-</c-><c- n>field</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>lander</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"M.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Mission"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>atmosphere</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- n>objectives</c-><c- p>:</c-><c- n>characterize</c-><c- o>-</c-><c- n>environment</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <ol start="5">
@@ -3323,13 +3422,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>m_name</c-> <c- o>?</c-><c- n>o_id</c-> <c- o>?</c-><c- n>o_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
-	<c- o>?</c-><c- n>m</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>m_id</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>m_name</c-> <c- p>;</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- p>[</c->
+  <c- o>?</c-><c- n>m</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Mission</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>m_id</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>m_name</c-> <c- p>;</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>pursues</c-> <c- p>[</c->
         <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Objective</c-> <c- p>;</c->
         <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>o_id</c-> <c- p>;</c->
-    	  <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o_name</c->
+        <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>o_name</c->
     <c- p>]</c->
 <c- p>}</c->
 <c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>m_id</c-> <c- o>?</c-><c- n>o_id</c->
@@ -3467,7 +3566,7 @@ function drawTree(data, containerID, root_name, unique=true, _width=960, _height
 		  .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
 	
-	    // Enter any new nodes at the parent’s previous position.
+	    // Enter any new nodes at the parent's previous position.
 	    const nodeEnter = node.enter().append("g")
 	        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
 		  	.attr("class", "node")
@@ -3497,7 +3596,7 @@ function drawTree(data, containerID, root_name, unique=true, _width=960, _height
 		nodeUpdate.select("text")
 		  .style("fill-opacity", 1);
 	    
-		// Transition exiting nodes to the parent’s new position.
+		// Transition exiting nodes to the parent's new position.
 	    const nodeExit = node.exit().transition(transition)
 		  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
 		  .remove();
@@ -3512,7 +3611,7 @@ function drawTree(data, containerID, root_name, unique=true, _width=960, _height
 	    const link = gLink.selectAll("path")
 	      .data(links, d => d.target.id);
 	
-	    // Enter any new links at the parent’s previous position.
+	    // Enter any new links at the parent's previous position.
 	    const linkEnter = link.enter().append("path")
 			.attr("class", "link")
 	        .attr("d", d => {
@@ -3524,7 +3623,7 @@ function drawTree(data, containerID, root_name, unique=true, _width=960, _height
 	    link.merge(linkEnter).transition(transition)
 	        .attr("d", diagonal);
 	
-	    // Transition exiting nodes to the parent’s new position.
+	    // Transition exiting nodes to the parent's new position.
 	    link.exit().transition(transition).remove()
 	        .attr("d", d => {
 	          const o = {x: source.x, y: source.y};
@@ -3573,12 +3672,12 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Mission deploys zero or more Components."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Deploys</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Mission</c->
-	<c- n>to</c-> <c- nc>Component</c->
-	<c- n>forward</c-> <c- n>deploys</c->
-	<c- n>reverse</c-> <c- n>isDeployedBy</c->
-	<c- n>asymmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>Mission</c->
+  <c- n>to</c-> <c- nc>Component</c->
+  <c- n>forward</c-> <c- n>deploys</c->
+  <c- n>reverse</c-> <c- n>isDeployedBy</c->
+  <c- n>asymmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c->
 </pre>
     <ol start="2">
@@ -3596,73 +3695,73 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Launch System"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Spacecraft"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Power Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Harness"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.03"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Thermal Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.04"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter C&amp;DH Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.05"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telecom Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.06"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter GN&amp;C Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.07"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mechanical Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.08"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Flight Software"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.09"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Propulsion Subsystem"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.03"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Ground Data System"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.04"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Mission Operations System"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.05"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Launch System"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.06"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Spacecraft"</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.07"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Ground Data System"</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Launch System"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Spacecraft"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Power Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Harness"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.03"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Thermal Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.04"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter CDH Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.05"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telecom Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.06"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter GNC Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.07"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Mechanical Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.08"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Flight Software"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.02.09"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Propulsion Subsystem"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.03"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Ground Data System"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.04"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Mission Operations System"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.05"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Launch System"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.06"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Spacecraft"</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"C.07"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Lander Ground Data System"</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <ol start="5">
@@ -3670,16 +3769,16 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>In <code>description/missions</code>, append the following OML code to the body of the description.</p>
     </ol>
 <pre class="language-scala highlight"><c- n>ref</c-> <c- n>instance</c-> <c- n>orbiter</c-> <c- p>[</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
 <c- p>]</c->
 <c- n>ref</c-> <c- n>instance</c-> <c- n>lander</c-> <c- p>[</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
-	<c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+  <c- n>mission</c-><c- p>:</c-><c- n>deploys</c-> <c- n>components</c-><c- p>:</c-><c- n>mission</c-><c- o>-</c-><c- n>operations</c-><c- o>-</c-><c- n>system</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> The usage of the OML keyword <code>ref</code> before the <code>instance</code> keyword in the OML code above. It is used to reference an instance defined elsewhere (in this case in the same description). Alternatively, we could have added the <code>mission:deploys</code> statements directly to the instance definitions above. However, the chosen style allows us to decouple the pattern instances for the sake of this tutorial.</p>
@@ -3722,13 +3821,13 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"Contains is a many-to-many relation used to represent homomeric relations that form directed rooted trees."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Contains</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>ContainedElement</c->
-	<c- n>to</c-> <c- nc>ContainedElement</c->
-	<c- n>forward</c-> <c- n>contains</c->
-	<c- n>reverse</c-> <c- n>isContainedIn</c->
-	<c- n>inverse</c-> <c- n>functional</c->
-	<c- n>asymmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>ContainedElement</c->
+  <c- n>to</c-> <c- nc>ContainedElement</c->
+  <c- n>forward</c-> <c- n>contains</c->
+  <c- n>reverse</c-> <c- n>isContainedIn</c->
+  <c- n>inverse</c-> <c- n>functional</c->
+  <c- n>asymmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> You have seen so far that some entities are modeled as <code>concept</code> while others are modeled as <code>aspect</code> in OML vocabularies. While the former is used to define a concrete entity, the latter is used to define an abstract one meant for specialization.</p>
@@ -3738,8 +3837,8 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component can be organized hierarchically by containing other Components. "</c->
 <c- n>ref</c-> <c- n>concept</c-> <c- nc>Component</c-> <c- o>&lt;</c-> <c- n>base</c-><c- p>:</c-><c- nc>ContainedElement</c-> <c- p>[</c->
-	<c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- nc>Component</c->
-	<c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- n>to</c-> <c- nc>Component</c->
+  <c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>to</c-> <c- nc>Component</c->
+  <c- n>restricts</c-> <c- n>all</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- n>to</c-> <c- nc>Component</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> that we used the <code>ref</code> keyword here to add more statements to the concept <code>Component</code> defined earlier. Again, we could have added these statements to the original definition but chose this style to separate concerns.</p>
@@ -3768,15 +3867,15 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       <p>Append the following OML code to the <code>description/components</code> ontology. Save the editor.</p>
     </ol>
 <pre class="language-scala highlight"><c- n>ref</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>[</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
-	<c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
+  <c- n>base</c-><c- p>:</c-><c- n>contains</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
 <c- p>]</c->
 </pre>
     <ol start="6">
@@ -3798,20 +3897,20 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#> as mechanical {</c->
 
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//iso.org/iso-80000-4.1#> as iso-80000-4.1</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#> as rdfs</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//iso.org/iso-80000-4.1#> as iso-80000-4.1</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mechanical components as physical objects"</c->
-	<c- n>concept</c-> <c- nc>MechanicalComponent</c-> <c- o>&lt;</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-><c- p>,</c-> <c- n>vim4</c-><c- p>:</c-><c- nc>Object</c->
+  <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of mechanical components as physical objects"</c->
+  <c- n>concept</c-> <c- nc>MechanicalComponent</c-> <c- o>&lt;</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-><c- p>,</c-> <c- n>vim4</c-><c- p>:</c-><c- nc>Object</c->
 
-	<c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of magnitudes in kilograms for mass quantities on mechanical components"</c->
-	<c- n>concept</c-> <c- nc>MassMagnitude</c-> <c- o>&lt;</c-> <c- n>vim4</c-><c- p>:</c-><c- nc>InherentUnitaryQuantityValue</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>all</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>to</c-> <c- nc>MechanicalComponent</c->
-		<c- n>restricts</c-> <c- n>vim4</c-><c- p>:</c-><c- n>instantiates</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>mass</c->
-		<c- n>restricts</c-> <c- n>vim4</c-><c- p>:</c-><c- n>unit</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>kilogram</c->
-	<c- p>]</c->
+  <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"The class of magnitudes in kilograms for mass quantities on mechanical components"</c->
+  <c- n>concept</c-> <c- nc>MassMagnitude</c-> <c- o>&lt;</c-> <c- n>vim4</c-><c- p>:</c-><c- nc>InherentUnitaryQuantityValue</c-> <c- p>[</c->
+    <c- n>restricts</c-> <c- n>all</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>to</c-> <c- nc>MechanicalComponent</c->
+    <c- n>restricts</c-> <c- n>vim4</c-><c- p>:</c-><c- n>instantiates</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>mass</c->
+    <c- n>restricts</c-> <c- n>vim4</c-><c- p>:</c-><c- n>unit</c-> <c- n>to</c-> <c- n>iso</c-><c- o>-</c-><c- mi>80000</c-><c- o>-</c-><c- mf>4.1</c-><c- p>:</c-><c- n>kilogram</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> how concept <code>MechanicalComponent</code> specializes both <code>mission:Component</code> and <code>vim4:Object</code> (multiple-inheritance).</p>
@@ -3837,82 +3936,82 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/masses#> as masses {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#> as mechanical</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#> as vim4</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mechanical#> as mechanical</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"2000"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"2000"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"3500"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"3500"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>launch</c-><c- o>-</c-><c- n>system</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"1200"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"1200"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>lander</c-><c- o>-</c-><c- n>spacecraft</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"297"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"297"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>power</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"138"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>harness</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"138"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>harness</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"307"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"307"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>thermal</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"147"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"147"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>and</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>handling</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"316"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"316"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>telecom</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"156"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"156"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>guidance</c-><c- o>-</c-><c- n>navigation</c-><c- o>-</c-><c- n>control</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"325"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"325"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>mechanical</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"165"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"165"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacraft</c-><c- o>-</c-><c- n>flight</c-><c- o>-</c-><c- n>software</c->
+  <c- p>]</c->
 
-	<c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"6"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
-		<c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
-	<c- p>]</c->
+  <c- n>ref</c-> <c- n>instance</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MechanicalComponent</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c-><c- p>.</c-><c- n>mass</c-><c- p>.</c-><c- n>magnitude</c-> <c- p>:</c-> <c- n>mechanical</c-><c- p>:</c-><c- nc>MassMagnitude</c-> <c- p>[</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- s>"6"</c-><c- n>^^xsd</c-><c- p>:</c-><c- n>double</c->
+    <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>propulsion</c-><c- o>-</c-><c- n>subsystem</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> how in OML code above, instances already typed by <code>mission:Components</code> in P3 are referenced (with <code>ref</code>) in this description and declared with another type <code>mechanical:MechanicalComponent</code>. This ability to add multiple types (whether related to each other by specialization or not) to an instance is a powerful feature of OML called multi-classification. Being able to add those other types from a different description is yet another nice feature, since it allows separation of concerns. (Alternatively, we could have changed the original type of those instances from <code>mission:Component</code> to <code>mechanical:MechanicalComponent</code>).</p>
@@ -3938,22 +4037,22 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
-<c- nc>PREFIX</c-> <c- n>vim4</c-><c- p>:</c->		<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#></c->
+<c- nc>PREFIX</c-> <c- n>vim4</c-><c- p>:</c->    <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//bipm.org/jcgm/vim4#></c->
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- o>?</c-><c- n>c2_id</c-> <c- o>?</c-><c- n>c2_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
-	<c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c1_id</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>.</c->
-	<c- nc>OPTIONAL</c-> <c- p>{</c->
-		<c- o>?</c-><c- n>c1</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- o>?</c-><c- n>c2</c-> <c- p>.</c->
-		<c- o>?</c-><c- n>c2</c-> <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c2_id</c-> <c- p>;</c->
-			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c-> <c- p>.</c->
-	<c- p>}</c->
-	<c- nc>OPTIONAL</c-> <c- p>{</c->
-		<c- o>?</c-><c- n>c1_mass_mag</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- o>?</c-><c- n>c1</c-> <c- p>;</c->
-			<c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- p>.</c->
-	<c- p>}</c->
+  <c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c1_id</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>.</c->
+  <c- nc>OPTIONAL</c-> <c- p>{</c->
+    <c- o>?</c-><c- n>c1</c-> <c- n>base</c-><c- p>:</c-><c- n>isContainedIn</c-> <c- o>?</c-><c- n>c2</c-> <c- p>.</c->
+    <c- o>?</c-><c- n>c2</c-> <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>c2_id</c-> <c- p>;</c->
+      <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c-> <c- p>.</c->
+  <c- p>}</c->
+  <c- nc>OPTIONAL</c-> <c- p>{</c->
+    <c- o>?</c-><c- n>c1_mass_mag</c-> <c- n>vim4</c-><c- p>:</c-><c- n>characterizes</c-> <c- o>?</c-><c- n>c1</c-> <c- p>;</c->
+      <c- n>vim4</c-><c- p>:</c-><c- n>hasDoubleNumber</c-> <c- o>?</c-><c- n>c1_mass</c-> <c- p>.</c->
+  <c- p>}</c->
 <c- p>}</c->
 <c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>c1_id</c-> <c- o>?</c-><c- n>c2_id</c->
 </pre>
@@ -4007,7 +4106,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
        <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>Orbiter C&amp;DH subsystem
+       <td>Orbiter CDH subsystem
        <td>C.02.04
        <td>147.0
        <td>Orbiter Spacecraft
@@ -4019,7 +4118,7 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
        <td>Orbiter Spacecraft
        <td>C.02
       <tr>
-       <td>Orbiter GN&amp;C subsystem
+       <td>Orbiter GNC subsystem
        <td>C.02.06
        <td>156.0
        <td>Orbiter Spacecraft
@@ -4104,11 +4203,11 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
       </g>
       <g class="node" transform="translate(360, 332.22222900390625)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">Orbiter C&amp;DH Subsystem(147)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter CDH Subsystem(147)</text>
       </g>
       <g class="node" transform="translate(360, 281.1111145019531)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
-       <text dy="0.35em" text-anchor="start" x="13">Orbiter GN&amp;C Subsystem(156)</text>
+       <text dy="0.35em" text-anchor="start" x="13">Orbiter GNC Subsystem(156)</text>
       </g>
       <g class="node" transform="translate(360, 230)">
        <circle r="10" style="fill: rgb(255, 255, 255);"></circle>
@@ -4173,18 +4272,18 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
      <li data-md>
       <p>In the <code>vocabulary/mission</code> ontology, append the following OML code to the body. Save the editor.</p>
     </ol>
-<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Interface represents a set of features that describe some Component’s interaction with another Component."</c->
+<pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"An Interface represents a set of features that describe some Component's interaction with another Component."</c->
 <c- n>concept</c-> <c- nc>Interface</c-> <c- o>&lt;</c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component presents zero or more Interfaces."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Presents</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Component</c->
-	<c- n>to</c-> <c- nc>Interface</c->
-	<c- n>forward</c-> <c- n>presents</c->
-	<c- n>reverse</c-> <c- n>isPresentedBy</c->
-	<c- n>inverse</c-> <c- n>functional</c->
-	<c- n>asymmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>Component</c->
+  <c- n>to</c-> <c- nc>Interface</c->
+  <c- n>forward</c-> <c- n>presents</c->
+  <c- n>reverse</c-> <c- n>isPresentedBy</c->
+  <c- n>inverse</c-> <c- n>functional</c->
+  <c- n>asymmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c->
 </pre>
     <ol start="2">
@@ -4202,43 +4301,43 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/components#> as components</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.04"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry In"</c->
-	<c- p>]</c->
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
-		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.03"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command Out"</c->
-	<c- p>]</c->
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
-		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.04"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry In"</c->
+  <c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+    <c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.03"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command Out"</c->
+  <c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c->
+    <c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command In"</c->
-	<c- p>]</c->
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
-		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
-	<c- p>]</c->
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry Out"</c->
-	<c- p>]</c->
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
-		<c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Command In"</c->
+  <c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+    <c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
+  <c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Telemetry Out"</c->
+  <c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>components</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c->
+    <c- n>to</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> in the OML code above a new element defined with the keywords <code>relation instance</code>. This is a named instance that represents a reified link between two instances. A relation instance is typed by one or more relation entity (comparable to a concept instance being typed by one or more concepts). For example, the first relation instance above  named <code>orbiter-ground-data-system.presents.telemetryIn</code> is typed by the <code>mission:Presents</code> relation entity and is <code>from</code> concept instance <code>components:orbiter-ground-data-system</code> (a component) to concept instance <code>orbiter-ground-data-system.telemetryIn</code> (an interface).</p>
@@ -4277,13 +4376,13 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Requirement specifies zero or more SpecifiedThings."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Specifies</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Requirement</c->
-	<c- n>to</c-> <c- nc>SpecifiedThing</c->
-	<c- n>forward</c-> <c- n>specifies</c->
-	<c- n>reverse</c-> <c- n>isSpecifiedBy</c->
-	<c- n>functional</c->
-	<c- n>asymmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>Requirement</c->
+  <c- n>to</c-> <c- nc>SpecifiedThing</c->
+  <c- n>forward</c-> <c- n>specifies</c->
+  <c- n>reverse</c-> <c- n>isSpecifiedBy</c->
+  <c- n>functional</c->
+  <c- n>asymmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> how we added aspect <code>SpecifiedThing</code> as another supertype to relation entity <code>Presents</code>, which was previous defined. This says that its relation instances can be ranges of <code>Specifies</code> links.</p>
@@ -4302,29 +4401,29 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/requirements#> as requirements {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.04"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.04"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandOut</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.05"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>command</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.05"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>commandIn</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.06"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>from</c-><c- o>-</c-><c- n>spacecraft</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.06"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryIn</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.07"</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- o>-</c-><c- n>telemetry</c-><c- o>-</c-><c- n>to</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>[</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"R.07"</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>presents</c-><c- p>.</c-><c- n>telemetryOut</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <ol start="5">
@@ -4348,22 +4447,22 @@ drawTree(data, '#figure3', "Missions", false, 960, 300, 150)
     </ol>
 <pre class="language-scala highlight"><c- nc>PREFIX</c-> <c- n>base</c-><c- p>:</c->        <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#></c->
 <c- nc>PREFIX</c-> <c- n>mission</c-><c- p>:</c->     <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#></c->
-<c- nc>PREFIX</c-> <c- n>oml</c-><c- p>:</c->     	<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//opencaesar.io/oml#></c->
-<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c->     	<c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
+<c- nc>PREFIX</c-> <c- n>oml</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//opencaesar.io/oml#></c->
+<c- nc>PREFIX</c-> <c- n>rdfs</c-><c- p>:</c->       <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2000/01/rdf-schema#></c->
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>r_id</c-> <c- o>?</c-><c- n>c_name</c-> <c- o>?</c-><c- n>i_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
-	<c- o>?</c-><c- n>r</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>r_id</c-> <c- p>;</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- p>[</c->
-			<c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>;</c->
-			<c- n>oml</c-><c- p>:</c-><c- n>hasSource</c-> <c- p>[</c->
-				<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c_name</c->
-			<c- p>]</c-> <c- p>;</c->
-			<c- n>oml</c-><c- p>:</c-><c- n>hasTarget</c-> <c- p>[</c->
-				<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>i_name</c->
-			<c- p>]</c->
-		<c- p>]</c->
+  <c- o>?</c-><c- n>r</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Requirement</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- o>?</c-><c- n>r_id</c-> <c- p>;</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>specifies</c-> <c- p>[</c->
+      <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Presents</c-> <c- p>;</c->
+      <c- n>oml</c-><c- p>:</c-><c- n>hasSource</c-> <c- p>[</c->
+        <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c_name</c->
+      <c- p>]</c-> <c- p>;</c->
+      <c- n>oml</c-><c- p>:</c-><c- n>hasTarget</c-> <c- p>[</c->
+        <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>i_name</c->
+      <c- p>]</c->
+    <c- p>]</c->
 <c- p>}</c->
 <c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>r_id</c-> <c- o>?</c-><c- n>c_name</c-> <c- o>?</c-><c- n>i_name</c->
 </pre>
@@ -4392,24 +4491,24 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
     </ol>
 <pre class="language-scala highlight"><c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Junction joins two or more Interfaces."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Junction</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Interface</c->
-	<c- n>to</c-> <c- nc>Interface</c->
-	<c- n>forward</c-> <c- n>joins</c->
-	<c- n>symmetric</c->
-	<c- n>irreflexive</c->
+  <c- n>from</c-> <c- nc>Interface</c->
+  <c- n>to</c-> <c- nc>Interface</c->
+  <c- n>forward</c-> <c- n>joins</c->
+  <c- n>symmetric</c->
+  <c- n>irreflexive</c->
 <c- p>]</c-> <c- o>&lt;</c-> <c- n>base</c-><c- p>:</c-><c- nc>IdentifiedThing</c->
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"A Component connects to zero or more components."</c->
 <c- n>relation</c-> <c- n>entity</c-> <c- nc>Connection</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Component</c->
-	<c- n>to</c-> <c- nc>Component</c->
-	<c- n>forward</c-> <c- n>connectsTo</c->
-	<c- n>symmetric</c->
+  <c- n>from</c-> <c- nc>Component</c->
+  <c- n>to</c-> <c- nc>Component</c->
+  <c- n>forward</c-> <c- n>connectsTo</c->
+  <c- n>symmetric</c->
 <c- p>]</c->
 
 <c- nd>@rdfs</c-><c- p>:</c-><c- n>comment</c-> <c- s>"When interfaces presented by components are joined, we infer that the components are connected."</c->
 <c- n>rule</c-> <c- nc>Junction</c-><c- o>-</c-><c- n>infers</c-><c- o>-</c-><c- nc>Connection</c-> <c- p>[</c->
-	<c- n>presents</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>i1</c-><c- p>)</c-> <c- n>&amp;</c-> <c- n>joins</c-><c- p>(</c-><c- n>i1</c-><c- p>,</c-> <c- n>i2</c-><c- p>)</c-> <c- n>&amp;</c-> <c- n>isPresentedBy</c-><c- p>(</c-><c- n>i2</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c-> <c- o>-></c-> <c- n>connectsTo</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c->
+  <c- n>presents</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>i1</c-><c- p>)</c-> <c- n>&amp;</c-> <c- n>joins</c-><c- p>(</c-><c- n>i1</c-><c- p>,</c-> <c- n>i2</c-><c- p>)</c-> <c- n>&amp;</c-> <c- n>isPresentedBy</c-><c- p>(</c-><c- n>i2</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c-> <c- o>-></c-> <c- n>connectsTo</c-><c- p>(</c-><c- n>c1</c-><c- p>,</c-> <c- n>c2</c-><c- p>)</c->
 <c- p>]</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> how the rule <code>Junction-infers-Connection</code> says that when a component presents an interface that joins another interface, which is presented by another component, then the former component is said to connect to the latter component. Since both relation entities <code>Junction</code> and <code>Connection</code> are flagged as symmetric, a single assertion that a junction joins one interface to another is sufficient to make a DL reasoner infer that both their components connect to one another.</p>
@@ -4428,23 +4527,23 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/junctions#> as junctions {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/base#> as base</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/vocabulary/mission#> as mission</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/tutorial2/description/interfaces#> as interfaces</c->
 
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>command</c-><c- p>.</c-><c- n>uplink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
-		<c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.01"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Command Uplink"</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>command</c-><c- p>.</c-><c- n>uplink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>commandOut</c->
+    <c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>commandIn</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.01"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Command Uplink"</c->
+  <c- p>]</c->
 
-	<c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetry</c-><c- p>.</c-><c- n>downlink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
-		<c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
-		<c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.02"</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telemetry Downlink"</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>instance</c-> <c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetry</c-><c- p>.</c-><c- n>downlink</c-> <c- p>:</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Junction</c-> <c- p>[</c->
+    <c- n>from</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>spacecraft</c-><c- p>.</c-><c- n>telemetryOut</c->
+    <c- n>to</c-> <c- n>interfaces</c-><c- p>:</c-><c- n>orbiter</c-><c- o>-</c-><c- n>ground</c-><c- o>-</c-><c- n>data</c-><c- o>-</c-><c- n>system</c-><c- p>.</c-><c- n>telemetryIn</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"J.02"</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- s>"Orbiter Telemetry Downlink"</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <ol start="5">
@@ -4471,11 +4570,11 @@ Requirement 'R.07' specifies that component 'Orbiter Spacecraft' shall present i
 
 <c- nc>SELECT</c-> <c- nc>DISTINCT</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c2_name</c->
 <c- nc>WHERE</c-> <c- p>{</c->
-	<c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
-		<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>;</c->
-		<c- n>mission</c-><c- p>:</c-><c- n>connectsTo</c-> <c- p>[</c->
-			<c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c->
-		<c- p>]</c->
+  <c- o>?</c-><c- n>c1</c-> <c- n>a</c-> <c- n>mission</c-><c- p>:</c-><c- nc>Component</c-> <c- p>;</c->
+    <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c1_name</c-> <c- p>;</c->
+    <c- n>mission</c-><c- p>:</c-><c- n>connectsTo</c-> <c- p>[</c->
+      <c- n>base</c-><c- p>:</c-><c- n>hasCanonicalName</c-> <c- o>?</c-><c- n>c2_name</c->
+    <c- p>]</c->
 <c- p>}</c->
 <c- nc>ORDER</c-> <c- nc>BY</c-> <c- o>?</c-><c- n>c1_name</c-> <c- o>?</c-><c- n>c2_name</c->
 </pre>
@@ -4522,7 +4621,7 @@ $ git init
 $ git remote add origin git@github.com:OWNER/kepler16b-example.git
 $ git pull
 </pre>
-    Replace OWNER by your new Github repo’s owner. 
+    <p>Replace OWNER by your new Github repo’s owner.</p>
     <ol start="4">
      <li data-md>
       <p>Stage, commit, and push the project to the Github remote repository using the following commands:</p>
@@ -4717,7 +4816,7 @@ BUILD SUCCESSFUL <c- k>in</c-> 6s
     <c- n>outputCaseSensitive</c-> <c- o>=</c-> <c- n>org</c-><c- o>.</c-><c- e>gradle</c-><c- o>.</c-><c- e>internal</c-><c- o>.</c-><c- e>os</c-><c- o>.</c-><c- e>OperatingSystem</c-><c- o>.</c-><c- e>current</c-><c- o>().</c-><c- e>isLinux</c-><c- o>()</c->
 <c- o>}</c->
 </pre>
-     <img src="assets/tutorial4/Add-Owl-Doc-Task.png" style="border:1px groove black;" width="100%"> 
+    <p><img src="assets/tutorial4/Add-Owl-Doc-Task.png" style="border:1px groove black;" width="100%"></p>
     <ol start="3">
      <li data-md>
       <p>In Terminal, run <code>./gradlew generateDocs</code>. Inspect the <code>build/web/doc</code> folder. You will find the generated HTML documentation.</p>
@@ -4821,7 +4920,7 @@ The Kepler16b project is developing a hypothetical mission to an exoplanet that 
       <c- f>id</c-><c- p>:</c-> deployment
       <c- f>uses</c-><c- p>:</c-> actions/deploy-pages@v1
 </pre>
-     <img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" style="border:1px groove black;" width="100%"> 
+    <p><img src="assets/tutorial4/Add-Owl-Doc-To-CI.png" style="border:1px groove black;" width="100%"></p>
     <p class="note" role="note"><span class="marker">Note:</span> The first set of steps are added to the <code>build</code> job. They setup a Python 3 environment, install the dependencies, run the notebook, convert it to HTML in the <code>build/web</code> folder, then upload the folder as a Pages artifact. Then, a new job named <code>deploy</code> is added. This job runs after <code>build</code> is done and deploys the Pages artifact to the web server.</p>
     <ol start="10">
      <li data-md>
@@ -5065,48 +5164,48 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     <p class="note" role="note"><span class="marker">Note:</span> that the order of the statements below may be slightly different for you if you created the diagram elements in different order from the video.</p>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#> as basicfamily {</c->
 
-	<c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//www.w3.org/2001/XMLSchema#> as xsd</c->
 
-	<c- n>aspect</c-> <c- nc>Named</c->
+  <c- n>aspect</c-> <c- nc>Named</c->
 
-	<c- n>scalar</c-> <c- n>property</c-> <c- n>name</c-> <c- p>[</c->
-		<c- n>domain</c-> <c- nc>Named</c->
-		<c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
-		<c- n>functional</c->
-	<c- p>]</c->
+  <c- n>scalar</c-> <c- n>property</c-> <c- n>name</c-> <c- p>[</c->
+    <c- n>domain</c-> <c- nc>Named</c->
+    <c- n>range</c-> <c- n>xsd</c-><c- p>:</c-><c- n>string</c->
+    <c- n>functional</c->
+  <c- p>]</c->
 
-	<c- n>concept</c-> <c- nc>Family</c-> <c- o>&lt;</c-> <c- nc>Named</c->
+  <c- n>concept</c-> <c- nc>Family</c-> <c- o>&lt;</c-> <c- nc>Named</c->
 
-	<c- n>concept</c-> <c- nc>Person</c-> <c- o>&lt;</c-> <c- nc>Named</c-> <c- p>[</c->
-		<c- n>restricts</c-> <c- n>parents</c-> <c- n>to</c-> <c- n>max</c-> <c- mi>2</c->
-	<c- p>]</c->
+  <c- n>concept</c-> <c- nc>Person</c-> <c- o>&lt;</c-> <c- nc>Named</c-> <c- p>[</c->
+    <c- n>restricts</c-> <c- n>parents</c-> <c- n>to</c-> <c- n>max</c-> <c- mi>2</c->
+  <c- p>]</c->
 
-	<c- n>relation</c-> <c- n>members</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Family</c->
-		<c- n>to</c-> <c- nc>Person</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>members</c-> <c- p>[</c->
+    <c- n>from</c-> <c- nc>Family</c->
+    <c- n>to</c-> <c- nc>Person</c->
+  <c- p>]</c->
 
-	<c- n>concept</c-> <c- nc>Man</c-> <c- o>&lt;</c-> <c- nc>Person</c->
+  <c- n>concept</c-> <c- nc>Man</c-> <c- o>&lt;</c-> <c- nc>Person</c->
 
-	<c- n>concept</c-> <c- nc>Woman</c-> <c- o>&lt;</c-> <c- nc>Person</c->
+  <c- n>concept</c-> <c- nc>Woman</c-> <c- o>&lt;</c-> <c- nc>Person</c->
 
-	<c- n>relation</c-> <c- n>parents</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Person</c->
-		<c- n>to</c-> <c- nc>Person</c->
-		<c- n>reverse</c-> <c- n>children</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>parents</c-> <c- p>[</c->
+    <c- n>from</c-> <c- nc>Person</c->
+    <c- n>to</c-> <c- nc>Person</c->
+    <c- n>reverse</c-> <c- n>children</c->
+  <c- p>]</c->
 
-	<c- n>relation</c-> <c- n>mother</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Person</c->
-		<c- n>to</c-> <c- nc>Woman</c->
-		<c- n>functional</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>mother</c-> <c- p>[</c->
+    <c- n>from</c-> <c- nc>Person</c->
+    <c- n>to</c-> <c- nc>Woman</c->
+    <c- n>functional</c->
+  <c- p>]</c->
 
-	<c- n>relation</c-> <c- n>father</c-> <c- p>[</c->
-		<c- n>from</c-> <c- nc>Person</c->
-		<c- n>to</c-> <c- nc>Man</c->
-		<c- n>functional</c->
-	<c- p>]</c->
+  <c- n>relation</c-> <c- n>father</c-> <c- p>[</c->
+    <c- n>from</c-> <c- nc>Person</c->
+    <c- n>to</c-> <c- nc>Man</c->
+    <c- n>functional</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <blockquote>
@@ -5117,15 +5216,15 @@ The Kelper16 missions' components are characterized by their masses. Those masse
       <p>In the OML textual editor for <code>basicfamily.oml</code>, add specialization from relations <code>mother</code> and <code>father</code> to relation <code>parents</code>.</p>
     </ol>
 <pre class="language-scala highlight"><c- n>relation</c-> <c- n>mother</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Person</c->
-	<c- n>to</c-> <c- nc>Woman</c->
-	<c- n>functional</c->
+  <c- n>from</c-> <c- nc>Person</c->
+  <c- n>to</c-> <c- nc>Woman</c->
+  <c- n>functional</c->
 <c- p>]</c-> <c- o>&lt;</c-> <c- n>parents</c->
 
 <c- n>relation</c-> <c- n>father</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Person</c->
-	<c- n>to</c-> <c- nc>Man</c->
-	<c- n>functional</c->
+  <c- n>from</c-> <c- nc>Person</c->
+  <c- n>to</c-> <c- nc>Man</c->
+  <c- n>functional</c->
 <c- p>]</c-> <c- o>&lt;</c-> <c- n>parents</c->
 </pre>
     <blockquote>
@@ -5143,7 +5242,7 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     </ol>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/bundle#> as ^bundle {</c->
 	
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#></c->
+  <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#></c->
 <c- p>}</c->
 </pre>
     <p class="note" role="note"><span class="marker">Note:</span> Recall that a vocabulary bundle automatically asserts disjointness between included concepts with no common subtypes.</p>
@@ -5171,70 +5270,70 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/description/family1#> as family1 {</c->
 
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#> as basicfamily</c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#> as basicfamily</c->
 
-	<c- n>instance</c-> <c- n>family1</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Family</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Paul</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Isa</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Elias</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Lea</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Dave</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Alain</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Bryan</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Fiona</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Katell</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Clara</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Albert</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Jane</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Peter</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- n>family1</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Family</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Paul</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Isa</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Elias</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Lea</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Dave</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Alain</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Bryan</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Fiona</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Katell</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Clara</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Albert</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Jane</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>members</c-> <c- nc>Peter</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Paul</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c->
+  <c- n>instance</c-> <c- nc>Paul</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c->
 
-	<c- n>instance</c-> <c- nc>Isa</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c->
+  <c- n>instance</c-> <c- nc>Isa</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c->
 
-	<c- n>instance</c-> <c- nc>Elias</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Paul</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Isa</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Elias</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Paul</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Isa</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Lea</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Paul</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Isa</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Lea</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Paul</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Isa</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Dave</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Dave</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Alain</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Dave</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Katell</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Alain</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Dave</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Katell</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Bryan</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Bryan</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Fiona</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Fiona</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Katell</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c->
+  <c- n>instance</c-> <c- nc>Katell</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c->
 
-	<c- n>instance</c-> <c- nc>Clara</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Clara</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- nc>Elias</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Albert</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c->
+  <c- n>instance</c-> <c- nc>Albert</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c->
 
-	<c- n>instance</c-> <c- nc>Jane</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Fiona</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Jane</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Fiona</c->
+  <c- p>]</c->
 
-	<c- n>instance</c-> <c- nc>Peter</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-		<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Clara</c->
-	<c- p>]</c->
+  <c- n>instance</c-> <c- nc>Peter</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
+    <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- nc>Clara</c->
+  <c- p>]</c->
 <c- p>}</c->
 </pre>
     <blockquote>
@@ -5282,12 +5381,12 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     </ol>
 <pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/description/bundle#> as ^bundle {</c->
 	
-	<c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#></c->
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/vocabulary/basicfamily#></c->
 	
-	<c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/description/family1#></c->
+  <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/description/family1#></c->
 <c- p>}</c->
 </pre>
-    Note: Recall that a description bundle represents a closed dataset that we want to reason on. 
+    <p class="note" role="note"><span class="marker">Note:</span> Recall that a description bundle represents a closed dataset that we want to reason on.</p>
     <h3 class="heading settled" data-level="5.5" id="tutorial5-create-sirius-viewpoint-project"><span class="secno">5.5. </span><span class="content">Create Sirius Viewpoint Project</span><a class="self-link" href="#tutorial5-create-sirius-viewpoint-project"></a></h3>
     <p>In this step, we will use Sirius to develop a custom diagram for the <code>basicfamily</code> vocabulary that a) improves the notation/style, and b) allows for editing the description model. In order to do this in Sirius, we need to define what Sirius calls a Viewpoint Specification Project.</p>
     <ol>
@@ -5632,13 +5731,13 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 <c- a>public</c-> <c- a>class</c-> <c- nc>Services</c-> <c- p>{</c->
     
     <c- a>public</c-> <c- b>void</c-> <c- nf>cascadeDelete</c-><c- p>(</c-><c- n>NamedInstance</c-> <c- n>instance</c-><c- p>)</c-> <c- p>{</c->
-    	<c- a>var</c-> <c- n>cascadeRules</c-> <c- o>=</c-> <c- k>new</c-> <c- n>ArrayList</c-><c- o>&lt;</c-><c- n>CascadeRule</c-><c- o>></c-><c- p>();</c->
+      <c- a>var</c-> <c- n>cascadeRules</c-> <c- o>=</c-> <c- k>new</c-> <c- n>ArrayList</c-><c- o>&lt;</c-><c- n>CascadeRule</c-><c- o>></c-><c- p>();</c->
     	
-    	<c- n>Relation</c-> <c- n>parents</c-> <c- o>=</c-> <c- p>(</c-><c- n>Relation</c-><c- p>)</c-> <c- n>OmlRead</c-><c- p>.</c-><c- e>getMemberByAbbreviatedIri</c-><c- p>(</c-><c- n>instance</c-><c- p>.</c-><c- e>getOntology</c-><c- p>(),</c-> <c- s>"basicfamily:parents"</c-><c- p>);</c->
-    	<c- n>cascadeRules</c-><c- p>.</c-><c- e>add</c-><c- p>(</c-><c- k>new</c-> <c- n>CascadeRule</c-><c- p>(</c-><c- n>CascadeDirection</c-><c- p>.</c-><c- e>TARGET_TO_SOURCE</c-><c- p>,</c-> <c- kc>null</c-><c- p>,</c-> <c- n>parents</c-><c- p>,</c-> <c- kc>null</c-><c- p>,</c-> <c- s>"delete children"</c-><c- p>));</c->
+      <c- n>Relation</c-> <c- n>parents</c-> <c- o>=</c-> <c- p>(</c-><c- n>Relation</c-><c- p>)</c-> <c- n>OmlRead</c-><c- p>.</c-><c- e>getMemberByAbbreviatedIri</c-><c- p>(</c-><c- n>instance</c-><c- p>.</c-><c- e>getOntology</c-><c- p>(),</c-> <c- s>"basicfamily:parents"</c-><c- p>);</c->
+      <c- n>cascadeRules</c-><c- p>.</c-><c- e>add</c-><c- p>(</c-><c- k>new</c-> <c- n>CascadeRule</c-><c- p>(</c-><c- n>CascadeDirection</c-><c- p>.</c-><c- e>TARGET_TO_SOURCE</c-><c- p>,</c-> <c- kc>null</c-><c- p>,</c-> <c- n>parents</c-><c- p>,</c-> <c- kc>null</c-><c- p>,</c-> <c- s>"delete children"</c-><c- p>));</c->
     	
-    	<c- a>var</c-> <c- n>result</c-> <c- o>=</c-> <c- n>OmlDelete</c-><c- p>.</c-><c- e>cascadeDelete</c-><c- p>(</c-><c- n>instance</c-><c- p>,</c-> <c- n>cascadeRules</c-><c- p>);</c->
-    	<c- n>OmlDelete</c-><c- p>.</c-><c- e>recursiveDelete</c-><c- p>(</c-><c- n>result</c-><c- p>);</c->
+      <c- a>var</c-> <c- n>result</c-> <c- o>=</c-> <c- n>OmlDelete</c-><c- p>.</c-><c- e>cascadeDelete</c-><c- p>(</c-><c- n>instance</c-><c- p>,</c-> <c- n>cascadeRules</c-><c- p>);</c->
+      <c- n>OmlDelete</c-><c- p>.</c-><c- e>recursiveDelete</c-><c- p>(</c-><c- n>result</c-><c- p>);</c->
     <c- p>}</c->
 <c- p>}</c->
 </pre>
@@ -5661,8 +5760,8 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 <c- n>instance</c-> <c- n>woman</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Woman</c->
 
 <c- n>instance</c-> <c- n>man1</c-> <c- p>:</c-> <c- n>basicfamily</c-><c- p>:</c-><c- nc>Man</c-> <c- p>[</c->
-	<c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- n>man</c->
-	<c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- n>woman</c->
+  <c- n>basicfamily</c-><c- p>:</c-><c- n>father</c-> <c- n>man</c->
+  <c- n>basicfamily</c-><c- p>:</c-><c- n>mother</c-> <c- n>woman</c->
 <c- p>]</c->
 </pre>
     <ol start="36">
@@ -5684,7 +5783,7 @@ The Kelper16 missions' components are characterized by their masses. Those masse
     </video>
     <ol start="38">
      <li data-md>
-      <p>Select <code>Paul</code> again and this time right click on it and select Cascade Delete action in the menu. This invokes the Cascade delete tool where it deletes Paul and his offspring. Aftr this, undo the delete. Save the editor.</p>
+      <p>Select <code>Paul</code> again and this time right click on it and select Cascade Delete action in the menu. This invokes the Cascade delete tool where it deletes Paul and his offspring. After this, undo the delete. Save the editor.</p>
     </ol>
     <video controls style="border:1px groove black;" width="100%">
      <source src="assets/tutorial5/Cascade-Delete-Paul.mov">
@@ -5748,7 +5847,7 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 - <b>Feature Name</b>: *
 <b>Label</b>:
 - <b>Header Label Expression</b>: Children
-- <b>Label Expression</b>: aql:self.findTargetInstances('basicfamily:children')->size()
+- <b>Label Expression</b>: aql:self.findSourceInstances('basicfamily:parents')->size()
 </pre>
      <li data-md>
       <p>Right click on the <code>Persons table</code> node and select New Table Element -> Feature Column. In the property sheet, change the following:</p>
@@ -5768,20 +5867,20 @@ The Kelper16 missions' components are characterized by their masses. Those masse
       <p>In <code>basicfamily.odesign</code> editor, double click on <code>defaultpackage.Services</code> node. This opens a Java editor for <code>Services</code> class. Add the following function to the class:</p>
     </ol>
 <pre class="language-java highlight"><c- a>public</c-> <c- b>int</c-> <c- nf>calculateSiblingsCount</c-><c- p>(</c-><c- n>NamedInstance</c-> <c- n>self</c-><c- p>)</c-> <c- p>{</c->
-	<c- a>var</c-> <c- n>siblings</c-> <c- o>=</c-> <c- k>new</c-> <c- n>HashSet</c-><c- o>&lt;></c-><c- p>();</c->
+  <c- a>var</c-> <c- n>siblings</c-> <c- o>=</c-> <c- k>new</c-> <c- n>HashSet</c-><c- o>&lt;></c-><c- p>();</c->
 
-	<c- a>var</c-> <c- n>parents</c-> <c- o>=</c-> <c- n>OmlServices</c-><c- p>.</c-><c- e>findTargetInstances</c-><c- p>(</c-><c- n>self</c-><c- p>,</c-> <c- s>"basicfamily:parents"</c-><c- p>);</c->
-	<c- k>for</c-> <c- p>(</c-><c- a>var</c-> <c- n>parent</c-> <c- p>:</c-> <c- n>parents</c-><c- p>)</c-> <c- p>{</c->
-		<c- n>siblings</c-><c- p>.</c-><c- e>addAll</c-><c- p>(</c-><c- n>OmlServices</c-><c- p>.</c-><c- e>findTargetInstances</c-><c- p>(</c-><c- n>parent</c-><c- p>,</c-> <c- s>"basicfamily:children"</c-><c- p>));</c->
-	<c- p>}</c->
-	
-	<c- n>siblings</c-><c- p>.</c-><c- e>remove</c-><c- p>(</c-><c- n>self</c-><c- p>);</c->
-	
-	<c- k>return</c-> <c- n>siblings</c-><c- p>.</c-><c- e>size</c-><c- p>();</c->
+  <c- a>var</c-> <c- n>parents</c-> <c- o>=</c-> <c- n>OmlServices</c-><c- p>.</c-><c- e>findTargetInstances</c-><c- p>(</c-><c- n>self</c-><c- p>,</c-> <c- s>"basicfamily:parents"</c-><c- p>);</c->
+  <c- k>for</c-> <c- p>(</c-><c- a>var</c-> <c- n>parent</c-> <c- p>:</c-> <c- n>parents</c-><c- p>)</c-> <c- p>{</c->
+    <c- n>siblings</c-><c- p>.</c-><c- e>addAll</c-><c- p>(</c-><c- n>OmlServices</c-><c- p>.</c-><c- e>findSourceInstances</c-><c- p>(</c-><c- n>parent</c-><c- p>,</c-> <c- s>"basicfamily:parents"</c-><c- p>));</c->
+  <c- p>}</c->
+    	
+  <c- n>siblings</c-><c- p>.</c-><c- e>remove</c-><c- p>(</c-><c- n>self</c-><c- p>);</c->
+    	
+  <c- k>return</c-> <c- n>siblings</c-><c- p>.</c-><c- e>size</c-><c- p>();</c->
 <c- p>}</c->
 </pre>
     <blockquote>
-     <p>Now, we are not ready to create an instance of the table for the <code>family1</code> instance.</p>
+     <p>Now, we are now ready to create an instance of the table for the <code>family1</code> instance.</p>
     </blockquote>
     <ol start="9">
      <li data-md>
@@ -5893,12 +5992,12 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 
 <c- k>SELECT</c-> <c- k>DISTINCT</c-> <c- g>?person</c-> <c- p>(</c-><c- nf>COUNT</c-><c- p>(</c-><c- g>?sibling</c-><c- p>)</c-> <c- k>as</c-> <c- g>?siblings</c-><c- p>)</c->
 <c- k>WHERE</c-> <c- p>{</c->
-	<c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
-	<c- k>OPTIONAL</c-> <c- p>{</c->
-		<c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?parent</c-> <c- p>.</c->
-		<c- g>?parent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?sibling</c-> <c- p>.</c->
-		<c- k>FILTER</c-> <c- p>(</c-><c- g>?person</c-> <c- o>!=</c-> <c- g>?sibling</c-><c- p>)</c->
-	<c- p>}</c->
+  <c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
+  <c- k>OPTIONAL</c-> <c- p>{</c->
+    <c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?parent</c-> <c- p>.</c->
+    <c- g>?parent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?sibling</c-> <c- p>.</c->
+    <c- k>FILTER</c-> <c- p>(</c-><c- g>?person</c-> <c- o>!=</c-> <c- g>?sibling</c-><c- p>)</c->
+  <c- p>}</c->
 <c- p>}</c->
 <c- k>GROUP BY</c-> <c- g>?person</c-> <c- g>?parent</c->
 <c- k>ORDER BY</c-> <c- g>?person</c->
@@ -5983,14 +6082,14 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 
 <c- k>SELECT</c-> <c- k>DISTINCT</c-> <c- g>?person</c-> <c- p>(</c-><c- nf>COUNT</c-><c- p>(</c-><c- g>?cousin</c-><c- p>)</c-> <c- k>as</c-> <c- g>?cousins</c-><c- p>)</c->
 <c- k>WHERE</c-> <c- p>{</c->
-	<c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
-	<c- k>OPTIONAL</c-> <c- p>{</c->
-		<c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?parent</c-> <c- p>.</c->
-		<c- g>?parent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?grandparent</c-> <c- p>.</c->
-		<c- g>?grandparent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?uncleOrAunt</c-> <c- p>.</c->
-		<c- g>?uncleOrAunt</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?cousin</c-> <c- p>.</c->
-		<c- k>FILTER</c-><c- p>(</c-><c- g>?uncleOrAunt</c-> <c- o>!=</c-> <c- g>?parent</c-><c- p>)</c->
-	<c- p>}</c->
+  <c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
+  <c- k>OPTIONAL</c-> <c- p>{</c->
+    <c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?parent</c-> <c- p>.</c->
+    <c- g>?parent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>parents</c-> <c- g>?grandparent</c-> <c- p>.</c->
+    <c- g>?grandparent</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?uncleOrAunt</c-> <c- p>.</c->
+    <c- g>?uncleOrAunt</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>children</c-> <c- g>?cousin</c-> <c- p>.</c->
+    <c- k>FILTER</c-><c- p>(</c-><c- g>?uncleOrAunt</c-> <c- o>!=</c-> <c- g>?parent</c-><c- p>)</c->
+  <c- p>}</c->
 <c- p>}</c->
 <c- k>GROUP BY</c-> <c- g>?person</c->
 <c- k>ORDER BY</c-> <c- g>?person</c->
@@ -6077,17 +6176,17 @@ The Kelper16 missions' components are characterized by their masses. Those masse
       <p>Add the following OML fragment to the end of the <code>basicfamily</code> vocabulary (before the closing braces):</p>
     </ol>
 <pre class="language-scala highlight"><c- n>relation</c-> <c- n>cousin</c-> <c- p>[</c->
-	<c- n>from</c-> <c- nc>Person</c->
-	<c- n>to</c-> <c- nc>Person</c->
+  <c- n>from</c-> <c- nc>Person</c->
+  <c- n>to</c-> <c- nc>Person</c->
 <c- p>]</c->
 
 <c- n>rule</c-> <c- n>infer_couson</c-> <c- p>[</c->
-	<c- n>parents</c-><c- p>(</c-><c- n>x</c-><c- p>,</c-> <c- n>y</c-><c- p>)</c-> <c- n>&amp;</c-> 
-	<c- n>parents</c-><c- p>(</c-><c- n>y</c-><c- p>,</c-> <c- n>z</c-><c- p>)</c-> <c- n>&amp;</c-> 
-	<c- n>children</c-><c- p>(</c-><c- n>z</c-><c- p>,</c-> <c- n>c</c-><c- p>)</c-> <c- n>&amp;</c-> 
-	<c- n>differentFrom</c-><c- p>(</c-><c- n>c</c-><c- p>,</c-> <c- n>y</c-><c- p>)</c-> <c- n>&amp;</c->
-	<c- n>children</c-><c- p>(</c-><c- n>c</c-><c- p>,</c-> <c- n>m</c-><c- p>)</c-> <c- o>-></c->
-	<c- n>cousin</c-><c- p>(</c-><c- n>x</c-><c- p>,</c-> <c- n>m</c-><c- p>)</c->
+  <c- n>parents</c-><c- p>(</c-><c- n>x</c-><c- p>,</c-> <c- n>y</c-><c- p>)</c-> <c- n>&amp;</c-> 
+  <c- n>parents</c-><c- p>(</c-><c- n>y</c-><c- p>,</c-> <c- n>z</c-><c- p>)</c-> <c- n>&amp;</c-> 
+  <c- n>children</c-><c- p>(</c-><c- n>z</c-><c- p>,</c-> <c- n>c</c-><c- p>)</c-> <c- n>&amp;</c-> 
+  <c- n>differentFrom</c-><c- p>(</c-><c- n>c</c-><c- p>,</c-> <c- n>y</c-><c- p>)</c-> <c- n>&amp;</c->
+  <c- n>children</c-><c- p>(</c-><c- n>c</c-><c- p>,</c-> <c- n>m</c-><c- p>)</c-> <c- o>-></c->
+  <c- n>cousin</c-><c- p>(</c-><c- n>x</c-><c- p>,</c-> <c- n>m</c-><c- p>)</c->
 <c- p>]</c->
 </pre>
     <blockquote>
@@ -6101,10 +6200,10 @@ The Kelper16 missions' components are characterized by their masses. Those masse
 
 <c- k>SELECT</c-> <c- k>DISTINCT</c-> <c- g>?person</c-> <c- p>(</c-><c- nf>COUNT</c-><c- p>(</c-><c- g>?cousin</c-><c- p>)</c-> <c- k>as</c-> <c- g>?cousins</c-><c- p>)</c->
 <c- k>WHERE</c-> <c- p>{</c->
-	<c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
-	<c- k>OPTIONAL</c-> <c- p>{</c->
-		<c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>cousin</c-> <c- g>?cousin</c->
-	<c- p>}</c->
+  <c- g>?person</c-> <c- k>a</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>Person</c-> <c- p>.</c->
+  <c- k>OPTIONAL</c-> <c- p>{</c->
+    <c- g>?person</c-> <c- nn>basicfamily</c-><c- p>:</c-><c- f>cousin</c-> <c- g>?cousin</c->
+  <c- p>}</c->
 <c- p>}</c->
 <c- k>GROUP BY</c-> <c- g>?person</c->
 <c- k>ORDER BY</c-> <c- g>?person</c->
@@ -6338,7 +6437,7 @@ include 'SafeAlarms'
 include 'SupremeMonitors'
 include 'SecureSystems'
 </pre>
-      <img src="assets/tutorial6/Parent-Project.png" style="border:1px groove black;" width="100%"> 
+      <p><img src="assets/tutorial6/Parent-Project.png" style="border:1px groove black;" width="100%"></p>
     </ol>
     <p><strong>Methodology Project</strong></p>
     <ol start="5">
@@ -6768,7 +6867,7 @@ Prefix: prototype
   <c- p>]</c->
   <c- n>instance</c-> <c- nc>I1</c-> <c- p>:</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I1</c-> <c- p>[</c-> <c- n>system</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I1"</c-> <c- p>]</c->
   <c- n>instance</c-> <c- nc>I2</c-> <c- p>:</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I2</c-> <c- p>[</c-> <c- n>system</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"I2"</c-> <c- p>]</c->
-  
+      
   <c- c1>//  Sensor</c->
   <c- n>instance</c-> <c- nc>Sensor</c-> <c- p>:</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>Sensor</c-> <c- p>[</c->
     <c- n>system</c-><c- p>:</c-><c- n>hasIdentifier</c-> <c- s>"Sensor"</c->
@@ -6944,7 +7043,7 @@ Prefix: safe
      <li data-md>
       <p>In the open OML editor, replace the contents by the following code then save the editor.</p>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/safe/alarms#> as safe {</c->
-  
+      
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/homesecurity/architecture#> as hsa</c->
 
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/methodology/system#> as system</c->
@@ -6955,7 +7054,7 @@ Prefix: safe
     <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I6</c->
     <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>max</c-> <c- mi>1</c-> <c- nc>I9</c->
   <c- p>]</c->
-  
+      
   <c- n>concept</c-> <c- nc>I4</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I4</c->
 
   <c- n>concept</c-> <c- nc>I5</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I5</c->
@@ -6965,11 +7064,11 @@ Prefix: safe
   <c- n>concept</c-> <c- nc>I9</c-> <c- o>&lt;</c-> <c- n>system</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
     <c- n>restricts</c-> <c- n>all</c-> <c- n>system</c-><c- p>:</c-><c- n>transfersOut</c-> <c- n>to</c-> <c- nc>Sound</c->
   <c- p>]</c->
-  
+      
   <c- n>concept</c-> <c- nc>Speaker</c-> <c- o>&lt;</c-> <c- n>system</c-><c- p>:</c-><c- nc>Component</c-> <c- p>[</c->
     <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I10</c->
   <c- p>]</c->
-  
+      
   <c- n>concept</c-> <c- nc>I10</c-> <c- o>&lt;</c-> <c- n>system</c-><c- p>:</c-><c- nc>Interface</c-> <c- p>[</c->
     <c- n>restricts</c-> <c- n>all</c-> <c- n>system</c-><c- p>:</c-><c- n>transfersIn</c-> <c- n>to</c-> <c- nc>Sound</c->
   <c- p>]</c->
@@ -6981,7 +7080,7 @@ Prefix: safe
   <c- p>]</c->
 
   <c- n>concept</c-> <c- nc>Sound</c-> <c- o>&lt;</c-> <c- n>system</c-><c- p>:</c-><c- nc>Message</c->
-  
+      
 <c- p>}</c->
 </pre>
     </ol>
@@ -7030,7 +7129,7 @@ Prefix: supreme
      <li data-md>
       <p>In the open OML editor, replace the contents by the following code then save the editor.</p>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/supreme/monitors#> as ^supreme {</c->
-  
+      
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/homesecurity/architecture#> as hsa</c->
 
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/methodology/system#> as system</c->
@@ -7039,11 +7138,11 @@ Prefix: supreme
     <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I7</c->
     <c- n>restricts</c-> <c- n>system</c-><c- p>:</c-><c- n>presents</c-> <c- n>to</c-> <c- n>exactly</c-> <c- mi>1</c-> <c- nc>I8</c->
   <c- p>]</c->
-  
+      
   <c- n>concept</c-> <c- nc>I7</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I7</c->
-  
+      
   <c- n>concept</c-> <c- nc>I8</c-> <c- o>&lt;</c-> <c- n>hsa</c-><c- p>:</c-><c- nc>I8</c->
-  
+      
 <c- p>}</c->
 </pre>
     </ol>
@@ -7172,10 +7271,10 @@ Prefix: bundle
       <p>Replace content of <code>v-bundle.oml</code> by the following then save the editor.</p>
 <pre class="language-scala highlight"><c- n>vocabulary</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/v-bundle#> as ^bundle {</c->
 
-  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/smart/bundle#>	</c->
+  <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/smart/bundle#>  </c->
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/safe/bundle#></c->
   <c- k>extends</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/supreme/bundle#></c->
-  
+      
   <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/architecture#></c->
 <c- p>}</c->
 </pre>
@@ -7342,8 +7441,8 @@ Prefix: prototype
       <p>In Project Explorer, navigate to the file <code>SecureSystems/src/oml/example.com/secure/bundle.oml</code> and double click to open it. Replace content by the following then save the editor.</p>
 <pre class="language-scala highlight"><c- n>description</c-> <c- n>bundle</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/bundle#> as ^bundle {</c->
 
-  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/v-bundle#>	</c->
-  
+  <c- n>uses</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/v-bundle#>  </c->
+      
   <c- n>includes</c-> <c- o>&lt;</c-><c- n>http</c-><c- p>:</c-><c- c1>//example.com/secure/prototype#></c->
 <c- p>}</c->
 </pre>
@@ -7622,7 +7721,7 @@ dependencies {
       on = !document.body.classList.contains('toc-sidebar');
     }
 
-    /* Don’t scroll to compensate for the ToC if we’re above it already. */
+    /* Don't scroll to compensate for the ToC if we're above it already. */
     var headY = 0;
     var head = document.querySelector('.head');
     if (head) {
@@ -7653,16 +7752,16 @@ dependencies {
       }
       if (toggle.matches(':hover')) {
         /* Unfocus button when not using keyboard navigation,
-           because I don’t know where else to send the focus. */
+           because I don't know where else to send the focus. */
         toggle.blur();
       }
     }
   }
 
   function createSidebarToggle() {
-    /* Create the sidebar toggle in JS; it shouldn’t exist when JS is off. */
+    /* Create the sidebar toggle in JS; it shouldn't exist when JS is off. */
     var toggle = document.createElement('a');
-      /* This should probably be a button, but appearance isn’t standards-track.*/
+      /* This should probably be a button, but appearance isn't standards-track.*/
     toggle.id = 'toc-toggle';
     toggle.class = 'toc-toggle';
     toggle.href = '#toc';
@@ -7678,7 +7777,7 @@ dependencies {
     toggle.addEventListener('click', toggler, false);
 
 
-    /* Get <nav id=toc-nav>, or make it if we don’t have one. */
+    /* Get <nav id=toc-nav>, or make it if we don't have one. */
     var tocNav = document.getElementById('toc-nav');
     if (!tocNav) {
       tocNav = document.createElement('p');
@@ -7686,7 +7785,7 @@ dependencies {
       /* Prepend for better keyboard navigation */
       document.body.insertBefore(tocNav, document.body.firstChild);
     }
-    /* While we’re at it, make sure we have a Jump to Toc link. */
+    /* While we're at it, make sure we have a Jump to Toc link. */
     var tocJump = document.getElementById('toc-jump');
     if (!tocJump) {
       tocJump = document.createElement('a');
@@ -7714,7 +7813,7 @@ dependencies {
     }, false);
   }
   else {
-    console.warn("Can’t find Table of Contents. Please use <nav id='toc'> around the ToC.");
+    console.warn("Can't find Table of Contents. Please use <nav id='toc'> around the ToC.");
   }
 
   /* Wrap tables in case they overflow */
@@ -7742,166 +7841,8 @@ dependencies {
    <li><a href="#problems-view">Problems view</a><span>, in § Unnumbered section</span>
    <li><a href="#properties-view">Properties view</a><span>, in § Unnumbered section</span>
   </ul>
-<script>/* Boilerplate: script-dfn-panel */
-"use strict";
-{
-    const dfnsJson = window.dfnsJson || {};
-
-    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
-        return mk.aside({
-            class: "dfn-panel",
-            id: `infopanel-for-${dfnID}`,
-            "data-for": dfnID,
-            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
-            },
-            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
-                `Info about the '${dfnText}' ${external?"external":""} reference.`),
-            mk.a({href:url}, url),
-            mk.b({}, "Referenced in:"),
-            mk.ul({},
-                ...refSections.map(section=>
-                    mk.li({},
-                        ...section.refs.map((ref, refI)=>
-                            [
-                                mk.a({
-                                    href: `#${ref.id}`
-                                    },
-                                    (refI == 0) ? section.title : `(${refI + 1})`
-                                ),
-                                " ",
-                            ]
-                        ),
-                    ),
-                ),
-            ),
-        );
-    }
-
-    function genAllDfnPanels() {
-        for(const panelData of Object.values(window.dfnpanelData)) {
-            const dfnID = panelData.dfnID;
-            const dfn = document.getElementById(dfnID);
-            if(!dfn) {
-                console.log(`Can't find dfn#${dfnID}.`, panelData);
-            } else {
-                const panel = genDfnPanel(panelData);
-                append(document.body, panel);
-                insertDfnPopupAction(dfn, panel)
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", ()=>{
-        genAllDfnPanels();
-
-        // Add popup behavior to all dfns to show the corresponding dfn-panel.
-        var dfns = queryAll('.dfn-paneled');
-        for(let dfn of dfns) { ; }
-
-        document.body.addEventListener("click", (e) => {
-            // If not handled already, just hide all dfn panels.
-            hideAllDfnPanels();
-        });
-    })
-
-
-    function hideAllDfnPanels() {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
-    }
-
-    function showDfnPanel(dfnPanel, dfn) {
-        hideAllDfnPanels(); // Only display one at this time.
-        dfn.setAttribute("aria-expanded", "true");
-        dfnPanel.classList.add("on");
-        dfnPanel.style.left = "5px";
-        dfnPanel.style.top = "0px";
-        const panelRect = dfnPanel.getBoundingClientRect();
-        const panelWidth = panelRect.right - panelRect.left;
-        if (panelRect.right > document.body.scrollWidth) {
-            // Panel's overflowing the screen.
-            // Just drop it below the dfn and flip it rightward instead.
-            // This still wont' fix things if the screen is *really* wide,
-            // but fixing that's a lot harder without 'anchor()'.
-            dfnPanel.style.top = "1.5em";
-            dfnPanel.style.left = "auto";
-            dfnPanel.style.right = "0px";
-        }
-    }
-
-    function pinDfnPanel(dfnPanel) {
-        // Switch it to "activated" state, which pins it.
-        dfnPanel.classList.add("activated");
-        dfnPanel.style.left = null;
-        dfnPanel.style.top = null;
-    }
-
-    function hideDfnPanel(dfnPanel, dfn) {
-        if(!dfn) {
-            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
-        }
-        dfn.setAttribute("aria-expanded", "false")
-        dfnPanel.classList.remove("on");
-        dfnPanel.classList.remove("activated");
-    }
-
-    function toggleDfnPanel(dfnPanel, dfn) {
-        if(dfnPanel.classList.contains("on")) {
-            hideDfnPanel(dfnPanel, dfn);
-        } else {
-            showDfnPanel(dfnPanel, dfn);
-        }
-    }
-
-    function insertDfnPopupAction(dfn, dfnPanel) {
-        // Find dfn panel
-        const panelWrapper = document.createElement('span');
-        panelWrapper.appendChild(dfnPanel);
-        panelWrapper.style.position = "relative";
-        panelWrapper.style.height = "0px";
-        dfn.insertAdjacentElement("afterend", panelWrapper);
-        dfn.setAttribute('role', 'button');
-        dfn.setAttribute('aria-expanded', 'false')
-        dfn.tabIndex = 0;
-        dfn.classList.add('has-dfn-panel');
-        dfn.addEventListener('click', (event) => {
-            showDfnPanel(dfnPanel, dfn);
-            event.stopPropagation();
-        });
-        dfn.addEventListener('keypress', (event) => {
-            const kc = event.keyCode;
-            // 32->Space, 13->Enter
-            if(kc == 32 || kc == 13) {
-                toggleDfnPanel(dfnPanel, dfn);
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        });
-
-        dfnPanel.addEventListener('click', (event) => {
-            if (event.target.nodeName == 'A') {
-                pinDfnPanel(dfnPanel);
-            }
-            event.stopPropagation();
-        });
-
-        dfnPanel.addEventListener('keydown', (event) => {
-            if(event.keyCode == 27) { // Escape key
-                hideDfnPanel(dfnPanel, dfn);
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        })
-    }
-}
-</script>
-<script>/* Boilerplate: script-dfn-panel-json */
-window.dfnpanelData = {};
-window.dfnpanelData['model-explorer-view'] = {"dfnID": "model-explorer-view", "url": "#model-explorer-view", "dfnText": "Model Explorer view", "refSections": [{"refs": [{"id": "ref-for-model-explorer-view"}, {"id": "ref-for-model-explorer-view\u2460"}, {"id": "ref-for-model-explorer-view\u2461"}], "title": "1.2. Create OML Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462"}], "title": "1.3. Create OML Vocabulary"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463"}], "title": "1.4. Create OML Vocabulary Bundle"}, {"refs": [{"id": "ref-for-model-explorer-view\u2464"}], "title": "1.5. Create OML Description"}, {"refs": [{"id": "ref-for-model-explorer-view\u2465"}], "title": "1.6. Edit OML Description Bundle"}, {"refs": [{"id": "ref-for-model-explorer-view\u2466"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-model-explorer-view\u2467"}, {"id": "ref-for-model-explorer-view\u2468"}, {"id": "ref-for-model-explorer-view\u2460\u24ea"}, {"id": "ref-for-model-explorer-view\u2460\u2460"}, {"id": "ref-for-model-explorer-view\u2460\u2461"}, {"id": "ref-for-model-explorer-view\u2460\u2462"}, {"id": "ref-for-model-explorer-view\u2460\u2463"}, {"id": "ref-for-model-explorer-view\u2460\u2464"}, {"id": "ref-for-model-explorer-view\u2460\u2465"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-model-explorer-view\u2460\u2466"}, {"id": "ref-for-model-explorer-view\u2460\u2467"}, {"id": "ref-for-model-explorer-view\u2460\u2468"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u24ea"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2460"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2461"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2462"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2463"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2464"}, {"id": "ref-for-model-explorer-view\u2461\u2465"}, {"id": "ref-for-model-explorer-view\u2461\u2466"}], "title": "5.2. Create OML Model Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2461\u2467"}, {"id": "ref-for-model-explorer-view\u2461\u2468"}, {"id": "ref-for-model-explorer-view\u2462\u24ea"}, {"id": "ref-for-model-explorer-view\u2462\u2460"}, {"id": "ref-for-model-explorer-view\u2462\u2461"}], "title": "5.3. Create OML Vocabulary"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462\u2462"}, {"id": "ref-for-model-explorer-view\u2462\u2463"}, {"id": "ref-for-model-explorer-view\u2462\u2464"}, {"id": "ref-for-model-explorer-view\u2462\u2465"}], "title": "5.4. Create OML Description"}, {"refs": [{"id": "ref-for-model-explorer-view\u2462\u2466"}, {"id": "ref-for-model-explorer-view\u2462\u2467"}, {"id": "ref-for-model-explorer-view\u2462\u2468"}, {"id": "ref-for-model-explorer-view\u2463\u24ea"}], "title": "5.5. Create Sirius Viewpoint Project"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2460"}], "title": "5.6. Create Diagram Editor"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2461"}], "title": "5.7. Create Table Editor"}, {"refs": [{"id": "ref-for-model-explorer-view\u2463\u2462"}, {"id": "ref-for-model-explorer-view\u2463\u2463"}, {"id": "ref-for-model-explorer-view\u2463\u2464"}, {"id": "ref-for-model-explorer-view\u2463\u2465"}, {"id": "ref-for-model-explorer-view\u2463\u2466"}, {"id": "ref-for-model-explorer-view\u2463\u2467"}, {"id": "ref-for-model-explorer-view\u2463\u2468"}], "title": "5.8. Create SPARQL Queries"}, {"refs": [{"id": "ref-for-model-explorer-view\u2464\u24ea"}], "title": "6.3. Create Federated Projects"}], "external": false};
-window.dfnpanelData['gradle-tasks-view'] = {"dfnID": "gradle-tasks-view", "url": "#gradle-tasks-view", "dfnText": "Gradle Tasks view", "refSections": [{"refs": [{"id": "ref-for-gradle-tasks-view"}], "title": "1.7. Run Build Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460"}, {"id": "ref-for-gradle-tasks-view\u2461"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462"}, {"id": "ref-for-gradle-tasks-view\u2463"}, {"id": "ref-for-gradle-tasks-view\u2464"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2465"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2466"}, {"id": "ref-for-gradle-tasks-view\u2467"}, {"id": "ref-for-gradle-tasks-view\u2468"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2460\u2460"}, {"id": "ref-for-gradle-tasks-view\u2460\u2461"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2462"}, {"id": "ref-for-gradle-tasks-view\u2460\u2463"}], "title": "2.5. P3: Mission deploys Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2464"}, {"id": "ref-for-gradle-tasks-view\u2460\u2465"}], "title": "2.6. P4: Component contains Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2460\u2466"}, {"id": "ref-for-gradle-tasks-view\u2460\u2467"}, {"id": "ref-for-gradle-tasks-view\u2460\u2468"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u24ea"}, {"id": "ref-for-gradle-tasks-view\u2461\u2460"}], "title": "2.8. P6: Component presents Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2461"}, {"id": "ref-for-gradle-tasks-view\u2461\u2462"}, {"id": "ref-for-gradle-tasks-view\u2461\u2463"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2464"}, {"id": "ref-for-gradle-tasks-view\u2461\u2465"}, {"id": "ref-for-gradle-tasks-view\u2461\u2466"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2461\u2467"}, {"id": "ref-for-gradle-tasks-view\u2461\u2468"}, {"id": "ref-for-gradle-tasks-view\u2462\u24ea"}], "title": "5.8. Create SPARQL Queries"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2460"}], "title": "6.4. Define Modeling Methodology"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2461"}, {"id": "ref-for-gradle-tasks-view\u2462\u2462"}], "title": "6.5. Define System Architecture"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2463"}, {"id": "ref-for-gradle-tasks-view\u2462\u2464"}, {"id": "ref-for-gradle-tasks-view\u2462\u2465"}], "title": "6.6. Federate Component Realization"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2466"}], "title": "6.7. Integrate Federated Components"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2462\u2467"}, {"id": "ref-for-gradle-tasks-view\u2462\u2468"}, {"id": "ref-for-gradle-tasks-view\u2463\u24ea"}], "title": "6.8. Run Federation Scenarios"}, {"refs": [{"id": "ref-for-gradle-tasks-view\u2463\u2460"}, {"id": "ref-for-gradle-tasks-view\u2463\u2461"}, {"id": "ref-for-gradle-tasks-view\u2463\u2462"}], "title": "6.9. Publish with Semantic Versions"}], "external": false};
-window.dfnpanelData['gradle-executions-view'] = {"dfnID": "gradle-executions-view", "url": "#gradle-executions-view", "dfnText": "Gradle Executions view", "refSections": [{"refs": [{"id": "ref-for-gradle-executions-view"}, {"id": "ref-for-gradle-executions-view\u2460"}], "title": "1.7. Run Build Task"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461"}, {"id": "ref-for-gradle-executions-view\u2462"}, {"id": "ref-for-gradle-executions-view\u2463"}, {"id": "ref-for-gradle-executions-view\u2464"}], "title": "1.8. Fix Logical Inconsistency"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2465"}, {"id": "ref-for-gradle-executions-view\u2466"}, {"id": "ref-for-gradle-executions-view\u2467"}], "title": "1.9. Run Query Task"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2468"}], "title": "2.2. Create OML Project"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u24ea"}, {"id": "ref-for-gradle-executions-view\u2460\u2460"}, {"id": "ref-for-gradle-executions-view\u2460\u2461"}], "title": "2.3. P1: Objective aggregates Objective"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2462"}, {"id": "ref-for-gradle-executions-view\u2460\u2463"}, {"id": "ref-for-gradle-executions-view\u2460\u2464"}], "title": "2.4. P2: Mission pursues Objective"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2465"}, {"id": "ref-for-gradle-executions-view\u2460\u2466"}], "title": "2.5. P3: Mission deploys Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2460\u2467"}, {"id": "ref-for-gradle-executions-view\u2460\u2468"}], "title": "2.6. P4: Component contains Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u24ea"}, {"id": "ref-for-gradle-executions-view\u2461\u2460"}, {"id": "ref-for-gradle-executions-view\u2461\u2461"}], "title": "2.7. P5: Mass characterizes Component"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2462"}, {"id": "ref-for-gradle-executions-view\u2461\u2463"}], "title": "2.8. P6: Component presents Interface"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2464"}, {"id": "ref-for-gradle-executions-view\u2461\u2465"}, {"id": "ref-for-gradle-executions-view\u2461\u2466"}], "title": "2.9. P7: Requirement specifies Presents"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2461\u2467"}, {"id": "ref-for-gradle-executions-view\u2461\u2468"}, {"id": "ref-for-gradle-executions-view\u2462\u24ea"}], "title": "2.10. P8: Interface joins Interface"}, {"refs": [{"id": "ref-for-gradle-executions-view\u2462\u2460"}, {"id": "ref-for-gradle-executions-view\u2462\u2461"}, {"id": "ref-for-gradle-executions-view\u2462\u2462"}], "title": "5.8. Create SPARQL Queries"}], "external": false};
-</script>
 <script>/* Boilerplate: script-dom-helper */
+"use strict";
 function query(sel) { return document.querySelector(sel); }
 
 function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
@@ -8095,5 +8036,605 @@ function parseHTML(markup) {
 		el.innerHTML = markup;
 		return el.content;
 	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"console-view": {"dfnID":"console-view","dfnText":"Console view","external":false,"refSections":[],"url":"#console-view"},
+"editors": {"dfnID":"editors","dfnText":"Editors","external":false,"refSections":[],"url":"#editors"},
+"gradle-executions-view": {"dfnID":"gradle-executions-view","dfnText":"Gradle Executions view","external":false,"refSections":[{"refs":[{"id":"ref-for-gradle-executions-view"},{"id":"ref-for-gradle-executions-view\u2460"}],"title":"1.7. Run Build Task"},{"refs":[{"id":"ref-for-gradle-executions-view\u2461"},{"id":"ref-for-gradle-executions-view\u2462"},{"id":"ref-for-gradle-executions-view\u2463"},{"id":"ref-for-gradle-executions-view\u2464"}],"title":"1.8. Fix Logical Inconsistency"},{"refs":[{"id":"ref-for-gradle-executions-view\u2465"},{"id":"ref-for-gradle-executions-view\u2466"},{"id":"ref-for-gradle-executions-view\u2467"}],"title":"1.9. Run Query Task"},{"refs":[{"id":"ref-for-gradle-executions-view\u2468"}],"title":"2.2. Create OML Project"},{"refs":[{"id":"ref-for-gradle-executions-view\u2460\u24ea"},{"id":"ref-for-gradle-executions-view\u2460\u2460"},{"id":"ref-for-gradle-executions-view\u2460\u2461"}],"title":"2.3. P1: Objective aggregates Objective"},{"refs":[{"id":"ref-for-gradle-executions-view\u2460\u2462"},{"id":"ref-for-gradle-executions-view\u2460\u2463"},{"id":"ref-for-gradle-executions-view\u2460\u2464"}],"title":"2.4. P2: Mission pursues Objective"},{"refs":[{"id":"ref-for-gradle-executions-view\u2460\u2465"},{"id":"ref-for-gradle-executions-view\u2460\u2466"}],"title":"2.5. P3: Mission deploys Component"},{"refs":[{"id":"ref-for-gradle-executions-view\u2460\u2467"},{"id":"ref-for-gradle-executions-view\u2460\u2468"}],"title":"2.6. P4: Component contains Component"},{"refs":[{"id":"ref-for-gradle-executions-view\u2461\u24ea"},{"id":"ref-for-gradle-executions-view\u2461\u2460"},{"id":"ref-for-gradle-executions-view\u2461\u2461"}],"title":"2.7. P5: Mass characterizes Component"},{"refs":[{"id":"ref-for-gradle-executions-view\u2461\u2462"},{"id":"ref-for-gradle-executions-view\u2461\u2463"}],"title":"2.8. P6: Component presents Interface"},{"refs":[{"id":"ref-for-gradle-executions-view\u2461\u2464"},{"id":"ref-for-gradle-executions-view\u2461\u2465"},{"id":"ref-for-gradle-executions-view\u2461\u2466"}],"title":"2.9. P7: Requirement specifies Presents"},{"refs":[{"id":"ref-for-gradle-executions-view\u2461\u2467"},{"id":"ref-for-gradle-executions-view\u2461\u2468"},{"id":"ref-for-gradle-executions-view\u2462\u24ea"}],"title":"2.10. P8: Interface joins Interface"},{"refs":[{"id":"ref-for-gradle-executions-view\u2462\u2460"},{"id":"ref-for-gradle-executions-view\u2462\u2461"},{"id":"ref-for-gradle-executions-view\u2462\u2462"}],"title":"5.8. Create SPARQL Queries"}],"url":"#gradle-executions-view"},
+"gradle-tasks-view": {"dfnID":"gradle-tasks-view","dfnText":"Gradle Tasks view","external":false,"refSections":[{"refs":[{"id":"ref-for-gradle-tasks-view"}],"title":"1.7. Run Build Task"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2460"},{"id":"ref-for-gradle-tasks-view\u2461"}],"title":"1.8. Fix Logical Inconsistency"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462"},{"id":"ref-for-gradle-tasks-view\u2463"},{"id":"ref-for-gradle-tasks-view\u2464"}],"title":"1.9. Run Query Task"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2465"}],"title":"2.2. Create OML Project"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2466"},{"id":"ref-for-gradle-tasks-view\u2467"},{"id":"ref-for-gradle-tasks-view\u2468"}],"title":"2.3. P1: Objective aggregates Objective"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2460\u24ea"},{"id":"ref-for-gradle-tasks-view\u2460\u2460"},{"id":"ref-for-gradle-tasks-view\u2460\u2461"}],"title":"2.4. P2: Mission pursues Objective"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2460\u2462"},{"id":"ref-for-gradle-tasks-view\u2460\u2463"}],"title":"2.5. P3: Mission deploys Component"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2460\u2464"},{"id":"ref-for-gradle-tasks-view\u2460\u2465"}],"title":"2.6. P4: Component contains Component"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2460\u2466"},{"id":"ref-for-gradle-tasks-view\u2460\u2467"},{"id":"ref-for-gradle-tasks-view\u2460\u2468"}],"title":"2.7. P5: Mass characterizes Component"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2461\u24ea"},{"id":"ref-for-gradle-tasks-view\u2461\u2460"}],"title":"2.8. P6: Component presents Interface"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2461\u2461"},{"id":"ref-for-gradle-tasks-view\u2461\u2462"},{"id":"ref-for-gradle-tasks-view\u2461\u2463"}],"title":"2.9. P7: Requirement specifies Presents"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2461\u2464"},{"id":"ref-for-gradle-tasks-view\u2461\u2465"},{"id":"ref-for-gradle-tasks-view\u2461\u2466"}],"title":"2.10. P8: Interface joins Interface"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2461\u2467"},{"id":"ref-for-gradle-tasks-view\u2461\u2468"},{"id":"ref-for-gradle-tasks-view\u2462\u24ea"}],"title":"5.8. Create SPARQL Queries"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462\u2460"}],"title":"6.4. Define Modeling Methodology"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462\u2461"},{"id":"ref-for-gradle-tasks-view\u2462\u2462"}],"title":"6.5. Define System Architecture"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462\u2463"},{"id":"ref-for-gradle-tasks-view\u2462\u2464"},{"id":"ref-for-gradle-tasks-view\u2462\u2465"}],"title":"6.6. Federate Component Realization"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462\u2466"}],"title":"6.7. Integrate Federated Components"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2462\u2467"},{"id":"ref-for-gradle-tasks-view\u2462\u2468"},{"id":"ref-for-gradle-tasks-view\u2463\u24ea"}],"title":"6.8. Run Federation Scenarios"},{"refs":[{"id":"ref-for-gradle-tasks-view\u2463\u2460"},{"id":"ref-for-gradle-tasks-view\u2463\u2461"},{"id":"ref-for-gradle-tasks-view\u2463\u2462"}],"title":"6.9. Publish with Semantic Versions"}],"url":"#gradle-tasks-view"},
+"model-explorer-view": {"dfnID":"model-explorer-view","dfnText":"Model Explorer view","external":false,"refSections":[{"refs":[{"id":"ref-for-model-explorer-view"},{"id":"ref-for-model-explorer-view\u2460"},{"id":"ref-for-model-explorer-view\u2461"}],"title":"1.2. Create OML Project"},{"refs":[{"id":"ref-for-model-explorer-view\u2462"}],"title":"1.3. Create OML Vocabulary"},{"refs":[{"id":"ref-for-model-explorer-view\u2463"}],"title":"1.4. Create OML Vocabulary Bundle"},{"refs":[{"id":"ref-for-model-explorer-view\u2464"}],"title":"1.5. Create OML Description"},{"refs":[{"id":"ref-for-model-explorer-view\u2465"}],"title":"1.6. Edit OML Description Bundle"},{"refs":[{"id":"ref-for-model-explorer-view\u2466"}],"title":"1.8. Fix Logical Inconsistency"},{"refs":[{"id":"ref-for-model-explorer-view\u2467"},{"id":"ref-for-model-explorer-view\u2468"},{"id":"ref-for-model-explorer-view\u2460\u24ea"},{"id":"ref-for-model-explorer-view\u2460\u2460"},{"id":"ref-for-model-explorer-view\u2460\u2461"},{"id":"ref-for-model-explorer-view\u2460\u2462"},{"id":"ref-for-model-explorer-view\u2460\u2463"},{"id":"ref-for-model-explorer-view\u2460\u2464"},{"id":"ref-for-model-explorer-view\u2460\u2465"}],"title":"1.9. Run Query Task"},{"refs":[{"id":"ref-for-model-explorer-view\u2460\u2466"},{"id":"ref-for-model-explorer-view\u2460\u2467"},{"id":"ref-for-model-explorer-view\u2460\u2468"}],"title":"2.2. Create OML Project"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u24ea"}],"title":"2.3. P1: Objective aggregates Objective"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2460"}],"title":"2.4. P2: Mission pursues Objective"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2461"}],"title":"2.7. P5: Mass characterizes Component"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2462"}],"title":"2.9. P7: Requirement specifies Presents"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2463"}],"title":"2.10. P8: Interface joins Interface"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2464"},{"id":"ref-for-model-explorer-view\u2461\u2465"},{"id":"ref-for-model-explorer-view\u2461\u2466"}],"title":"5.2. Create OML Model Project"},{"refs":[{"id":"ref-for-model-explorer-view\u2461\u2467"},{"id":"ref-for-model-explorer-view\u2461\u2468"},{"id":"ref-for-model-explorer-view\u2462\u24ea"},{"id":"ref-for-model-explorer-view\u2462\u2460"},{"id":"ref-for-model-explorer-view\u2462\u2461"}],"title":"5.3. Create OML Vocabulary"},{"refs":[{"id":"ref-for-model-explorer-view\u2462\u2462"},{"id":"ref-for-model-explorer-view\u2462\u2463"},{"id":"ref-for-model-explorer-view\u2462\u2464"},{"id":"ref-for-model-explorer-view\u2462\u2465"}],"title":"5.4. Create OML Description"},{"refs":[{"id":"ref-for-model-explorer-view\u2462\u2466"},{"id":"ref-for-model-explorer-view\u2462\u2467"},{"id":"ref-for-model-explorer-view\u2462\u2468"},{"id":"ref-for-model-explorer-view\u2463\u24ea"}],"title":"5.5. Create Sirius Viewpoint Project"},{"refs":[{"id":"ref-for-model-explorer-view\u2463\u2460"}],"title":"5.6. Create Diagram Editor"},{"refs":[{"id":"ref-for-model-explorer-view\u2463\u2461"}],"title":"5.7. Create Table Editor"},{"refs":[{"id":"ref-for-model-explorer-view\u2463\u2462"},{"id":"ref-for-model-explorer-view\u2463\u2463"},{"id":"ref-for-model-explorer-view\u2463\u2464"},{"id":"ref-for-model-explorer-view\u2463\u2465"},{"id":"ref-for-model-explorer-view\u2463\u2466"},{"id":"ref-for-model-explorer-view\u2463\u2467"},{"id":"ref-for-model-explorer-view\u2463\u2468"}],"title":"5.8. Create SPARQL Queries"},{"refs":[{"id":"ref-for-model-explorer-view\u2464\u24ea"}],"title":"6.3. Create Federated Projects"}],"url":"#model-explorer-view"},
+"outline-view": {"dfnID":"outline-view","dfnText":"Outline view","external":false,"refSections":[],"url":"#outline-view"},
+"problems-view": {"dfnID":"problems-view","dfnText":"Problems view","external":false,"refSections":[],"url":"#problems-view"},
+"properties-view": {"dfnID":"properties-view","dfnText":"Properties view","external":false,"refSections":[],"url":"#properties-view"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#gradle-executions-view": {"displayText":"gradle executions view","export":true,"for_":[],"level":"1","normative":true,"shortname":"index","spec":"index-1","status":"local","text":"gradle executions view","type":"dfn","url":"#gradle-executions-view"},
+"#gradle-tasks-view": {"displayText":"gradle tasks view","export":true,"for_":[],"level":"1","normative":true,"shortname":"index","spec":"index-1","status":"local","text":"gradle tasks view","type":"dfn","url":"#gradle-tasks-view"},
+"#model-explorer-view": {"displayText":"model explorer view","export":true,"for_":[],"level":"1","normative":true,"shortname":"index","spec":"index-1","status":"local","text":"model explorer view","type":"dfn","url":"#model-explorer-view"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const ref = refsData[url];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
 }
 </script>
