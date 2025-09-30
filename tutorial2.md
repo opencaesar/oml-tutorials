@@ -11,7 +11,7 @@ Note: the source files created in this tutorial are available for reference in t
 
 We will start by creating an OML project that has a vocabulary bundle and a description bundle that uses it.
 
-1. In the [=Model Explorer view], right click and choose New -> OML Project.
+1. In the [=Model Explorer view=], right click and choose New -> OML Project.
 1. Name the project `tutorial2`. Click Next.
 1. Fill the OML project details as seen below. Click Finish.
 

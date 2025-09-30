@@ -42,201 +42,201 @@ Now, you will create a simple vocabulary for describing pizzas along with their 
 ```scala
 @dc:description "A vocabulary about pizzas"
 vocabulary <http://example.com/tutorial1/vocabulary/pizza#> as pizza {
-    
-    extends <http://www.w3.org/2001/XMLSchema#> as xsd
+	
+	extends <http://www.w3.org/2001/XMLSchema#> as xsd
 
-    extends <http://purl.org/dc/elements/1.1/> as dc
+	extends <http://purl.org/dc/elements/1.1/> as dc
 
-    extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
 
-    // Top Level
+	// Identified Thing
 
-    @rdfs:comment "The class of things that are uniquely identified by id"
-    aspect IdentifiedThing [
-        key hasId
-    ]
-    
-    @rdfs:comment "The id property of an identified thing"
-    scalar property hasId [
-        domain IdentifiedThing
-        range xsd:string
-        functional
-    ]   
+	@rdfs:comment "The class of things that are uniquely identified by id"
+	aspect IdentifiedThing [
+		key hasId
+	]
+	
+	@rdfs:comment "The id property of an identified thing"
+	scalar property hasId [
+		domain IdentifiedThing
+		range xsd:string
+		functional
+	]	
 
-    // Identified Things
+	// Food
 
-    @rdfs:comment "The class of food items"
-    concept Food < IdentifiedThing
+	@rdfs:comment "The class of food items"
+	concept Food < IdentifiedThing
 
-    @rdfs:comment "A relation from a food to another used as an ingredient"
-    relation entity HasIngredient [
-        from Food
-        to Food
-        forward hasIngredient
-        reverse isIngredientOf
-        transitive
-    ]
+	@rdfs:comment "A relation from a food to another used as an ingredient"
+	relation hasIngredient [
+		from Food
+		to Food
+		reverse isIngredientOf
+		transitive
+	]
 
-    @rdfs:comment "An enumeration of spiciness levels"
-    scalar Spiciness [
-        oneOf "Hot", "Medium", "Mild"
-    ]
+	// Spiciness
 
-    @rdfs:comment "The spiciness property of a food item"
-    scalar property hasSpiceness [
-        domain Food
-        range Spiciness
-        functional
-    ]
-    
-    // Foods
-    
-    @rdfs:comment "The class of pizzas"
-    concept Pizza < Food [
-        restricts some hasBase to PizzaBase
-    ]
+	@rdfs:comment "An enumeration of spiciness levels"
+	scalar Spiciness [
+		oneOf "Hot", "Medium", "Mild"
+	]
 
-    @rdfs:comment "The class of pizza bases"
-    concept PizzaBase < Food
+	@rdfs:comment "The spiciness property of a food item"
+	scalar property hasSpiciness [
+		domain Food
+		range Spiciness
+		functional
+	]
 
-    @rdfs:comment "The class of pizza toppings"
-    concept PizzaTopping < Food
+	@rdfs:comment "The class of hot spiciness food"
+	concept HotFood = Food [
+		restricts hasSpiciness to "Hot"
+	]
 
-    @rdfs:comment "A relation from a pizza to a base"
-    relation entity HasBase [
-        from Pizza
-        to PizzaBase
-        forward hasBase
-        reverse isBaseOf
-        functional
-        inverse functional
-    ] < HasIngredient 
+	@rdfs:comment "The class of medium spiciness food"
+	concept MediumFood = Food [
+		restricts hasSpiciness to "Medium"
+	]
 
-    @rdfs:comment "A relation from a pizza to a topping"
-    relation entity HasTopping [
-        from Pizza
-        to PizzaTopping
-        forward hasTopping
-        reverse isToppingOf
-        inverse functional
-    ] < HasIngredient
+	@rdfs:comment "The class of mild spiciness food"
+	concept MildFood = Food [
+		restricts hasSpiciness to "Mild"
+	]
 
-    // Pizzas
-        
-    @rdfs:comment "The class of pizzas with some cheese toppings"
-    concept CheesyPizza < Pizza [
-        restricts some hasTopping to CheeseTopping
-    ]
-    
-    @rdfs:comment "The class of pizzas with some meat toppings"
-    concept MeatyPizza < Pizza [
-        restricts some hasTopping to MeatTopping
-    ]
-    
-    @rdfs:comment "The class of pizzas with all vegetarian toppings"
-    concept VegetarianPizza < Pizza [
-        restricts all hasTopping to VegetarianTopping
-    ]
+	// Foods
+	
+	@rdfs:comment "The class of pizzas"
+	concept Pizza < Food [
+		restricts hasBase to exactly 1 PizzaBase
+	]
 
-    @rdfs:comment "The class of American pizzas"
-    concept American < CheesyPizza, MeatyPizza [
-        restricts some hasTopping to MozzarellaTopping
-        restricts some hasTopping to SausageTopping
-        restricts some hasTopping to TomatoTopping
-    ]
+	@rdfs:comment "The class of pizza bases"
+	concept PizzaBase < Food
 
-    @rdfs:comment "The class of Veneziana pizzas"
-    concept Veneziana < CheesyPizza, MeatyPizza [
-        restricts some hasTopping to MozzarellaTopping
-        restricts some hasTopping to TomatoTopping
-        restricts some hasTopping to SultanaTopping
-    ]
+	@rdfs:comment "The class of pizza toppings"
+	concept PizzaTopping < Food
 
-    @rdfs:comment "The class of Margherita pizzas"
-    concept Margherita < CheesyPizza, VegetarianPizza [
-        restricts some hasTopping to MozzarellaTopping
-        restricts some hasTopping to TomatoTopping
-    ]
+	@rdfs:comment "A relation from a pizza to a base"
+	relation hasBase [
+		from Pizza
+		to PizzaBase
+		reverse isBaseOf
+		functional
+		inverse functional
+	] < hasIngredient 
 
-    // Pizza Bases
+	@rdfs:comment "A relation from a pizza to a topping"
+	relation hasTopping [
+		from Pizza
+		to PizzaTopping
+		reverse isToppingOf
+		inverse functional
+	] < hasIngredient
 
-    @rdfs:comment "The class of deep pan bases"
-    concept DeepPanBase < PizzaBase
-    
-    @rdfs:comment "The class of thin and crispy bases"
-    concept ThinAndCrispyBase < PizzaBase
+	// Pizzas
+		
+	@rdfs:comment "The class of pizzas with some cheese toppings"
+	concept CheesyPizza = Pizza [
+		restricts some hasTopping to CheeseTopping
+	]
+	
+	@rdfs:comment "The class of pizzas with some meat toppings"
+	concept MeatyPizza = Pizza [
+		restricts some hasTopping to MeatTopping
+	]
+	
+	@rdfs:comment "The class of pizzas with all vegetarian toppings"
+	concept VegetarianPizza = Pizza [
+		restricts some hasTopping to VegetarianTopping
+		restricts all hasTopping to VegetarianTopping
+	]
 
-    // Pizza Toppings
-        
-    @rdfs:comment "The class of meat toppings"
-    concept MeatTopping < PizzaTopping
-    
-    @rdfs:comment "The class of vegetarian toppings"
-    concept VegetarianTopping < PizzaTopping
+	@rdfs:comment "The class of American pizzas"
+	concept American < CheesyPizza, MeatyPizza [
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to SausageTopping
+		restricts some hasTopping to TomatoTopping
+	]
 
-    @rdfs:comment "The class of hot spiciness toppings"
-    concept HotTopping < PizzaTopping [
-        restricts hasSpiceness to "Hot"
-    ]
+	@rdfs:comment "The class of Veneziana pizzas"
+	concept Veneziana < CheesyPizza, VegetarianPizza [
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to TomatoTopping
+		restricts some hasTopping to SultanaTopping
+	]
 
-    @rdfs:comment "The class of medium spiciness toppings"
-    concept MediumTopping < PizzaTopping [
-        restricts hasSpiceness to "Medium"
-    ]
+	@rdfs:comment "The class of Margherita pizzas"
+	concept Margherita < CheesyPizza, VegetarianPizza [
+		restricts some hasTopping to MozzarellaTopping
+		restricts some hasTopping to TomatoTopping
+	]
 
-    @rdfs:comment "The class of mild spiciness toppings"
-    concept MildTopping < PizzaTopping [
-        restricts hasSpiceness to "Mild"
-    ]
+	// Pizza Bases
 
-    // Meat Topping
+	@rdfs:comment "The class of deep pan bases"
+	concept DeepPanBase < PizzaBase
+	
+	@rdfs:comment "The class of thin and crispy bases"
+	concept ThinAndCrispyBase < PizzaBase
 
-    @rdfs:comment "The class sausage toppings"
-    concept SausageTopping < MeatTopping, MildTopping
-    @rdfs:comment "The class spiced beef toppings"
-    concept SpicedBeefTopping < MeatTopping, HotTopping
-    
-    // Vegetarion Toppings
+	// Pizza Toppings
 
-    @rdfs:comment "The class sauce toppings"
-    concept SauceTopping < VegetarianTopping
-    @rdfs:comment "The class cheese toppings"
-    concept CheeseTopping < VegetarianTopping
-    @rdfs:comment "The class fruit toppings"
-    concept FruitTopping < VegetarianTopping
-    @rdfs:comment "The class vegetable toppings"
-    concept VegetableTopping < VegetarianTopping
+	@rdfs:comment "The class of meat toppings"
+	concept MeatTopping < PizzaTopping
+	
+	@rdfs:comment "The class of vegetarian toppings"
+	concept VegetarianTopping < PizzaTopping
 
-    // Sauce Toppings
+	// Meat Topping
 
-    @rdfs:comment "The class of tabasco toppings"
-    concept TobascoTopping < SauceTopping, HotTopping
+	@rdfs:comment "The class sausage toppings"
+	concept SausageTopping < MeatTopping, MildFood
+	@rdfs:comment "The class spiced beef toppings"
+	concept SpicedBeefTopping < MeatTopping, HotFood
+	
+	// Vegetarian Toppings
 
-    // Cheese Toppings
+	@rdfs:comment "The class sauce toppings"
+	concept SauceTopping < VegetarianTopping
+	@rdfs:comment "The class cheese toppings"
+	concept CheeseTopping < VegetarianTopping
+	@rdfs:comment "The class fruit toppings"
+	concept FruitTopping < VegetarianTopping
+	@rdfs:comment "The class vegetable toppings"
+	concept VegetableTopping < VegetarianTopping
 
-    @rdfs:comment "The class of parmesan toppings"
-    concept ParmesanTopping < CheeseTopping, MildTopping
-    @rdfs:comment "The class of mozzarella toppings"
-    concept MozzarellaTopping < CheeseTopping, MildTopping
+	// Sauce Toppings
 
-    // Fruit Toppings
+	@rdfs:comment "The class of tabasco toppings"
+	concept TabascoTopping < SauceTopping, HotFood
 
-    @rdfs:comment "The class of sultana toppings"
-    concept SultanaTopping < FruitTopping, MediumTopping
-    
-    // Vegetable Toppings
+	// Cheese Toppings
 
-    @rdfs:comment "The class of pepper toppings"
-    concept PepperTopping < VegetableTopping
-    @rdfs:comment "The class of tomatoe toppings"
-    concept TomatoTopping < VegetableTopping, MildTopping
+	@rdfs:comment "The class of parmesan toppings"
+	concept ParmesanTopping < CheeseTopping, MildFood
+	@rdfs:comment "The class of mozzarella toppings"
+	concept MozzarellaTopping < CheeseTopping, MildFood
 
-    // Pepper Toppings
+	// Fruit Toppings
 
-    @rdfs:comment "The class of jalapeno pepper toppings"
-    concept JalapenoPepperTopping < PepperTopping, HotTopping
-    @rdfs:comment "The class of sweet pepper toppings"
-    concept SweetPepperTopping < PepperTopping, MildTopping
+	@rdfs:comment "The class of sultana toppings"
+	concept SultanaTopping < FruitTopping, MediumFood
+	
+	// Vegetable Toppings
+
+	@rdfs:comment "The class of pepper toppings"
+	concept PepperTopping < VegetableTopping
+	@rdfs:comment "The class of tomato toppings"
+	concept TomatoTopping < VegetableTopping, MildFood
+
+	// Pepper Toppings
+
+	@rdfs:comment "The class of jalapeno pepper toppings"
+	concept JalapenoPepperTopping < PepperTopping, HotFood
+	@rdfs:comment "The class of sweet pepper toppings"
+	concept SweetPepperTopping < PepperTopping, MildFood
 }
 ```
 
@@ -287,96 +287,74 @@ Now, you will create a description of the pizza instances baked by a particular 
 ```scala
 @dc:description "A description of the sales of a specific pizza restaurant"
 description <http://example.com/tutorial1/description/restaurant#> as restaurant {
-    
-    uses <http://purl.org/dc/elements/1.1/> as dc
+	
+	uses <http://purl.org/dc/elements/1.1/> as dc
 
-    // The restaurant description "uses" the pizza vocabulary terms in assertions 
-    uses <http://example.com/tutorial1/vocabulary/pizza#> as pizza
+	// The restaurant description "uses" the pizza vocabulary terms in assertions 
+	uses <http://example.com/tutorial1/vocabulary/pizza#> as pizza
 
-    // Pizza 1
+	// Pizza 1
 
-    instance base1 : pizza:DeepPanBase
-    instance topping1-1 : pizza:TomatoTopping
-    instance topping1-2 : pizza:MozzarellaTopping
-    instance topping1-3 : pizza:SausageTopping
-    instance pizza1 : pizza:American [
-        pizza:hasId "1"
-        pizza:hasBase base1
-        pizza:hasTopping topping1-1
-        pizza:hasTopping topping1-2
-        pizza:hasTopping topping1-3
-    ]
-    
-    // Pizza 2
+	instance pizza1 : pizza:American [
+		pizza:hasId "1"
+		pizza:hasBase : pizza:DeepPanBase []
+		pizza:hasTopping : pizza:TomatoTopping []
+		pizza:hasTopping : pizza:MozzarellaTopping []
+		pizza:hasTopping : pizza:SausageTopping []
+	]
+	
+	// Pizza 2
 
-    instance base2 : pizza:ThinAndCrispyBase
-    instance topping2-1 : pizza:TomatoTopping
-    instance topping2-2 : pizza:MozzarellaTopping
-    instance topping2-3 : pizza:SausageTopping
-    instance pizza2 : pizza:American [
-        pizza:hasId "2"
-        pizza:hasBase base2
-        pizza:hasTopping topping2-1
-        pizza:hasTopping topping2-2
-        pizza:hasTopping topping2-3
-    ]
-        
-    // Pizza 3
+	instance pizza2 : pizza:American [
+		pizza:hasId "2"
+		pizza:hasBase : pizza:ThinAndCrispyBase []
+		pizza:hasTopping : pizza:TomatoTopping []
+		pizza:hasTopping : pizza:MozzarellaTopping []
+		pizza:hasTopping : pizza:SausageTopping []
+	]
+		
+	// Pizza 3
 
-    instance base3 : pizza:ThinAndCrispyBase
-    instance topping3-1 : pizza:TomatoTopping
-    instance topping3-2 : pizza:MozzarellaTopping
-    instance pizza3 : pizza:Margherita [
-        pizza:hasId "3"
-        pizza:hasBase base3
-        pizza:hasTopping topping3-1
-        pizza:hasTopping topping3-2
-    ]
+	instance pizza3 : pizza:Margherita [
+		pizza:hasId "3"
+		pizza:hasBase : pizza:ThinAndCrispyBase []
+		pizza:hasTopping : pizza:TomatoTopping []
+		pizza:hasTopping : pizza:MozzarellaTopping []
+	]
 
-    // Pizza 4
+	// Pizza 4
 
-    instance base4 : pizza:ThinAndCrispyBase
-    instance topping4-1 : pizza:TomatoTopping
-    instance topping4-2 : pizza:MozzarellaTopping
-    instance topping4-3 : pizza:SultanaTopping
-    instance topping4-4 : pizza:SpicedBeefTopping
-    instance pizza4 : pizza:Veneziana [
-        pizza:hasId "4"
-        pizza:hasBase base4
-        pizza:hasTopping topping4-1
-        pizza:hasTopping topping4-2
-        pizza:hasTopping topping4-3
-        pizza:hasTopping topping4-4
-    ]
+	instance pizza4 : pizza:Margherita [
+		pizza:hasId "4"
+		pizza:hasBase : pizza:ThinAndCrispyBase []
+		pizza:hasTopping : pizza:TomatoTopping []
+		pizza:hasTopping : pizza:MozzarellaTopping []
+		pizza:hasTopping : pizza:SultanaTopping []
+		//pizza:hasTopping : pizza:SpicedBeefTopping []
+	]
 
-    // Pizza 5
+	// Pizza 5
 
-    instance base5 : pizza:DeepPanBase
-    instance topping5-1 : pizza:TobascoTopping
-    instance topping5-2 : pizza:ParmesanTopping
-    instance topping5-3 : pizza:JalapenoPepperTopping
-    instance pizza5 : pizza:VegetarianPizza [
-        pizza:hasId "5"
-        pizza:hasBase base5
-        pizza:hasTopping topping5-1
-        pizza:hasTopping topping5-2
-        pizza:hasTopping topping5-3
-    ]
+	instance pizza5 : pizza:VegetarianPizza [
+		pizza:hasId "5"
+		pizza:hasBase : pizza:DeepPanBase []
+		pizza:hasTopping : pizza:TabascoTopping []
+		pizza:hasTopping : pizza:MozzarellaTopping []
+		pizza:hasTopping : pizza:JalapenoPepperTopping []
+	]
 
-    // Pizza 6
+	// Pizza 6
 
-    instance base6 : pizza:DeepPanBase
-    instance topping6-1 : pizza:TomatoTopping
-    instance topping6-2 : pizza:JalapenoPepperTopping
-    instance pizza6 : pizza:VegetarianPizza [
-        pizza:hasId "6"
-        pizza:hasBase base6
-        pizza:hasTopping topping6-1
-        pizza:hasTopping topping6-1
-    ]
+	instance pizza6 : pizza:VegetarianPizza [
+		pizza:hasId "6"
+		pizza:hasBase : pizza:DeepPanBase []
+		pizza:hasTopping : pizza:TomatoTopping []
+		pizza:hasTopping : pizza:JalapenoPepperTopping []
+	]
 
 }
 ```
+
 ## Edit OML Description Bundle ## {#tutorial1-edit-oml-description-bundle}
 
 Now, you will include the restaurant description in a description bundle that will be analyzed as a dataset with closed-world assumptions. This requires the description bundle to use the pizza vocabulary bundle above in order to reuse its closed world assumptions.  Additionally, it automatically asserts that instances in the bundled descriptions are the only ones available in the world.
@@ -430,7 +408,7 @@ Now, we will introduce a logical problem in the OML code above and see how the r
 
 1. Click on the `restaurant.oml` editor to bring it in focus.
 
-1. In line 30, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become like the value of `hasId` of instance `pizza1` (in line 16). Save the editor.
+1. In line 22, change the `hasId` property value of instance `pizza2` to "1" (from "2"), to become like the value of `hasId` of instance `pizza1` (in line 12). Save the editor.
 
     <img src="assets/tutorial1/Change-Pizza2-Id.png" width="100%">
 
@@ -462,28 +440,25 @@ Looking at the minimal ontology presented, we can figure out the cause of the pr
 
 ```scala
 @rdfs:comment "A relation from a pizza to a base"
-relation entity HasBase [
+relation hasBase [
     from Pizza
     to PizzaBase
-    forward hasBase
     reverse isBaseOf
     functional
     inverse functional
-] < HasIngredient
+] < hasIngredient
 ```
 
-Moreover, it says that instance `base1` is a value of property `hasBase` on instance `pizza1`, and instance `base2` is a value of property `hasBase` on instance `pizza2`. Looking at the relevant snippet of the restaurant description confirms that.
+Moreover, it says that an anonymous instance of type `DeepPanBase` is a value of property `hasBase` on instance `pizza1`, and an anonymous instance of type `ThinAndCrispyBase` is a value of property `hasBase` on instance `pizza2`. Looking at the relevant snippet of the restaurant description confirms that.
 
 ```scala
-    instance base1 : pizza:DeepPanBase
     instance pizza1 : pizza:American [
         pizza:hasId "1"
-        pizza:hasBase base1
+		pizza:hasBase : pizza:DeepPanBase []
     ]
-    instance base2 : pizza:ThinAndCrispyBase
     instance pizza2 : pizza:American [
         pizza:hasId "1"
-        pizza:hasBase base2
+		pizza:hasBase : pizza:ThinAndCrispyBase []
     ]
 ```
 
@@ -499,15 +474,15 @@ scalar property hasId [
 ]   
 ```
 
-In light of the above, and having established previously that property `hasBase` is *functional*, it follows logically that `base1` and `base2` must be two names of the same base individual. But wait, we asserted in the restaurant description that those instances are typed by concepts `DeepPanBase` and `ThinAndCrispyBase`, respectively. This means now that the same base instance is typed by both these types. 
+In light of the above, and having established previously that property `hasBase` is *functional*, it follows logically that both aforementioned anonymous instances must be the same instance. But wait, we asserted in the restaurant description that those instances are typed by concepts `DeepPanBase` and `ThinAndCrispyBase`, respectively. This means now that the same base instance is typed by both these types. 
 
 However, the explanation also says that these two types are in fact disjoint. Where did it get this from? It turns out to be a generated assertion in the `pizza-bundle` vocabulary bundle. Such assertion is generated since the two types do not have a common subtype in the `pizza` vocabulary (included in the vocabulary bundle). Such closed-world semantics is a benefit of using a vocabulary bundle.
 
-Now, let us put all those inferences together to understand the reported problem *"an individual belongs to a type and its complement"*. It turns out that the individual here is known by the two names `base1` and `base2` and it is inferred to belong to type `DeepPanBase` and its complement type `ThinAndCrispyBase`, which is a logical inconsistency.
+Now, let us put all those inferences together to understand the reported problem *"an individual belongs to a type and its complement"*. It turns out that the individual here is nothing but those anonymous instances (individuas) and it is inferred to belong to type `DeepPanBase` and its complement type `ThinAndCrispyBase`, which is a logical inconsistency.
 
 **Fixing the problem**
 
-1. Let's now fix the problem by reverting the change we just did. Click on the `restaurant` editor again and navigate to line 30 and restore the original `hasId` property value of `pizza2` to "2". Save the editor.
+1. Let's now fix the problem by reverting the change we just did. Click on the `restaurant` editor again and navigate to line 22 and restore the original `hasId` property value of `pizza2` to "2". Save the editor.
 
 1. Click on the [=Gradle Tasks view=] and double-click to rerun the `tutorial1/oml/build` task again and wait for it to finish running in the [=Gradle Executions view=].
 

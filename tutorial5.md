@@ -547,7 +547,7 @@ In this step, we will define a custom diagram editor for OML description models 
 21. Select the nested `Set` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Value Expression</b>: aql:context.getNewMemberName('woman')
     </pre>
 
@@ -556,7 +556,7 @@ In this step, we will define a custom diagram editor for OML description models 
 22. Right click on the `Tools` node and select New Element Creation -> Edge Creation. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: createFather
     - <b>Label</b>: Father
     - <b>Edge Mapping</b>: FatherEdge
@@ -567,7 +567,7 @@ In this step, we will define a custom diagram editor for OML description models 
 23. Expand the `Edge Creation Father` node and right click on the nested `source` node and select New Variable -> Expression Variable. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Name</b>: context
     - <b>Label</b>: aql:source.getDescription()
     </pre>
@@ -575,7 +575,7 @@ In this step, we will define a custom diagram editor for OML description models 
 24. Copy the `context` variable and paste it under the `source` variable. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Name</b>: sourceInstance
     - <b>Label</b>: aql:source.oclAsType(oml::ConceptInstance)
     </pre>
@@ -584,7 +584,7 @@ In this step, we will define a custom diagram editor for OML description models 
 25. Copy the `sourceInstance` variable and paste it under the `target` variable. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Name</b>: targetInstance
     - <b>Label</b>: aql:target.oclAsType(oml::ConceptInstance)
     </pre>
@@ -592,14 +592,14 @@ In this step, we will define a custom diagram editor for OML description models 
 26. Right click on the `Begin` node of the tool and select New Operation -> Change Context. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:context.addPropertyValue(sourceInstance, 'basicfamily:father', targetInstance)
     </pre>
 
 27. Copy the `Edge Creation Fatehr` node and paste it under the `Tools` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: createMother
     - <b>Label</b>: Mother
     - <b>Edge Mapping</b>: MotherEdge
@@ -610,7 +610,7 @@ In this step, we will define a custom diagram editor for OML description models 
 28. Navigate to the nested `Begin` -> `Change Context...` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:context.addPropertyValue(sourceInstance, 'basicfamily:mother', targetInstance)
     </pre>
 
@@ -621,7 +621,7 @@ In this step, we will define a custom diagram editor for OML description models 
 29. Right click on the `Section Tools` node and select New Element Edition -> Delete Element. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: Recursive
     - <b>Mappings</b>: ManNode, WomanNode, FatherEdge, MotherEdge
     </pre>
@@ -629,7 +629,7 @@ In this step, we will define a custom diagram editor for OML description models 
 30. Expand the `Delete Element Recursive` node, right click on the `Begin` node and select New Operation -> Change Context. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:self.recursiveDelete()
     </pre>
 
@@ -638,7 +638,7 @@ In this step, we will define a custom diagram editor for OML description models 
 31. Right click on the `Section Tools` node and select New Menu -> Operation Action. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: Cascade Delete
     - <b>Precondition</b>: ManNode, WomanNode, FatherEdge, MotherEdge
     </pre>
@@ -646,7 +646,7 @@ In this step, we will define a custom diagram editor for OML description models 
 32. Expand the `Operation Action Cascade Delete` node, right click on the `Begin` node and select New Operation -> Change Context. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:self.cascadeDelete()
     </pre>
 
@@ -730,7 +730,7 @@ In this step, we will define a custom table editor for OML description models th
 1. In the `basicfamily.odesign` editor, right click on the `persons` viewpoint and select New Representation -> Edition Table Description. In the Property Sheet, change the following information:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: Persons table
     - <b>Domain Class</b>: oml.ConceptInstance
     <b>Metamodels</b>:
@@ -744,7 +744,7 @@ In this step, we will define a custom table editor for OML description models th
 2. Right click on the `Persons table` node and select New Table Element -> Line. In the Property Sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: PersonLine
     - <b>Domain Class</b>: oml.ConceptInstance
     - <b>Semantic Candidates Expression</b>: aql:self.findTargetInstances('basicfamily:members')
@@ -762,7 +762,7 @@ In this step, we will define a custom table editor for OML description models th
 4. Right click on the `Persons table` node and select New Table Element -> Feature Column. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: FatherColumn
     - <b>Feature Name</b>: name
     <b>Label</b>:
@@ -774,7 +774,7 @@ In this step, we will define a custom table editor for OML description models th
 5. Right click on the `Persons table` node and select New Table Element -> Feature Column. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: MotherColumn
     - <b>Feature Name</b>: name
     <b>Label</b>:
@@ -786,7 +786,7 @@ In this step, we will define a custom table editor for OML description models th
 6. Right click on the `Persons table` node and select New Table Element -> Feature Column. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: ChildrenColumn
     - <b>Feature Name</b>: *
     <b>Label</b>:
@@ -797,7 +797,7 @@ In this step, we will define a custom table editor for OML description models th
 7. Right click on the `Persons table` node and select New Table Element -> Feature Column. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: SiblingsColumn
     - <b>Feature Name</b>: *
     <b>Label</b>:
@@ -837,7 +837,7 @@ In this step, we will define a custom table editor for OML description models th
 11. In the `basicfamily.odesign` editor, right click on the `Persons table` node and select New Tool -> Create Line Tool. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: createManLine
     - <b>Label</b>: New Man
     - <b>Mapping</b>: PersonLine
@@ -848,7 +848,7 @@ In this step, we will define a custom table editor for OML description models th
 12. Right click on the `root` variable and select New Variable -> Expression Variable. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Name</b>: context
     - <b>Computation Expression</b>: aql:root.getDescription()
     </pre>
@@ -856,7 +856,7 @@ In this step, we will define a custom table editor for OML description models th
 13. Right click on the `root` variable and select New Variable -> Expression Variable. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Name</b>: containerInstance
     - <b>Computation Expression</b>: aql:root.oclAsType(oml::ConceptInstance)
     </pre>
@@ -864,14 +864,14 @@ In this step, we will define a custom table editor for OML description models th
 14. Right click on the `New Man` node and select New Operation -> Change Context. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:context.createConceptInstance('basicfamily:Man', containerInstance, 'basicfamily:members')
     </pre>
 
 15. Right click on the last `Change Context` node and select New Operation -> Set. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Feature Name</b>: name
     - <b>Value Expression</b>: aql:context.getNewMemberName('man')
     </pre>
@@ -879,7 +879,7 @@ In this step, we will define a custom table editor for OML description models th
 16. Copy the `New Man` node and paste it under the `Persons table` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: createWomanLine
     - <b>Label</b>: New Woman
     - <b>Mapping</b>: PersonLine
@@ -888,14 +888,14 @@ In this step, we will define a custom table editor for OML description models th
 17. Expand the `New Woman` node and navigate to the nested `Change Context` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Value Expression</b>: aql:context.createConceptInstance('basicfamily:Woman', containerInstance, 'basicfamily:members')
     </pre>
 
 18. Navigate to the nested `Set` node. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Value Expression</b>: aql:context.getNewMemberName('woman')
     </pre>
 
@@ -904,14 +904,14 @@ In this step, we will define a custom table editor for OML description models th
 19. Right click on the `PersonsLine` node and select New Tool -> Delete Line Tool. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Id</b>: Delete
     </pre>
 
 20. Right click on the `Delete` node and select New Operation -> Change Context. In the property sheet, change the following:
 
     <pre no-line-numbers style="background: rgba(0, 0, 0, .03)">
-    <b>General</b></b>:
+    <b>General</b>:
     - <b>Browse Expression</b>: aql:self.recursiveDelete()
     </pre>
 
