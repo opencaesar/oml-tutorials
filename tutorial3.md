@@ -92,19 +92,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup JDK
       uses: actions/setup-java@v3
       with:
         java-version: '21'
         distribution: 'temurin'
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/actions/setup-gradle@v3
+    - name: Make gradlew executable
+      run: chmod +x gradlew
     - name: Build
       run: ./gradlew build
     - name: Upload
       if: ${{ always() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build
         path: build/
